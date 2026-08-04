@@ -1,65 +1,79 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" fill="none">
   <defs>
-    <linearGradient id="cable" x1="900" y1="130" x2="500" y2="250" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#91c92b"/><stop offset=".42" stop-color="#b9f33a"/><stop offset="1" stop-color="#7fac1f"/>
+    <linearGradient id="cableG" x1="980" y1="105" x2="560" y2="235" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#73a91e"/><stop offset=".42" stop-color="#b9f43c"/><stop offset=".7" stop-color="#91cc25"/><stop offset="1" stop-color="#4d7410"/>
     </linearGradient>
-    <linearGradient id="boot" x1="590" y1="135" x2="435" y2="350" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#252a27"/><stop offset=".55" stop-color="#101312"/><stop offset="1" stop-color="#050606"/>
+    <linearGradient id="bootG" x1="690" y1="145" x2="520" y2="320" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#232826"/><stop offset=".5" stop-color="#0f1211"/><stop offset="1" stop-color="#030404"/>
     </linearGradient>
-    <linearGradient id="glass" x1="420" y1="225" x2="220" y2="430" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#f7ffff" stop-opacity=".78"/><stop offset=".28" stop-color="#b9d5d8" stop-opacity=".42"/><stop offset=".65" stop-color="#516164" stop-opacity=".24"/><stop offset="1" stop-color="#e9ffff" stop-opacity=".52"/>
+    <linearGradient id="plugTop" x1="520" y1="210" x2="250" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f4ffff" stop-opacity=".72"/><stop offset=".35" stop-color="#b5cacc" stop-opacity=".34"/><stop offset="1" stop-color="#536164" stop-opacity=".22"/>
     </linearGradient>
-    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
-      <stop stop-color="#fff0a0"/><stop offset=".35" stop-color="#e6bd3c"/><stop offset="1" stop-color="#8c5b06"/>
+    <linearGradient id="plugSide" x1="400" y1="300" x2="300" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d8e9eb" stop-opacity=".46"/><stop offset="1" stop-color="#637174" stop-opacity=".22"/>
     </linearGradient>
-    <filter id="shadow" x="-30%" y="-30%" width="180%" height="200%">
-      <feDropShadow dx="0" dy="24" stdDeviation="22" flood-color="#000" flood-opacity=".65"/>
+    <linearGradient id="goldG" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#fff3a4"/><stop offset=".22" stop-color="#f3d361"/><stop offset=".65" stop-color="#d59d19"/><stop offset="1" stop-color="#6e4300"/>
+    </linearGradient>
+    <filter id="ds" x="-40%" y="-40%" width="200%" height="220%">
+      <feDropShadow dx="0" dy="28" stdDeviation="22" flood-color="#000" flood-opacity=".72"/>
     </filter>
-    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
-      <feGaussianBlur stdDeviation="18"/>
-    </filter>
+    <filter id="glow" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="22"/></filter>
   </defs>
 
-  <g filter="url(#shadow)" transform="rotate(-8 520 270)">
-    <!-- green cable, entering from the right -->
-    <path d="M930 118C805 105 745 105 674 137C626 159 594 182 556 210" stroke="#9ddc2b" stroke-opacity=".18" stroke-width="92" stroke-linecap="round" filter="url(#glow)"/>
-    <path d="M930 118C805 105 745 105 674 137C626 159 594 182 556 210" stroke="url(#cable)" stroke-width="64" stroke-linecap="round"/>
-    <path d="M916 97C805 88 737 95 667 124" stroke="#dcff7b" stroke-opacity=".45" stroke-width="8" stroke-linecap="round"/>
+  <g filter="url(#ds)" transform="rotate(-10 565 300)">
+    <!-- cable -->
+    <path d="M1030 82C889 80 786 100 694 151C654 173 624 194 589 222" stroke="#baff39" stroke-opacity=".16" stroke-width="108" stroke-linecap="round" filter="url(#glow)"/>
+    <path d="M1030 82C889 80 786 100 694 151C654 173 624 194 589 222" stroke="url(#cableG)" stroke-width="68" stroke-linecap="round"/>
+    <path d="M1008 59C884 59 790 77 706 121" stroke="#e5ff91" stroke-opacity=".35" stroke-width="8" stroke-linecap="round"/>
 
-    <!-- strain relief -->
-    <path d="M594 153L684 181L617 293L529 259Z" fill="#151817"/>
-    <path d="M579 163L655 188L604 273L528 250Z" fill="url(#boot)" stroke="#3b423e" stroke-width="3"/>
-    <path d="M592 177L641 193M582 196L630 212M572 215L619 231M561 234L608 250" stroke="#4d5550" stroke-width="6" stroke-linecap="round" opacity=".75"/>
-
-    <!-- plug body silhouette -->
-    <path d="M548 222L594 272L469 434L238 397L199 338L321 207L512 203Z" fill="url(#glass)" stroke="#d9eef0" stroke-opacity=".72" stroke-width="5"/>
-    <path d="M321 207L512 203L548 222L454 313L260 309L199 338" stroke="#f3ffff" stroke-opacity=".56" stroke-width="4"/>
-    <path d="M260 309L454 313L469 434L238 397Z" fill="#a9c7ca" fill-opacity=".18" stroke="#e7fbfd" stroke-opacity=".38" stroke-width="3"/>
-
-    <!-- inner colored wires -->
-    <path d="M474 261L342 252" stroke="#f6f2e6" stroke-width="12"/><path d="M476 272L338 264" stroke="#ff7b31" stroke-width="8"/>
-    <path d="M474 284L334 277" stroke="#70bb37" stroke-width="8"/><path d="M467 296L329 290" stroke="#3c74c7" stroke-width="8"/>
-
-    <!-- eight gold contacts -->
-    <g transform="translate(305 319) rotate(3)">
-      <rect x="0" y="0" width="16" height="77" rx="3" fill="url(#gold)"/>
-      <rect x="23" y="0" width="16" height="77" rx="3" fill="url(#gold)"/>
-      <rect x="46" y="0" width="16" height="77" rx="3" fill="url(#gold)"/>
-      <rect x="69" y="0" width="16" height="77" rx="3" fill="url(#gold)"/>
-      <rect x="92" y="0" width="16" height="77" rx="3" fill="url(#gold)"/>
-      <rect x="115" y="0" width="16" height="77" rx="3" fill="url(#gold)"/>
-      <rect x="138" y="0" width="16" height="77" rx="3" fill="url(#gold)"/>
-      <rect x="161" y="0" width="16" height="77" rx="3" fill="url(#gold)"/>
-      <path d="M3 8H174" stroke="#fff4b5" stroke-width="4" opacity=".7"/>
+    <!-- black strain relief / boot -->
+    <path d="M690 130L757 174L650 326L568 280Z" fill="#050606"/>
+    <path d="M672 137L733 176L642 307L578 273Z" fill="url(#bootG)" stroke="#3b423f" stroke-width="4"/>
+    <g stroke="#4d5551" stroke-width="7" stroke-linecap="round" opacity=".85">
+      <path d="M681 158L716 181"/><path d="M665 180L701 202"/><path d="M650 201L685 223"/><path d="M634 222L670 244"/><path d="M619 244L654 266"/>
     </g>
 
-    <!-- latch, like a real RJ45 -->
-    <path d="M373 213L462 218L502 250L459 257L419 239L358 238Z" fill="#d7e8e9" fill-opacity=".35" stroke="#edfafa" stroke-opacity=".6" stroke-width="4"/>
-    <path d="M408 214L453 219L485 242L456 246L423 231L389 230Z" fill="#f7ffff" fill-opacity=".22"/>
+    <!-- rear collar -->
+    <path d="M597 217L650 247L591 334L533 303Z" fill="#111413" stroke="#3a413d" stroke-width="4"/>
 
-    <!-- front facets and highlights -->
-    <path d="M201 338L260 309L238 397" stroke="#fff" stroke-opacity=".55" stroke-width="5"/>
-    <path d="M469 434L454 313L548 222" stroke="#dff8fa" stroke-opacity=".38" stroke-width="5"/>
-    <path d="M230 345L277 325" stroke="#fff" stroke-opacity=".48" stroke-width="7" stroke-linecap="round"/>
+    <!-- transparent RJ45 housing: realistic rectangular wedge -->
+    <path d="M548 255L603 304L470 486L205 438L164 369L315 225L505 226Z" fill="url(#plugTop)" stroke="#eefcfd" stroke-opacity=".72" stroke-width="6"/>
+    <path d="M164 369L205 438L470 486L456 337L252 313Z" fill="url(#plugSide)" stroke="#e7f8fa" stroke-opacity=".52" stroke-width="5"/>
+    <path d="M315 225L505 226L548 255L456 337L252 313L164 369Z" fill="#e9ffff" fill-opacity=".08" stroke="#f4ffff" stroke-opacity=".5" stroke-width="4"/>
+
+    <!-- cable pairs visible inside plug -->
+    <g stroke-linecap="round">
+      <path d="M534 276L389 272" stroke="#f3f0e6" stroke-width="13"/>
+      <path d="M536 289L382 286" stroke="#f37b31" stroke-width="9"/>
+      <path d="M529 302L374 299" stroke="#6cb343" stroke-width="9"/>
+      <path d="M516 316L364 312" stroke="#3676c7" stroke-width="9"/>
+    </g>
+
+    <!-- front contact bed -->
+    <path d="M255 319L456 342L466 450L219 417L190 372Z" fill="#293235" fill-opacity=".2" stroke="#e5f7f8" stroke-opacity=".38" stroke-width="4"/>
+
+    <!-- eight long gold contacts aligned like RJ45 -->
+    <g transform="matrix(.994 .111 -.02 1 246 334)">
+      <rect x="0" y="0" width="18" height="94" rx="3" fill="url(#goldG)"/>
+      <rect x="25" y="0" width="18" height="94" rx="3" fill="url(#goldG)"/>
+      <rect x="50" y="0" width="18" height="94" rx="3" fill="url(#goldG)"/>
+      <rect x="75" y="0" width="18" height="94" rx="3" fill="url(#goldG)"/>
+      <rect x="100" y="0" width="18" height="94" rx="3" fill="url(#goldG)"/>
+      <rect x="125" y="0" width="18" height="94" rx="3" fill="url(#goldG)"/>
+      <rect x="150" y="0" width="18" height="94" rx="3" fill="url(#goldG)"/>
+      <rect x="175" y="0" width="18" height="94" rx="3" fill="url(#goldG)"/>
+      <path d="M4 8H193" stroke="#fff6be" stroke-width="4" opacity=".65"/>
+    </g>
+
+    <!-- latch on top, recognizable RJ45 clip -->
+    <path d="M349 226L455 231L516 267L480 287L430 260L352 257L306 279L290 259Z" fill="#e3f1f2" fill-opacity=".32" stroke="#f5ffff" stroke-opacity=".68" stroke-width="5"/>
+    <path d="M370 231L449 235L493 261L474 272L433 250L367 248L330 265L321 256Z" fill="#f8ffff" fill-opacity=".2"/>
+
+    <!-- plug nose / clear front facets -->
+    <path d="M164 369L252 313L219 417L205 438Z" stroke="#fff" stroke-opacity=".55" stroke-width="5"/>
+    <path d="M470 486L456 337L548 255" stroke="#dff7f9" stroke-opacity=".42" stroke-width="5"/>
+    <path d="M183 371L243 333" stroke="#fff" stroke-opacity=".5" stroke-width="8" stroke-linecap="round"/>
+    <path d="M230 427L452 466" stroke="#d9eef0" stroke-opacity=".3" stroke-width="5"/>
   </g>
 </svg>
