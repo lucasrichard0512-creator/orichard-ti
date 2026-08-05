@@ -1,78 +1,101 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" fill="none" role="img" aria-label="Cabo de rede RJ45 vetorial">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 700" fill="none" role="img" aria-label="Cabo de rede RJ45 estilizado apontando para a esquerda">
   <defs>
-    <linearGradient id="cable" x1="980" y1="480" x2="360" y2="130" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#5c8617"/>
-      <stop offset=".45" stop-color="#c7ff42"/>
-      <stop offset="1" stop-color="#8fc52b"/>
+    <linearGradient id="lime" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#d7ff62"/>
+      <stop offset=".5" stop-color="#b9ff32"/>
+      <stop offset="1" stop-color="#73a915"/>
     </linearGradient>
-    <linearGradient id="boot" x1="560" y1="130" x2="410" y2="315" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#252b28"/>
-      <stop offset="1" stop-color="#070908"/>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#252b27"/>
+      <stop offset="1" stop-color="#080a09"/>
     </linearGradient>
-    <linearGradient id="plug" x1="420" y1="170" x2="130" y2="350" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#d8e8df" stop-opacity=".9"/>
-      <stop offset=".55" stop-color="#779087" stop-opacity=".52"/>
-      <stop offset="1" stop-color="#26322e" stop-opacity=".82"/>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#effff7" stop-opacity=".82"/>
+      <stop offset=".45" stop-color="#a7c1b5" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#26312c" stop-opacity=".76"/>
     </linearGradient>
     <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
-      <stop stop-color="#fff1a0"/>
-      <stop offset=".45" stop-color="#e9bd32"/>
-      <stop offset="1" stop-color="#8b5c00"/>
+      <stop stop-color="#fff0a1"/>
+      <stop offset=".45" stop-color="#efc641"/>
+      <stop offset="1" stop-color="#9a6500"/>
     </linearGradient>
     <filter id="shadow" x="-30%" y="-30%" width="180%" height="190%">
       <feDropShadow dx="0" dy="24" stdDeviation="18" flood-color="#000" flood-opacity=".72"/>
     </filter>
     <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
-      <feGaussianBlur stdDeviation="20"/>
+      <feGaussianBlur stdDeviation="18"/>
     </filter>
   </defs>
 
-  <g filter="url(#shadow)">
-    <!-- cabo longo e curvado, vindo da direita -->
-    <path d="M1025 510C844 552 690 520 632 420C585 340 651 278 730 252C812 225 878 174 841 107C804 39 669 63 563 129L510 163" stroke="#baff39" stroke-opacity=".16" stroke-width="94" stroke-linecap="round" filter="url(#glow)"/>
-    <path d="M1025 510C844 552 690 520 632 420C585 340 651 278 730 252C812 225 878 174 841 107C804 39 669 63 563 129L510 163" stroke="url(#cable)" stroke-width="58" stroke-linecap="round"/>
-    <path d="M1008 486C851 523 716 494 661 409" stroke="#efffb8" stroke-opacity=".32" stroke-width="7" stroke-linecap="round"/>
+  <!-- glow suave atrás do cabo -->
+  <path d="M1060 618C873 624 756 553 790 458C823 366 944 330 927 222C912 126 790 91 648 151L511 213"
+        stroke="#baff37" stroke-opacity=".16" stroke-width="104" stroke-linecap="round" filter="url(#glow)"/>
 
-    <!-- capa traseira do plugue -->
-    <path d="M560 112L643 157L559 285L474 235Z" fill="url(#boot)" stroke="#424b46" stroke-width="5"/>
-    <path d="M537 123L612 164L548 262L485 227Z" fill="#0a0d0b"/>
-    <g stroke="#58615c" stroke-width="7" stroke-linecap="round" opacity=".8">
-      <path d="M548 148L589 170"/><path d="M532 171L574 193"/><path d="M516 194L558 216"/><path d="M500 217L541 239"/>
+  <g filter="url(#shadow)">
+    <!-- cabo longo e curvado vindo da direita -->
+    <path d="M1060 618C873 624 756 553 790 458C823 366 944 330 927 222C912 126 790 91 648 151L511 213"
+          stroke="#192016" stroke-width="76" stroke-linecap="round"/>
+    <path d="M1060 618C873 624 756 553 790 458C823 366 944 330 927 222C912 126 790 91 648 151L511 213"
+          stroke="url(#lime)" stroke-width="58" stroke-linecap="round"/>
+    <path d="M1045 598C885 603 790 546 817 470" stroke="#efffc8" stroke-opacity=".32" stroke-width="7" stroke-linecap="round"/>
+
+    <!-- capa traseira -->
+    <path d="M535 153L656 198L595 339L464 293Z" fill="url(#dark)" stroke="#3d463f" stroke-width="7"/>
+    <path d="M521 177L626 216L579 315L481 280Z" fill="#0a0d0b"/>
+    <g stroke="#69736c" stroke-width="8" stroke-linecap="round" opacity=".85">
+      <path d="M527 196L604 224"/>
+      <path d="M514 220L592 249"/>
+      <path d="M502 245L580 274"/>
+      <path d="M490 270L568 299"/>
     </g>
 
-    <!-- corpo principal do RJ45 em perspectiva, ponta para a esquerda -->
-    <path d="M487 205L430 157L190 195L104 268L136 381L342 411L470 327Z" fill="url(#plug)" stroke="#dff2e8" stroke-opacity=".72" stroke-width="6"/>
-    <path d="M104 268L136 381L342 411L332 301L170 274Z" fill="#111816" fill-opacity=".68" stroke="#dff2e8" stroke-opacity=".38" stroke-width="5"/>
-    <path d="M190 195L430 157L487 205L332 301L170 274L104 268Z" fill="#eefbf4" fill-opacity=".15" stroke="#f3fff9" stroke-opacity=".42" stroke-width="5"/>
+    <!-- corpo do conector, apontando para a esquerda -->
+    <path d="M485 224L410 169L178 210L81 303L111 433L341 466L487 355Z"
+          fill="url(#glass)" stroke="#e8fff3" stroke-opacity=".78" stroke-width="8" stroke-linejoin="round"/>
 
-    <!-- face frontal esquerda com oito contatos visíveis -->
-    <path d="M104 268L170 274L136 381L82 345L76 294Z" fill="#dcebe4" fill-opacity=".2" stroke="#edfdf5" stroke-opacity=".65" stroke-width="5"/>
-    <g transform="translate(91 287) skewY(9)">
-      <rect x="0" y="0" width="8" height="52" rx="2" fill="url(#gold)"/>
-      <rect x="11" y="0" width="8" height="52" rx="2" fill="url(#gold)"/>
-      <rect x="22" y="0" width="8" height="52" rx="2" fill="url(#gold)"/>
-      <rect x="33" y="0" width="8" height="52" rx="2" fill="url(#gold)"/>
-      <rect x="44" y="0" width="8" height="52" rx="2" fill="url(#gold)"/>
-      <rect x="55" y="0" width="8" height="52" rx="2" fill="url(#gold)"/>
-      <rect x="66" y="0" width="8" height="52" rx="2" fill="url(#gold)"/>
-      <rect x="77" y="0" width="8" height="52" rx="2" fill="url(#gold)"/>
+    <!-- topo e lateral para dar perspectiva -->
+    <path d="M178 210L410 169L485 224L348 322L157 291L81 303Z"
+          fill="#f4fff9" fill-opacity=".12" stroke="#f2fff8" stroke-opacity=".48" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M157 291L348 322L341 466L111 433L81 303Z"
+          fill="#111714" fill-opacity=".58" stroke="#e6fff1" stroke-opacity=".34" stroke-width="6" stroke-linejoin="round"/>
+
+    <!-- face frontal esquerda -->
+    <path d="M81 303L157 291L148 403L111 433L72 394L63 331Z"
+          fill="#d9ebe2" fill-opacity=".24" stroke="#effff7" stroke-opacity=".72" stroke-width="7" stroke-linejoin="round"/>
+
+    <!-- oito contatos frontais -->
+    <g transform="translate(76 323) skewY(-7)">
+      <rect x="0" y="0" width="9" height="64" rx="3" fill="url(#gold)"/>
+      <rect x="12" y="-2" width="9" height="66" rx="3" fill="url(#gold)"/>
+      <rect x="24" y="-4" width="9" height="68" rx="3" fill="url(#gold)"/>
+      <rect x="36" y="-6" width="9" height="70" rx="3" fill="url(#gold)"/>
+      <rect x="48" y="-8" width="9" height="72" rx="3" fill="url(#gold)"/>
+      <rect x="60" y="-10" width="9" height="74" rx="3" fill="url(#gold)"/>
+      <rect x="72" y="-12" width="9" height="76" rx="3" fill="url(#gold)"/>
+      <rect x="84" y="-14" width="9" height="78" rx="3" fill="url(#gold)"/>
     </g>
 
     <!-- fios internos -->
-    <g stroke-linecap="round" stroke-width="8">
-      <path d="M441 210L263 231" stroke="#f5f0df"/>
-      <path d="M446 222L258 244" stroke="#f17934"/>
-      <path d="M442 235L252 257" stroke="#62ac46"/>
-      <path d="M432 248L246 269" stroke="#4278c3"/>
+    <g stroke-linecap="round" stroke-width="9">
+      <path d="M430 238L213 260" stroke="#f6f0df"/>
+      <path d="M438 252L210 276" stroke="#f08037"/>
+      <path d="M432 267L204 292" stroke="#69b84c"/>
+      <path d="M420 283L199 307" stroke="#4c7dd1"/>
     </g>
 
-    <!-- trava característica do RJ45 -->
-    <path d="M372 169L455 167L496 196L452 211L415 191L354 199L319 228L298 217L337 181Z" fill="#d9ebe2" fill-opacity=".55" stroke="#f2fff8" stroke-opacity=".72" stroke-width="5"/>
-    <path d="M353 184L420 178L467 197L448 203L414 187L358 194L329 217" stroke="#ffffff" stroke-opacity=".45" stroke-width="5" stroke-linecap="round"/>
+    <!-- trava superior característica -->
+    <path d="M335 183L421 176L481 216L448 239L408 213L351 222L312 258L283 239L327 199Z"
+          fill="#dceee5" fill-opacity=".66" stroke="#f3fff9" stroke-opacity=".82" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M326 202L407 193L455 218L444 228L407 207L350 216L319 246"
+          stroke="#fff" stroke-opacity=".42" stroke-width="6" stroke-linecap="round"/>
 
-    <!-- detalhes geométricos, inspirados no ícone de referência -->
-    <path d="M407 260L455 234L466 284L423 310Z" fill="#0c100e" stroke="#6e7a73" stroke-width="4"/>
-    <path d="M198 213L237 207L220 232L181 238Z" fill="#c7ff42" fill-opacity=".5"/>
-    <path d="M137 378L337 405" stroke="#f4fff9" stroke-opacity=".28" stroke-width="4"/>
+    <!-- recorte superior do plugue -->
+    <path d="M382 249L450 227L466 292L407 334L369 302Z"
+          fill="#0a0d0b" stroke="#69736d" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M394 269L443 252L451 282L410 311L389 292Z" fill="#baff37" fill-opacity=".38"/>
+
+    <!-- arestas e brilho -->
+    <path d="M111 433L341 466" stroke="#f6fff9" stroke-opacity=".3" stroke-width="5"/>
+    <path d="M89 307L174 221L405 181" stroke="#fff" stroke-opacity=".22" stroke-width="5" stroke-linecap="round"/>
   </g>
 </svg>
