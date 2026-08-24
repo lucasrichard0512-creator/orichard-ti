@@ -57,7 +57,7 @@
     .hero-proof{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:-18px;color:#7f877f;font-size:.72rem}
     .hero-proof span{display:inline-flex;align-items:center;gap:8px}
     .hero-proof span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--lime)}
-    .service-cta,.case-cta{display:inline-flex;align-items:center;gap:8px;width:max-content;margin-top:24px;color:#e9ece8;font-weight:700;font-size:.82rem;border-bottom:1px solid #4b534b;padding-bottom:5px;transition:color .2s,border-color .2s,transform .2s}
+    .service-cta,.case-cta{display:inline-flex;align-items:center;gap:8px;width:max-content;margin-top:19px;color:#e9ece8;font-weight:700;font-size:.82rem;border-bottom:1px solid #4b534b;padding-bottom:5px;transition:color .2s,border-color .2s,transform .2s}
     .service-cta:hover{color:var(--lime);border-color:var(--lime);transform:translateX(3px)}
     .case-cta{color:#182018;border-color:#8c9984}
     .case-cta:hover{color:#577414;border-color:#577414;transform:translateX(3px)}
@@ -86,7 +86,7 @@
     .marquee i{color:var(--lime);font-style:normal;margin:0 25px}
 
     /* Intro */
-    .intro{padding:112px 0 76px}
+    .intro{padding:92px 0 54px}
     .intro-grid{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(320px,.94fr);gap:clamp(48px,8vw,110px);align-items:end}
     .intro h2{font-size:clamp(3rem,6.2vw,6.2rem);line-height:.95;margin-top:20px}
     .intro h2 span{color:var(--lime)}
@@ -94,17 +94,15 @@
     .intro-copy strong{color:#e9ece8;font-weight:600}
 
     /* Scrollytelling services */
-    .story{position:relative;padding:38px 0 120px}
+    .story{position:relative;padding:22px 0 92px}
     .story-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(440px,1.18fr);gap:clamp(54px,8vw,112px);align-items:start}
-    .story-copy{padding-bottom:18vh}
-    .story-step{min-height:68vh;display:flex;flex-direction:column;justify-content:center;opacity:.35;transform:translateY(18px);transition:opacity .35s,transform .35s}
+    .story-copy{padding-bottom:8vh}
+    .story-step{min-height:58vh;display:flex;flex-direction:column;justify-content:center;opacity:.35;transform:translateY(18px);transition:opacity .35s,transform .35s}
     .story-step.active{opacity:1;transform:none}
     .story-step .index{font:600 .72rem Space Grotesk,sans-serif;letter-spacing:.17em;color:var(--lime);margin-bottom:18px}
     .story-step h3{font-size:clamp(2.1rem,4.2vw,4.3rem);line-height:1.01;max-width:590px}
     .story-step p{max-width:520px;color:var(--muted);font-size:1rem;margin:22px 0 0}
-    .story-step ul{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:8px;color:#cfd4cf;font-size:.9rem}
-    .story-step li::before{content:"↳";color:var(--lime);margin-right:9px}
-    .story-visual{position:sticky;top:calc(var(--header) + 42px);height:calc(100svh - var(--header) - 84px);min-height:560px;display:grid;place-items:center}
+        .story-visual{position:sticky;top:calc(var(--header) + 42px);height:calc(100svh - var(--header) - 84px);min-height:560px;display:grid;place-items:center}
     .visual-shell{position:relative;width:100%;height:min(650px,100%);border:1px solid var(--line);border-radius:32px;overflow:hidden;background:radial-gradient(circle at 72% 18%,#bfff3b16,transparent 32%),linear-gradient(145deg,#111411,#090b0a 65%);box-shadow:0 35px 80px #0005}
     .visual-shell::before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff06 1px,transparent 1px),linear-gradient(90deg,#ffffff06 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(#000,transparent)}
     .visual-top{position:absolute;inset:22px 22px auto;display:flex;justify-content:space-between;align-items:center;color:#727a72;font:500 .67rem Space Grotesk,sans-serif;letter-spacing:.12em;text-transform:uppercase;z-index:3}
@@ -141,7 +139,7 @@
     .process-head p{color:var(--muted);margin:0;justify-self:end;max-width:440px}
     .process-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .process-item{padding:28px 22px 31px;border-right:1px solid var(--line)}
-    .process-item:last-child{border-right:0}.process-item .num{font:600 .7rem Space Grotesk,sans-serif;color:var(--lime);letter-spacing:.14em}.process-item h3{font-size:1.3rem;margin:31px 0 12px}.process-item p{font-size:.83rem;color:var(--muted);margin:0}
+    .process-item:last-child{border-right:0}.process-item .num{font:600 .7rem Space Grotesk,sans-serif;color:var(--lime);letter-spacing:.14em}.process-item h3{font-size:1.3rem;margin:24px 0 8px}.process-item p{font-size:.83rem;color:var(--muted);margin:0}
 
     /* Case scrollytelling */
     .case{background:var(--paper);color:var(--ink);padding:108px 0 92px}
@@ -152,15 +150,13 @@
     .case-lead{max-width:510px;justify-self:end;color:var(--paper-muted);font-size:1.02rem;margin:0}
     .case-lead strong{color:#151a15}
     .case-story{display:grid;grid-template-columns:minmax(330px,.74fr) minmax(520px,1.26fr);gap:clamp(45px,7vw,90px);align-items:start}
-    .case-copy{padding-bottom:14vh}
-    .case-step{min-height:62vh;display:flex;flex-direction:column;justify-content:center;opacity:.36;transition:opacity .3s}
+    .case-copy{padding-bottom:5vh}
+    .case-step{min-height:54vh;display:flex;flex-direction:column;justify-content:center;opacity:.36;transition:opacity .3s}
     .case-step.active{opacity:1}
     .case-step .index{font:600 .7rem Space Grotesk,sans-serif;color:#577414;letter-spacing:.16em;text-transform:uppercase;margin-bottom:17px}
-    .case-step h3{font-size:clamp(2rem,3.7vw,3.8rem);line-height:1.02}
-    .case-step p{color:var(--paper-muted);margin:19px 0 0;max-width:480px}
-    .case-step .case-proof{margin-top:23px;padding-top:18px;border-top:1px solid #c6cec2;font-size:.84rem;color:#283028}
-    .case-step .case-proof strong{display:block;font:700 .68rem Space Grotesk,sans-serif;text-transform:uppercase;letter-spacing:.13em;color:#577414;margin-bottom:6px}
-    .case-visual{position:sticky;top:calc(var(--header) + 30px);height:calc(100svh - var(--header) - 60px);min-height:560px;display:grid;place-items:center}
+    .case-step h3{font-size:clamp(2.2rem,4.2vw,4.5rem);line-height:.98}.case-accent{color:#5f7c17}
+    .case-step p{color:var(--paper-muted);margin:14px 0 0;max-width:480px;font-size:1rem}
+        .case-visual{position:sticky;top:calc(var(--header) + 30px);height:calc(100svh - var(--header) - 60px);min-height:560px;display:grid;place-items:center}
     .device{position:relative;width:100%;background:#151915;padding:12px;border-radius:24px;box-shadow:0 32px 70px #3b44363d;overflow:hidden}
     .device-bar{height:28px;display:flex;align-items:center;gap:6px;padding:0 4px}.device-bar i{width:7px;height:7px;border-radius:50%;background:#657065}.device-bar i:nth-child(2){opacity:.7}.device-bar i:nth-child(3){opacity:.45}
     .case-image{position:relative;overflow:hidden;border-radius:13px;background:#fff;aspect-ratio:1920/856}
@@ -171,17 +167,17 @@
     .case-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:24px}.case-tag{padding:8px 11px;border:1px solid #b9c2b4;border-radius:999px;font-size:.7rem;color:#3d473b}
 
     /* About */
-    .about{padding:112px 0}
+    .about{padding:92px 0}
     .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(54px,8vw,110px);align-items:start}
     .about-statement{font:600 clamp(2.7rem,5.3vw,5.5rem)/.98 Space Grotesk,sans-serif;letter-spacing:-.055em}
     .about-statement em{color:var(--lime);font-style:normal}
     .bio{max-width:540px;justify-self:end;color:var(--muted)}
-    .bio .eyebrow{margin-bottom:24px}.bio p{margin:0 0 14px}.bio strong{color:#e9ece8}
+    .bio .eyebrow{margin-bottom:20px}.bio p{margin:0 0 14px;font-size:1.02rem}.bio strong{color:#e9ece8}
     .proof-grid{display:grid;grid-template-columns:repeat(2,1fr);margin-top:31px;border:1px solid var(--line)}
     .proof{padding:22px;border-right:1px solid var(--line)}.proof:last-child{border-right:0}.proof strong{display:block;color:#fff;font:700 2rem Space Grotesk,sans-serif}.proof span{font-size:.77rem;color:#8f978f}
 
     /* CTA */
-    .contact{min-height:74vh;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;padding:100px 20px;border-top:1px solid var(--line)}
+    .contact{min-height:66vh;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;padding:100px 20px;border-top:1px solid var(--line)}
     .contact::before{content:"";position:absolute;width:min(72vw,760px);aspect-ratio:1;border-radius:50%;border:1px solid #2b312b;box-shadow:0 0 0 90px #ffffff04,0 0 0 180px #ffffff025}
     .contact::after{content:"";position:absolute;width:430px;height:430px;border-radius:50%;background:#c7ff4208;filter:blur(55px)}
     .contact-inner{position:relative;z-index:2;max-width:1050px}
@@ -211,17 +207,17 @@
       .hero{min-height:auto;padding:112px 0 64px}.hero h1{font-size:clamp(3.6rem,17vw,6rem)}
       .hero::before{width:520px;right:-58%;top:17%;box-shadow:0 0 0 62px #bfff3b06,0 0 0 124px #ffffff04}.hero::after{width:220px;right:-19%;top:34%;opacity:.48}.hero-glow{width:430px;height:430px;right:-35%;top:18%}
       .hero-bottom,.intro-grid,.process-head,.case-head,.about-grid{grid-template-columns:1fr}.hero-bottom{gap:23px;margin-top:30px}.hero-proof{margin-top:0;gap:8px 14px}.hero-copy,.intro-copy,.process-head p,.case-lead,.bio{justify-self:start;max-width:100%}
-      .scroll-cue{display:none}.intro{padding:82px 0 46px}.intro h2{font-size:clamp(2.8rem,13vw,4.8rem)}
-      .story{padding:20px 0 78px}.story-grid,.case-story{display:block}.story-copy,.case-copy{padding:0}
-      .story-step,.case-step{min-height:auto;opacity:1;transform:none;padding:54px 0 25px}
+      .scroll-cue{display:none}.intro{padding:66px 0 30px}.intro h2{font-size:clamp(2.8rem,13vw,4.8rem)}
+      .story{padding:12px 0 58px}.story-grid,.case-story{display:block}.story-copy,.case-copy{padding:0}
+      .story-step,.case-step{min-height:auto;opacity:1;transform:none;padding:40px 0 18px}
       .story-visual,.case-visual{position:relative;top:auto;height:auto;min-height:0;margin:10px 0 35px}
       .visual-shell{height:520px}.scene{inset:68px 22px 25px}.scene:not(.active){display:none}
       .story-step-mobile-visual{display:block}
-      .process{padding:82px 0}.process-head{gap:22px;margin-bottom:38px}.process-grid{grid-template-columns:1fr}.process-item{border-right:0;border-bottom:1px solid var(--line)!important}.process-item:last-child{border-bottom:0!important}
-      .case{padding:78px 0 72px}.case h2{font-size:clamp(4rem,20vw,6.6rem)}.case-head{gap:25px;margin-bottom:24px}
-      .case-visual{margin-top:10px}.case-step{padding-top:47px}.case-image img{display:none;position:relative}.case-image img.active{display:block}.device{border-radius:18px;padding:8px}.device-bar{height:22px}
-      .about{padding:82px 0}.about-grid{gap:38px}.about-statement{font-size:clamp(2.6rem,12vw,4.6rem)}
-      .contact{min-height:auto;padding:95px 16px}.contact h2{font-size:clamp(3.7rem,18vw,6.2rem)}
+      .process{padding:68px 0}.process-head{gap:22px;margin-bottom:38px}.process-grid{grid-template-columns:1fr}.process-item{border-right:0;border-bottom:1px solid var(--line)!important}.process-item:last-child{border-bottom:0!important}
+      .case{padding:66px 0 58px}.case h2{font-size:clamp(4rem,20vw,6.6rem)}.case-head{gap:25px;margin-bottom:24px}
+      .case-visual{margin-top:10px}.case-step{padding-top:36px}.case-image img{display:none;position:relative}.case-image img.active{display:block}.device{border-radius:18px;padding:8px}.device-bar{height:22px}
+      .about{padding:68px 0}.about-grid{gap:38px}.about-statement{font-size:clamp(2.6rem,12vw,4.6rem)}
+      .contact{min-height:auto;padding:78px 16px}.contact h2{font-size:clamp(3.7rem,18vw,6.2rem)}
       .foot{grid-template-columns:1fr;gap:10px}.wa-float{display:flex}
     }
     @media(max-width:520px){
@@ -272,8 +268,8 @@
             <a class="btn" data-wa data-cta="hero-primary" href="#contato">Falar sobre meu problema <span class="arrow">↗</span></a>
             <a class="btn secondary" href="#solucoes">Conhecer soluções</a>
           </div>
-          <p class="hero-copy">Redes, suporte técnico e sistemas sob medida para reduzir falhas, retrabalho e tecnologia travando a sua operação.</p>
-          <div class="hero-proof" aria-label="Informações de atendimento"><span>Atendimento empresarial</span><span>São Miguel do Araguaia e região</span><span>Contato direto pelo WhatsApp</span></div>
+          <p class="hero-copy">Redes, suporte e sistemas para empresas.</p>
+          <div class="hero-proof" aria-label="Informações de atendimento"><span>Atendimento empresarial</span><span>São Miguel do Araguaia + região</span></div>
         </div>
       </div>
       <div class="scroll-cue"><i></i> role para descobrir</div>
@@ -290,8 +286,7 @@
           <h2>Sua empresa precisa de tecnologia que <span>resolva.</span><br>Não que complique.</h2>
         </div>
         <div class="intro-copy">
-          <p><strong>O problema raramente é “a tecnologia”.</strong> É a internet que cai, o computador que para, o processo que depende de planilha ou o sistema que não acompanha o negócio.</p>
-          <p>Meu trabalho é entender onde a operação está perdendo tempo e transformar isso em uma solução técnica clara.</p>
+          <p><strong>Conexão estável. Suporte direto. Sistemas que fazem sentido.</strong></p>
         </div>
       </div>
     </section>
@@ -301,24 +296,21 @@
         <div class="story-copy">
           <article class="story-step active" data-scene="network">
             <div class="index">01 — REDES E INFRAESTRUTURA</div>
-            <h3>Sua operação não deveria parar por causa da <span style="color:var(--lime)">rede.</span></h3>
-            <p>Planejamento, instalação e configuração de redes e equipamentos para deixar a infraestrutura mais estável, organizada e preparada para a rotina da empresa.</p>
-            <ul><li>Wi-Fi e conectividade</li><li>Organização e expansão de rede</li><li>Configuração de equipamentos</li></ul>
-            <a class="service-cta" data-wa data-service="Redes e infraestrutura" data-cta="service-network" href="#contato">Preciso resolver isso <span>↗</span></a>
+            <h3>Conexão estável para a operação <span style="color:var(--lime)">continuar.</span></h3>
+            <p>Redes e infraestrutura planejadas para funcionar.</p>
+            <a class="service-cta" data-wa data-service="Redes e infraestrutura" data-cta="service-network" href="#contato">Falar sobre redes <span>↗</span></a>
           </article>
           <article class="story-step" data-scene="support">
             <div class="index">02 — SUPORTE TÉCNICO</div>
-            <h3>Problemas pequenos não podem virar <span style="color:var(--lime)">horas perdidas.</span></h3>
-            <p>Diagnóstico e suporte para falhas do dia a dia, manutenção, configuração e apoio a usuários — com comunicação direta e foco em resolver a causa do problema.</p>
-            <ul><li>Diagnóstico de falhas</li><li>Manutenção e configuração</li><li>Apoio técnico aos usuários</li></ul>
-            <a class="service-cta" data-wa data-service="Suporte técnico" data-cta="service-support" href="#contato">Preciso resolver isso <span>↗</span></a>
+            <h3>Menos tempo <span style="color:var(--lime)">parado.</span></h3>
+            <p>Suporte direto para diagnosticar e resolver.</p>
+            <a class="service-cta" data-wa data-service="Suporte técnico" data-cta="service-support" href="#contato">Falar sobre suporte <span>↗</span></a>
           </article>
           <article class="story-step" data-scene="system">
             <div class="index">03 — SISTEMAS SOB MEDIDA</div>
-            <h3>Quando a planilha limita, o software precisa acompanhar o <span style="color:var(--lime)">negócio.</span></h3>
-            <p>Sistemas desenvolvidos a partir do processo real da empresa para centralizar informações, reduzir trabalho manual e criar controles que façam sentido para a operação.</p>
-            <ul><li>Automação de processos</li><li>Painéis e controles internos</li><li>Ferramentas específicas para a operação</li></ul>
-            <a class="service-cta" data-wa data-service="Sistemas sob medida" data-cta="service-system" href="#contato">Quero conversar sobre um sistema <span>↗</span></a>
+            <h3>Seu processo pode virar <span style="color:var(--lime)">sistema.</span></h3>
+            <p>Software sob medida para reduzir planilhas e retrabalho.</p>
+            <a class="service-cta" data-wa data-service="Sistemas sob medida" data-cta="service-system" href="#contato">Falar sobre um sistema <span>↗</span></a>
           </article>
         </div>
 
@@ -359,13 +351,13 @@
       <div class="wrap">
         <div class="process-head reveal">
           <div><div class="eyebrow">02 / Como funciona</div><h2>Do problema à solução.<br>Sem enrolação.</h2></div>
-          <p>Antes de indicar ferramenta, equipamento ou sistema, eu entendo o cenário. O objetivo é aplicar tecnologia onde ela realmente reduz problema, custo operacional ou retrabalho.</p>
+          <p>Entender. Planejar. Executar. Acompanhar.</p>
         </div>
         <div class="process-grid reveal">
-          <article class="process-item"><span class="num">01</span><h3>Diagnóstico</h3><p>Entender o problema, o processo atual e o que está impactando a operação.</p></article>
-          <article class="process-item"><span class="num">02</span><h3>Proposta</h3><p>Definir a solução, o escopo e o caminho técnico mais adequado para o cenário.</p></article>
-          <article class="process-item"><span class="num">03</span><h3>Execução</h3><p>Implantar, configurar ou desenvolver com foco em estabilidade e uso real.</p></article>
-          <article class="process-item"><span class="num">04</span><h3>Acompanhamento</h3><p>Validar a entrega, orientar o uso e ajustar o que for necessário após a implantação.</p></article>
+          <article class="process-item"><span class="num">01</span><h3>Diagnóstico</h3><p>Entendemos o problema.</p></article>
+          <article class="process-item"><span class="num">02</span><h3>Proposta</h3><p>Definimos o caminho.</p></article>
+          <article class="process-item"><span class="num">03</span><h3>Execução</h3><p>Colocamos para funcionar.</p></article>
+          <article class="process-item"><span class="num">04</span><h3>Acompanhamento</h3><p>Ajustamos e damos suporte.</p></article>
         </div>
       </div>
     </section>
@@ -374,34 +366,30 @@
       <div class="wrap">
         <div class="case-head reveal">
           <div><div class="eyebrow">03 / Projeto em destaque</div><h2>Controle<span>+</span></h2></div>
-          <p class="case-lead"><strong>Uma necessidade real que evoluiu para um produto.</strong> O que começou como uma solução personalizada para um supermercado hoje é uma plataforma SaaS mais completa.</p>
+          <p class="case-lead"><strong>Começou como controle de fiados.</strong><br>Evoluiu para uma plataforma SaaS.</p>
         </div>
 
         <div class="case-story">
           <div class="case-copy">
             <article class="case-step active" data-case="dashboard">
               <div class="index">01 — A ORIGEM</div>
-              <h3>O problema nasceu na operação, não em uma ideia genérica.</h3>
-              <p>O projeto começou para organizar o controle de fiados de um supermercado, reunindo informações que precisavam ser acompanhadas com mais clareza.</p>
-              <div class="case-proof"><strong>O que isso demonstra</strong>Entendimento do processo antes de escrever código.</div>
+              <h3>Começou com um <span class="case-accent">problema real.</span></h3>
+              <p>Organizar os fiados de um supermercado.</p>
             </article>
             <article class="case-step" data-case="clientes">
               <div class="index">02 — CENTRALIZAÇÃO</div>
-              <h3>Clientes e informações em um único fluxo.</h3>
-              <p>A solução passou a centralizar clientes e dados importantes da rotina, diminuindo a dependência de controles espalhados e facilitando o acompanhamento.</p>
-              <div class="case-proof"><strong>O que isso demonstra</strong>Software criado em torno da necessidade real do usuário.</div>
+              <h3>Virou uma solução <span class="case-accent">sob medida.</span></h3>
+              <p>Clientes e informações em um só lugar.</p>
             </article>
             <article class="case-step" data-case="cobrancas">
               <div class="index">03 — EVOLUÇÃO</div>
-              <h3>De controle de fiados para uma plataforma mais completa.</h3>
-              <p>Com a evolução do projeto, novas necessidades foram incorporadas: cobranças, pagamentos, relatórios e indicadores passaram a fazer parte da solução.</p>
-              <div class="case-proof"><strong>O que isso demonstra</strong>Capacidade de evoluir um projeto conforme a operação amadurece.</div>
+              <h3>A operação pediu <span class="case-accent">mais.</span></h3>
+              <p>Cobranças, pagamentos, relatórios e indicadores.</p>
             </article>
             <article class="case-step" data-case="relatorios">
               <div class="index">04 — CONTROLE+</div>
-              <h3>Hoje, o projeto evoluiu para o Controle+.</h3>
-              <p>Uma plataforma SaaS que carrega a experiência do projeto original, mas foi estruturada para ir além daquela primeira necessidade.</p>
-              <div class="case-proof"><strong>Por que está neste site</strong>O Controle+ é a prova de que um problema operacional pode virar uma solução digital bem construída.</div>
+              <h3>E evoluiu para o <span class="case-accent">Controle+.</span></h3>
+              <p>Hoje, uma plataforma SaaS mais completa.</p>
               <div class="case-tags"><span class="case-tag">React</span><span class="case-tag">TypeScript</span><span class="case-tag">Supabase</span><span class="case-tag">PWA</span></div>
               <a class="case-cta" data-wa data-service="Sistema sob medida / projeto semelhante ao Controle+" data-cta="case-controle" href="#contato">Tenho uma necessidade parecida <span>↗</span></a>
             </article>
@@ -428,9 +416,7 @@
         <div class="about-statement reveal">Infraestrutura, suporte e software vistos como partes da <em>mesma operação.</em></div>
         <div class="bio reveal">
           <div class="eyebrow">04 / Sobre Richard</div>
-          <p>Atuo com tecnologia aplicada ao ambiente empresarial, conectando experiência prática em <strong>infraestrutura, redes, suporte de TI e desenvolvimento de sistemas.</strong></p>
-          <p>Foram três anos trabalhando com equipamentos, conectividade, segurança eletrônica e suporte em ambiente empresarial. Hoje, essa experiência também é aplicada no desenvolvimento de soluções digitais para processos reais.</p>
-          <p>Essa visão ajuda a tratar o problema de forma completa: da conexão que falha ao processo que precisa virar sistema.</p>
+          <p><strong>Tecnologia na prática.</strong> Redes, infraestrutura, suporte e desenvolvimento trabalhando juntos para resolver problemas reais.</p>
           <div class="proof-grid">
             <div class="proof"><strong>3+</strong><span>anos de experiência prática</span></div>
             <div class="proof"><strong>3 áreas</strong><span>infraestrutura • suporte • software</span></div>
@@ -443,9 +429,8 @@
       <div class="contact-inner reveal">
         <div class="eyebrow">05 / Vamos resolver</div>
         <h2>QUAL PROBLEMA<br>ESTÁ TRAVANDO SUA <span>OPERAÇÃO?</span></h2>
-        <p>Explique o cenário no WhatsApp. A conversa começa pelo problema — não por uma solução pronta.</p>
-        <a class="btn" data-wa data-cta="contact-final" href="#">Falar com Richard no WhatsApp <span class="arrow">↗</span></a>
-        <p class="cta-note">Sem formulário: descreva o problema e o contexto da sua empresa diretamente na conversa.</p>
+        <p>Conte o problema. Eu analiso o cenário com você.</p>
+        <a class="btn" data-wa data-cta="contact-final" href="#">Falar com Richard <span class="arrow">↗</span></a>
       </div>
     </section>
   </main>
