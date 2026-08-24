@@ -65,9 +65,11 @@
 
     /* Hero */
     .hero{min-height:100svh;position:relative;display:grid;align-items:center;padding:128px 0 62px;overflow:hidden}
+    .hero::before,.hero::after{content:"";position:absolute;border-radius:50%;pointer-events:none;z-index:1}
+    .hero::before{width:min(54vw,820px);aspect-ratio:1;right:-14%;top:8%;border:1px solid #bfff3b18;box-shadow:0 0 0 92px #bfff3b08,0 0 0 184px #ffffff05}
+    .hero::after{width:min(22vw,330px);aspect-ratio:1;right:8%;top:29%;border:1px solid #ffffff13;background:radial-gradient(circle at center,#bfff3b0b 0 1px,transparent 2px);background-size:22px 22px;opacity:.72}
     .hero-grid{position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(to bottom,#000 0%,#000 58%,transparent 92%)}
-    .hero-glow{position:absolute;right:-10%;top:12%;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,#bfff3b24 0%,#bfff3b0d 35%,transparent 70%);filter:blur(15px)}
-    .ethernet-visual{position:absolute;right:-5%;top:18%;width:min(38vw,500px);z-index:1;filter:drop-shadow(0 30px 40px #000b);animation:float 7s ease-in-out infinite;pointer-events:none}
+    .hero-glow{position:absolute;right:-3%;top:6%;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,#bfff3b20 0%,#bfff3b0c 34%,transparent 70%);filter:blur(18px)}
     .hero-content{position:relative;z-index:3}
     .hero .eyebrow{margin-bottom:25px}
     .hero h1{font-size:clamp(4rem,8.8vw,8.5rem);line-height:.88;max-width:1080px;text-wrap:balance}
@@ -207,7 +209,7 @@
       :root{--header:70px}.wrap{width:min(var(--max),calc(100% - 30px))}
       .links>a:not(.nav-cta){display:none}.nav-cta{padding:10px 14px;font-size:.75rem}
       .hero{min-height:auto;padding:112px 0 64px}.hero h1{font-size:clamp(3.6rem,17vw,6rem)}
-      .ethernet-visual{width:270px;right:-102px;top:25%;opacity:.62}.hero-glow{width:430px;height:430px;right:-35%;top:18%}
+      .hero::before{width:520px;right:-58%;top:17%;box-shadow:0 0 0 62px #bfff3b06,0 0 0 124px #ffffff04}.hero::after{width:220px;right:-19%;top:34%;opacity:.48}.hero-glow{width:430px;height:430px;right:-35%;top:18%}
       .hero-bottom,.intro-grid,.process-head,.case-head,.about-grid{grid-template-columns:1fr}.hero-bottom{gap:23px;margin-top:30px}.hero-proof{margin-top:0;gap:8px 14px}.hero-copy,.intro-copy,.process-head p,.case-lead,.bio{justify-self:start;max-width:100%}
       .scroll-cue{display:none}.intro{padding:82px 0 46px}.intro h2{font-size:clamp(2.8rem,13vw,4.8rem)}
       .story{padding:20px 0 78px}.story-grid,.case-story{display:block}.story-copy,.case-copy{padding:0}
@@ -262,7 +264,6 @@
     <section class="hero" id="inicio">
       <div class="hero-grid"></div>
       <div class="hero-glow"></div>
-      <img class="ethernet-visual" src="assets/rj45-real.png" alt="" aria-hidden="true">
       <div class="wrap hero-content">
         <div class="eyebrow">Tecnologia aplicada a negócios reais</div>
         <h1>TECNOLOGIA<br><span class="line-outline">PARA SUA EMPRESA</span><br><span class="lime">FUNCIONAR.</span></h1>
