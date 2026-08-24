@@ -1,29 +1,26 @@
-# Richard TI — Site institucional
+# Richard.TI — Scrollytelling coeso
 
-Landing page estática focada em conversão, com narrativa em **scrollytelling**.
+Versão mais curta e visual do site, com foco em conversão.
 
-## Estrutura
+Fluxo da página:
 
-- Hero com proposta de valor e CTA para WhatsApp
-- Scrollytelling de serviços: redes, suporte e sistemas sob medida
-- Processo de atendimento em 4 etapas
-- Case do **Controle+** em formato de história, com troca de telas durante a rolagem
-- Seção de autoridade profissional
-- CTA final orientado ao problema do cliente
-- SEO local básico e dados estruturados
-- Layout responsivo e suporte a `prefers-reduced-motion`
+1. Hero: proposta de valor + WhatsApp.
+2. Soluções: rede → suporte → software em um único scrollytelling visual.
+3. Controle+: case real em três etapas — necessidade → solução → produto.
+4. Richard.TI: prova de atuação em um bloco compacto.
+5. CTA final: conversa no WhatsApp.
 
-## Arquivo principal
+## Principais mudanças
 
-`index.html`
+- removida a seção “Como funciona”;
+- removidos blocos redundantes e CTAs secundários;
+- narrativa conectada por uma linha visual contínua nas seções de soluções e case;
+- animações didáticas nas cenas de rede, suporte e software;
+- case Controle+ reduzido de quatro para três etapas;
+- seção “Sobre” condensada;
+- rastreamento de WhatsApp, UTMs, GA4 e Meta Pixel preservado.
 
-Não há etapa de build. Pode ser publicado diretamente na Vercel ou em qualquer hospedagem estática.
+## Rastreamento
 
-## Conversão e rastreamento
-
-A versão atual inclui CTAs contextualizados para WhatsApp, captura de UTMs, eventos de conversão, profundidade de scroll e integração preparada para GA4 e Meta Pixel. Consulte `TRACKING.md` antes de publicar campanhas.
-
-
-## Revisão de conteúdo — 24/08/2026
-
-A home foi enxugada para reduzir carga de leitura: textos curtos, uma ideia por etapa do scroll e narrativa visual preservada. O case Controle+ agora conta a evolução em quatro frases curtas.
+Os IDs de GA4 e Meta Pixel continuam vazios no `index.html` até serem informados.
+Consulte `TRACKING.md`.
