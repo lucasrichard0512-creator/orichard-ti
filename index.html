@@ -294,6 +294,95 @@
       .contact{padding:68px 16px}
     }
 
+
+    /* Motion system v3 — didactic, lightweight, no external library */
+    .hero .eyebrow{animation:heroLift .65s .05s both}
+    .hero h1{animation:heroLift .85s .16s both}
+    .hero-bottom{animation:heroLift .7s .33s both}
+    .hero::before{animation:heroOrbit 18s linear infinite}
+    .hero-glow{animation:glowBreathe 6s ease-in-out infinite}
+    .hero-status{display:flex;align-items:center;justify-content:flex-end;gap:17px;flex-wrap:wrap}
+    .hero-status>span{display:inline-flex;align-items:center;gap:7px;color:#aab0aa;padding:0}
+    .hero-status i{width:6px;height:6px;border-radius:50%;background:#465046;box-shadow:0 0 0 0 #c7ff4200;animation:statusCycle 3.6s ease-in-out infinite}
+    .hero-status span:nth-child(2) i{animation-delay:1.2s}.hero-status span:nth-child(3) i{animation-delay:2.4s}
+
+    .visual-shell::after{content:"";position:absolute;z-index:2;left:0;right:0;top:-2px;height:1px;background:linear-gradient(90deg,transparent,#c7ff427a,transparent);opacity:0;pointer-events:none}
+    .scene.active .scene-title{animation:titleIn .6s .08s both}
+    .scene.active .net-line::after{content:"";position:absolute;top:50%;left:0;width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 16px #c7ff42;transform:translate(-50%,-50%);animation:packet 2.25s linear infinite}
+    .scene.active .l2::after{animation-delay:.62s}.scene.active .l3::after{animation-delay:1.16s}
+    .scene.active .ticket-status{animation:statusResolve 2.7s ease-in-out infinite}
+    .scene.active .ticket:nth-child(2) .ticket-status{animation-delay:.45s}.scene.active .ticket:nth-child(3) .ticket-status{animation-delay:.9s}
+    .scene.active .sys-header b{animation:actionPulse 2.2s ease-in-out infinite}
+    .scene.active .sys-card::after{background:linear-gradient(110deg,#c7ff4214 20%,#c7ff423c 45%,#ffffff08 60%,#c7ff4214 80%);background-size:220% 100%;animation:uiShimmer 2.8s linear infinite}
+    .scene.active .sys-card:nth-child(2)::after{animation-delay:.25s}.scene.active .sys-card:nth-child(3)::after{animation-delay:.5s}.scene.active .sys-card:nth-child(4)::after{animation-delay:.75s}
+
+    .story-step h3,.case-step h3{transition:transform .35s,filter .35s}
+    .story-step.active h3,.case-step.active h3{transform:translateX(3px);filter:brightness(1.05)}
+
+    .case-visual{align-content:center;gap:17px}
+    .case-progress{width:min(100%,680px);display:grid;grid-template-columns:auto 1fr auto 1fr auto;align-items:center;gap:10px;color:#899184;font:600 .62rem Space Grotesk,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+    .case-progress i{height:1px;background:#b7c0b2;position:relative;overflow:hidden}
+    .case-progress i::after{content:"";position:absolute;inset:0;background:#5f7c17;transform:scaleX(0);transform-origin:left;transition:transform .5s}
+    .case-progress span{transition:color .3s,transform .3s}.case-progress span.active{color:#26351b;transform:translateY(-1px)}
+    .case-progress span.active~i::after{transform:scaleX(0)}
+    .case-progress[data-stage="clientes"] i:first-of-type::after,
+    .case-progress[data-stage="relatorios"] i:first-of-type::after,
+    .case-progress[data-stage="relatorios"] i:last-of-type::after{transform:scaleX(1)}
+    .device::after{content:"";position:absolute;left:12px;right:12px;top:40px;height:1px;z-index:3;background:linear-gradient(90deg,transparent,#c7ff425f,transparent);opacity:.5;animation:deviceScan 4s ease-in-out infinite;pointer-events:none}
+
+    .mobile-scene-card,.mobile-case-card{display:none}
+
+    @keyframes heroLift{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+    @keyframes heroOrbit{to{transform:rotate(360deg)}}
+    @keyframes glowBreathe{0%,100%{opacity:.72;transform:scale(.97)}50%{opacity:1;transform:scale(1.035)}}
+    @keyframes statusCycle{0%,18%,100%{background:#465046;box-shadow:0 0 0 0 #c7ff4200}28%,45%{background:var(--lime);box-shadow:0 0 0 7px #c7ff4212,0 0 16px #c7ff4250}}
+    @keyframes titleIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    @keyframes packet{0%{left:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{left:100%;opacity:0}}
+    @keyframes statusResolve{0%,35%{opacity:.45;border-color:#c7ff4220}48%,72%{opacity:1;border-color:#c7ff4270;box-shadow:0 0 16px #c7ff421b}100%{opacity:.45}}
+    @keyframes actionPulse{0%,100%{box-shadow:0 0 0 0 #c7ff4200}50%{box-shadow:0 0 0 8px #c7ff4212}}
+    @keyframes uiShimmer{to{background-position:-220% 0}}
+    @keyframes deviceScan{0%,100%{transform:translateY(0);opacity:0}15%{opacity:.55}80%{opacity:.2}95%{transform:translateY(330px);opacity:0}}
+
+    @media(max-width:820px){
+      /* Mobile: pair each idea with its animation. Fixes the old detached sticky panel. */
+      .hero-status{justify-content:flex-start;gap:10px 14px;font-size:.82rem}
+      .story-grid,.case-story{display:block}
+      .story-visual,.case-visual{display:none!important}
+      .story-copy,.case-copy{padding-left:20px;margin-left:3px}
+      .story-step,.case-step{opacity:1!important;transform:none!important;min-height:auto!important;padding:37px 0 48px!important}
+      .story-step:not(:last-child),.case-step:not(:last-child){border-bottom:1px solid #ffffff0b}
+      .case-step:not(:last-child){border-bottom-color:#aeb7a922}
+      .story-step h3{font-size:clamp(2.15rem,10.6vw,3.5rem);max-width:100%}
+      .case-step h3{font-size:clamp(2.15rem,10.3vw,3.45rem)}
+      .service-cta,.case-cta{margin-top:17px}
+      .mobile-scene-card,.mobile-case-card{display:block;margin:27px 0 0 -20px;opacity:0;transform:translateY(20px) scale(.985);transition:opacity .55s,transform .55s}
+      .mobile-scene-card.motion-on,.mobile-case-card.motion-on{opacity:1;transform:none}
+      .mobile-scene-card .visual-shell{height:370px;border-radius:24px;box-shadow:0 24px 48px #0004}
+      .mobile-scene-card .visual-top{inset:18px 17px auto;font-size:.58rem}
+      .mobile-scene-card .scene{display:block!important;opacity:1!important;transform:none!important;inset:58px 18px 18px}
+      .mobile-scene-card .scene-title{font-size:clamp(1.9rem,8.7vw,2.55rem);max-width:94%}
+      .mobile-scene-card .network-map{inset:10% 0 36%}
+      .mobile-scene-card .ticket-stack{inset:5% 0 36%;gap:9px}
+      .mobile-scene-card .system-ui{inset:4% 0 36%;grid-template-columns:82px 1fr}
+      .mobile-scene-card .node{width:88px;height:58px;font-size:.56rem;padding:10px}.mobile-scene-card .node.n3{width:100px}
+      .mobile-scene-card .ticket{grid-template-columns:32px 1fr;padding:12px;gap:10px}.mobile-scene-card .ticket-status{display:none}
+      .mobile-scene-card .system-side,.mobile-scene-card .system-main{padding:9px}
+      .mobile-scene-card.motion-on .net-line::after{content:"";position:absolute;top:50%;left:0;width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 13px #c7ff42;transform:translate(-50%,-50%);animation:packet 2.1s linear infinite}
+      .mobile-scene-card.motion-on .ticket{animation:ticketIn .55s both}.mobile-scene-card.motion-on .ticket:nth-child(2){animation-delay:.13s}.mobile-scene-card.motion-on .ticket:nth-child(3){animation-delay:.26s}
+      .mobile-scene-card.motion-on .sys-card{animation:cardBuild .52s both}.mobile-scene-card.motion-on .sys-card:nth-child(2){animation-delay:.12s}.mobile-scene-card.motion-on .sys-card:nth-child(3){animation-delay:.24s}.mobile-scene-card.motion-on .sys-card:nth-child(4){animation-delay:.36s}
+
+      .mobile-case-card{background:#151915;border-radius:18px;padding:8px;box-shadow:0 22px 44px #56604d25}
+      .mobile-case-stage{display:flex;align-items:center;gap:8px;padding:7px 6px 10px;color:#b4bdb0;font:600 .58rem Space Grotesk,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+      .mobile-case-stage::before{content:"";width:6px;height:6px;border-radius:50%;background:#c7ff42;box-shadow:0 0 12px #c7ff4270}
+      .mobile-case-card .mobile-case-image{overflow:hidden;border-radius:11px;background:#fff;aspect-ratio:1920/856;position:relative}
+      .mobile-case-card img{width:100%;height:100%;object-fit:cover;transform:scale(1.035);transition:transform .8s ease}
+      .mobile-case-card.motion-on img{transform:scale(1)}
+      .mobile-case-card::after{content:"";display:block;height:1px;margin-top:8px;background:linear-gradient(90deg,transparent,#c7ff4252,transparent);transform:scaleX(0);transition:transform .7s .2s}
+      .mobile-case-card.motion-on::after{transform:scaleX(1)}
+      .wa-float{display:flex;width:auto;height:48px;padding:0 15px;gap:8px;border-radius:999px;font-size:.73rem;right:14px;bottom:14px;transform:translateY(80px);opacity:0;transition:transform .3s,opacity .3s}
+      .wa-float.visible{transform:none;opacity:1}.wa-float span{display:inline}
+    }
+
     @media(prefers-reduced-motion:reduce){
       *{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}
     }
@@ -335,7 +424,9 @@
           <div class="hero-actions">
             <a class="btn" data-wa data-cta="hero-primary" href="#contato">Falar sobre meu problema <span class="arrow">↗</span></a>
           </div>
-          <p class="hero-copy">Redes <span>•</span> suporte <span>•</span> sistemas.</p>
+          <div class="hero-copy hero-status" aria-label="Áreas de atuação">
+            <span><i></i>Redes</span><span><i></i>Suporte</span><span><i></i>Sistemas</span>
+          </div>
           <div class="hero-proof" aria-label="Informações de atendimento"><span>Atendimento empresarial</span><span>São Miguel do Araguaia + região</span></div>
         </div>
       </div>
@@ -427,6 +518,13 @@
           </div>
 
           <div class="case-visual" aria-label="Telas do projeto Controle+">
+            <div class="case-progress" data-stage="dashboard" aria-hidden="true">
+              <span class="active" data-case-progress="dashboard">problema</span>
+              <i></i>
+              <span data-case-progress="clientes">sob medida</span>
+              <i></i>
+              <span data-case-progress="relatorios">produto</span>
+            </div>
             <div class="device">
               <div class="device-bar"><i></i><i></i><i></i></div>
               <div class="case-image">
@@ -473,7 +571,7 @@
     </div>
   </footer>
 
-  <a class="wa-float" data-wa data-cta="floating" href="#" aria-label="Falar com Richard no WhatsApp">↗</a>
+  <a class="wa-float" data-wa data-cta="floating" href="#" aria-label="Falar com Richard no WhatsApp"><span>WhatsApp</span> ↗</a>
 
   <script>
     /*
@@ -583,6 +681,64 @@
     initGA4();
     initMetaPixel();
 
+    function buildMobileStoryCards() {
+      if (!window.matchMedia('(max-width: 820px)').matches) return;
+      const layerLabels = { network: '01 / conexão', support: '02 / continuidade', system: '03 / processo' };
+      document.querySelectorAll('.story-step').forEach(step => {
+        if (step.querySelector('.mobile-scene-card')) return;
+        const key = step.dataset.scene;
+        const source = document.querySelector(`[data-scene-panel="${key}"]`);
+        if (!source) return;
+        const card = document.createElement('div');
+        card.className = 'mobile-scene-card';
+        const shell = document.createElement('div');
+        shell.className = 'visual-shell';
+        shell.innerHTML = `<div class="visual-top"><span>${layerLabels[key] || ''}</span><span class="live-dot">operação ativa</span></div>`;
+        const scene = source.cloneNode(true);
+        scene.removeAttribute('data-scene-panel');
+        scene.classList.add('active');
+        shell.appendChild(scene);
+        card.appendChild(shell);
+        step.appendChild(card);
+      });
+
+      const caseLabels = { dashboard: '01 / necessidade', clientes: '02 / sob medida', relatorios: '03 / produto' };
+      document.querySelectorAll('.case-step').forEach(step => {
+        if (step.querySelector('.mobile-case-card')) return;
+        const key = step.dataset.case;
+        const source = document.querySelector(`[data-case-image="${key}"]`);
+        if (!source) return;
+        const card = document.createElement('div');
+        card.className = 'mobile-case-card';
+        card.innerHTML = `<div class="mobile-case-stage">${caseLabels[key] || ''}</div><div class="mobile-case-image"></div>`;
+        const image = source.cloneNode(true);
+        image.removeAttribute('data-case-image');
+        image.classList.remove('active');
+        card.querySelector('.mobile-case-image').appendChild(image);
+        step.appendChild(card);
+      });
+
+      const motionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('motion-on');
+          else if (entry.intersectionRatio === 0) entry.target.classList.remove('motion-on');
+        });
+      }, { threshold: .32 });
+      document.querySelectorAll('.mobile-scene-card,.mobile-case-card').forEach(card => motionObserver.observe(card));
+    }
+
+    buildMobileStoryCards();
+
+    const floatingWa = document.querySelector('.wa-float');
+    const heroSection = document.querySelector('.hero');
+    if (floatingWa && heroSection) {
+      const floatObserver = new IntersectionObserver(entries => {
+        const heroVisible = entries[0]?.isIntersecting;
+        floatingWa.classList.toggle('visible', !heroVisible);
+      }, { threshold: .15 });
+      floatObserver.observe(heroSection);
+    }
+
     const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('on');
@@ -604,6 +760,11 @@
           if (layer) layer.textContent = labels[key] || '';
           const keys = ['network','support','system'];
           document.querySelectorAll('.layer-rail i').forEach((dot, index) => dot.classList.toggle('active', keys[index] === key));
+        }
+        if (eventName === 'case_step_view') {
+          const progress = document.querySelector('.case-progress');
+          if (progress) progress.dataset.stage = key;
+          document.querySelectorAll('[data-case-progress]').forEach(item => item.classList.toggle('active', item.dataset.caseProgress === key));
         }
         if (eventName && !viewed.has(key)) {
           viewed.add(key);
