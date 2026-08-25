@@ -1,19 +1,14 @@
-# Richard.TI — V6 Cinematic Scrollytelling
+# Richard TI — V7 Responsive Cinematic
 
-Esta versão muda a arquitetura do site para uma narrativa contínua controlada pelo scroll.
+Versão focada em corrigir mobile e reduzir a distância de scroll entre cenas.
 
-## Estrutura
+- Filme reduzido de 880svh para 560svh no desktop.
+- Mobile reduzido para 420svh (390svh em telas pequenas).
+- Headlines mobile menores e reescritas para evitar corte lateral.
+- Barra de progresso horizontal no celular.
+- Transições visuais mais curtas para evitar duas cenas misturadas.
+- Suporte se desloca até a estação com cálculo responsivo, em vez de pixels fixos.
+- Processo e rede não ficam mais sobrepostos.
+- Controle+ preservado como clímax.
 
-1. Um único palco (`.film`) de longa duração.
-2. O scroll controla a timeline em JavaScript.
-3. Frases curtas aparecem como legendas de um vídeo.
-4. A animação explica conexão, falha, suporte, processo, software e Controle+.
-5. Depois da história há apenas prova compacta e CTA.
-
-## Controle+
-
-As imagens atuais ainda são temporárias e ficam em `assets/projeto/`. Substitua mantendo os mesmos nomes ou altere os `src` no `index.html`.
-
-## Performance
-
-Não há biblioteca de animação externa. A timeline usa `requestAnimationFrame` e transforms/opacity para reduzir custo. `prefers-reduced-motion` possui fallback.
+Abra `index.html` ou publique a pasta em um host estático.

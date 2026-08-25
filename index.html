@@ -52,7 +52,7 @@
     .nav-cta{padding:10px 16px;border:1px solid #9ca59a;border-radius:999px;font-weight:700}.header.dark .nav-cta{border-color:#505851;color:#fff}
 
     /* one continuous scroll film */
-    .film{position:relative;height:880svh;background:var(--paper)}
+    .film{position:relative;height:560svh;background:var(--paper)}
     .film-sticky{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--paper);isolation:isolate}
     .film-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(25,36,25,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(25,36,25,.045) 1px,transparent 1px);background-size:68px 68px;mask-image:linear-gradient(#000 0 88%,transparent 100%);opacity:.8;transition:opacity .4s;z-index:-4}
     .film-dark{position:absolute;inset:0;background:var(--dark);opacity:0;z-index:-3;pointer-events:none}
@@ -67,7 +67,7 @@
     .phrases{position:absolute;left:5.5%;top:18%;width:min(590px,44vw);height:52%;z-index:16;pointer-events:none}
     .phrase{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateY(30px) scale(.985);will-change:opacity,transform}
     .phrase small{font:700 .68rem "Space Grotesk",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#607d13;margin-bottom:17px}
-    .phrase h1,.phrase h2{font-size:clamp(3.7rem,6.3vw,7.2rem);line-height:.87;max-width:680px}
+    .phrase h1,.phrase h2{font-size:clamp(3.45rem,5.9vw,6.65rem);line-height:.9;max-width:680px;text-wrap:balance}
     .phrase h1 span,.phrase h2 span{color:var(--lime-deep)}
     .phrase p{margin:20px 0 0;max-width:430px;color:#5d675e;font-size:clamp(.96rem,1.1vw,1.12rem);line-height:1.5}
     .phrase.dark{color:#fff}.phrase.dark small{color:var(--lime)}.phrase.dark h2 span{color:var(--lime)}.phrase.dark p{color:#aab2aa}
@@ -120,18 +120,20 @@
       .trust-row{grid-template-columns:1fr 1fr 1fr}.trust-row h2{grid-column:1/-1;margin-bottom:20px}
     }
     @media(max-width:820px){
-      :root{--header:64px}.wrap{width:min(var(--max),calc(100% - 30px))}.links>a:not(.nav-cta){display:none}.nav-cta{font-size:.72rem;padding:9px 13px}
-      .film{height:760svh}.stage{width:calc(100% - 28px)}.timeline{left:0;top:calc(var(--header) + 18px);bottom:18px}.scene-count{right:3px;top:calc(var(--header) + 14px)}
-      .phrases{left:22px;right:22px;top:10%;width:auto;height:31%;z-index:22}.phrase{justify-content:flex-end}.phrase small{font-size:.59rem;margin-bottom:11px}.phrase h1,.phrase h2{font-size:clamp(3rem,12.8vw,5rem);line-height:.88;max-width:95%}.phrase p{font-size:.88rem;margin-top:13px;max-width:90%}
-      .visual{left:20px;right:6px;top:42%;width:auto;height:50%}.visual-frame{border-radius:27px}.visual-label{top:17px;left:18px;font-size:.57rem}
-      .op-core{width:112px;height:112px;margin:-56px;border-radius:28px}.op-core::before{border-radius:21px}.op-ring{width:250px;height:250px;margin:-125px}.op-ring.r2{width:185px;height:185px;margin:-92.5px}.op-pill{min-width:108px;padding:11px 12px;border-radius:15px;font-size:.64rem}.op-pill small{font-size:.55rem}.op-pill.net{left:3%;top:22%}.op-pill.sup{right:3%;top:29%}.op-pill.soft{left:31%;bottom:6%}
-      .network svg{inset:14% 4% 8%;width:92%;height:78%}.node{min-width:84px;padding:10px 8px;border-radius:14px;font-size:.61rem}.node small{font-size:.52rem}.node.internet{left:39%;top:10%}.node.router{left:39%;top:40%}.node.pc1{left:3%;top:72%}.node.pc2{left:39%;top:77%}.node.pc3{right:3%;top:72%}.alert{right:5%;top:59%;width:38px;height:38px;border-radius:12px}.support-beacon{right:13%;top:29%;width:54px;height:54px;border-radius:17px;font-size:.61rem}
-      .mess-item{width:102px;padding:11px 7px;font-size:.62rem;border-radius:14px}.mess-item small{display:none}.mess-item:nth-child(1){--ox:-150px;--oy:-105px}.mess-item:nth-child(2){--ox:50px;--oy:-110px}.mess-item:nth-child(3){--ox:-145px;--oy:75px}.mess-item:nth-child(4){--ox:55px;--oy:80px}.app-shell{width:90%;height:72%;border-radius:18px}.app-bar{height:32px}.app-layout{height:calc(100% - 32px);grid-template-columns:22% 1fr}.app-main{padding:13px}.app-side{padding:13px 8px}.metric-row{gap:7px}.metric{height:48px}.chart{height:88px}.app-title{height:13px;margin-bottom:12px}
-      .case-brand{left:5%;top:7%;font-size:clamp(4rem,18vw,7.6rem)}.device{left:3%;right:3%;top:37%;width:94%;border-radius:19px;padding:7px}.device-bar{height:25px}.case-screen{border-radius:10px}.case-proof{left:5%;right:5%;bottom:6%;max-width:none}.case-proof strong{font-size:1.45rem}.case-proof p{font-size:.78rem}.microcopy{display:none}
-      .trust{padding:70px 0}.trust-row{grid-template-columns:1fr}.trust-row h2{margin-bottom:10px}.fact{padding-top:14px}
-      .contact{padding:78px 0 70px}.contact-grid{grid-template-columns:1fr;gap:30px}.contact h2{font-size:clamp(3.5rem,15vw,6rem)}.contact-side{max-width:480px}.wa-float{display:flex}.foot{display:grid;grid-template-columns:1fr}
+      :root{--header:60px}.wrap{width:min(var(--max),calc(100% - 28px))}.links>a:not(.nav-cta){display:none}.nav-cta{font-size:.7rem;padding:8px 12px;min-height:40px}
+      .film{height:420svh}.stage{width:calc(100% - 24px)}
+      .timeline{left:4px;right:4px;top:calc(var(--header) + 10px);bottom:auto;width:auto;height:2px;background:#d2d8ce}.timeline-fill{width:0;height:100%}.timeline-dot{left:0;top:50%}
+      .scene-count{right:4px;top:calc(var(--header) + 22px);font-size:.56rem}.scene-count strong{font-size:.78rem}
+      .phrases{left:16px;right:10px;top:10.5%;width:auto;height:28%;z-index:22}.phrase{justify-content:center}.phrase small{font-size:.56rem;margin-bottom:9px;letter-spacing:.12em}.phrase h1,.phrase h2{font-size:clamp(2.15rem,9.6vw,3.2rem);line-height:.92;max-width:calc(100vw - 48px);letter-spacing:-.05em;text-wrap:balance}.phrase p{font-size:.8rem;line-height:1.4;margin-top:10px;max-width:94%}
+      .visual{left:12px;right:4px;top:41%;width:auto;height:53%}.visual-frame{border-radius:24px}.visual-label{top:15px;left:16px;font-size:.54rem}
+      .op-core{width:104px;height:104px;margin:-52px;border-radius:25px}.op-core::before{border-radius:19px}.op-ring{width:236px;height:236px;margin:-118px}.op-ring.r2{width:174px;height:174px;margin:-87px}.op-pill{min-width:96px;padding:10px 10px;border-radius:14px;font-size:.59rem}.op-pill small{font-size:.5rem}.op-pill.net{left:4%;top:20%}.op-pill.sup{right:4%;top:27%}.op-pill.soft{left:31%;bottom:5%}
+      .network svg{inset:15% 3% 8%;width:94%;height:77%}.node{min-width:78px;padding:9px 7px;border-radius:13px;font-size:.57rem}.node small{font-size:.49rem}.node.internet{left:38%;top:9%}.node.router{left:38%;top:39%}.node.pc1{left:2%;top:72%}.node.pc2{left:38%;top:77%}.node.pc3{right:2%;top:72%}.alert{right:4%;top:59%;width:34px;height:34px;border-radius:11px}.support-beacon{right:12%;top:27%;width:50px;height:50px;border-radius:15px;font-size:.56rem}
+      .mess-item{width:92px;padding:10px 6px;font-size:.57rem;border-radius:13px}.mess-item small{display:none}.mess-item:nth-child(1){--ox:-125px;--oy:-90px}.mess-item:nth-child(2){--ox:35px;--oy:-92px}.mess-item:nth-child(3){--ox:-120px;--oy:72px}.mess-item:nth-child(4){--ox:38px;--oy:74px}.app-shell{width:92%;height:70%;border-radius:17px}.app-bar{height:30px}.app-layout{height:calc(100% - 30px);grid-template-columns:22% 1fr}.app-main{padding:11px}.app-side{padding:11px 7px}.metric-row{gap:6px}.metric{height:44px}.chart{height:78px}.app-title{height:12px;margin-bottom:10px}
+      .case-brand{left:4%;top:7%;font-size:clamp(3.7rem,16vw,6.2rem)}.device{left:2%;right:2%;top:34%;width:96%;border-radius:18px;padding:6px}.device-bar{height:23px}.case-screen{border-radius:9px}.case-proof{left:4%;right:4%;bottom:5%;max-width:none}.case-proof strong{font-size:1.28rem;line-height:1.02}.case-proof p{font-size:.72rem;margin-top:6px}.microcopy{display:none}
+      .trust{padding:60px 0}.trust-row{grid-template-columns:1fr}.trust-row h2{margin-bottom:8px}.fact{padding-top:12px}
+      .contact{padding:68px 0 62px}.contact-grid{grid-template-columns:1fr;gap:26px}.contact h2{font-size:clamp(3rem,13vw,5.2rem)}.contact-side{max-width:480px}.wa-float{display:flex;right:12px;bottom:12px;min-height:44px;padding:0 14px;font-size:.68rem}.foot{display:grid;grid-template-columns:1fr}
     }
-    @media(max-width:520px){.film{height:720svh}.phrases{top:9%;height:32%}.visual{top:43%;height:48%}.phrase h1,.phrase h2{font-size:clamp(2.8rem,13vw,4.6rem)}.op-pill.soft{left:28%}.case-brand{top:8%}.case-proof{bottom:5%}}
+    @media(max-width:520px){.film{height:390svh}.phrases{top:10%;height:29%}.visual{top:42%;height:52%}.phrase h1,.phrase h2{font-size:clamp(2.05rem,9.2vw,2.85rem)}.op-pill.soft{left:29%}.case-brand{top:7%}.case-proof{bottom:4%}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.film{height:auto}.film-sticky{position:relative;min-height:100svh}.timeline,.scene-count,.microcopy{display:none}.phrases{position:relative;left:auto;top:auto;width:auto;height:auto;padding:110px 24px 30px}.phrase{position:relative;opacity:1!important;transform:none!important;display:none}.phrase:first-child{display:flex}.visual{position:relative;left:auto;right:auto;top:auto;width:calc(100% - 30px);height:500px;margin:0 auto 50px}.operation{opacity:1!important}.network,.process,.case,.film-dark{display:none}.wa-float{transition:none}}
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Richard TI","description":"Redes, suporte técnico e sistemas sob medida para empresas.","telephone":"+55 62 99940-7334","areaServed":"São Miguel do Araguaia, GO","sameAs":["https://www.instagram.com/orichard.ti"]}</script>
@@ -159,41 +161,41 @@
           <div class="scene-count" aria-hidden="true"><strong id="sceneNow">01</strong> / 08</div>
 
           <div class="phrases" aria-live="polite">
-            <article class="phrase" data-range="0,.13">
-              <small>Tecnologia aplicada a negócios reais</small>
+            <article class="phrase" data-range="0,.115">
+              <small>01 / Operação</small>
               <h1>SUA EMPRESA PRECISA <span>FUNCIONAR.</span></h1>
               <p>Rede, suporte e software como uma única operação.</p>
             </article>
-            <article class="phrase" data-range=".10,.25">
-              <small>01 / Conexão</small>
+            <article class="phrase" data-range=".105,.24">
+              <small>02 / Rede</small>
               <h2>TUDO COMEÇA PELA <span>REDE.</span></h2>
               <p>Internet chega. A rede distribui. A equipe trabalha.</p>
             </article>
-            <article class="phrase" data-range=".23,.37">
-              <small>02 / Falha</small>
+            <article class="phrase" data-range=".225,.355">
+              <small>03 / Falha</small>
               <h2>QUANDO ALGO FALHA, A OPERAÇÃO <span>SENTE.</span></h2>
             </article>
-            <article class="phrase" data-range=".35,.49">
-              <small>03 / Suporte</small>
+            <article class="phrase" data-range=".34,.475">
+              <small>04 / Suporte</small>
               <h2>O PROBLEMA ENTRA. <span>A SOLUÇÃO TAMBÉM.</span></h2>
               <p>Diagnóstico. Correção. Operação de volta.</p>
             </article>
-            <article class="phrase" data-range=".47,.60">
-              <small>04 / Processo</small>
-              <h2>NEM TODO GARGALO ESTÁ NA <span>INFRAESTRUTURA.</span></h2>
+            <article class="phrase" data-range=".46,.59">
+              <small>05 / Processo</small>
+              <h2>O GARGALO NEM SEMPRE É A <span>REDE.</span></h2>
             </article>
-            <article class="phrase" data-range=".58,.73">
-              <small>05 / Software</small>
+            <article class="phrase" data-range=".575,.725">
+              <small>06 / Software</small>
               <h2>PLANILHA. PAPEL. MENSAGEM. <span>UM SISTEMA.</span></h2>
               <p>Quando o processo pede algo próprio, o software acompanha.</p>
             </article>
-            <article class="phrase dark" data-range=".72,.87">
-              <small>06 / Caso real</small>
+            <article class="phrase dark" data-range=".71,.865">
+              <small>07 / Caso real</small>
               <h2>FOI ASSIM QUE NASCEU O <span>CONTROLE+.</span></h2>
               <p>Uma necessidade real virou sistema sob medida.</p>
             </article>
             <article class="phrase dark end" data-range=".85,1">
-              <small>07 / Evolução</small>
+              <small>08 / Evolução</small>
               <h2>DE SOLUÇÃO PERSONALIZADA A <span>PRODUTO SAAS.</span></h2>
               <p>O que começou em uma operação cresceu para uma plataforma.</p>
             </article>
@@ -321,56 +323,64 @@
   const clamp=(n,a=0,b=1)=>Math.min(b,Math.max(a,n));
   const map=(p,a,b)=>clamp((p-a)/(b-a));
   const ease=t=>t*t*(3-2*t);
-  const fadeWindow=(p,a,b,edge=.14)=>{const x=map(p,a,b);return Math.min(1,map(x,0,edge),map(1-x,0,edge))};
+  const fadeWindow=(p,a,b,edge=.09)=>{const x=map(p,a,b);return Math.min(1,map(x,0,edge),map(1-x,0,edge))};
+  const mobileMQ=matchMedia('(max-width: 820px)');
   const lerp=(a,b,t)=>a+(b-a)*t;
   let target=0,current=0,raf=0,lastScene=-1;
   const viewed=new Set();
 
   function filmProgress(){const r=film.getBoundingClientRect(),range=Math.max(1,r.height-innerHeight);return clamp(-r.top/range)}
   function placeOnPath(circle,path,t){if(!circle||!path)return;const len=path.getTotalLength(),pt=path.getPointAtLength(clamp(t)*len);circle.setAttribute('cx',pt.x);circle.setAttribute('cy',pt.y)}
-  function setPhrase(el,p){const [a,b]=el.dataset.range.split(',').map(Number),o=fadeWindow(p,a,b,.18),local=map(p,a,b);el.style.opacity=o.toFixed(3);el.style.transform=`translateY(${lerp(24,-10,ease(local)).toFixed(1)}px) scale(${lerp(.985,1,ease(Math.min(local*1.8,1))).toFixed(3)})`}
-  function sceneIndex(p){return p<.10?0:p<.23?1:p<.35?2:p<.47?3:p<.58?4:p<.72?5:p<.85?6:7}
+  function translateBetween(from,to,t){if(!from||!to)return 'translate(0,0)';const fx=from.offsetLeft+from.offsetWidth/2,fy=from.offsetTop+from.offsetHeight/2,tx=to.offsetLeft+to.offsetWidth/2,ty=to.offsetTop+to.offsetHeight/2;return `translate(${((tx-fx)*t).toFixed(1)}px,${((ty-fy)*t).toFixed(1)}px)`}
+  function setPhrase(el,p){const [a,b]=el.dataset.range.split(',').map(Number),o=fadeWindow(p,a,b,.09),local=map(p,a,b);el.style.opacity=o.toFixed(3);el.style.transform=`translateY(${lerp(14,-6,ease(local)).toFixed(1)}px) scale(${lerp(.992,1,ease(Math.min(local*2.2,1))).toFixed(3)})`}
+  function sceneIndex(p){return p<.105?0:p<.225?1:p<.34?2:p<.46?3:p<.575?4:p<.71?5:p<.85?6:7}
   function updateSceneTracking(idx){if(idx===lastScene)return;lastScene=idx;sceneNow.textContent=String(idx+1).padStart(2,'0');if(!viewed.has(`scene-${idx}`)){viewed.add(`scene-${idx}`);trackEvent('story_scene_view',{scene:idx+1,name:['intro','network','fault','support','process','software','controle_plus','saas'][idx]})}}
   function render(p){
     film.style.setProperty('--p',p.toFixed(4));
-    timelineFill.style.height=`${(p*100).toFixed(2)}%`;timelineDot.style.top=`${(p*100).toFixed(2)}%`;
+    const pct=(p*100).toFixed(2);
+    if(mobileMQ.matches){timelineFill.style.width=`${pct}%`;timelineFill.style.height='100%';timelineDot.style.left=`${pct}%`;timelineDot.style.top='50%'}
+    else{timelineFill.style.height=`${pct}%`;timelineFill.style.width='100%';timelineDot.style.top=`${pct}%`;timelineDot.style.left='50%'}
     phrases.forEach(el=>setPhrase(el,p));
     const idx=sceneIndex(p);updateSceneTracking(idx);
 
-    // dark transition reserved for the Controle+ climax
-    const dark=ease(map(p,.70,.79));filmDark.style.opacity=dark.toFixed(3);film.classList.toggle('is-dark',dark>.5);header.classList.toggle('dark',dark>.62);
+    // Only the case study turns dark. Faster transition = clearer scene change.
+    const dark=ease(map(p,.705,.755));filmDark.style.opacity=dark.toFixed(3);film.classList.toggle('is-dark',dark>.5);header.classList.toggle('dark',dark>.62);
 
-    // opening operation becomes network
-    const opOut=ease(map(p,.07,.16));operation.style.opacity=(1-opOut).toFixed(3);operation.style.transform=`scale(${lerp(1,.84,opOut)}) translateY(${lerp(0,-15,opOut)}px)`;
-    const netIn=ease(map(p,.09,.16)),netOut=ease(map(p,.54,.60));network.style.opacity=(netIn*(1-netOut)).toFixed(3);network.style.transform=`scale(${lerp(.96,1,netIn)})`;
+    // Layer changes are intentionally short so two different explanations do not remain on screen together.
+    const opOut=ease(map(p,.075,.115));operation.style.opacity=(1-opOut).toFixed(3);operation.style.transform=`scale(${lerp(1,.9,opOut)}) translateY(${lerp(0,-8,opOut)}px)`;
+    const netIn=ease(map(p,.085,.12)),netOut=ease(map(p,.445,.485));network.style.opacity=(netIn*(1-netOut)).toFixed(3);network.style.transform=`scale(${lerp(.985,1,netIn)})`;
+    const procIn=ease(map(p,.445,.49)),procOut=ease(map(p,.695,.735));process.style.opacity=(procIn*(1-procOut)).toFixed(3);
+    const caseIn=ease(map(p,.705,.75));caseVisual.style.opacity=caseIn.toFixed(3);
     visualLabel.textContent=idx===0?'operação':idx===1?'rede em movimento':idx===2?'falha detectada':idx===3?'suporte em ação':idx===4?'processo disperso':idx===5?'processo organizado':'caso real · Controle+';
 
-    // network draws and packets move with scroll
-    const np=ease(map(p,.11,.25));livePaths.forEach((path,i)=>{const local=clamp(np*1.35-i*.09);path.style.strokeDasharray='1';path.style.strokeDashoffset=String(1-local)});
-    placeOnPath(packets[0],pathInternet,clamp(np*1.15));placeOnPath(packets[1],pathPc1,clamp((np-.18)*1.5));placeOnPath(packets[2],pathPc2,clamp((np-.28)*1.5));packets.forEach((c,i)=>c.style.opacity=String(clamp(np*1.6-i*.16)));
+    // 02 — Network: packets actually travel while the sentence is visible.
+    const np=ease(map(p,.105,.225));livePaths.forEach((path,i)=>{const local=clamp(np*1.45-i*.08);path.style.strokeDasharray='1';path.style.strokeDashoffset=String(1-local)});
+    placeOnPath(packets[0],pathInternet,clamp(np*1.2));placeOnPath(packets[1],pathPc1,clamp((np-.14)*1.55));placeOnPath(packets[2],pathPc2,clamp((np-.24)*1.55));packets.forEach((c,i)=>c.style.opacity=String(clamp(np*1.75-i*.15)*(1-netOut)));
 
-    // failure then support resolution
-    const fp=ease(map(p,.245,.34));const rp=ease(map(p,.355,.47));alertEl.style.opacity=(fp*(1-rp)).toFixed(3);alertEl.style.transform=`scale(${lerp(.7,1,fp)}) translateY(${lerp(0,-10,rp)}px)`;
-    beacon.style.opacity=(map(p,.335,.39)*(1-map(p,.47,.52))).toFixed(3);beacon.style.transform=`translate(${lerp(0,150,rp).toFixed(1)}px,${lerp(0,170,rp).toFixed(1)}px) scale(${lerp(.9,.72,rp)})`;
-    faultNode.classList.toggle('fault',p>.245&&p<.405);faultNode.classList.toggle('ok',p>=.405&&p<.58);faultText.textContent=p>.245&&p<.405?'falha':p>=.405&&p<.58?'restabelecida':'conectada';
+    // 03/04 — Failure and support. The support badge travels to the failed station on every viewport size.
+    const fp=ease(map(p,.225,.33));const rp=ease(map(p,.34,.455));
+    alertEl.style.opacity=(fp*(1-rp)).toFixed(3);alertEl.style.transform=`scale(${lerp(.72,1,fp)*(1-rp*.18)})`;
+    beacon.style.opacity=(map(p,.325,.36)*(1-map(p,.455,.48))).toFixed(3);beacon.style.transform=`${translateBetween(beacon,faultNode,rp)} scale(${lerp(.92,.74,rp)})`;
+    faultNode.style.transform=(p>.245&&p<.36)?`translateX(${(Math.sin(fp*Math.PI*5)*2.2).toFixed(1)}px)`:'translateX(0)';
+    faultNode.classList.toggle('fault',p>.225&&p<.39);faultNode.classList.toggle('ok',p>=.39&&p<.49);faultText.textContent=p>.225&&p<.39?'sem conexão':p>=.39&&p<.49?'restabelecida':'conectada';
 
-    // messy process enters, then converges into an app
-    const procIn=ease(map(p,.47,.55)),merge=ease(map(p,.57,.70)),procOut=ease(map(p,.70,.76));process.style.opacity=(procIn*(1-procOut)).toFixed(3);
-    mess.forEach((el,i)=>{const cs=getComputedStyle(el),ox=parseFloat(cs.getPropertyValue('--ox')),oy=parseFloat(cs.getPropertyValue('--oy')),rot=parseFloat(cs.getPropertyValue('--rot'));const x=lerp(ox,0,merge),y=lerp(oy,0,merge),r=lerp(rot,0,merge),s=lerp(1,.68,merge);el.style.transform=`translate(calc(-50% + ${x}px),calc(-50% + ${y}px)) rotate(${r}deg) scale(${s})`;el.style.opacity=String(procIn*(1-map(merge,.64,1)))});
-    appShell.style.opacity=String(map(merge,.42,.83)*(1-procOut*.85));appShell.style.transform=`translate(-50%,-50%) scale(${lerp(.72,1,ease(map(merge,.35,.9)))})`;
+    // 05/06 — Process: disconnected tools move toward one interface, then disappear into it.
+    const scatter=ease(map(p,.46,.53)),merge=ease(map(p,.575,.70));
+    mess.forEach((el,i)=>{const cs=getComputedStyle(el),ox=parseFloat(cs.getPropertyValue('--ox')),oy=parseFloat(cs.getPropertyValue('--oy')),rot=parseFloat(cs.getPropertyValue('--rot'));const settle=clamp(scatter);const x=lerp(ox,ox*.94,settle);const y=lerp(oy,oy*.94,settle);const x2=lerp(x,0,merge),y2=lerp(y,0,merge),r=lerp(rot,0,merge),scale=lerp(1,.62,merge);el.style.transform=`translate(calc(-50% + ${x2}px),calc(-50% + ${y2}px)) rotate(${r}deg) scale(${scale})`;el.style.opacity=String(procIn*(1-map(merge,.62,1)))});
+    appShell.style.opacity=String(procIn*map(merge,.30,.76)*(1-procOut*.8));appShell.style.transform=`translate(-50%,-50%) scale(${lerp(.78,1,ease(map(merge,.24,.82)))})`;
 
-    // Control+ emerges from the system and takes over the screen
-    const ci=ease(map(p,.70,.79)),cp=map(p,.74,1);caseVisual.style.opacity=ci.toFixed(3);caseBrand.style.opacity=String(map(p,.73,.82));caseBrand.style.transform=`translateY(${lerp(30,0,ease(map(p,.73,.82)))}px)`;
-    device.style.transform=`perspective(1400px) rotateX(${lerp(7,1,ease(cp)).toFixed(2)}deg) translateY(${lerp(45,0,ease(cp)).toFixed(1)}px) scale(${lerp(.78,1,ease(map(cp,0,.65))).toFixed(3)})`;
-    caseProof.style.opacity=String(map(p,.76,.84));caseProof.style.transform=`translateY(${lerp(20,0,ease(map(p,.76,.84)))}px)`;
-    let img=0;if(cp>.46)img=1;if(cp>.74)img=2;caseImages.forEach((el,i)=>el.classList.toggle('active',i===img));
-    if(cp<.46){caseKicker.textContent='problema real';caseStrong.textContent='Fiado precisava sair do improviso.';caseDesc.textContent='A primeira solução nasceu dentro da operação.'}
-    else if(cp<.74){caseKicker.textContent='sistema sob medida';caseStrong.textContent='O processo ganhou uma ferramenta própria.';caseDesc.textContent='Clientes, cobranças e pagamentos em um único fluxo.'}
+    // 07/08 — Control+ is the climax and stays readable while screenshots evolve.
+    const cp=map(p,.72,1);caseBrand.style.opacity=String(map(p,.72,.79));caseBrand.style.transform=`translateY(${lerp(20,0,ease(map(p,.72,.80)))}px)`;
+    device.style.transform=`perspective(1400px) rotateX(${lerp(5,.5,ease(cp)).toFixed(2)}deg) translateY(${lerp(26,0,ease(cp)).toFixed(1)}px) scale(${lerp(.86,1,ease(map(cp,0,.58))).toFixed(3)})`;
+    caseProof.style.opacity=String(map(p,.755,.81));caseProof.style.transform=`translateY(${lerp(14,0,ease(map(p,.755,.82)))}px)`;
+    let img=0;if(cp>.43)img=1;if(cp>.72)img=2;caseImages.forEach((el,i)=>el.classList.toggle('active',i===img));
+    if(cp<.43){caseKicker.textContent='problema real';caseStrong.textContent='Fiado precisava sair do improviso.';caseDesc.textContent='A primeira solução nasceu dentro da operação.'}
+    else if(cp<.72){caseKicker.textContent='sistema sob medida';caseStrong.textContent='O processo ganhou uma ferramenta própria.';caseDesc.textContent='Clientes, cobranças e pagamentos em um único fluxo.'}
     else{caseKicker.textContent='evolução';caseStrong.textContent='O projeto cresceu e virou Controle+.';caseDesc.textContent='De necessidade local a produto SaaS.'}
 
-    document.querySelector('.wa-float').classList.toggle('visible',p>.12);
+    document.querySelector('.wa-float').classList.toggle('visible',p>.16);
   }
-  function loop(){target=filmProgress();current=reduced?target:lerp(current,target,.14);render(current);if(Math.abs(target-current)>.0002||document.visibilityState==='visible')raf=requestAnimationFrame(loop)}
+  function loop(){target=filmProgress();current=reduced?target:lerp(current,target,mobileMQ.matches?.26:.18);render(current);if(Math.abs(target-current)>.0002||document.visibilityState==='visible')raf=requestAnimationFrame(loop)}
   if(!reduced){loop()}else{render(0)}
   addEventListener('scroll',()=>{target=filmProgress()},{passive:true});addEventListener('resize',()=>{target=filmProgress()},{passive:true});
 
