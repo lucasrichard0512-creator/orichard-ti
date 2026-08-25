@@ -1,14 +1,14 @@
-# Rastreamento
+# Tracking
 
-No final do `index.html`, preencha:
+No `index.html` existe:
 
 ```js
-const TRACKING={ga4Id:'G-XXXXXXXXXX',metaPixelId:'123456789'};
+const TRACKING={ga4Id:'',metaPixelId:''};
 ```
 
-Eventos preparados:
+Preencha os IDs quando disponíveis. Eventos mantidos:
 - `whatsapp_click`
 - `story_scene_view`
 - `scroll_depth`
 
-UTMs, `gclid` e `fbclid` são preservados na sessão.
+UTMs, `fbclid` e `gclid` são preservados em sessionStorage e incorporados ao fluxo de atribuição.
