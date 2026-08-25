@@ -1,366 +1,481 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="Richard TI — redes, suporte técnico e sistemas sob medida para empresas em São Miguel do Araguaia e região.">
-  <meta name="theme-color" content="#f3f5ef">
-  <title>Richard TI | Tecnologia para sua empresa funcionar</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#f4f6ef" />
+  <meta name="description" content="Richard.TI — redes, suporte e software para empresas em São Miguel do Araguaia e região." />
+  <title>Richard.TI — Tecnologia para sua empresa funcionar</title>
   <style>
     :root{
-      --paper:#f3f5ef;
-      --ink:#0e130f;
-      --muted:#697269;
-      --lime:#baff22;
-      --lime-dark:#73a600;
-      --red:#d95d47;
-      --dark:#080d09;
-      --line:#cdd5cb;
-      --header:68px;
+      --paper:#f4f6ef;
+      --paper-2:#eaeee4;
+      --ink:#101410;
+      --muted:#5e685f;
+      --green:#b9ff28;
+      --green-2:#80c900;
+      --green-deep:#3f6800;
+      --line:#cfd6ca;
+      --danger:#d85f4a;
+      --dark:#070b08;
+      --dark-2:#0d130e;
+      --safe-top:max(18px,env(safe-area-inset-top));
+      --safe-bottom:max(18px,env(safe-area-inset-bottom));
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}
+    html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
     html{scroll-behavior:auto}
-    a{color:inherit;text-decoration:none}
-    img{display:block;max-width:100%}
-    .header{position:fixed;left:0;right:0;top:0;height:var(--header);z-index:80;display:flex;align-items:center;border-bottom:1px solid rgba(18,27,19,.08);background:rgba(243,245,239,.78);backdrop-filter:blur(14px);transition:background .35s,color .35s,border-color .35s}
-    .header.dark{background:rgba(8,13,9,.78);color:#fff;border-color:rgba(255,255,255,.08)}
-    .nav{width:min(1420px,calc(100% - 44px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{font:700 1rem "Space Grotesk",sans-serif;letter-spacing:-.05em}.brand i{font-style:normal;color:var(--lime-dark)}.header.dark .brand i{color:var(--lime)}
-    .nav-cta{font-size:.8rem;font-weight:700;border:1px solid rgba(14,19,15,.35);border-radius:999px;padding:10px 15px;white-space:nowrap}.header.dark .nav-cta{border-color:rgba(255,255,255,.35)}
+    body{overflow-x:hidden}
+    a{color:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-    .film{position:relative;background:var(--paper)}
-    .stage{position:relative;height:100svh;min-height:620px;overflow:hidden;isolation:isolate;background:var(--paper)}
-    .bg-light,.bg-dark,.grid,.vignette{position:absolute;inset:0;pointer-events:none}
-    .bg-light{z-index:-6;background:radial-gradient(circle at 62% 44%,rgba(186,255,34,.12),transparent 26%),linear-gradient(135deg,#f8f9f5 0%,#eef2e9 55%,#f3f5ef 100%)}
-    .bg-dark{z-index:-5;opacity:0;background:radial-gradient(circle at 55% 42%,#182219 0%,#0a100b 52%,#060906 100%)}
-    .grid{z-index:-4;opacity:.72;background-image:linear-gradient(rgba(31,45,32,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(31,45,32,.045) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(to bottom,transparent 4%,#000 18%,#000 88%,transparent 100%)}
-    .vignette{z-index:50;box-shadow:inset 0 0 90px rgba(12,17,13,.06)}
+    .topbar{position:fixed;z-index:50;left:0;right:0;top:0;height:72px;padding:var(--safe-top) clamp(18px,4vw,54px) 0;display:flex;align-items:flex-start;justify-content:space-between;pointer-events:none;color:var(--ink);transition:color .25s ease}
+    .topbar.is-dark{color:#fff}
+    .brand-mini,.top-cta{pointer-events:auto;text-decoration:none;font-weight:900;letter-spacing:-.04em}
+    .brand-mini{font-size:clamp(.95rem,1.6vw,1.2rem)}
+    .brand-mini i{font-style:normal;color:var(--green-2)}
+    .top-cta{font-size:.78rem;letter-spacing:-.02em;border-bottom:1px solid currentColor;padding:2px 0 4px}
 
-    .subtitle{position:absolute;z-index:40;left:clamp(24px,5vw,76px);top:clamp(100px,14vh,150px);width:min(500px,44vw);pointer-events:none}
-    .line{position:absolute;left:0;top:0;width:100%;opacity:0;transform:translateY(18px);filter:blur(6px);will-change:transform,opacity,filter}
-    .line .kicker{display:block;margin-bottom:10px;font:700 .66rem "Space Grotesk",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--lime-dark)}
-    .line strong{display:block;font:700 clamp(2.15rem,4.1vw,4.8rem)/.94 "Space Grotesk",sans-serif;letter-spacing:-.06em;max-width:520px}
-    .line p{margin:12px 0 0;max-width:370px;font-size:clamp(.88rem,1.05vw,1rem);line-height:1.45;color:var(--muted)}
-    .line.is-dark{color:#fff}.line.is-dark .kicker{color:var(--lime)}.line.is-dark p{color:#aeb7af}
-    .line.compact strong{font-size:clamp(1.9rem,3.2vw,3.5rem)}
+    #film{position:relative;min-height:100svh}
+    #stage{position:relative;height:100svh;min-height:560px;overflow:hidden;background:var(--paper);isolation:isolate}
+    #lightGrid{position:absolute;inset:0;z-index:-2;opacity:.68;background-image:linear-gradient(rgba(16,20,16,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(16,20,16,.045) 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.72),rgba(0,0,0,.25) 68%,transparent)}
+    #stage::after{content:"";position:absolute;inset:0;z-index:8;pointer-events:none;background:radial-gradient(ellipse at center,transparent 38%,rgba(244,246,239,.1) 62%,rgba(244,246,239,.68) 100%);mix-blend-mode:normal;opacity:.75}
 
-    .world-wrap{position:absolute;z-index:10;left:43%;right:3.5%;top:10%;bottom:7%;perspective:1500px;pointer-events:none}
-    .camera{position:absolute;inset:0;transform-origin:50% 50%;will-change:transform}
-    .world{position:absolute;inset:0;transform-origin:50% 50%;will-change:transform,opacity}
-    .board{position:absolute;inset:4%;border-radius:42px;border:1px solid rgba(103,119,105,.28);background:rgba(255,255,255,.64);box-shadow:0 44px 120px rgba(22,34,23,.08);backdrop-filter:blur(8px);overflow:hidden}
-    .board::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(35,51,36,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(35,51,36,.035) 1px,transparent 1px);background-size:42px 42px}
-    .office-label{position:absolute;left:8%;top:8%;font:700 .62rem "Space Grotesk";letter-spacing:.14em;color:#879087;text-transform:uppercase}
+    #caption{position:absolute;z-index:30;top:clamp(92px,14vh,150px);left:clamp(22px,6.5vw,96px);max-width:min(660px,72vw);font-size:clamp(2rem,4.8vw,5rem);font-weight:900;line-height:.94;letter-spacing:-.065em;text-wrap:balance;pointer-events:none;will-change:transform,opacity,filter;color;filter:blur(0)}
+    #caption.is-small{font-size:clamp(1.8rem,3.4vw,3.6rem);max-width:min(560px,62vw)}
+    #caption.is-dark{color:#fff}
+    #caption .accent{color:var(--green-2)}
+    #caption .word-wrap{display:inline-block;overflow:hidden;vertical-align:bottom;padding:.04em .02em .08em;margin:-.04em -.02em -.08em}#caption .word{display:inline-block;will-change:transform,opacity,filter}#caption .space{display:inline-block;width:.22em}
 
-    .network-svg{position:absolute;inset:4%;width:92%;height:92%;overflow:visible}
-    .base-wire{fill:none;stroke:#bfc8bd;stroke-width:2.2;vector-effect:non-scaling-stroke}
-    .live-wire{fill:none;stroke:var(--lime-dark);stroke-width:3.2;stroke-linecap:round;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:1}
-    .diag-wire{fill:none;stroke:var(--lime);stroke-width:4;stroke-linecap:round;vector-effect:non-scaling-stroke;stroke-dasharray:10 12;opacity:0}
-    .packet{fill:var(--lime);stroke:#101510;stroke-width:1.5;filter:drop-shadow(0 0 8px rgba(116,166,0,.55))}
+    #camera{position:absolute;z-index:5;left:50%;top:56%;width:clamp(900px,88vw,1320px);aspect-ratio:16/9;transform:translate(-50%,-50%);transform-origin:50% 50%;will-change:transform}
+    #world{position:absolute;inset:0;overflow:visible}
 
-    .router{position:absolute;left:50%;top:48%;width:128px;height:104px;transform:translate(-50%,-50%);border-radius:28px;background:#101510;color:white;display:grid;place-items:center;z-index:8;box-shadow:0 28px 60px rgba(16,21,16,.20)}
-    .router::before{content:"";position:absolute;inset:10px;border:1px solid #333c34;border-radius:20px}
-    .router b{font:700 .78rem "Space Grotesk";letter-spacing:.05em}.router .led{position:absolute;right:18px;top:17px;width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 6px rgba(186,255,34,.13)}
-    .node{position:absolute;z-index:9;min-width:112px;padding:12px 13px;border-radius:16px;background:#fff;border:1px solid #c6cec4;box-shadow:0 13px 35px rgba(26,38,27,.07);text-align:center;font:700 .67rem "Space Grotesk";transition:border-color .2s,box-shadow .2s,background .2s;color:var(--ink)}
-    .node small{display:block;margin-top:4px;font:500 .57rem Inter;color:#798179}
-    .internet{left:50%;top:7%;transform:translateX(-50%)}
-    .cash{left:7%;bottom:9%}.team{left:50%;bottom:5%;transform:translateX(-50%)}.station{right:6%;bottom:9%}
-    .station.fault{border-color:#e7aa9d;background:#fff6f3;box-shadow:0 0 0 8px rgba(217,93,71,.08),0 15px 34px rgba(217,93,71,.12)}
-    .station.fixed{border-color:#95bd30;box-shadow:0 0 0 9px rgba(186,255,34,.10),0 15px 34px rgba(116,166,0,.12)}
-    .fault-badge{position:absolute;z-index:18;right:16%;bottom:30%;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#fff0ec;border:1px solid #e8aa9c;color:var(--red);font:800 1rem "Space Grotesk";opacity:0;transform:scale(.4)}
-    .support{position:absolute;z-index:20;left:50%;top:8%;width:64px;height:64px;margin-left:-32px;border-radius:19px;background:var(--lime);display:grid;place-items:center;color:#111;font:800 .52rem "Space Grotesk";letter-spacing:.04em;opacity:0;transform:scale(.65);box-shadow:0 15px 36px rgba(116,166,0,.28)}
-    .support::before{content:"";position:absolute;inset:-9px;border:1px solid rgba(116,166,0,.4);border-radius:27px}
+    /* O mundo inicial parece uma operação, não um fluxograma. */
+    #office{position:absolute;inset:4% 3% 3%;border-radius:42px;background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(235,240,231,.92));box-shadow:0 35px 90px rgba(32,48,31,.13),inset 0 0 0 1px rgba(45,62,45,.09);overflow:hidden;transform-origin:center}
+    #office::before{content:"";position:absolute;inset:0;background:linear-gradient(30deg,transparent 48%,rgba(104,125,102,.055) 49%,rgba(104,125,102,.055) 51%,transparent 52%),linear-gradient(-30deg,transparent 48%,rgba(104,125,102,.04) 49%,rgba(104,125,102,.04) 51%,transparent 52%);background-size:70px 70px;opacity:.55}
+    .office-title{position:absolute;left:6%;top:7%;font-size:clamp(12px,1.1vw,16px);font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#748075}
+    .office-status{position:absolute;right:6%;top:6.5%;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:#5e6b60}.office-status::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--green-2);box-shadow:0 0 0 5px rgba(128,201,0,.12)}
 
-    .process-layer{position:absolute;inset:0;opacity:0;pointer-events:none}
-    .chip{position:absolute;left:50%;top:50%;min-width:130px;padding:13px 16px;border-radius:15px;background:#fff;border:1px solid #c9d0c7;box-shadow:0 16px 42px rgba(28,39,29,.09);font:700 .67rem "Space Grotesk";letter-spacing:.03em;opacity:0;will-change:transform,opacity}
-    .chip::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--lime-dark);margin-right:8px}
-    .chip.sheet{--x:-230px;--y:-135px;--r:-8deg}.chip.chat{--x:90px;--y:-150px;--r:7deg}.chip.paper{--x:-225px;--y:110px;--r:5deg}.chip.bill{--x:115px;--y:110px;--r:-6deg}
-    .app-shell{position:absolute;left:50%;top:50%;width:66%;height:52%;transform:translate(-50%,-50%) scale(.55);border-radius:24px;background:#fff;border:1px solid #c8d0c6;box-shadow:0 28px 70px rgba(22,35,24,.14);overflow:hidden;opacity:0}
-    .app-top{height:34px;border-bottom:1px solid #e0e5de;display:flex;align-items:center;gap:6px;padding:0 13px}.app-top i{width:7px;height:7px;border-radius:50%;background:#c7cec5}.app-body{height:calc(100% - 34px);display:grid;grid-template-columns:24% 1fr}.app-side{border-right:1px solid #e2e6e0;padding:14px 10px;display:grid;align-content:start;gap:9px}.app-side b,.app-title,.metric,.chart{display:block;border-radius:7px;background:#edf1eb}.app-side b{height:8px}.app-main{padding:15px}.app-title{height:12px;width:44%;margin-bottom:14px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metric{height:50px}.chart{height:96px;margin-top:10px;background:linear-gradient(180deg,rgba(186,255,34,.24),#edf1eb)}
+    .zone{position:absolute;display:flex;align-items:center;gap:14px;padding:18px 20px;border-radius:18px;background:transparent;isolation:isolate}.zone::before{content:"";position:absolute;z-index:-1;left:5px;right:5px;bottom:9px;height:35px;border-radius:8px;background:#d8ded4;box-shadow:0 11px 20px rgba(37,53,37,.09),inset 0 1px 0 rgba(255,255,255,.7)}
+    .zone .monitor{position:relative;width:52px;height:38px;border-radius:6px;background:#1c251e;box-shadow:inset 0 0 0 3px #2a352b}
+    .zone .monitor::after{content:"";position:absolute;left:50%;top:100%;width:22px;height:8px;border-bottom:4px solid #2b372c;transform:translateX(-50%)}
+    .zone .screen-glow{position:absolute;inset:5px;border-radius:3px;background:linear-gradient(135deg,#dfffb4,#9eed26);opacity:.9}
+    .zone b{display:block;font-size:13px;letter-spacing:.04em}.zone small{display:block;margin-top:2px;font-size:10px;color:#748075}
+    .zone.cash{left:10%;top:30%}.zone.team{left:13%;bottom:18%}.zone.stock{right:12%;top:24%}.zone.admin{right:10%;bottom:18%}
+    #computer{transform-origin:center}
+    #computerAlert{position:absolute;right:-9px;top:-9px;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:var(--danger);color:#fff;font-size:13px;font-weight:900;box-shadow:0 0 0 0 rgba(216,95,74,.35);opacity:0;transform:scale(.4)}
+    #computerRestored{position:absolute;right:-9px;top:-9px;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:var(--green-2);color:#0a1108;font-size:13px;font-weight:900;opacity:0;transform:scale(.4)}
 
-    .product-layer{position:absolute;inset:-3%;opacity:0;pointer-events:none;color:#fff}
-    .product-title{position:absolute;z-index:6;left:6%;top:5%;font:700 clamp(3.4rem,7.6vw,7.4rem)/.84 "Space Grotesk";letter-spacing:-.075em;color:#fff;opacity:0}.product-title span{color:var(--lime)}
-    .product-frame{position:absolute;left:6%;right:3%;top:24%;bottom:4%;border-radius:28px;background:#111713;border:1px solid rgba(255,255,255,.13);padding:9px;box-shadow:0 45px 110px rgba(0,0,0,.42);overflow:hidden;opacity:0;transform:scale(.76)}
-    .product-bar{height:28px;display:flex;align-items:center;gap:6px;padding:0 8px}.product-bar i{width:7px;height:7px;border-radius:50%;background:#4d5850}.product-screen{position:relative;height:calc(100% - 28px);border-radius:18px;overflow:hidden;background:#f4f4f0}.product-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top left;opacity:0;transform:scale(1.02)}.product-screen img:first-child{opacity:1}
-    .product-chip{position:absolute;z-index:8;padding:9px 12px;border-radius:999px;background:rgba(12,18,13,.86);border:1px solid rgba(255,255,255,.14);color:#fff;font:700 .58rem "Space Grotesk";letter-spacing:.05em;opacity:0}.pc1{right:6%;top:19%}.pc2{right:2%;top:36%}.pc3{left:3%;bottom:3%}
+    .internet-hub{position:absolute;left:44%;top:6%;width:148px;height:58px;border-radius:29px;background:#182019;color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;font-size:12px;font-weight:900;letter-spacing:.08em;box-shadow:0 14px 28px rgba(25,35,25,.18);transform:translateX(-50%)}
+    .internet-hub::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 16px var(--green)}
+    .router-hub{position:absolute;left:49%;top:43%;width:86px;height:86px;border-radius:26px;background:#111912;color:#fff;display:grid;place-items:center;box-shadow:0 20px 44px rgba(21,31,22,.18);transform:translate(-50%,-50%);z-index:3}
+    .router-hub::before{content:"";position:absolute;inset:12px;border:1px solid rgba(185,255,40,.22);border-radius:18px}
+    .router-hub b{font-size:11px;letter-spacing:.13em;z-index:1}.router-hub i{position:absolute;bottom:17px;display:flex;gap:5px}.router-hub i::before,.router-hub i::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 10px rgba(185,255,40,.8)}
 
-    .finale{position:absolute;inset:0;z-index:35;display:grid;place-items:center;text-align:center;color:#fff;opacity:0;pointer-events:none}
-    .finale-inner{width:min(740px,calc(100% - 40px));display:grid;justify-items:center}
-    .final-nodes{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:22px;opacity:0}.final-nodes span{padding:9px 13px;border:1px solid rgba(255,255,255,.18);border-radius:999px;font:700 .6rem "Space Grotesk";letter-spacing:.07em;color:#c4cdc5}.final-logo{font:700 clamp(4rem,10vw,9rem)/.8 "Space Grotesk";letter-spacing:-.08em}.final-logo i{font-style:normal;color:var(--lime)}
-    .final-copy{margin:22px 0 0;font-size:clamp(1rem,1.4vw,1.25rem);color:#bdc6be}.final-cta{margin-top:24px;pointer-events:auto;display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 22px;border-radius:999px;background:var(--lime);color:#111;font-weight:800}
+    #network{position:absolute;inset:0;overflow:visible;pointer-events:none;z-index:2}
+    .wire-base{fill:none;stroke:#b8c3b5;stroke-width:2.6;stroke-linecap:round;opacity:.72}
+    .wire-live{fill:none;stroke:var(--green-2);stroke-width:4;stroke-linecap:round;filter:drop-shadow(0 0 5px rgba(128,201,0,.35));stroke-dasharray:1;stroke-dashoffset:1}
+    #faultSegment{fill:none;stroke:var(--danger);stroke-width:5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 7px rgba(216,95,74,.42));opacity:0}
+    #diagnosticPath{fill:none;stroke:transparent;stroke-width:1}
+    #networkPacket,#diagnosticSignal{opacity:0;transform-box:fill-box;transform-origin:center}
+    #networkPacket{fill:var(--green);filter:drop-shadow(0 0 7px rgba(128,201,0,.9))}
+    #diagnosticSignal{fill:#fff;stroke:var(--green);stroke-width:6;filter:drop-shadow(0 0 12px rgba(185,255,40,.95))}
 
-    .scroll-hint{position:absolute;z-index:45;left:50%;bottom:20px;transform:translateX(-50%);display:flex;align-items:center;gap:9px;color:#798179;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;opacity:.8}.scroll-hint i{width:20px;height:31px;border:1px solid #9ba59b;border-radius:999px;position:relative}.scroll-hint i::after{content:"";position:absolute;left:50%;top:6px;width:4px;height:7px;border-radius:999px;background:var(--lime-dark);transform:translateX(-50%);animation:wheel 1.7s ease-in-out infinite}@keyframes wheel{0%,100%{transform:translate(-50%,0);opacity:.35}50%{transform:translate(-50%,8px);opacity:1}}
+    #processCloud{position:absolute;inset:-8% -7%;z-index:6;opacity:0;pointer-events:none}
+    .process-fragment{position:absolute;display:grid;place-items:center;will-change:transform,opacity}
+    .sheet-fragment{left:6%;top:20%;width:126px;height:158px;border-radius:12px;background:#fff;box-shadow:0 20px 38px rgba(34,45,34,.16);transform:rotate(-9deg)}
+    .sheet-fragment::before{content:"";width:74%;height:66%;background:repeating-linear-gradient(to bottom,#dce4d9 0 2px,transparent 2px 14px),repeating-linear-gradient(to right,transparent 0 22px,#e6ece3 22px 24px);border-top:17px solid #acd66c}
+    .sheet-fragment::after{content:"PLANILHA";position:absolute;bottom:12px;font-size:10px;font-weight:900;letter-spacing:.12em;color:#6d786e}
+    .chat-fragment{right:5%;top:16%;width:126px;height:102px;border-radius:28px 28px 8px 28px;background:#1a251c;color:#fff;box-shadow:0 20px 38px rgba(34,45,34,.16);transform:rotate(7deg)}
+    .chat-fragment::before{content:"•••";font-size:28px;letter-spacing:5px;color:var(--green)}
+    .chat-fragment::after{content:"MENSAGENS";position:absolute;bottom:11px;font-size:9px;font-weight:900;letter-spacing:.11em;color:#afbaaf}
+    .paper-fragment{left:10%;bottom:8%;width:116px;height:145px;background:#fefdf8;box-shadow:0 20px 38px rgba(34,45,34,.14);transform:rotate(8deg);border-radius:4px}
+    .paper-fragment::before{content:"";width:70%;height:55%;background:repeating-linear-gradient(to bottom,#aeb9ae 0 2px,transparent 2px 17px);opacity:.65}
+    .paper-fragment::after{content:"PAPEL";position:absolute;bottom:13px;font-size:10px;font-weight:900;letter-spacing:.12em;color:#6d786e}
+    .bill-fragment{right:8%;bottom:9%;width:136px;height:104px;background:#fff;border-radius:10px;box-shadow:0 20px 38px rgba(34,45,34,.15);transform:rotate(-6deg)}
+    .bill-fragment::before{content:"R$";font-size:34px;font-weight:900;color:#1b251d}
+    .bill-fragment::after{content:"COBRANÇAS";position:absolute;bottom:12px;font-size:9px;font-weight:900;letter-spacing:.11em;color:#6d786e}
 
-    .after{background:#0a0f0b;color:#fff;padding:72px 0 28px}.after-inner{width:min(1180px,calc(100% - 44px));margin:auto}.proof{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:18px;align-items:end;padding-bottom:56px}.proof h2{margin:0;font:700 clamp(2.4rem,4.6vw,5rem)/.92 "Space Grotesk";letter-spacing:-.06em}.proof h2 span{color:var(--lime)}.proof-item{border-top:1px solid #2b342d;padding-top:15px;color:#b2bbb3;font-size:.83rem}.proof-item b{display:block;color:#fff;font-size:1rem;margin-bottom:5px}.contact{border-top:1px solid #2b342d;padding:52px 0 30px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:end}.contact h3{margin:0;font:700 clamp(3rem,6vw,6rem)/.88 "Space Grotesk";letter-spacing:-.065em}.contact h3 span{color:var(--lime)}.contact-side{display:grid;justify-items:start;gap:12px}.contact-side p{margin:0;color:#aeb7af;max-width:360px;line-height:1.5}.contact-btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 22px;border-radius:999px;background:var(--lime);color:#111;font-weight:800}.footer{padding:24px 0;border-top:1px solid #202821;color:#828d84;font-size:.72rem;display:flex;justify-content:space-between;gap:20px}
+    #app{position:absolute;z-index:7;left:50%;top:52%;width:min(720px,62%);aspect-ratio:16/9;transform:translate(-50%,-50%) scale(.75);opacity:0;will-change:transform,opacity}
+    .ui-shell{position:absolute;inset:0;border-radius:24px;background:#f7f9f5;box-shadow:0 35px 80px rgba(25,34,26,.26),inset 0 0 0 1px rgba(43,57,43,.1);overflow:hidden}
+    .ui-topbar{height:12%;display:flex;align-items:center;padding:0 4%;gap:7px;background:#fff;border-bottom:1px solid #e0e6dd}.ui-topbar i{width:7px;height:7px;border-radius:50%;background:#b7c2b6}.ui-topbar i:first-child{background:var(--green-2)}
+    .ui-body{height:88%;display:grid;grid-template-columns:22% 1fr}.ui-sidebar{background:#101711;padding:13% 13%;transform-origin:top}.ui-sidebar span{display:block;height:8px;border-radius:999px;background:#3c493e;margin:0 0 14%}.ui-sidebar span:first-child{width:72%;background:var(--green-2)}
+    .ui-main{padding:5%}.ui-title{width:38%;height:12px;border-radius:999px;background:#273129;margin-bottom:5%}.ui-modules{display:grid;grid-template-columns:repeat(3,1fr);gap:3%}.ui-module{height:75px;border-radius:13px;background:#fff;box-shadow:0 7px 17px rgba(35,46,36,.08);opacity:0}.ui-module::before{content:"";display:block;width:27px;height:8px;margin:16px;border-radius:999px;background:#aab5aa}.ui-module:nth-child(2)::before{background:var(--green-2)}
+    .ui-chart{height:42%;margin-top:4%;border-radius:15px;background:linear-gradient(to top,rgba(128,201,0,.15),transparent),repeating-linear-gradient(to top,#e4e9e1 0 1px,transparent 1px 28%);position:relative;overflow:hidden}.ui-chart::after{content:"";position:absolute;left:7%;right:7%;bottom:21%;height:38%;clip-path:polygon(0 74%,18% 49%,35% 64%,52% 28%,72% 45%,100% 3%,100% 100%,0 100%);background:linear-gradient(180deg,rgba(128,201,0,.45),rgba(128,201,0,.08))}
+    .ui-metric{position:absolute;bottom:10%;width:7px;border-radius:5px 5px 0 0;background:var(--green-2);transform-origin:bottom}.ui-metric.m1{left:17%;height:24%}.ui-metric.m2{left:28%;height:38%}.ui-metric.m3{left:39%;height:31%}.ui-metric.m4{left:51%;height:54%}.ui-metric.m5{left:63%;height:44%}.ui-metric.m6{left:76%;height:68%}
 
-    @media(max-width:900px){
-      :root{--header:64px}.nav{width:calc(100% - 28px)}
-      .stage{min-height:600px}.subtitle{left:22px;right:22px;top:92px;width:auto;height:31vh}.line strong{font-size:clamp(2rem,9.5vw,3.2rem);max-width:95%}.line.compact strong{font-size:clamp(1.8rem,8.2vw,2.8rem)}.line p{font-size:.8rem;max-width:86%;margin-top:8px}.line .kicker{font-size:.58rem;margin-bottom:7px}
-      .world-wrap{left:11px;right:11px;top:40%;bottom:4%;}.board{inset:0;border-radius:27px}.office-label{left:5%;top:5%;font-size:.52rem}
-      .router{width:90px;height:74px;border-radius:21px}.router::before{inset:7px;border-radius:15px}.router b{font-size:.59rem}.router .led{right:13px;top:12px;width:7px;height:7px}
-      .node{min-width:78px;padding:9px 8px;border-radius:12px;font-size:.52rem}.node small{font-size:.46rem}.internet{top:6%}.cash{left:4%;bottom:7%}.team{bottom:4%}.station{right:4%;bottom:7%}.fault-badge{width:36px;height:36px;right:13%;bottom:28%}.support{width:48px;height:48px;margin-left:-24px;border-radius:15px;font-size:.42rem}
-      .chip{min-width:98px;padding:10px 11px;font-size:.52rem}.chip.sheet{--x:-135px;--y:-92px}.chip.chat{--x:52px;--y:-102px}.chip.paper{--x:-132px;--y:77px}.chip.bill{--x:62px;--y:76px}
-      .app-shell{width:78%;height:58%;border-radius:18px}.app-top{height:26px}.app-body{height:calc(100% - 26px)}.app-main{padding:10px}.metric{height:34px}.chart{height:62px}.app-side{padding:10px 7px}
-      .product-title{left:5%;top:4%;font-size:clamp(3rem,14vw,5.4rem)}.product-frame{left:2%;right:2%;top:27%;bottom:2%;border-radius:19px;padding:6px}.product-bar{height:22px}.product-screen{height:calc(100% - 22px);border-radius:12px}.product-chip{font-size:.48rem;padding:7px 9px}.pc1{right:3%;top:22%}.pc2{right:2%;top:39%}.pc3{left:2%;bottom:1%}
-      .final-nodes{gap:6px;flex-wrap:wrap}.final-nodes span{font-size:.52rem;padding:7px 9px}.final-copy{font-size:.92rem;margin-top:16px}.final-cta{min-height:48px;padding:0 18px;font-size:.86rem}
-      .proof{grid-template-columns:1fr}.contact{grid-template-columns:1fr}.footer{display:grid}.after{padding-top:58px}
+    #controlePlus{position:absolute;z-index:9;left:50%;top:50%;width:100%;height:100%;transform:translate(-50%,-50%);opacity:0;pointer-events:none}
+    .product-word{position:absolute;left:50%;top:-4%;transform:translateX(-50%);font-size:clamp(44px,5.7vw,94px);line-height:.9;font-weight:950;letter-spacing:-.075em;color:#fff;white-space:nowrap;clip-path:inset(100% 0 0)}.product-word i{font-style:normal;color:var(--green)}
+    #realProductScreen{position:absolute;left:50%;top:55%;transform:translate(-50%,-50%) scale(.76);width:72%;height:62%;border-radius:26px;overflow:hidden;background:#101511;box-shadow:0 40px 110px rgba(0,0,0,.48),0 0 0 1px rgba(255,255,255,.08);opacity:0}
+    .product-browser{height:34px;background:#141b16;display:flex;align-items:center;gap:7px;padding:0 14px}.product-browser i{width:7px;height:7px;border-radius:50%;background:#526057}.product-browser i:first-child{background:var(--green)}
+    .product-image{position:absolute;left:0;right:0;top:34px;bottom:0;background:#eef0ec}.product-image img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+    .product-glow{position:absolute;inset:-20%;background:radial-gradient(circle at center,rgba(185,255,40,.16),transparent 42%);pointer-events:none}
+
+    #capabilities{position:absolute;z-index:15;inset:0;opacity:0;pointer-events:none}.cap{position:absolute;padding:9px 13px;font-size:12px;font-weight:900;letter-spacing:.15em;color:#fff;text-transform:uppercase}.cap::before{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 13px rgba(185,255,40,.9);transform:translate(-50%,-50%)}.cap span{display:block;transform:translateY(24px)}.cap-network{left:18%;top:49%}.cap-support{right:17%;top:45%}.cap-software{left:49%;bottom:7%;transform:translateX(-50%)}
+
+    #brandFinal{position:absolute;z-index:35;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;opacity:0;pointer-events:none;padding:24px}
+    .brand-final-logo{font-size:clamp(4rem,11vw,10rem);font-weight:950;line-height:.78;letter-spacing:-.085em;filter:blur(14px);transform:scale(.86)}.brand-final-logo i{font-style:normal;color:var(--green)}
+    #brandTagline{margin-top:28px;font-size:clamp(1.1rem,2vw,1.55rem);font-weight:650;letter-spacing:-.03em;opacity:0;transform:translateY(14px)}
+    #brandCta{margin-top:28px;display:inline-flex;align-items:center;gap:10px;border-radius:999px;background:var(--green);color:#0b100a;text-decoration:none;font-size:15px;font-weight:900;padding:16px 22px;opacity:0;transform:translateY(14px);pointer-events:auto;box-shadow:0 12px 38px rgba(185,255,40,.18)}
+
+    #scrollHint{position:absolute;z-index:40;left:50%;bottom:calc(var(--safe-bottom) + 6px);transform:translateX(-50%);font-size:10px;font-weight:850;letter-spacing:.16em;text-transform:uppercase;color:#69746b;display:flex;align-items:center;gap:10px;white-space:nowrap;pointer-events:none}.mouse{width:18px;height:28px;border:1px solid currentColor;border-radius:999px;position:relative}.mouse::after{content:"";position:absolute;left:50%;top:5px;width:3px;height:6px;border-radius:99px;background:var(--green-2);transform:translateX(-50%);animation:wheel 1.4s ease-in-out infinite}@keyframes wheel{0%{transform:translate(-50%,0);opacity:0}30%{opacity:1}75%{transform:translate(-50%,9px);opacity:1}100%{transform:translate(-50%,12px);opacity:0}}
+
+    .no-gsap #caption{opacity:1}.no-gsap #office{opacity:1}.no-gsap #brandFinal{display:none}
+
+    @media (max-width:900px){
+      .topbar{height:62px;padding-left:18px;padding-right:18px}.top-cta{font-size:.7rem}
+      #stage{min-height:520px}
+      #caption{top:calc(var(--safe-top) + 58px);left:20px;right:20px;max-width:none;font-size:clamp(2.2rem,10.2vw,3.4rem);line-height:.94}
+      #caption.is-small{font-size:clamp(1.8rem,8.2vw,2.75rem);max-width:none}
+      #camera{top:64%;width:760px;aspect-ratio:16/10}
+      #office{inset:4% 3%;border-radius:32px}
+      .office-title{left:7%;top:7%}.office-status{right:7%;top:6.5%}
+      .zone{transform:scale(.92)}.zone.cash{left:8%;top:31%}.zone.team{left:11%;bottom:17%}.zone.stock{right:9%;top:25%}.zone.admin{right:8%;bottom:17%}
+      .internet-hub{left:44%;top:6%}.router-hub{left:49%;top:44%}
+      #app{width:66%;top:53%}
+      #realProductScreen{width:58%;height:57%;top:56%;border-radius:18px}
+      .product-word{top:2%;font-size:58px}
+      .cap-network{left:22%;top:52%}.cap-support{right:20%;top:47%}.cap-software{bottom:14%}
+      .brand-final-logo{font-size:clamp(3.6rem,18vw,5.4rem)}
+      #brandTagline{font-size:1rem;max-width:300px}
+      #scrollHint{font-size:9px}
     }
-    @media(max-width:520px){
-      .nav-cta{font-size:.72rem;padding:9px 12px}.subtitle{top:84px;left:18px;right:18px;height:30vh}.line strong{font-size:clamp(1.95rem,9.8vw,2.75rem)}.line.compact strong{font-size:clamp(1.72rem,8.8vw,2.45rem)}.world-wrap{top:39.5%;bottom:3%}.board{border-radius:22px}.scroll-hint{bottom:9px;font-size:.55rem}.scroll-hint i{width:16px;height:26px}.product-title{font-size:clamp(2.7rem,13.8vw,4.2rem)}
+    @media (max-width:520px){
+      #camera{top:64%;width:690px}
+      #caption{font-size:clamp(2rem,9.8vw,2.9rem)}
+      #caption.is-small{font-size:clamp(1.72rem,8.2vw,2.4rem)}
+      .zone{transform:scale(.84)}
+      #realProductScreen{width:54%;height:53%}
+      .product-word{font-size:52px}
     }
-    @media(max-height:720px) and (max-width:900px){
-      .subtitle{top:76px;height:28vh}.line strong{font-size:clamp(1.72rem,8.6vw,2.45rem)}.line.compact strong{font-size:clamp(1.58rem,7.8vw,2.18rem)}.line p{font-size:.72rem}.world-wrap{top:37%;bottom:2.5%}.product-title{font-size:clamp(2.45rem,12vw,3.7rem)}
+    @media (max-height:700px) and (max-width:900px){
+      #caption{top:64px;font-size:clamp(1.7rem,8.4vw,2.45rem)}
+      #caption.is-small{font-size:clamp(1.55rem,7.4vw,2.1rem)}
+      #camera{top:66%;width:650px}
+      #scrollHint{display:none}
     }
-    @media(prefers-reduced-motion:reduce){.scroll-hint{display:none}}
+    @media (prefers-reduced-motion:reduce){
+      #scrollHint{display:none}.mouse::after{animation:none}
+    }
   </style>
 </head>
-<body>
-<header class="header" id="header">
-  <div class="nav">
-    <a class="brand" href="#filme">RICHARD<i>.</i>TI</a>
-    <a class="nav-cta" data-wa data-cta="nav" href="#contato">Falar no WhatsApp</a>
-  </div>
-</header>
+<body class="no-gsap">
+  <header class="topbar" id="topbar">
+    <a href="#film" class="brand-mini">RICHARD<i>.</i>TI</a>
+    <a href="#" class="top-cta" data-wa data-cta="top">Falar com Richard ↗</a>
+  </header>
 
-<main>
-  <section class="film" id="filme" aria-label="Como a Richard TI ajuda uma empresa a funcionar">
-    <div class="stage" id="stage">
-      <div class="bg-light"></div><div class="bg-dark" id="bgDark"></div><div class="grid" id="grid"></div><div class="vignette"></div>
+  <main>
+    <section id="film" aria-label="Richard.TI — uma história sobre rede, suporte e software">
+      <div id="stage">
+        <div id="lightGrid" aria-hidden="true"></div>
+        <div id="caption" aria-live="polite">Tecnologia para sua empresa funcionar.</div>
 
-      <div class="subtitle">
-        <div class="line" data-line="0"><span class="kicker">Richard.TI</span><strong>Tecnologia para sua empresa funcionar.</strong><p>Uma história sobre conexão, suporte e software.</p></div>
-        <div class="line compact" data-line="1"><span class="kicker">Rede</span><strong>Tudo conectado.</strong></div>
-        <div class="line compact" data-line="2"><span class="kicker">Falha</span><strong>Até algo parar.</strong></div>
-        <div class="line compact" data-line="3"><span class="kicker">Suporte</span><strong>Suporte que resolve.</strong></div>
-        <div class="line compact" data-line="4"><span class="kicker">Processo</span><strong>Mas nem todo gargalo é técnico.</strong></div>
-        <div class="line compact" data-line="5"><span class="kicker">Software</span><strong>Às vezes, o processo precisa mudar.</strong></div>
-        <div class="line compact is-dark" data-line="6"><span class="kicker">Caso real</span><strong>Foi assim que nasceu o Controle+.</strong></div>
-        <div class="line compact is-dark" data-line="7"><span class="kicker">Produto</span><strong>Uma solução real que virou produto.</strong></div>
-      </div>
+        <div id="camera" aria-hidden="true">
+          <div id="world">
+            <div id="office">
+              <div class="office-title">Operação da empresa</div>
+              <div class="office-status">online</div>
+              <div class="internet-hub">INTERNET</div>
+              <div class="router-hub"><b>REDE</b><i></i></div>
 
-      <div class="world-wrap">
-        <div class="camera" id="camera">
-          <div class="world" id="world">
-            <div class="board"></div>
-            <div class="office-label">Operação da empresa</div>
-            <svg class="network-svg" viewBox="0 0 760 520" preserveAspectRatio="none">
-              <path class="base-wire" d="M380 54 L380 218"/><path class="base-wire" d="M380 272 C300 322 205 350 100 446"/><path class="base-wire" d="M380 272 L380 458"/><path class="base-wire" d="M380 272 C468 326 565 357 660 446"/>
-              <path class="live-wire" id="wireTop" pathLength="1" d="M380 54 L380 218"/><path class="live-wire" id="wireA" pathLength="1" d="M380 272 C300 322 205 350 100 446"/><path class="live-wire" id="wireB" pathLength="1" d="M380 272 L380 458"/><path class="live-wire" id="wireC" pathLength="1" d="M380 272 C468 326 565 357 660 446"/>
-              <path class="diag-wire" id="diagWire" d="M380 54 L380 218 C468 326 565 357 660 446"/>
-              <circle class="packet" id="packet1" cx="380" cy="54" r="6"/><circle class="packet" id="packet2" cx="380" cy="218" r="6"/>
-            </svg>
-            <div class="router" id="router"><span class="led"></span><b>REDE</b></div>
-            <div class="node internet">INTERNET<small>entrada</small></div>
-            <div class="node cash">CAIXA<small>online</small></div>
-            <div class="node team">EQUIPE<small>online</small></div>
-            <div class="node station" id="station">ESTAÇÃO<small id="stationText">online</small></div>
-            <div class="fault-badge" id="fault">!</div>
-            <div class="support" id="support">SUPORTE</div>
+              <div class="zone cash"><div class="monitor"><span class="screen-glow"></span></div><div><b>CAIXA</b><small>conectado</small></div></div>
+              <div class="zone team"><div class="monitor"><span class="screen-glow"></span></div><div><b>EQUIPE</b><small>conectado</small></div></div>
+              <div class="zone stock"><div class="monitor"><span class="screen-glow"></span></div><div><b>ESTOQUE</b><small>conectado</small></div></div>
+              <div class="zone admin" id="computer"><div class="monitor"><span class="screen-glow"></span></div><div><b>ADMIN</b><small id="computerState">conectado</small></div><span id="computerAlert">!</span><span id="computerRestored">✓</span></div>
 
-            <div class="process-layer" id="processLayer">
-              <div class="chip sheet">PLANILHA</div><div class="chip chat">WHATSAPP</div><div class="chip paper">PAPEL</div><div class="chip bill">COBRANÇAS</div>
-              <div class="app-shell" id="appShell"><div class="app-top"><i></i><i></i><i></i></div><div class="app-body"><div class="app-side"><b></b><b></b><b></b><b></b></div><div class="app-main"><div class="app-title"></div><div class="metrics"><div class="metric"></div><div class="metric"></div><div class="metric"></div></div><div class="chart"></div></div></div></div>
+              <svg id="network" viewBox="0 0 1280 720" preserveAspectRatio="none">
+                <!-- Internet -> roteador -> computador focal. O mesmo path guia o pacote e o diagnóstico. -->
+                <path class="wire-base" d="M563 55 C565 145 607 202 627 311 C688 365 841 430 1050 559"/>
+                <path id="networkPath" class="wire-live" pathLength="1" d="M563 55 C565 145 607 202 627 311 C688 365 841 430 1050 559"/>
+                <path class="wire-base" d="M627 311 C495 334 332 340 225 265"/>
+                <path id="networkBranchA" class="wire-live" pathLength="1" d="M627 311 C495 334 332 340 225 265"/>
+                <path class="wire-base" d="M627 311 C476 380 335 484 246 559"/>
+                <path id="networkBranchB" class="wire-live" pathLength="1" d="M627 311 C476 380 335 484 246 559"/>
+                <path class="wire-base" d="M627 311 C756 301 903 269 1030 230"/>
+                <path id="networkBranchC" class="wire-live" pathLength="1" d="M627 311 C756 301 903 269 1030 230"/>
+                <path id="faultSegment" pathLength="1" d="M844 431 C905 466 976 515 1050 559"/>
+                <path id="diagnosticPath" d="M627 311 C688 365 841 430 1050 559"/>
+                <circle id="networkPacket" cx="0" cy="0" r="8"/>
+                <circle id="diagnosticSignal" cx="0" cy="0" r="9"/>
+              </svg>
             </div>
 
-            <div class="product-layer" id="productLayer">
-              <div class="product-title" id="productTitle">CONTROLE<span>+</span></div>
-              <div class="product-frame" id="productFrame"><div class="product-bar"><i></i><i></i><i></i></div><div class="product-screen">
-                <img src="assets/projeto/dashboard.png" alt="Tela do Controle+" data-screen="0"><img src="assets/projeto/clientes.png" alt="Clientes no Controle+" data-screen="1"><img src="assets/projeto/cobrancas.png" alt="Cobranças no Controle+" data-screen="2"><img src="assets/projeto/relatorios.png" alt="Relatórios no Controle+" data-screen="3">
-              </div></div>
-              <div class="product-chip pc1" id="pc1">CLIENTES</div><div class="product-chip pc2" id="pc2">COBRANÇAS</div><div class="product-chip pc3" id="pc3">RELATÓRIOS</div>
+            <div id="processCloud">
+              <div class="process-fragment sheet-fragment"></div>
+              <div class="process-fragment chat-fragment"></div>
+              <div class="process-fragment paper-fragment"></div>
+              <div class="process-fragment bill-fragment"></div>
+            </div>
+
+            <div id="app">
+              <div class="ui-shell">
+                <div class="ui-topbar"><i></i><i></i><i></i></div>
+                <div class="ui-body">
+                  <div class="ui-sidebar"><span></span><span></span><span></span><span></span><span></span></div>
+                  <div class="ui-main"><div class="ui-title"></div><div class="ui-modules"><div class="ui-module"></div><div class="ui-module"></div><div class="ui-module"></div></div><div class="ui-chart"><i class="ui-metric m1"></i><i class="ui-metric m2"></i><i class="ui-metric m3"></i><i class="ui-metric m4"></i><i class="ui-metric m5"></i><i class="ui-metric m6"></i></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div id="controlePlus">
+              <div class="product-word">CONTROLE<i>+</i></div>
+              <div id="realProductScreen">
+                <div class="product-browser"><i></i><i></i><i></i></div>
+                <div class="product-image"><img src="assets/projeto/dashboard.png" alt="Tela do Controle+" /></div>
+                <div class="product-glow"></div>
+              </div>
+            </div>
+
+            <div id="capabilities">
+              <div class="cap cap-network"><span>Rede</span></div>
+              <div class="cap cap-support"><span>Suporte</span></div>
+              <div class="cap cap-software"><span>Software</span></div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="finale" id="finale">
-        <div class="finale-inner">
-          <div class="final-nodes" id="finalNodes"><span>REDE</span><span>SUPORTE</span><span>SOFTWARE</span></div>
-          <div class="final-logo">RICHARD<i>.</i>TI</div>
-          <div class="final-copy">Tecnologia para sua empresa funcionar.</div>
-          <a class="final-cta" data-wa data-cta="finale" href="#contato">Falar com Richard ↗</a>
+        <div id="brandFinal">
+          <div class="brand-final-logo" id="brandFinalLogo">RICHARD<i>.</i>TI</div>
+          <div id="brandTagline">Tecnologia para sua empresa funcionar.</div>
+          <a id="brandCta" href="#" data-wa data-cta="final">Falar com Richard →</a>
         </div>
+
+        <div id="scrollHint"><span class="mouse"></span>role para assistir</div>
       </div>
-      <div class="scroll-hint" id="scrollHint"><i></i> role para assistir</div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section class="after" id="contato">
-    <div class="after-inner">
-      <div class="proof"><h2>Rede, suporte e software.<br><span>Uma operação só.</span></h2><div class="proof-item"><b>3+ anos</b>experiência prática em tecnologia empresarial.</div><div class="proof-item"><b>São Miguel do Araguaia + região</b>atendimento próximo para empresas.</div></div>
-      <div class="contact"><h3>O que precisa<br><span>funcionar melhor?</span></h3><div class="contact-side"><p>Conte o problema. A conversa começa pelo que está travando sua operação.</p><a class="contact-btn" data-wa data-cta="contact" href="#">Falar com Richard ↗</a></div></div>
-      <div class="footer"><span>© 2026 Richard TI</span><span>São Miguel do Araguaia, GO</span><a href="https://www.instagram.com/orichard.ti" target="_blank" rel="noopener">Instagram ↗</a></div>
-    </div>
-  </section>
-</main>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script>
+  (()=>{
+    const TRACKING={ga4Id:'',metaPixelId:''};
+    const WA='5562999407334';
+    const params=new URLSearchParams(location.search);
+    const campaign=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid'].reduce((out,key)=>{const value=params.get(key);if(value)out[key]=value;return out;},{});
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script>
-(function(){
-  const WA='5562999407334';
-  const qs=new URLSearchParams(location.search);
-  const campaign=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid'].reduce((o,k)=>{if(qs.get(k))o[k]=qs.get(k);return o;},{});
-  document.querySelectorAll('[data-wa]').forEach(a=>{
-    const where=a.dataset.cta||'site';
-    a.addEventListener('click',e=>{
-      e.preventDefault();
+    function initTracking(){
+      if(TRACKING.ga4Id){
+        const s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(TRACKING.ga4Id);document.head.appendChild(s);
+        window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config',TRACKING.ga4Id);
+      }
+      if(TRACKING.metaPixelId){
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init',TRACKING.metaPixelId);fbq('track','PageView');
+      }
+    }
+    initTracking();
+
+    document.querySelectorAll('[data-wa]').forEach(link=>link.addEventListener('click',event=>{
+      event.preventDefault();
+      const where=link.dataset.cta||'site';
       let msg='Olá, Richard. Vim pelo site e quero conversar sobre uma necessidade de TI da minha empresa.';
-      if(campaign.utm_campaign) msg+=' Campanha: '+campaign.utm_campaign+'.';
-      if(window.dataLayer) window.dataLayer.push({event:'generate_lead',lead_source:'whatsapp',cta:where,...campaign});
-      if(window.fbq) fbq('track','Lead',{content_name:where});
+      if(campaign.utm_campaign)msg+=' Campanha: '+campaign.utm_campaign+'.';
+      if(window.gtag)gtag('event','generate_lead',{lead_source:'whatsapp',cta:where,...campaign});
+      if(window.fbq)fbq('track','Lead',{content_name:where});
       location.href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+    }));
+
+    if(!window.gsap||!window.ScrollTrigger){return;}
+    document.body.classList.remove('no-gsap');
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ignoreMobileResize:true});
+
+    const $=s=>document.querySelector(s);
+    const $$=s=>gsap.utils.toArray(s);
+    const stage=$('#stage'),film=$('#film'),camera=$('#camera'),caption=$('#caption');
+    const topbar=$('#topbar'),computerState=$('#computerState');
+    const networkPath=$('#networkPath'),packet=$('#networkPacket'),diagnosticPath=$('#diagnosticPath'),diagnostic=$('#diagnosticSignal');
+    const fragments=$$('.process-fragment');
+    const caps=$$('.cap');
+    const seen=new Set();
+
+    const captions=[
+      {at:0,text:'Tecnologia para sua empresa funcionar.',small:false,dark:false},
+      {at:8,text:'Tudo conectado.',small:true,dark:false},
+      {at:18,text:'Até algo parar.',small:true,dark:false},
+      {at:28,text:'Suporte que resolve.',small:true,dark:false},
+      {at:40,text:'Mas nem todo gargalo é técnico.',small:true,dark:false},
+      {at:52,text:'Às vezes, o processo precisa mudar.',small:true,dark:false},
+      {at:64,text:'Foi assim que nasceu o Controle+.',small:true,dark:false},
+      {at:76,text:'Uma solução real que virou produto.',small:true,dark:true},
+      {at:88,text:'',small:true,dark:true},
+      {at:96,text:'',small:true,dark:true}
+    ];
+    let captionIndex=0;
+
+    function captionMarkup(text){
+      return text.split(/\s+/).map(word=>`<span class="word-wrap"><span class="word">${word}</span></span>`).join('<span class="space"> </span>');
+    }
+    function setCaption(index,immediate=false){
+      if(index===captionIndex&&!immediate)return;
+      captionIndex=index;
+      const item=captions[index];
+      gsap.killTweensOf(caption);
+      gsap.killTweensOf(caption.querySelectorAll('.word'));
+      const apply=()=>{
+        caption.innerHTML=item.text?captionMarkup(item.text):'';
+        caption.classList.toggle('is-small',item.small);
+        caption.classList.toggle('is-dark',item.dark);
+        if(!item.text){gsap.set(caption,{autoAlpha:0});return;}
+        const words=caption.querySelectorAll('.word');
+        gsap.set(caption,{autoAlpha:1,y:0,filter:'blur(0px)'});
+        if(immediate){gsap.set(words,{yPercent:0,autoAlpha:1,filter:'blur(0px)'});return;}
+        gsap.fromTo(words,{yPercent:112,autoAlpha:0,filter:'blur(5px)'},{yPercent:0,autoAlpha:1,filter:'blur(0px)',duration:.38,stagger:.035,ease:'power3.out'});
+      };
+      if(immediate){apply();return;}
+      gsap.to(caption,{autoAlpha:0,y:-8,filter:'blur(7px)',duration:.15,ease:'power2.in',onComplete:apply});
+    }
+    setCaption(0,true);
+
+    function captionForProgress(p){
+      const t=p*100;
+      let idx=0;
+      for(let i=0;i<captions.length;i++){if(t>=captions[i].at)idx=i;}
+      setCaption(idx);
+    }
+
+    function followPath(pathEl,target,tl,from,to,at,duration){
+      if(!pathEl||!target)return;
+      const length=pathEl.getTotalLength();
+      const progress={value:from};
+      const setX=gsap.quickSetter(target,'x','px');
+      const setY=gsap.quickSetter(target,'y','px');
+      tl.to(progress,{value:to,duration,ease:'none',onUpdate:()=>{const point=pathEl.getPointAtLength(length*progress.value);setX(point.x);setY(point.y);}},at);
+    }
+
+    // Estado inicial auditável.
+    gsap.set(['#networkPath','#networkBranchA','#networkBranchB','#networkBranchC'],{strokeDashoffset:1});
+    gsap.set('#faultSegment',{strokeDashoffset:1,autoAlpha:0});
+    gsap.set([packet,diagnostic],{autoAlpha:0});
+    gsap.set('#processCloud',{autoAlpha:0});
+    gsap.set(fragments,{autoAlpha:0});
+    gsap.set('#app',{autoAlpha:0,scale:.76});
+    gsap.set('.ui-sidebar',{scaleY:.1,transformOrigin:'top'});
+    gsap.set('.ui-module',{autoAlpha:0,y:18});
+    gsap.set('.ui-metric',{scaleY:0,transformOrigin:'bottom'});
+    gsap.set('#controlePlus',{autoAlpha:0});
+    gsap.set('.product-word',{clipPath:'inset(100% 0 0 0)'});
+    gsap.set('#realProductScreen',{autoAlpha:0,scale:.76});
+    gsap.set('#capabilities',{autoAlpha:0});
+    gsap.set('#brandFinal',{autoAlpha:0});
+    gsap.set('#brandFinalLogo',{scale:.86,filter:'blur(14px)'});
+
+    const mm=gsap.matchMedia();
+    mm.add({desktop:'(min-width:901px)',mobile:'(max-width:900px)'},ctx=>{
+      const mobile=ctx.conditions.mobile;
+      const tl=gsap.timeline({defaults:{ease:'none'}});
+      tl.addLabel('intro',0).addLabel('network',8).addLabel('failure',18).addLabel('support',28).addLabel('processReveal',40).addLabel('convergence',52).addLabel('uiBuild',64).addLabel('product',76).addLabel('pullback',88).addLabel('finale',96);
+
+      // 0–8 | empresa funcionando. Movimento mínimo; já existe vida antes do scroll.
+      tl.fromTo('#office',{scale:.965,autoAlpha:.82},{scale:1,autoAlpha:1,duration:8,ease:'power1.out'},0)
+        .to('.screen-glow',{filter:'brightness(1.08)',duration:4,yoyo:true,repeat:1,ease:'sine.inOut'},0);
+
+      // 8–18 | a câmera entra na rede e o verde percorre o mesmo mundo.
+      tl.to(camera,{scale:mobile?1.12:1.20,xPercent:mobile?-1:-4,yPercent:mobile?7:2,duration:10,ease:'power2.inOut'},8)
+        .to(['#networkPath','#networkBranchA','#networkBranchB','#networkBranchC'],{strokeDashoffset:0,duration:8,ease:'power1.inOut'},8.5)
+        .to(packet,{autoAlpha:1,duration:.7},8.4);
+      followPath(networkPath,packet,tl,0,.90,8.5,8.8);
+
+      // 18–28 | a mesma linha falha; a câmera acompanha até o computador.
+      tl.to(camera,{scale:mobile?1.34:1.52,xPercent:mobile?-16:-17,yPercent:mobile?-9:-11,duration:10,ease:'power2.inOut'},18)
+        .to('#faultSegment',{autoAlpha:1,strokeDashoffset:.12,duration:2.8,ease:'power2.out'},18.6)
+        .to('#networkPath',{stroke:'#aab4aa',duration:1.2},19.3)
+        .to(packet,{autoAlpha:0,duration:.7},20.2)
+        .to('#computerAlert',{autoAlpha:1,scale:1,duration:1.4,ease:'back.out(1.8)'},21)
+        .to('#computer',{scale:1.055,duration:2,ease:'power2.out'},21);
+
+      // 28–40 | diagnóstico percorre a mesma conexão e restaura a estação.
+      tl.to(diagnostic,{autoAlpha:1,duration:.8},28.3);
+      followPath(diagnosticPath,diagnostic,tl,0,1,28.4,7.5);
+      tl.to('#computerAlert',{autoAlpha:0,scale:.45,duration:1.3,ease:'power2.in'},35.2)
+        .to('#computerRestored',{autoAlpha:1,scale:1,duration:1.2,ease:'back.out(1.8)'},35.4)
+        .to('#faultSegment',{strokeDashoffset:1,autoAlpha:0,duration:1.8},35.2)
+        .to('#networkPath',{stroke:'var(--green-2)',duration:1.8},35.2)
+        .to('#computer',{scale:1,duration:1.6},35.4)
+        .to(diagnostic,{autoAlpha:0,duration:1},38.2);
+
+      // 40–52 | a câmera sai do close e descobre processos dispersos no mesmo palco.
+      tl.to(camera,{scale:mobile?.82:.78,xPercent:0,yPercent:mobile?2:0,duration:12,ease:'power3.inOut'},40)
+        .to('#processCloud',{autoAlpha:1,duration:2},40.6)
+        .to('#office',{autoAlpha:.46,filter:'saturate(.78)',duration:6,ease:'power1.inOut'},41)
+        .fromTo(fragments,{autoAlpha:0,scale:.7,y:18},{autoAlpha:1,scale:1,y:0,stagger:.55,duration:2.8,ease:'back.out(1.35)'},41.3);
+
+      // 52–64 | os fragmentos se movem para o mesmo centro e são absorvidos pela interface.
+      const appRect=$('#app').getBoundingClientRect();
+      const appCenter={x:appRect.left+appRect.width/2,y:appRect.top+appRect.height/2};
+      fragments.forEach((el,i)=>{
+        const r=el.getBoundingClientRect();
+        const target={x:appCenter.x-(r.left+r.width/2),y:appCenter.y-(r.top+r.height/2)};
+        tl.to(el,{x:target.x,y:target.y,rotation:0,scale:.22,autoAlpha:.04,duration:8,ease:'power3.inOut'},52+i*.22);
+      });
+      tl.to('#app',{autoAlpha:1,scale:.90,duration:6,ease:'power3.out'},54.5)
+        .to(fragments,{autoAlpha:0,duration:1.8},61)
+        .to('#office',{autoAlpha:.18,duration:5},58);
+
+      // 64–76 | a interface nasce da convergência e ganha partes.
+      tl.to(camera,{scale:mobile?1.05:1.14,xPercent:0,yPercent:mobile?5:-1,duration:12,ease:'power2.inOut'},64)
+        .to('#app',{scale:1,duration:5,ease:'power2.out'},64)
+        .to('.ui-sidebar',{scaleY:1,duration:2.6,ease:'power2.out'},65)
+        .to('.ui-module',{autoAlpha:1,y:0,stagger:.55,duration:1.8,ease:'power2.out'},66.1)
+        .to('.ui-metric',{scaleY:1,stagger:.38,duration:1.6,ease:'power2.out'},68.5);
+
+      // 72–82 | paper -> grafite -> preto, sem corte.
+      tl.to(stage,{backgroundColor:'#101712',color:'#fff',duration:5,ease:'power1.inOut'},72)
+        .to(stage,{backgroundColor:'#070b08',duration:5,ease:'power1.inOut'},77)
+        .to('#lightGrid',{autoAlpha:.08,duration:8},72)
+        .to('#office',{autoAlpha:.06,duration:7},72)
+        .to('#app',{scale:mobile?1.10:1.16,duration:8,ease:'power2.inOut'},72);
+
+      // 76–88 | a construção vira Controle+; screenshot real toma o enquadramento.
+      tl.to('#controlePlus',{autoAlpha:1,duration:2.2},76)
+        .to('.product-word',{clipPath:'inset(0% 0 0 0)',duration:3.2,ease:'power3.out'},76.5)
+        .to('#realProductScreen',{autoAlpha:1,scale:1,width:mobile?'calc(100vw - 28px)':'86vw',height:mobile?'55vh':'76vh',duration:9,ease:'power3.inOut'},78)
+        .to('#app',{autoAlpha:0,scale:1.08,duration:4},79.5)
+        .to(camera,{scale:mobile?1.02:1.10,xPercent:0,yPercent:mobile?8:1,duration:10,ease:'power2.inOut'},78);
+
+      // 88–96 | a câmera afasta; produto vira uma peça de algo maior.
+      tl.to(camera,{scale:mobile?.76:.70,xPercent:0,yPercent:mobile?0:0,duration:8,ease:'power2.inOut'},88)
+        .to('#realProductScreen',{scale:.72,autoAlpha:.38,duration:6,ease:'power2.inOut'},88.5)
+        .to('.product-word',{autoAlpha:.45,scale:.82,duration:5},88.5)
+        .to('#capabilities',{autoAlpha:1,duration:2},89)
+        .fromTo(caps,{scale:.6,autoAlpha:0},{scale:1,autoAlpha:1,stagger:.7,duration:2.4,ease:'back.out(1.5)'},89.2);
+
+      // 96–100 | Rede + Suporte + Software convergem e deixam RICHARD.TI no centro.
+      tl.to(caps,{left:'50%',right:'auto',top:'50%',bottom:'auto',xPercent:-50,yPercent:-50,scale:.45,autoAlpha:0,stagger:.18,duration:2.2,ease:'power3.in'},96)
+        .to(['#controlePlus','#camera'],{autoAlpha:0,duration:2.2,ease:'power2.in'},96.2)
+        .to('#brandFinal',{autoAlpha:1,duration:1.5},96.4)
+        .to('#brandFinalLogo',{scale:1,filter:'blur(0px)',duration:2.6,ease:'power3.out'},96.5)
+        .to('#brandTagline',{autoAlpha:1,y:0,duration:1.9,ease:'power2.out'},97.3)
+        .to('#brandCta',{autoAlpha:1,y:0,duration:1.5,ease:'power2.out'},98.4);
+
+      const trigger=ScrollTrigger.create({
+        animation:tl,trigger:film,start:'top top',
+        end:()=>'+='+(window.innerHeight*(mobile?2.40:2.85)),
+        pin:stage,scrub:.15,anticipatePin:1,invalidateOnRefresh:true,
+        onUpdate:self=>{
+          captionForProgress(self.progress);
+          const t=self.progress*100;
+          const dark=t>=72;topbar.classList.toggle('is-dark',dark);
+          computerState.textContent=t<21?'conectado':(t<35.5?'sem conexão':'restabelecido');
+          if(self.progress>.025)gsap.to('#scrollHint',{autoAlpha:0,duration:.18,overwrite:true});
+          const markers=[8,18,28,40,52,64,76,88,96];
+          markers.forEach(mark=>{if(self.progress*100>=mark&&!seen.has(mark)){seen.add(mark);if(window.gtag)gtag('event','story_moment',{moment:mark});}});
+        },
+        onLeaveBack:()=>{setCaption(0,true);topbar.classList.remove('is-dark');}
+      });
+
+      return()=>{trigger.kill();tl.kill();};
     });
-  });
 
-  if(!window.gsap || !window.ScrollTrigger){
-    document.querySelector('[data-line="0"]').style.cssText='opacity:1;transform:none;filter:none';
-    return;
-  }
-  gsap.registerPlugin(ScrollTrigger);
-
-  const q=s=>document.querySelector(s), qa=s=>gsap.utils.toArray(s);
-  const lines=qa('.line');
-  const screens=qa('[data-screen]');
-  const station=q('#station'), stationText=q('#stationText');
-  const header=q('#header');
-
-  gsap.set(lines,{autoAlpha:0,y:18,filter:'blur(6px)'});
-  gsap.set(lines[0],{autoAlpha:1,y:0,filter:'blur(0px)'});
-  gsap.set(['#wireTop','#wireA','#wireB','#wireC'],{strokeDashoffset:1});
-  gsap.set(['#packet1','#packet2'],{autoAlpha:0});
-  gsap.set('.chip',{xPercent:-50,yPercent:-50});
-  gsap.set('#processLayer',{autoAlpha:0});
-  gsap.set('#productLayer',{autoAlpha:0});
-  gsap.set('#finale',{autoAlpha:0});
-
-  function showLine(tl,index,at){
-    lines.forEach((el,i)=>{
-      if(i===index){ tl.to(el,{autoAlpha:1,y:0,filter:'blur(0px)',duration:.18,ease:'power2.out'},at); }
-      else { tl.to(el,{autoAlpha:0,y:i<index?-14:18,filter:'blur(6px)',duration:.14,ease:'power1.out'},at); }
-    });
-  }
-  function screenTo(tl,index,at){
-    screens.forEach((img,i)=>tl.to(img,{autoAlpha:i===index?1:0,scale:i===index?1:1.025,duration:.3,ease:'power1.inOut'},at));
-  }
-
-  const mm=gsap.matchMedia();
-  mm.add({desktop:'(min-width: 901px)',mobile:'(max-width: 900px)'},ctx=>{
-    const mobile=ctx.conditions.mobile;
-    const distance=mobile ? '+=310%' : '+=360%';
-    const tl=gsap.timeline({
-      defaults:{ease:'none'},
-      scrollTrigger:{trigger:'#film',start:'top top',end:distance,pin:'#stage',scrub:mobile ? .45 : .65,anticipatePin:1,invalidateOnRefresh:true,onUpdate:self=>{
-        const dark=self.progress>.71;
-        header.classList.toggle('dark',dark);
-        if(self.progress>.02) gsap.to('#scrollHint',{autoAlpha:0,duration:.2,overwrite:true});
-      }}
-    });
-
-    // 0.00 — empresa funcionando
-    tl.fromTo('#world',{scale:mobile ? .9 : .84,xPercent:0,yPercent:3},{scale:1,xPercent:0,yPercent:0,duration:.55,ease:'power2.out'},0)
-      .fromTo('#router',{scale:.82},{scale:1,duration:.38,ease:'back.out(1.6)'},0.05)
-      .fromTo('.node',{autoAlpha:0,y:14},{autoAlpha:1,y:0,stagger:.05,duration:.25,ease:'power2.out'},0.12);
-
-    // 0.10 — camera enters network + green flow
-    showLine(tl,1,.42);
-    tl.to('#camera',{scale:mobile?1.06:1.16,xPercent:mobile?0:-3,yPercent:mobile?2:1,duration:.7,ease:'power2.inOut'},.38)
-      .to('#wireTop',{strokeDashoffset:0,duration:.28},.45)
-      .to('#wireA',{strokeDashoffset:0,duration:.34},.55)
-      .to('#wireB',{strokeDashoffset:0,duration:.34},.58)
-      .to('#wireC',{strokeDashoffset:0,duration:.34},.61)
-      .to('#packet1',{autoAlpha:1,duration:.05},.46)
-      .to('#packet1',{motionPath:null,duration:.01},.47)
-      .to('#packet1',{attr:{cy:218},duration:.24,ease:'none'},.48)
-      .to('#packet2',{autoAlpha:1,duration:.05},.58)
-      .to('#packet2',{attr:{cx:660,cy:446},duration:.34,ease:'power1.inOut'},.60)
-      .to(['#packet1','#packet2'],{autoAlpha:0,duration:.08},.95);
-
-    // 0.95 — line fails and camera follows fault
-    showLine(tl,2,1.02);
-    tl.to('#camera',{scale:mobile?1.2:1.42,xPercent:mobile?-7:-17,yPercent:mobile?-8:-11,duration:.58,ease:'power2.inOut'},1.00)
-      .to('#wireC',{stroke:'var(--red)',strokeDashoffset:.48,duration:.28},1.08)
-      .to('#fault',{autoAlpha:1,scale:1,duration:.18,ease:'back.out(2)'},1.10)
-      .to(station,{background:'#fff6f3',borderColor:'#e7aa9d',boxShadow:'0 0 0 8px rgba(217,93,71,.08),0 15px 34px rgba(217,93,71,.12)',duration:.18},1.10)
-      .add(()=>stationText.textContent='sem conexão',1.11);
-
-    // 1.45 — support enters, scans same path and repairs
-    showLine(tl,3,1.46);
-    tl.to('#support',{autoAlpha:1,scale:1,duration:.16,ease:'back.out(1.8)'},1.44)
-      .to('#diagWire',{autoAlpha:1,duration:.12},1.49)
-      .to('#diagWire',{strokeDashoffset:-45,duration:.48,ease:'none'},1.52)
-      .to('#support',{x:mobile?130:230,y:mobile?205:300,rotation:8,duration:.48,ease:'power2.inOut'},1.54)
-      .to('#fault',{autoAlpha:0,scale:.4,duration:.14},1.91)
-      .to('#wireC',{stroke:'var(--lime-dark)',strokeDashoffset:0,duration:.23},1.89)
-      .to(station,{background:'#fff',borderColor:'#95bd30',boxShadow:'0 0 0 9px rgba(186,255,34,.10),0 15px 34px rgba(116,166,0,.12)',duration:.18},1.90)
-      .add(()=>stationText.textContent='restabelecida',1.92)
-      .to('#diagWire',{autoAlpha:0,duration:.12},2.02)
-      .to('#support',{autoAlpha:0,scale:.75,duration:.18},2.05);
-
-    // 2.12 — camera pulls back. process mess appears around same operation
-    showLine(tl,4,2.15);
-    tl.to('#camera',{scale:mobile ? .94 : .9,xPercent:0,yPercent:0,duration:.58,ease:'power2.inOut'},2.10)
-      .to('#processLayer',{autoAlpha:1,duration:.2},2.12)
-      .to(['#router','.node','.network-svg','#fault','#support'],{autoAlpha:.18,duration:.3},2.12)
-      .to('.chip',{autoAlpha:1,duration:.18,stagger:.05},2.20)
-      .to('.chip',{
-        x:(i,el)=>parseFloat(getComputedStyle(el).getPropertyValue('--x'))||0,
-        y:(i,el)=>parseFloat(getComputedStyle(el).getPropertyValue('--y'))||0,
-        rotation:(i,el)=>parseFloat(getComputedStyle(el).getPropertyValue('--r'))||0,
-        duration:.5,ease:'back.out(1.4)'
-      },2.22)
-      .to('.chip',{y:'+=8',x:'+=4',stagger:.04,duration:.3,ease:'sine.inOut'},2.72);
-
-    // 2.85 — process converges into interface
-    showLine(tl,5,2.87);
-    tl.to('.chip',{x:0,y:0,rotation:0,scale:.7,autoAlpha:.25,duration:.52,ease:'power3.inOut'},2.84)
-      .to('#appShell',{autoAlpha:1,scale:1,duration:.48,ease:'back.out(1.25)'},2.94)
-      .to('.chip',{autoAlpha:0,scale:.35,duration:.18},3.27)
-      .to('#camera',{scale:mobile?1.04:1.13,xPercent:mobile?0:3,yPercent:-1,duration:.5,ease:'power2.inOut'},3.05)
-      .fromTo('.app-side b',{scaleX:.2,transformOrigin:'left center'},{scaleX:1,stagger:.05,duration:.2},3.10)
-      .fromTo('.metric',{scaleY:.2,transformOrigin:'bottom center'},{scaleY:1,stagger:.05,duration:.2},3.14)
-      .fromTo('.chart',{scaleX:.05,transformOrigin:'left center'},{scaleX:1,duration:.3},3.18);
-
-    // 3.45 — app grows, background slowly goes dark, Control+ is born
-    showLine(tl,6,3.50);
-    tl.to('#bgDark',{autoAlpha:1,duration:.68,ease:'power2.inOut'},3.38)
-      .to('#grid',{opacity:.22,duration:.55},3.40)
-      .to('#processLayer',{autoAlpha:0,duration:.32},3.43)
-      .to(['#router','.node','.network-svg'],{autoAlpha:0,duration:.28},3.43)
-      .to('#productLayer',{autoAlpha:1,duration:.22},3.48)
-      .to('#productTitle',{autoAlpha:1,y:0,duration:.35,ease:'power2.out'},3.52)
-      .to('#productFrame',{autoAlpha:1,scale:1,duration:.58,ease:'power3.out'},3.53)
-      .to('#camera',{scale:mobile?1.0:1.04,xPercent:0,yPercent:0,duration:.4},3.48)
-      .to('#pc1',{autoAlpha:1,y:-6,duration:.2},3.82)
-      .to('#pc2',{autoAlpha:1,y:6,duration:.2},3.88)
-      .to('#pc3',{autoAlpha:1,x:6,duration:.2},3.94);
-
-    // 4.08 — product becomes hero / screens evolve
-    showLine(tl,7,4.08);
-    tl.to('#productFrame',{left:mobile?'1%':'1%',right:mobile?'1%':'1%',top:mobile?'23%':'18%',bottom:'1%',duration:.48,ease:'power2.inOut'},4.06)
-      .to('#productTitle',{scale:mobile ? .82 : .72,xPercent:mobile?-6:-10,yPercent:mobile?-4:-10,duration:.48,ease:'power2.inOut'},4.06);
-    screenTo(tl,1,4.22); screenTo(tl,2,4.42); screenTo(tl,3,4.62);
-    tl.to(['#pc1','#pc2','#pc3'],{autoAlpha:0,duration:.18},4.52)
-      .to('#productFrame',{scale:mobile?1.08:1.16,duration:.6,ease:'power1.inOut'},4.58);
-
-    // 4.95 — camera pulls back and all capabilities converge into Richard.TI
-    tl.to('.subtitle',{autoAlpha:0,duration:.20},4.90)
-      .to('#productLayer',{autoAlpha:0,scale:.72,duration:.46,ease:'power2.in'},4.93)
-      .to('#world',{scale:.65,autoAlpha:0,duration:.5,ease:'power2.inOut'},4.93)
-      .to('#finale',{autoAlpha:1,duration:.32},5.14)
-      .fromTo('#finalNodes',{autoAlpha:0,y:18},{autoAlpha:1,y:0,duration:.28},5.14)
-      .fromTo('.final-logo',{scale:.78,filter:'blur(9px)'},{scale:1,filter:'blur(0px)',duration:.42,ease:'power3.out'},5.18)
-      .fromTo('.final-copy',{autoAlpha:0,y:12},{autoAlpha:1,y:0,duration:.28},5.32)
-      .fromTo('.final-cta',{autoAlpha:0,y:12},{autoAlpha:1,y:0,duration:.28},5.40);
-
-    return ()=>{};
-  });
-
-  ScrollTrigger.refresh();
-})();
-</script>
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      // Mantém conteúdo acessível sem forçar um filme complexo.
+      ScrollTrigger.getAll().forEach(t=>t.kill());
+      gsap.set('#stage',{backgroundColor:'#070b08'});gsap.set('#camera',{autoAlpha:0});gsap.set('#caption',{autoAlpha:0});gsap.set('#brandFinal',{autoAlpha:1});gsap.set('#brandFinalLogo',{scale:1,filter:'blur(0px)'});gsap.set(['#brandTagline','#brandCta'],{autoAlpha:1,y:0});topbar.classList.add('is-dark');
+    }
+  })();
+  </script>
 </body>
 </html>

@@ -1,16 +1,17 @@
-# Richard.TI — V10 Cinematic Timeline
+# Richard.TI — V11 Plano-sequência
 
-Esta versão implementa uma única narrativa contínua controlada pelo scroll.
+Implementação funcional do blueprint GSAP aprovado na conversa.
 
-Fluxo:
-1. empresa funcionando;
-2. câmera aproxima da rede;
-3. fluxo verde percorre a conexão;
-4. estação falha;
-5. suporte diagnostica e restaura;
-6. câmera abre e revela planilha/WhatsApp/papel/cobranças;
-7. elementos convergem para uma interface;
-8. interface evolui para Controle+;
-9. câmera afasta e Rede + Suporte + Software convergem para Richard.TI.
+## O que mudou
+- Uma única timeline normalizada em 0–100.
+- Um único palco/câmera: sem cards de etapa, sem contador, sem cortes secos.
+- Rede -> falha -> diagnóstico -> processos -> sistema -> Controle+ -> Richard.TI.
+- Scroll curto: ~2.85 viewports desktop e ~2.40 mobile.
+- Controle+ é o clímax e ocupa quase todo o viewport útil.
+- Mobile usa o mesmo roteiro com outro enquadramento.
 
-A animação usa GSAP + ScrollTrigger via CDN.
+## Dependência
+GSAP 3.13 + ScrollTrigger via CDN. Ao publicar em Vercel, a dependência carrega normalmente.
+
+## Imagens do Controle+
+A screenshot atual é provisória, herdada da versão anterior. Basta substituir `assets/projeto/dashboard.png` pela tela atual mantendo o mesmo nome, ou alterar o `src` em `index.html`.

@@ -1,1 +1,14 @@
-Os links de WhatsApp preservam parâmetros UTM da URL atual e disparam `generate_lead` via dataLayer quando disponível e `Lead` via Meta Pixel quando fbq estiver carregado.
+# Tracking
+
+No final de `index.html` existe:
+
+```js
+const TRACKING={ga4Id:'',metaPixelId:''};
+```
+
+Preencha os IDs quando estiverem disponíveis.
+
+Eventos atuais:
+- clique WhatsApp -> `generate_lead` / Meta `Lead`
+- marcos narrativos -> `story_moment`
+- UTMs, `fbclid` e `gclid` são preservados na origem do lead.
