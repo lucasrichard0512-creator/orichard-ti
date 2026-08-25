@@ -1,10 +1,10 @@
-# Direção visual V4
+# Direção visual V6
 
-- Base clara: `#f3f5ee`
-- Texto: `#111511`
-- Verde Richard: `#baff24` / `#8bd000`
-- Fundo escuro usado apenas em momentos de impacto
-- Tipografia: Space Grotesk + Inter
-- Animações devem explicar, não apenas decorar
-- Linguagem curta e visual
-- Grid técnico e linhas permanecem como assinatura de marca
+Objetivo: parecer um vídeo didático em HTML, controlado pela rolagem.
+
+- Base clara e limpa.
+- Verde ácido como assinatura Richard.TI.
+- Dark apenas no clímax do Controle+.
+- Uma frase por cena.
+- Animação com função explicativa, não decorativa.
+- O Controle+ é o clímax e a prova do desenvolvimento sob medida.

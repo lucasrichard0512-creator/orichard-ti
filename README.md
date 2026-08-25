@@ -1,19 +1,19 @@
-# Richard.TI — Scrollytelling V4
+# Richard.TI — V6 Cinematic Scrollytelling
 
-Direção visual: tecnologia clara, didática e profissional, preservando a assinatura Richard.TI.
+Esta versão muda a arquitetura do site para uma narrativa contínua controlada pelo scroll.
 
 ## Estrutura
 
-1. Hero claro com fluxo visual Rede → Suporte → Software
-2. Jornada didática com animações explicativas
-3. Controle+ como momento de impacto em fundo escuro
-4. Sobre compacto
-5. CTA final em fundo escuro
+1. Um único palco (`.film`) de longa duração.
+2. O scroll controla a timeline em JavaScript.
+3. Frases curtas aparecem como legendas de um vídeo.
+4. A animação explica conexão, falha, suporte, processo, software e Controle+.
+5. Depois da história há apenas prova compacta e CTA.
 
-## Objetivo
+## Controle+
 
-Reduzir esforço cognitivo, especialmente para público empresarial que precisa entender rapidamente o que a Richard.TI resolve, sem transformar o site em uma página genérica ou perder a identidade visual.
+As imagens atuais ainda são temporárias e ficam em `assets/projeto/`. Substitua mantendo os mesmos nomes ou altere os `src` no `index.html`.
 
-## Observação
+## Performance
 
-As imagens atuais do Controle+ continuam temporárias e podem ser substituídas mantendo os mesmos nomes de arquivo em `assets/projeto/`.
+Não há biblioteca de animação externa. A timeline usa `requestAnimationFrame` e transforms/opacity para reduzir custo. `prefers-reduced-motion` possui fallback.
