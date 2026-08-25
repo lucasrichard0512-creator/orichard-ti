@@ -1,19 +1,16 @@
-# Richard.TI — V9 Continuous Cinematic
+# Richard.TI — V10 Cinematic Timeline
 
-Reconstrução focada em uma única timeline visual contínua, em vez de cenas que trocam como slides.
+Esta versão implementa uma única narrativa contínua controlada pelo scroll.
 
-## Direção
-- Scroll funciona como playhead da animação.
-- Sem contador de cenas e sem barra de progresso.
-- Texto curto funciona como legenda cinematográfica.
-- A câmera e o mesmo universo visual evoluem: operação → rede → falha → suporte → processo → software → Controle+.
-- Controle+ é o clímax, com transição gradual para dark.
-- Mobile separa fisicamente legenda e visual para evitar sobreposição.
-- Sem botão flutuante cobrindo o filme.
-- Tracking/UTMs preservados.
+Fluxo:
+1. empresa funcionando;
+2. câmera aproxima da rede;
+3. fluxo verde percorre a conexão;
+4. estação falha;
+5. suporte diagnostica e restaura;
+6. câmera abre e revela planilha/WhatsApp/papel/cobranças;
+7. elementos convergem para uma interface;
+8. interface evolui para Controle+;
+9. câmera afasta e Rede + Suporte + Software convergem para Richard.TI.
 
-## Antes de publicar
-Preencher, quando disponíveis, no `index.html`:
-```js
-const TRACKING={ga4Id:'',metaPixelId:''};
-```
+A animação usa GSAP + ScrollTrigger via CDN.

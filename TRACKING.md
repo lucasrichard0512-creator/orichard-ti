@@ -1,13 +1,1 @@
-# Tracking
-
-No `index.html`:
-```js
-const TRACKING={ga4Id:'',metaPixelId:''};
-```
-
-Eventos:
-- `whatsapp_click`
-- `story_scene_view`
-- `scroll_depth`
-
-UTMs, `fbclid` e `gclid` são persistidos na sessão e usados na atribuição.
+Os links de WhatsApp preservam parâmetros UTM da URL atual e disparam `generate_lead` via dataLayer quando disponível e `Lead` via Meta Pixel quando fbq estiver carregado.
