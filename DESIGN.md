@@ -1,13 +1,8 @@
-# Direção de design — V8
+# V9 — Direção visual
 
-Objetivo: parecer um vídeo didático em HTML, não uma página com blocos animados.
-
-## Regras
-- Uma cena por vez.
-- Texto e visual ocupam áreas independentes.
-- Frases curtas funcionam como legendas.
-- Entrada de título em linhas, hold e saída rápida.
-- Movimento sempre explica causa e efeito.
-- Fundo claro durante infraestrutura/processos.
-- Fundo escuro apenas no clímax Controle+.
-- Mobile é composição própria, não desktop reduzido.
+- Identidade: claro + preto + verde Richard.TI.
+- Linguagem: engenharia/clareza, não cyberpunk.
+- Uma única composição cinematográfica controlada pelo scroll.
+- Tipografia atua como legenda, não como bloco editorial.
+- Dark reservado ao clímax Controle+.
+- Nenhuma camada textual deve invadir a screenshot no mobile.

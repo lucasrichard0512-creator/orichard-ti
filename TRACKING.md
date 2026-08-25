@@ -1,14 +1,13 @@
 # Tracking
 
-No `index.html` existe:
-
+No `index.html`:
 ```js
 const TRACKING={ga4Id:'',metaPixelId:''};
 ```
 
-Preencha os IDs quando disponíveis. Eventos mantidos:
+Eventos:
 - `whatsapp_click`
 - `story_scene_view`
 - `scroll_depth`
 
-UTMs, `fbclid` e `gclid` são preservados em sessionStorage e incorporados ao fluxo de atribuição.
+UTMs, `fbclid` e `gclid` são persistidos na sessão e usados na atribuição.
