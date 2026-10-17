@@ -49,23 +49,7 @@
     #caption .word-wrap{display:inline-block;overflow:hidden;vertical-align:bottom;padding:.04em .02em .08em;margin:-.04em -.02em -.08em}#caption .word{display:inline-block;will-change:transform,opacity,filter}#caption .space{display:inline-block;width:.22em}
 
     #camera{position:absolute;z-index:5;left:50%;top:56%;width:clamp(900px,88vw,1320px);aspect-ratio:16/9;transform:translate(-50%,-50%);transform-origin:50% 50%;will-change:transform}
-    #world{position:absolute;inset:0;overflow:visible;transform-style:preserve-3d}
-    /* V12: objetos tridimensionais reais em CSS, sem WebGL pesado. */
-    #camera{perspective:1500px;transform-style:preserve-3d}
-    #office{transform-style:preserve-3d;backface-visibility:hidden}
-    .router-hub{transform-style:preserve-3d;transform:translate(-50%,-50%) rotateX(9deg) rotateY(-15deg);box-shadow:16px 24px 50px rgba(21,31,22,.25)}
-    .router-hub::after{content:"";position:absolute;inset:9px;border-radius:22px;border:2px solid rgba(185,255,40,.35);transform:translateZ(20px);pointer-events:none}
-    .router-hub b,.router-hub i{transform:translateZ(28px)}
-    .zone .monitor{transform-style:preserve-3d;transform:rotateY(-10deg) rotateX(6deg);box-shadow:8px 10px 0 #0d160e,12px 17px 22px rgba(0,0,0,.18)}
-    .zone .screen-glow{transform:translateZ(3px)}
-    .process-fragment{transform-style:preserve-3d;backface-visibility:hidden}
-    #app{transform-style:preserve-3d;filter:drop-shadow(0 30px 35px rgba(13,30,13,.2))}
-    #realProductScreen{transform-style:preserve-3d;backface-visibility:hidden}
-    #depthAtmosphere{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;background:radial-gradient(ellipse 40% 35% at 50% 49%,rgba(185,255,40,.20),transparent 75%);mix-blend-mode:screen}
-    #depthAtmosphere::after{content:"";position:absolute;inset:8%;border:1px solid rgba(185,255,40,.12);border-radius:50%;transform:rotateX(65deg);box-shadow:0 0 55px rgba(185,255,40,.10)}
-    @media(max-width:900px){#camera{perspective:1100px}#depthAtmosphere{opacity:.35}#realProductScreen{max-width:calc(100vw - 28px)}}
-    @media(prefers-reduced-motion:reduce){#camera,#world,#office,.router-hub,.zone .monitor,#app,#realProductScreen{transform-style:flat!important}#depthAtmosphere{display:none}}
-
+    #world{position:absolute;inset:0;overflow:visible}
 
     /* O mundo inicial parece uma operação, não um fluxograma. */
     #office{position:absolute;inset:4% 3% 3%;border-radius:42px;background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(235,240,231,.92));box-shadow:0 35px 90px rgba(32,48,31,.13),inset 0 0 0 1px rgba(45,62,45,.09);overflow:hidden;transform-origin:center}
@@ -190,7 +174,6 @@
 
         <div id="camera" aria-hidden="true">
           <div id="world">
-            <div id="depthAtmosphere" aria-hidden="true"></div>
             <div id="office">
               <div class="office-title">Operação da empresa</div>
               <div class="office-status">online</div>
@@ -390,12 +373,6 @@
       tl.fromTo('#office',{scale:.965,autoAlpha:.82},{scale:1,autoAlpha:1,duration:8,ease:'power1.out'},0)
         .to('.screen-glow',{filter:'brightness(1.08)',duration:4,yoyo:true,repeat:1,ease:'sine.inOut'},0);
 
-      // Profundidade física: o roteador acompanha a câmera, sem trocar de cena.
-      tl.fromTo('.router-hub',{rotationY:-15,rotationX:9,z:0},{rotationY:12,rotationX:-5,z:45,duration:18,ease:'sine.inOut'},0)
-        .to('#depthAtmosphere',{autoAlpha:.75,duration:10},8)
-        .to('#depthAtmosphere',{autoAlpha:.15,duration:10},28)
-        .to('.router-hub',{rotationY:-8,rotationX:4,z:12,duration:12},40);
-
       // 8–18 | a câmera entra na rede e o verde percorre o mesmo mundo.
       tl.to(camera,{scale:mobile?1.12:1.20,xPercent:mobile?-1:-4,yPercent:mobile?7:2,duration:10,ease:'power2.inOut'},8)
         .to(['#networkPath','#networkBranchA','#networkBranchB','#networkBranchC'],{strokeDashoffset:0,duration:8,ease:'power1.inOut'},8.5)
@@ -427,27 +404,20 @@
         .fromTo(fragments,{autoAlpha:0,scale:.7,y:18},{autoAlpha:1,scale:1,y:0,stagger:.55,duration:2.8,ease:'back.out(1.35)'},41.3);
 
       // 52–64 | os fragmentos se movem para o mesmo centro e são absorvidos pela interface.
-      // Medição em coordenadas locais: evita deslocamento errado após zoom da câmera.
-      // Function-based GSAP values são invalidados e recalculados no refresh.
-      const app=$('#app');
-      function targetOffset(el,axis){
-        const parent=el.offsetParent || $('#processCloud');
-        const cloud=$('#processCloud');
-        const appCenter=axis==='x' ? app.offsetLeft : app.offsetTop;
-        const fragmentCenter=(axis==='x'?el.offsetLeft+el.offsetWidth/2:el.offsetTop+el.offsetHeight/2);
-        const cloudOffset=axis==='x'?cloud.offsetLeft:cloud.offsetTop;
-        return appCenter-(fragmentCenter+cloudOffset);
-      }
+      const appRect=$('#app').getBoundingClientRect();
+      const appCenter={x:appRect.left+appRect.width/2,y:appRect.top+appRect.height/2};
       fragments.forEach((el,i)=>{
-        tl.to(el,{x:()=>targetOffset(el,'x'),y:()=>targetOffset(el,'y'),rotationX:()=>i%2?18:-18,rotationY:()=>i%2?-28:28,rotation:0,z:-180,scale:.22,autoAlpha:.04,duration:8,ease:'power3.inOut'},52+i*.22);
+        const r=el.getBoundingClientRect();
+        const target={x:appCenter.x-(r.left+r.width/2),y:appCenter.y-(r.top+r.height/2)};
+        tl.to(el,{x:target.x,y:target.y,rotation:0,scale:.22,autoAlpha:.04,duration:8,ease:'power3.inOut'},52+i*.22);
       });
-      tl.to('#app',{autoAlpha:1,scale:.90,rotationY:-12,rotationX:6,z:50,duration:6,ease:'power3.out'},54.5)
+      tl.to('#app',{autoAlpha:1,scale:.90,duration:6,ease:'power3.out'},54.5)
         .to(fragments,{autoAlpha:0,duration:1.8},61)
         .to('#office',{autoAlpha:.18,duration:5},58);
 
       // 64–76 | a interface nasce da convergência e ganha partes.
       tl.to(camera,{scale:mobile?1.05:1.14,xPercent:0,yPercent:mobile?5:-1,duration:12,ease:'power2.inOut'},64)
-        .to('#app',{scale:1,rotationY:0,rotationX:0,z:0,duration:5,ease:'power2.out'},64)
+        .to('#app',{scale:1,duration:5,ease:'power2.out'},64)
         .to('.ui-sidebar',{scaleY:1,duration:2.6,ease:'power2.out'},65)
         .to('.ui-module',{autoAlpha:1,y:0,stagger:.55,duration:1.8,ease:'power2.out'},66.1)
         .to('.ui-metric',{scaleY:1,stagger:.38,duration:1.6,ease:'power2.out'},68.5);
@@ -462,7 +432,7 @@
       // 76–88 | a construção vira Controle+; screenshot real toma o enquadramento.
       tl.to('#controlePlus',{autoAlpha:1,duration:2.2},76)
         .to('.product-word',{clipPath:'inset(0% 0 0 0)',duration:3.2,ease:'power3.out'},76.5)
-        .fromTo('#realProductScreen',{rotationY:-14,rotationX:7,z:-100},{autoAlpha:1,scale:1,rotationY:0,rotationX:0,z:0,width:mobile?'min(540px, 88%)':'86%',height:mobile?'55%':'76%',duration:9,ease:'power3.inOut'},78)
+        .to('#realProductScreen',{autoAlpha:1,scale:1,width:mobile?'calc(100vw - 28px)':'86vw',height:mobile?'55vh':'76vh',duration:9,ease:'power3.inOut'},78)
         .to('#app',{autoAlpha:0,scale:1.08,duration:4},79.5)
         .to(camera,{scale:mobile?1.02:1.10,xPercent:0,yPercent:mobile?8:1,duration:10,ease:'power2.inOut'},78);
 
@@ -483,7 +453,7 @@
 
       const trigger=ScrollTrigger.create({
         animation:tl,trigger:film,start:'top top',
-        end:()=>'+='+(window.innerHeight*(mobile?3.4:3.6)),
+        end:()=>'+='+(window.innerHeight*(mobile?2.40:2.85)),
         pin:stage,scrub:.15,anticipatePin:1,invalidateOnRefresh:true,
         onUpdate:self=>{
           captionForProgress(self.progress);
