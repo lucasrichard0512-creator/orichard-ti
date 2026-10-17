@@ -1,31 +1,31 @@
-# Richard TI — Site Cinematográfico (V14 · identidade original)
+# Richard TI — Site cinematográfico V15
 
-Nova página inicial com a fotografia cinematográfica aprovada, 9 etapas e identidade Richard TI recuperada: preto, branco e verde-limão (#b9ff28). O vermelho permanece apenas como sinal de erro/falha.
+Esta versão substitui a página inicial pelo cenário cinematográfico da mesa comercial, mantendo a identidade original preto, branco e verde-limão da Richard TI. A V11 original continua preservada em `index-v11.html`.
 
-## Visualização
+## O que foi corrigido após o Teste 03
 
-Abra `index.html` no navegador. Para testes e publicação, use um servidor estático, por exemplo `python -m http.server 8000`, e visite `http://localhost:8000`.
+- A tela inicial tem a headline e a fotografia sem os quatro cards sobrepostos.
+- Os cards aparecem individualmente, sincronizados com as cenas 2 a 5.
+- Os zooms focalizam o monitor, a infraestrutura de rede e os papéis, com composição própria no celular.
+- A animação não cria mais folhas retangulares genéricas por CSS: 12 recortes da fotografia original são animados em trajetórias curvas até o monitor.
+- Uma versão retocada localmente da mesa é revelada por baixo dos documentos enquanto eles saem.
+- A tela fica preta durante a absorção dos papéis; a interface verdadeira do Controle+ aparece antes do zoom final.
 
-## Publicação
+## Como abrir
 
-Substitua no seu repositório as pastas/arquivos por este pacote. O arquivo **`index.html` da raiz** é a nova homepage. Em Vercel, publique a branch/repositório atualizado usando seu fluxo normal de deploy.
+Abra `index.html` a partir de qualquer servidor web estático (incluindo Vercel). A prévia independente `richard-ti-preview-v15.html` é disponibilizada separadamente para testes sem servidor.
 
-**Este ZIP não modifica o endereço hospedado automaticamente.**
+Use o parâmetro `?scene=1` a `?scene=9` para acessar uma etapa diretamente. Os pontos à direita do palco também navegam entre cenas.
 
-## Arquivos principais
+## Limite visual importante
 
-- `index.html`: homepage atual.
-- `site.css`: tipografia, layout cinematográfico e responsividade.
-- `site.js`: scroll narrativo, 9 etapas, transição de câmera, overlays, links WhatsApp.
-- `assets/escritorio-cinematografico.webp`: imagem-base aprovada (ambiente realista do comércio).
-- `assets/controle-original.webp`: captura real enviada pelo usuário da tela de login do Controle+.
-- `index-v11.html`: cópia preservada da homepage original da V11.
-- Documentos `BLUEPRINT_GSAP.md`, `DESIGN.md`, `DOM_MAP.md` etc. preservados para referência.
+A animação de papéis parte de uma *única fotografia* da mesa, não de renderização 3D com objetos isolados. A versão da mesa sem papéis usa retoque aproximado, sobretudo nas áreas de documentos grandes. A etapa resolve a continuidade e o comportamento, mas não substitui uma produção com camadas originais separadas ou um modelo 3D, que seria necessário para retirada fisicamente perfeita de cada folha.
 
-## Verificação
+## Verificações efetuadas
 
-Sintaxe JavaScript, referências locais, paleta e integridade do pacote conferidas. As imagens de navegador registradas no ciclo V13 não equivalem a um teste visual da V14: nesta execução, as políticas de segurança do navegador impediram a captura visual automatizada.
+- `node --check site.js` sem erros de sintaxe.
+- Navegação programática pelas 9 cenas no Chromium em 360px de largura, sem erros JS nem rolagem horizontal.
+- Capturas visuais em 390px mobile e 1440px desktop.
+- Integridade do ZIP e referências dos assets.
 
-## Limites conhecidos
-
-Este é um protótipo **2.5D** sobre uma fotografia fixa. Os documentos da fotografia ainda não podem desaparecer fisicamente sem uma segunda versão do cenário/máscaras. Os papéis voadores são camadas de animação. A textura e a interface do monitor perdem definição em zooms extremos porque a imagem-mestre tem 941x1672 pixels. A versão de produção final de efeito 3D exigiria recursos separados ou modelagem/captura em qualidade superior.
+O pacote não faz deploy automático no endereço público. Publique os arquivos pelo repositório conectado ao Vercel.

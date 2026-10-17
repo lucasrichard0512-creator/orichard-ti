@@ -34,3 +34,32 @@
 .stage.is-resolving .pulse-dot{background:var(--brand);box-shadow:0 0 0 5px #b9ff2822}
 .scene-nav button.active{box-shadow:0 0 0 3px #b9ff2825}
 @media(max-width:700px){.site-header{background:linear-gradient(to bottom,#060d08da,transparent)}.intro h1 em{background:linear-gradient(110deg,#edffbd,#b9ff28);-webkit-background-clip:text;background-clip:text}}
+
+
+/* V15 • Camera, diagnostic cadence and photographic paper motion */
+.scene-art{transform-origin:0 0}
+.clean-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none;filter:brightness(.93) contrast(1.08) saturate(.98)}
+.diagnostics{opacity:1!important;transform:none!important}
+.diagnostics .hud{opacity:0;visibility:hidden;pointer-events:none;will-change:opacity,transform}
+.diagnostics .hud-freeze,.diagnostics .hud-disk,.diagnostics .hud-network,.diagnostics .hud-paper{top:auto;left:auto;right:clamp(56px,8vw,135px);bottom:clamp(74px,11vh,140px);width:min(350px,30vw);max-width:350px;min-height:73px}
+.diagnostics .hud b{font-size:12px;white-space:normal}.diagnostics .hud small{font-size:11px}
+.diagnostics .pin{display:none}
+.photo-paper{position:absolute;display:block;object-fit:fill;opacity:0;will-change:transform,opacity;transform-origin:center center;pointer-events:none;filter:drop-shadow(0 8px 4px rgba(4,8,12,.48));backface-visibility:hidden;transform-style:preserve-3d}
+.flying-papers{perspective:950px}
+/* Keep live HUD separate from the underlying photo and unobtrusive during zooms. */
+@media(max-width:700px){
+ .diagnostics .hud-freeze,.diagnostics .hud-disk,.diagnostics .hud-network,.diagnostics .hud-paper{
+  left:clamp(21px,6vw,34px);right:clamp(21px,6vw,34px);top:auto;bottom:clamp(75px,11svh,110px);
+  width:auto;max-width:none;min-height:61px;padding:10px 13px;gap:10px;background:rgba(6,14,17,.91);
+ }
+ .diagnostics .hud-icon{flex:0 0 24px}.diagnostics .hud-icon svg{width:24px;height:24px}
+ .diagnostics .hud b{font-size:11px;letter-spacing:.02em}
+ .diagnostics .hud small{font-size:10px;margin-top:4px}
+ .chapter{top:clamp(105px,14.5svh,150px);left:22px;right:22px}
+ .chapter h2{font-size:clamp(37px,9.3vw,55px);max-width:335px}
+ .chapter p{font-size:12px;line-height:1.5;max-width:310px}
+ .chapter-diagnosis{display:none}
+ .scene-nav{right:8px;top:49%}
+}
+@media(max-width:380px){.chapter h2{font-size:36px}.diagnostics .hud-freeze,.diagnostics .hud-disk,.diagnostics .hud-network,.diagnostics .hud-paper{bottom:72px}}
+@media(prefers-reduced-motion:reduce){.photo-paper{display:none}.scene-art{will-change:auto}}
