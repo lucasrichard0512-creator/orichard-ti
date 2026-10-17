@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#f4f6ef" />
+  <meta name="description" content="Richard.TI — redes, suporte e software para empresas em São Miguel do Araguaia e região." />
+  <title>Richard.TI — Tecnologia para sua empresa funcionar</title>
+  <style>
+    :root{
+      --paper:#f4f6ef;
+      --paper-2:#eaeee4;
+      --ink:#101410;
+      --muted:#5e685f;
+      --green:#b9ff28;
+      --green-2:#80c900;
+      --green-deep:#3f6800;
+      --line:#cfd6ca;
+      --danger:#d85f4a;
+      --dark:#070b08;
+      --dark-2:#0d130e;
+      --safe-top:max(18px,env(safe-area-inset-top));
+      --safe-bottom:max(18px,env(safe-area-inset-bottom));
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    html{scroll-behavior:auto}
+    body{overflow-x:hidden}
+    a{color:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    .topbar{position:fixed;z-index:50;left:0;right:0;top:0;height:72px;padding:var(--safe-top) clamp(18px,4vw,54px) 0;display:flex;align-items:flex-start;justify-content:space-between;pointer-events:none;color:var(--ink);transition:color .25s ease}
+    .topbar.is-dark{color:#fff}
+    .brand-mini,.top-cta{pointer-events:auto;text-decoration:none;font-weight:900;letter-spacing:-.04em}
+    .brand-mini{font-size:clamp(.95rem,1.6vw,1.2rem)}
+    .brand-mini i{font-style:normal;color:var(--green-2)}
+    .top-cta{font-size:.78rem;letter-spacing:-.02em;border-bottom:1px solid currentColor;padding:2px 0 4px}
+
+    #film{position:relative;min-height:100svh}
+    #stage{position:relative;height:100svh;min-height:560px;overflow:hidden;background:var(--paper);isolation:isolate}
+    #lightGrid{position:absolute;inset:0;z-index:-2;opacity:.68;background-image:linear-gradient(rgba(16,20,16,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(16,20,16,.045) 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.72),rgba(0,0,0,.25) 68%,transparent)}
+    #stage::after{content:"";position:absolute;inset:0;z-index:8;pointer-events:none;background:radial-gradient(ellipse at center,transparent 38%,rgba(244,246,239,.1) 62%,rgba(244,246,239,.68) 100%);mix-blend-mode:normal;opacity:.75}
+
+    #caption{position:absolute;z-index:30;top:clamp(92px,14vh,150px);left:clamp(22px,6.5vw,96px);max-width:min(660px,72vw);font-size:clamp(2rem,4.8vw,5rem);font-weight:900;line-height:.94;letter-spacing:-.065em;text-wrap:balance;pointer-events:none;will-change:transform,opacity,filter;color;filter:blur(0)}
+    #caption.is-small{font-size:clamp(1.8rem,3.4vw,3.6rem);max-width:min(560px,62vw)}
+    #caption.is-dark{color:#fff}
+    #caption .accent{color:var(--green-2)}
+    #caption .word-wrap{display:inline-block;overflow:hidden;vertical-align:bottom;padding:.04em .02em .08em;margin:-.04em -.02em -.08em}#caption .word{display:inline-block;will-change:transform,opacity,filter}#caption .space{display:inline-block;width:.22em}
+
+    #camera{position:absolute;z-index:5;left:50%;top:56%;width:clamp(900px,88vw,1320px);aspect-ratio:16/9;transform:translate(-50%,-50%);transform-origin:50% 50%;will-change:transform}
+    #world{position:absolute;inset:0;overflow:visible}
+
+    /* O mundo inicial parece uma operação, não um fluxograma. */
+    #office{position:absolute;inset:4% 3% 3%;border-radius:42px;background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(235,240,231,.92));box-shadow:0 35px 90px rgba(32,48,31,.13),inset 0 0 0 1px rgba(45,62,45,.09);overflow:hidden;transform-origin:center}
+    #office::before{content:"";position:absolute;inset:0;background:linear-gradient(30deg,transparent 48%,rgba(104,125,102,.055) 49%,rgba(104,125,102,.055) 51%,transparent 52%),linear-gradient(-30deg,transparent 48%,rgba(104,125,102,.04) 49%,rgba(104,125,102,.04) 51%,transparent 52%);background-size:70px 70px;opacity:.55}
+    .office-title{position:absolute;left:6%;top:7%;font-size:clamp(12px,1.1vw,16px);font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#748075}
+    .office-status{position:absolute;right:6%;top:6.5%;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:#5e6b60}.office-status::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--green-2);box-shadow:0 0 0 5px rgba(128,201,0,.12)}
+
+    .zone{position:absolute;display:flex;align-items:center;gap:14px;padding:18px 20px;border-radius:18px;background:transparent;isolation:isolate}.zone::before{content:"";position:absolute;z-index:-1;left:5px;right:5px;bottom:9px;height:35px;border-radius:8px;background:#d8ded4;box-shadow:0 11px 20px rgba(37,53,37,.09),inset 0 1px 0 rgba(255,255,255,.7)}
+    .zone .monitor{position:relative;width:52px;height:38px;border-radius:6px;background:#1c251e;box-shadow:inset 0 0 0 3px #2a352b}
+    .zone .monitor::after{content:"";position:absolute;left:50%;top:100%;width:22px;height:8px;border-bottom:4px solid #2b372c;transform:translateX(-50%)}
+    .zone .screen-glow{position:absolute;inset:5px;border-radius:3px;background:linear-gradient(135deg,#dfffb4,#9eed26);opacity:.9}
+    .zone b{display:block;font-size:13px;letter-spacing:.04em}.zone small{display:block;margin-top:2px;font-size:10px;color:#748075}
+    .zone.cash{left:10%;top:30%}.zone.team{left:13%;bottom:18%}.zone.stock{right:12%;top:24%}.zone.admin{right:10%;bottom:18%}
+    #computer{transform-origin:center}
+    #computerAlert{position:absolute;right:-9px;top:-9px;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:var(--danger);color:#fff;font-size:13px;font-weight:900;box-shadow:0 0 0 0 rgba(216,95,74,.35);opacity:0;transform:scale(.4)}
+    #computerRestored{position:absolute;right:-9px;top:-9px;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:var(--green-2);color:#0a1108;font-size:13px;font-weight:900;opacity:0;transform:scale(.4)}
+
+    .internet-hub{position:absolute;left:44%;top:6%;width:148px;height:58px;border-radius:29px;background:#182019;color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;font-size:12px;font-weight:900;letter-spacing:.08em;box-shadow:0 14px 28px rgba(25,35,25,.18);transform:translateX(-50%)}
+    .internet-hub::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 16px var(--green)}
+    .router-hub{position:absolute;left:49%;top:43%;width:86px;height:86px;border-radius:26px;background:#111912;color:#fff;display:grid;place-items:center;box-shadow:0 20px 44px rgba(21,31,22,.18);transform:translate(-50%,-50%);z-index:3}
+    .router-hub::before{content:"";position:absolute;inset:12px;border:1px solid rgba(185,255,40,.22);border-radius:18px}
+    .router-hub b{font-size:11px;letter-spacing:.13em;z-index:1}.router-hub i{position:absolute;bottom:17px;display:flex;gap:5px}.router-hub i::before,.router-hub i::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 10px rgba(185,255,40,.8)}
+
+    #network{position:absolute;inset:0;overflow:visible;pointer-events:none;z-index:2}
+    .wire-base{fill:none;stroke:#b8c3b5;stroke-width:2.6;stroke-linecap:round;opacity:.72}
+    .wire-live{fill:none;stroke:var(--green-2);stroke-width:4;stroke-linecap:round;filter:drop-shadow(0 0 5px rgba(128,201,0,.35));stroke-dasharray:1;stroke-dashoffset:1}
+    #faultSegment{fill:none;stroke:var(--danger);stroke-width:5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 7px rgba(216,95,74,.42));opacity:0}
+    #diagnosticPath{fill:none;stroke:transparent;stroke-width:1}
+    #networkPacket,#diagnosticSignal{opacity:0;transform-box:fill-box;transform-origin:center}
+    #networkPacket{fill:var(--green);filter:drop-shadow(0 0 7px rgba(128,201,0,.9))}
+    #diagnosticSignal{fill:#fff;stroke:var(--green);stroke-width:6;filter:drop-shadow(0 0 12px rgba(185,255,40,.95))}
+
+    #processCloud{position:absolute;inset:-8% -7%;z-index:6;opacity:0;pointer-events:none}
+    .process-fragment{position:absolute;display:grid;place-items:center;will-change:transform,opacity}
+    .sheet-fragment{left:6%;top:20%;width:126px;height:158px;border-radius:12px;background:#fff;box-shadow:0 20px 38px rgba(34,45,34,.16);transform:rotate(-9deg)}
+    .sheet-fragment::before{content:"";width:74%;height:66%;background:repeating-linear-gradient(to bottom,#dce4d9 0 2px,transparent 2px 14px),repeating-linear-gradient(to right,transparent 0 22px,#e6ece3 22px 24px);border-top:17px solid #acd66c}
+    .sheet-fragment::after{content:"PLANILHA";position:absolute;bottom:12px;font-size:10px;font-weight:900;letter-spacing:.12em;color:#6d786e}
+    .chat-fragment{right:5%;top:16%;width:126px;height:102px;border-radius:28px 28px 8px 28px;background:#1a251c;color:#fff;box-shadow:0 20px 38px rgba(34,45,34,.16);transform:rotate(7deg)}
+    .chat-fragment::before{content:"•••";font-size:28px;letter-spacing:5px;color:var(--green)}
+    .chat-fragment::after{content:"MENSAGENS";position:absolute;bottom:11px;font-size:9px;font-weight:900;letter-spacing:.11em;color:#afbaaf}
+    .paper-fragment{left:10%;bottom:8%;width:116px;height:145px;background:#fefdf8;box-shadow:0 20px 38px rgba(34,45,34,.14);transform:rotate(8deg);border-radius:4px}
+    .paper-fragment::before{content:"";width:70%;height:55%;background:repeating-linear-gradient(to bottom,#aeb9ae 0 2px,transparent 2px 17px);opacity:.65}
+    .paper-fragment::after{content:"PAPEL";position:absolute;bottom:13px;font-size:10px;font-weight:900;letter-spacing:.12em;color:#6d786e}
+    .bill-fragment{right:8%;bottom:9%;width:136px;height:104px;background:#fff;border-radius:10px;box-shadow:0 20px 38px rgba(34,45,34,.15);transform:rotate(-6deg)}
+    .bill-fragment::before{content:"R$";font-size:34px;font-weight:900;color:#1b251d}
+    .bill-fragment::after{content:"COBRANÇAS";position:absolute;bottom:12px;font-size:9px;font-weight:900;letter-spacing:.11em;color:#6d786e}
+
+    #app{position:absolute;z-index:7;left:50%;top:52%;width:min(720px,62%);aspect-ratio:16/9;transform:translate(-50%,-50%) scale(.75);opacity:0;will-change:transform,opacity}
+    .ui-shell{position:absolute;inset:0;border-radius:24px;background:#f7f9f5;box-shadow:0 35px 80px rgba(25,34,26,.26),inset 0 0 0 1px rgba(43,57,43,.1);overflow:hidden}
+    .ui-topbar{height:12%;display:flex;align-items:center;padding:0 4%;gap:7px;background:#fff;border-bottom:1px solid #e0e6dd}.ui-topbar i{width:7px;height:7px;border-radius:50%;background:#b7c2b6}.ui-topbar i:first-child{background:var(--green-2)}
+    .ui-body{height:88%;display:grid;grid-template-columns:22% 1fr}.ui-sidebar{background:#101711;padding:13% 13%;transform-origin:top}.ui-sidebar span{display:block;height:8px;border-radius:999px;background:#3c493e;margin:0 0 14%}.ui-sidebar span:first-child{width:72%;background:var(--green-2)}
+    .ui-main{padding:5%}.ui-title{width:38%;height:12px;border-radius:999px;background:#273129;margin-bottom:5%}.ui-modules{display:grid;grid-template-columns:repeat(3,1fr);gap:3%}.ui-module{height:75px;border-radius:13px;background:#fff;box-shadow:0 7px 17px rgba(35,46,36,.08);opacity:0}.ui-module::before{content:"";display:block;width:27px;height:8px;margin:16px;border-radius:999px;background:#aab5aa}.ui-module:nth-child(2)::before{background:var(--green-2)}
+    .ui-chart{height:42%;margin-top:4%;border-radius:15px;background:linear-gradient(to top,rgba(128,201,0,.15),transparent),repeating-linear-gradient(to top,#e4e9e1 0 1px,transparent 1px 28%);position:relative;overflow:hidden}.ui-chart::after{content:"";position:absolute;left:7%;right:7%;bottom:21%;height:38%;clip-path:polygon(0 74%,18% 49%,35% 64%,52% 28%,72% 45%,100% 3%,100% 100%,0 100%);background:linear-gradient(180deg,rgba(128,201,0,.45),rgba(128,201,0,.08))}
+    .ui-metric{position:absolute;bottom:10%;width:7px;border-radius:5px 5px 0 0;background:var(--green-2);transform-origin:bottom}.ui-metric.m1{left:17%;height:24%}.ui-metric.m2{left:28%;height:38%}.ui-metric.m3{left:39%;height:31%}.ui-metric.m4{left:51%;height:54%}.ui-metric.m5{left:63%;height:44%}.ui-metric.m6{left:76%;height:68%}
+
+    #controlePlus{position:absolute;z-index:9;left:50%;top:50%;width:100%;height:100%;transform:translate(-50%,-50%);opacity:0;pointer-events:none}
+    .product-word{position:absolute;left:50%;top:-4%;transform:translateX(-50%);font-size:clamp(44px,5.7vw,94px);line-height:.9;font-weight:950;letter-spacing:-.075em;color:#fff;white-space:nowrap;clip-path:inset(100% 0 0)}.product-word i{font-style:normal;color:var(--green)}
+    #realProductScreen{position:absolute;left:50%;top:55%;transform:translate(-50%,-50%) scale(.76);width:72%;height:62%;border-radius:26px;overflow:hidden;background:#101511;box-shadow:0 40px 110px rgba(0,0,0,.48),0 0 0 1px rgba(255,255,255,.08);opacity:0}
+    .product-browser{height:34px;background:#141b16;display:flex;align-items:center;gap:7px;padding:0 14px}.product-browser i{width:7px;height:7px;border-radius:50%;background:#526057}.product-browser i:first-child{background:var(--green)}
+    .product-image{position:absolute;left:0;right:0;top:34px;bottom:0;background:#eef0ec}.product-image img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+    .product-glow{position:absolute;inset:-20%;background:radial-gradient(circle at center,rgba(185,255,40,.16),transparent 42%);pointer-events:none}
+
+    #capabilities{position:absolute;z-index:15;inset:0;opacity:0;pointer-events:none}.cap{position:absolute;padding:9px 13px;font-size:12px;font-weight:900;letter-spacing:.15em;color:#fff;text-transform:uppercase}.cap::before{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 13px rgba(185,255,40,.9);transform:translate(-50%,-50%)}.cap span{display:block;transform:translateY(24px)}.cap-network{left:18%;top:49%}.cap-support{right:17%;top:45%}.cap-software{left:49%;bottom:7%;transform:translateX(-50%)}
+
+    #brandFinal{position:absolute;z-index:35;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;opacity:0;pointer-events:none;padding:24px}
+    .brand-final-logo{font-size:clamp(4rem,11vw,10rem);font-weight:950;line-height:.78;letter-spacing:-.085em;filter:blur(14px);transform:scale(.86)}.brand-final-logo i{font-style:normal;color:var(--green)}
+    #brandTagline{margin-top:28px;font-size:clamp(1.1rem,2vw,1.55rem);font-weight:650;letter-spacing:-.03em;opacity:0;transform:translateY(14px)}
+    #brandCta{margin-top:28px;display:inline-flex;align-items:center;gap:10px;border-radius:999px;background:var(--green);color:#0b100a;text-decoration:none;font-size:15px;font-weight:900;padding:16px 22px;opacity:0;transform:translateY(14px);pointer-events:auto;box-shadow:0 12px 38px rgba(185,255,40,.18)}
+
+    #scrollHint{position:absolute;z-index:40;left:50%;bottom:calc(var(--safe-bottom) + 6px);transform:translateX(-50%);font-size:10px;font-weight:850;letter-spacing:.16em;text-transform:uppercase;color:#69746b;display:flex;align-items:center;gap:10px;white-space:nowrap;pointer-events:none}.mouse{width:18px;height:28px;border:1px solid currentColor;border-radius:999px;position:relative}.mouse::after{content:"";position:absolute;left:50%;top:5px;width:3px;height:6px;border-radius:99px;background:var(--green-2);transform:translateX(-50%);animation:wheel 1.4s ease-in-out infinite}@keyframes wheel{0%{transform:translate(-50%,0);opacity:0}30%{opacity:1}75%{transform:translate(-50%,9px);opacity:1}100%{transform:translate(-50%,12px);opacity:0}}
+
+    .no-gsap #caption{opacity:1}.no-gsap #office{opacity:1}.no-gsap #brandFinal{display:none}
+
+    @media (max-width:900px){
+      .topbar{height:62px;padding-left:18px;padding-right:18px}.top-cta{font-size:.7rem}
+      #stage{min-height:520px}
+      #caption{top:calc(var(--safe-top) + 58px);left:20px;right:20px;max-width:none;font-size:clamp(2.2rem,10.2vw,3.4rem);line-height:.94}
+      #caption.is-small{font-size:clamp(1.8rem,8.2vw,2.75rem);max-width:none}
+      #camera{top:64%;width:760px;aspect-ratio:16/10}
+      #office{inset:4% 3%;border-radius:32px}
+      .office-title{left:7%;top:7%}.office-status{right:7%;top:6.5%}
+      .zone{transform:scale(.92)}.zone.cash{left:8%;top:31%}.zone.team{left:11%;bottom:17%}.zone.stock{right:9%;top:25%}.zone.admin{right:8%;bottom:17%}
+      .internet-hub{left:44%;top:6%}.router-hub{left:49%;top:44%}
+      #app{width:66%;top:53%}
+      #realProductScreen{width:58%;height:57%;top:56%;border-radius:18px}
+      .product-word{top:2%;font-size:58px}
+      .cap-network{left:22%;top:52%}.cap-support{right:20%;top:47%}.cap-software{bottom:14%}
+      .brand-final-logo{font-size:clamp(3.6rem,18vw,5.4rem)}
+      #brandTagline{font-size:1rem;max-width:300px}
+      #scrollHint{font-size:9px}
+    }
+    @media (max-width:520px){
+      #camera{top:64%;width:690px}
+      #caption{font-size:clamp(2rem,9.8vw,2.9rem)}
+      #caption.is-small{font-size:clamp(1.72rem,8.2vw,2.4rem)}
+      .zone{transform:scale(.84)}
+      #realProductScreen{width:54%;height:53%}
+      .product-word{font-size:52px}
+    }
+    @media (max-height:700px) and (max-width:900px){
+      #caption{top:64px;font-size:clamp(1.7rem,8.4vw,2.45rem)}
+      #caption.is-small{font-size:clamp(1.55rem,7.4vw,2.1rem)}
+      #camera{top:66%;width:650px}
+      #scrollHint{display:none}
+    }
+    @media (prefers-reduced-motion:reduce){
+      #scrollHint{display:none}.mouse::after{animation:none}
+    }
+  </style>
+</head>
+<body class="no-gsap">
+  <header class="topbar" id="topbar">
+    <a href="#film" class="brand-mini">RICHARD<i>.</i>TI</a>
+    <a href="#" class="top-cta" data-wa data-cta="top">Falar com Richard ↗</a>
+  </header>
+
+  <main>
+    <section id="film" aria-label="Richard.TI — uma história sobre rede, suporte e software">
+      <div id="stage">
+        <div id="lightGrid" aria-hidden="true"></div>
+        <div id="caption" aria-live="polite">Tecnologia para sua empresa funcionar.</div>
+
+        <div id="camera" aria-hidden="true">
+          <div id="world">
+            <div id="office">
+              <div class="office-title">Operação da empresa</div>
+              <div class="office-status">online</div>
+              <div class="internet-hub">INTERNET</div>
+              <div class="router-hub"><b>REDE</b><i></i></div>
+
+              <div class="zone cash"><div class="monitor"><span class="screen-glow"></span></div><div><b>CAIXA</b><small>conectado</small></div></div>
+              <div class="zone team"><div class="monitor"><span class="screen-glow"></span></div><div><b>EQUIPE</b><small>conectado</small></div></div>
+              <div class="zone stock"><div class="monitor"><span class="screen-glow"></span></div><div><b>ESTOQUE</b><small>conectado</small></div></div>
+              <div class="zone admin" id="computer"><div class="monitor"><span class="screen-glow"></span></div><div><b>ADMIN</b><small id="computerState">conectado</small></div><span id="computerAlert">!</span><span id="computerRestored">✓</span></div>
+
+              <svg id="network" viewBox="0 0 1280 720" preserveAspectRatio="none">
+                <!-- Internet -> roteador -> computador focal. O mesmo path guia o pacote e o diagnóstico. -->
+                <path class="wire-base" d="M563 55 C565 145 607 202 627 311 C688 365 841 430 1050 559"/>
+                <path id="networkPath" class="wire-live" pathLength="1" d="M563 55 C565 145 607 202 627 311 C688 365 841 430 1050 559"/>
+                <path class="wire-base" d="M627 311 C495 334 332 340 225 265"/>
+                <path id="networkBranchA" class="wire-live" pathLength="1" d="M627 311 C495 334 332 340 225 265"/>
+                <path class="wire-base" d="M627 311 C476 380 335 484 246 559"/>
+                <path id="networkBranchB" class="wire-live" pathLength="1" d="M627 311 C476 380 335 484 246 559"/>
+                <path class="wire-base" d="M627 311 C756 301 903 269 1030 230"/>
+                <path id="networkBranchC" class="wire-live" pathLength="1" d="M627 311 C756 301 903 269 1030 230"/>
+                <path id="faultSegment" pathLength="1" d="M844 431 C905 466 976 515 1050 559"/>
+                <path id="diagnosticPath" d="M627 311 C688 365 841 430 1050 559"/>
+                <circle id="networkPacket" cx="0" cy="0" r="8"/>
+                <circle id="diagnosticSignal" cx="0" cy="0" r="9"/>
+              </svg>
+            </div>
+
+            <div id="processCloud">
+              <div class="process-fragment sheet-fragment"></div>
+              <div class="process-fragment chat-fragment"></div>
+              <div class="process-fragment paper-fragment"></div>
+              <div class="process-fragment bill-fragment"></div>
+            </div>
+
+            <div id="app">
+              <div class="ui-shell">
+                <div class="ui-topbar"><i></i><i></i><i></i></div>
+                <div class="ui-body">
+                  <div class="ui-sidebar"><span></span><span></span><span></span><span></span><span></span></div>
+                  <div class="ui-main"><div class="ui-title"></div><div class="ui-modules"><div class="ui-module"></div><div class="ui-module"></div><div class="ui-module"></div></div><div class="ui-chart"><i class="ui-metric m1"></i><i class="ui-metric m2"></i><i class="ui-metric m3"></i><i class="ui-metric m4"></i><i class="ui-metric m5"></i><i class="ui-metric m6"></i></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div id="controlePlus">
+              <div class="product-word">CONTROLE<i>+</i></div>
+              <div id="realProductScreen">
+                <div class="product-browser"><i></i><i></i><i></i></div>
+                <div class="product-image"><img src="assets/projeto/dashboard.png" alt="Tela do Controle+" /></div>
+                <div class="product-glow"></div>
+              </div>
+            </div>
+
+            <div id="capabilities">
+              <div class="cap cap-network"><span>Rede</span></div>
+              <div class="cap cap-support"><span>Suporte</span></div>
+              <div class="cap cap-software"><span>Software</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="brandFinal">
+          <div class="brand-final-logo" id="brandFinalLogo">RICHARD<i>.</i>TI</div>
+          <div id="brandTagline">Tecnologia para sua empresa funcionar.</div>
+          <a id="brandCta" href="#" data-wa data-cta="final">Falar com Richard →</a>
+        </div>
+
+        <div id="scrollHint"><span class="mouse"></span>role para assistir</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script>
+  (()=>{
+    const TRACKING={ga4Id:'',metaPixelId:''};
+    const WA='5562999407334';
+    const params=new URLSearchParams(location.search);
+    const campaign=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid'].reduce((out,key)=>{const value=params.get(key);if(value)out[key]=value;return out;},{});
+
+    function initTracking(){
+      if(TRACKING.ga4Id){
+        const s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(TRACKING.ga4Id);document.head.appendChild(s);
+        window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config',TRACKING.ga4Id);
+      }
+      if(TRACKING.metaPixelId){
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init',TRACKING.metaPixelId);fbq('track','PageView');
+      }
+    }
+    initTracking();
+
+    document.querySelectorAll('[data-wa]').forEach(link=>link.addEventListener('click',event=>{
+      event.preventDefault();
+      const where=link.dataset.cta||'site';
+      let msg='Olá, Richard. Vim pelo site e quero conversar sobre uma necessidade de TI da minha empresa.';
+      if(campaign.utm_campaign)msg+=' Campanha: '+campaign.utm_campaign+'.';
+      if(window.gtag)gtag('event','generate_lead',{lead_source:'whatsapp',cta:where,...campaign});
+      if(window.fbq)fbq('track','Lead',{content_name:where});
+      location.href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+    }));
+
+    if(!window.gsap||!window.ScrollTrigger){return;}
+    document.body.classList.remove('no-gsap');
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ignoreMobileResize:true});
+
+    const $=s=>document.querySelector(s);
+    const $$=s=>gsap.utils.toArray(s);
+    const stage=$('#stage'),film=$('#film'),camera=$('#camera'),caption=$('#caption');
+    const topbar=$('#topbar'),computerState=$('#computerState');
+    const networkPath=$('#networkPath'),packet=$('#networkPacket'),diagnosticPath=$('#diagnosticPath'),diagnostic=$('#diagnosticSignal');
+    const fragments=$$('.process-fragment');
+    const caps=$$('.cap');
+    const seen=new Set();
+
+    const captions=[
+      {at:0,text:'Tecnologia para sua empresa funcionar.',small:false,dark:false},
+      {at:8,text:'Tudo conectado.',small:true,dark:false},
+      {at:18,text:'Até algo parar.',small:true,dark:false},
+      {at:28,text:'Suporte que resolve.',small:true,dark:false},
+      {at:40,text:'Mas nem todo gargalo é técnico.',small:true,dark:false},
+      {at:52,text:'Às vezes, o processo precisa mudar.',small:true,dark:false},
+      {at:64,text:'Foi assim que nasceu o Controle+.',small:true,dark:false},
+      {at:76,text:'Uma solução real que virou produto.',small:true,dark:true},
+      {at:88,text:'',small:true,dark:true},
+      {at:96,text:'',small:true,dark:true}
+    ];
+    let captionIndex=0;
+
+    function captionMarkup(text){
+      return text.split(/\s+/).map(word=>`<span class="word-wrap"><span class="word">${word}</span></span>`).join('<span class="space"> </span>');
+    }
+    function setCaption(index,immediate=false){
+      if(index===captionIndex&&!immediate)return;
+      captionIndex=index;
+      const item=captions[index];
+      gsap.killTweensOf(caption);
+      gsap.killTweensOf(caption.querySelectorAll('.word'));
+      const apply=()=>{
+        caption.innerHTML=item.text?captionMarkup(item.text):'';
+        caption.classList.toggle('is-small',item.small);
+        caption.classList.toggle('is-dark',item.dark);
+        if(!item.text){gsap.set(caption,{autoAlpha:0});return;}
+        const words=caption.querySelectorAll('.word');
+        gsap.set(caption,{autoAlpha:1,y:0,filter:'blur(0px)'});
+        if(immediate){gsap.set(words,{yPercent:0,autoAlpha:1,filter:'blur(0px)'});return;}
+        gsap.fromTo(words,{yPercent:112,autoAlpha:0,filter:'blur(5px)'},{yPercent:0,autoAlpha:1,filter:'blur(0px)',duration:.38,stagger:.035,ease:'power3.out'});
+      };
+      if(immediate){apply();return;}
+      gsap.to(caption,{autoAlpha:0,y:-8,filter:'blur(7px)',duration:.15,ease:'power2.in',onComplete:apply});
+    }
+    setCaption(0,true);
+
+    function captionForProgress(p){
+      const t=p*100;
+      let idx=0;
+      for(let i=0;i<captions.length;i++){if(t>=captions[i].at)idx=i;}
+      setCaption(idx);
+    }
+
+    function followPath(pathEl,target,tl,from,to,at,duration){
+      if(!pathEl||!target)return;
+      const length=pathEl.getTotalLength();
+      const progress={value:from};
+      const setX=gsap.quickSetter(target,'x','px');
+      const setY=gsap.quickSetter(target,'y','px');
+      tl.to(progress,{value:to,duration,ease:'none',onUpdate:()=>{const point=pathEl.getPointAtLength(length*progress.value);setX(point.x);setY(point.y);}},at);
+    }
+
+    // Estado inicial auditável.
+    gsap.set(['#networkPath','#networkBranchA','#networkBranchB','#networkBranchC'],{strokeDashoffset:1});
+    gsap.set('#faultSegment',{strokeDashoffset:1,autoAlpha:0});
+    gsap.set([packet,diagnostic],{autoAlpha:0});
+    gsap.set('#processCloud',{autoAlpha:0});
+    gsap.set(fragments,{autoAlpha:0});
+    gsap.set('#app',{autoAlpha:0,scale:.76});
+    gsap.set('.ui-sidebar',{scaleY:.1,transformOrigin:'top'});
+    gsap.set('.ui-module',{autoAlpha:0,y:18});
+    gsap.set('.ui-metric',{scaleY:0,transformOrigin:'bottom'});
+    gsap.set('#controlePlus',{autoAlpha:0});
+    gsap.set('.product-word',{clipPath:'inset(100% 0 0 0)'});
+    gsap.set('#realProductScreen',{autoAlpha:0,scale:.76});
+    gsap.set('#capabilities',{autoAlpha:0});
+    gsap.set('#brandFinal',{autoAlpha:0});
+    gsap.set('#brandFinalLogo',{scale:.86,filter:'blur(14px)'});
+
+    const mm=gsap.matchMedia();
+    mm.add({desktop:'(min-width:901px)',mobile:'(max-width:900px)'},ctx=>{
+      const mobile=ctx.conditions.mobile;
+      const tl=gsap.timeline({defaults:{ease:'none'}});
+      tl.addLabel('intro',0).addLabel('network',8).addLabel('failure',18).addLabel('support',28).addLabel('processReveal',40).addLabel('convergence',52).addLabel('uiBuild',64).addLabel('product',76).addLabel('pullback',88).addLabel('finale',96);
+
+      // 0–8 | empresa funcionando. Movimento mínimo; já existe vida antes do scroll.
+      tl.fromTo('#office',{scale:.965,autoAlpha:.82},{scale:1,autoAlpha:1,duration:8,ease:'power1.out'},0)
+        .to('.screen-glow',{filter:'brightness(1.08)',duration:4,yoyo:true,repeat:1,ease:'sine.inOut'},0);
+
+      // 8–18 | a câmera entra na rede e o verde percorre o mesmo mundo.
+      tl.to(camera,{scale:mobile?1.12:1.20,xPercent:mobile?-1:-4,yPercent:mobile?7:2,duration:10,ease:'power2.inOut'},8)
+        .to(['#networkPath','#networkBranchA','#networkBranchB','#networkBranchC'],{strokeDashoffset:0,duration:8,ease:'power1.inOut'},8.5)
+        .to(packet,{autoAlpha:1,duration:.7},8.4);
+      followPath(networkPath,packet,tl,0,.90,8.5,8.8);
+
+      // 18–28 | a mesma linha falha; a câmera acompanha até o computador.
+      tl.to(camera,{scale:mobile?1.34:1.52,xPercent:mobile?-16:-17,yPercent:mobile?-9:-11,duration:10,ease:'power2.inOut'},18)
+        .to('#faultSegment',{autoAlpha:1,strokeDashoffset:.12,duration:2.8,ease:'power2.out'},18.6)
+        .to('#networkPath',{stroke:'#aab4aa',duration:1.2},19.3)
+        .to(packet,{autoAlpha:0,duration:.7},20.2)
+        .to('#computerAlert',{autoAlpha:1,scale:1,duration:1.4,ease:'back.out(1.8)'},21)
+        .to('#computer',{scale:1.055,duration:2,ease:'power2.out'},21);
+
+      // 28–40 | diagnóstico percorre a mesma conexão e restaura a estação.
+      tl.to(diagnostic,{autoAlpha:1,duration:.8},28.3);
+      followPath(diagnosticPath,diagnostic,tl,0,1,28.4,7.5);
+      tl.to('#computerAlert',{autoAlpha:0,scale:.45,duration:1.3,ease:'power2.in'},35.2)
+        .to('#computerRestored',{autoAlpha:1,scale:1,duration:1.2,ease:'back.out(1.8)'},35.4)
+        .to('#faultSegment',{strokeDashoffset:1,autoAlpha:0,duration:1.8},35.2)
+        .to('#networkPath',{stroke:'var(--green-2)',duration:1.8},35.2)
+        .to('#computer',{scale:1,duration:1.6},35.4)
+        .to(diagnostic,{autoAlpha:0,duration:1},38.2);
+
+      // 40–52 | a câmera sai do close e descobre processos dispersos no mesmo palco.
+      tl.to(camera,{scale:mobile?.82:.78,xPercent:0,yPercent:mobile?2:0,duration:12,ease:'power3.inOut'},40)
+        .to('#processCloud',{autoAlpha:1,duration:2},40.6)
+        .to('#office',{autoAlpha:.46,filter:'saturate(.78)',duration:6,ease:'power1.inOut'},41)
+        .fromTo(fragments,{autoAlpha:0,scale:.7,y:18},{autoAlpha:1,scale:1,y:0,stagger:.55,duration:2.8,ease:'back.out(1.35)'},41.3);
+
+      // 52–64 | os fragmentos se movem para o mesmo centro e são absorvidos pela interface.
+      const appRect=$('#app').getBoundingClientRect();
+      const appCenter={x:appRect.left+appRect.width/2,y:appRect.top+appRect.height/2};
+      fragments.forEach((el,i)=>{
+        const r=el.getBoundingClientRect();
+        const target={x:appCenter.x-(r.left+r.width/2),y:appCenter.y-(r.top+r.height/2)};
+        tl.to(el,{x:target.x,y:target.y,rotation:0,scale:.22,autoAlpha:.04,duration:8,ease:'power3.inOut'},52+i*.22);
+      });
+      tl.to('#app',{autoAlpha:1,scale:.90,duration:6,ease:'power3.out'},54.5)
+        .to(fragments,{autoAlpha:0,duration:1.8},61)
+        .to('#office',{autoAlpha:.18,duration:5},58);
+
+      // 64–76 | a interface nasce da convergência e ganha partes.
+      tl.to(camera,{scale:mobile?1.05:1.14,xPercent:0,yPercent:mobile?5:-1,duration:12,ease:'power2.inOut'},64)
+        .to('#app',{scale:1,duration:5,ease:'power2.out'},64)
+        .to('.ui-sidebar',{scaleY:1,duration:2.6,ease:'power2.out'},65)
+        .to('.ui-module',{autoAlpha:1,y:0,stagger:.55,duration:1.8,ease:'power2.out'},66.1)
+        .to('.ui-metric',{scaleY:1,stagger:.38,duration:1.6,ease:'power2.out'},68.5);
+
+      // 72–82 | paper -> grafite -> preto, sem corte.
+      tl.to(stage,{backgroundColor:'#101712',color:'#fff',duration:5,ease:'power1.inOut'},72)
+        .to(stage,{backgroundColor:'#070b08',duration:5,ease:'power1.inOut'},77)
+        .to('#lightGrid',{autoAlpha:.08,duration:8},72)
+        .to('#office',{autoAlpha:.06,duration:7},72)
+        .to('#app',{scale:mobile?1.10:1.16,duration:8,ease:'power2.inOut'},72);
+
+      // 76–88 | a construção vira Controle+; screenshot real toma o enquadramento.
+      tl.to('#controlePlus',{autoAlpha:1,duration:2.2},76)
+        .to('.product-word',{clipPath:'inset(0% 0 0 0)',duration:3.2,ease:'power3.out'},76.5)
+        .to('#realProductScreen',{autoAlpha:1,scale:1,width:mobile?'calc(100vw - 28px)':'86vw',height:mobile?'55vh':'76vh',duration:9,ease:'power3.inOut'},78)
+        .to('#app',{autoAlpha:0,scale:1.08,duration:4},79.5)
+        .to(camera,{scale:mobile?1.02:1.10,xPercent:0,yPercent:mobile?8:1,duration:10,ease:'power2.inOut'},78);
+
+      // 88–96 | a câmera afasta; produto vira uma peça de algo maior.
+      tl.to(camera,{scale:mobile?.76:.70,xPercent:0,yPercent:mobile?0:0,duration:8,ease:'power2.inOut'},88)
+        .to('#realProductScreen',{scale:.72,autoAlpha:.38,duration:6,ease:'power2.inOut'},88.5)
+        .to('.product-word',{autoAlpha:.45,scale:.82,duration:5},88.5)
+        .to('#capabilities',{autoAlpha:1,duration:2},89)
+        .fromTo(caps,{scale:.6,autoAlpha:0},{scale:1,autoAlpha:1,stagger:.7,duration:2.4,ease:'back.out(1.5)'},89.2);
+
+      // 96–100 | Rede + Suporte + Software convergem e deixam RICHARD.TI no centro.
+      tl.to(caps,{left:'50%',right:'auto',top:'50%',bottom:'auto',xPercent:-50,yPercent:-50,scale:.45,autoAlpha:0,stagger:.18,duration:2.2,ease:'power3.in'},96)
+        .to(['#controlePlus','#camera'],{autoAlpha:0,duration:2.2,ease:'power2.in'},96.2)
+        .to('#brandFinal',{autoAlpha:1,duration:1.5},96.4)
+        .to('#brandFinalLogo',{scale:1,filter:'blur(0px)',duration:2.6,ease:'power3.out'},96.5)
+        .to('#brandTagline',{autoAlpha:1,y:0,duration:1.9,ease:'power2.out'},97.3)
+        .to('#brandCta',{autoAlpha:1,y:0,duration:1.5,ease:'power2.out'},98.4);
+
+      const trigger=ScrollTrigger.create({
+        animation:tl,trigger:film,start:'top top',
+        end:()=>'+='+(window.innerHeight*(mobile?2.40:2.85)),
+        pin:stage,scrub:.15,anticipatePin:1,invalidateOnRefresh:true,
+        onUpdate:self=>{
+          captionForProgress(self.progress);
+          const t=self.progress*100;
+          const dark=t>=72;topbar.classList.toggle('is-dark',dark);
+          computerState.textContent=t<21?'conectado':(t<35.5?'sem conexão':'restabelecido');
+          if(self.progress>.025)gsap.to('#scrollHint',{autoAlpha:0,duration:.18,overwrite:true});
+          const markers=[8,18,28,40,52,64,76,88,96];
+          markers.forEach(mark=>{if(self.progress*100>=mark&&!seen.has(mark)){seen.add(mark);if(window.gtag)gtag('event','story_moment',{moment:mark});}});
+        },
+        onLeaveBack:()=>{setCaption(0,true);topbar.classList.remove('is-dark');}
+      });
+
+      return()=>{trigger.kill();tl.kill();};
+    });
+
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      // Mantém conteúdo acessível sem forçar um filme complexo.
+      ScrollTrigger.getAll().forEach(t=>t.kill());
+      gsap.set('#stage',{backgroundColor:'#070b08'});gsap.set('#camera',{autoAlpha:0});gsap.set('#caption',{autoAlpha:0});gsap.set('#brandFinal',{autoAlpha:1});gsap.set('#brandFinalLogo',{scale:1,filter:'blur(0px)'});gsap.set(['#brandTagline','#brandCta'],{autoAlpha:1,y:0});topbar.classList.add('is-dark');
+    }
+  })();
+  </script>
+</body>
+</html>
