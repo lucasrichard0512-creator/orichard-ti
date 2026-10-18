@@ -63,3 +63,99 @@
 }
 @media(max-width:380px){.chapter h2{font-size:36px}.diagnostics .hud-freeze,.diagnostics .hud-disk,.diagnostics .hud-network,.diagnostics .hud-paper{bottom:72px}}
 @media(prefers-reduced-motion:reduce){.photo-paper{display:none}.scene-art{will-change:auto}}
+
+/* V16: cinematic camera with scene-tethered diagnostic cards and real photographic layers */
+:root{--brand:#b9ff28;--danger:#ff655c;--night:#060b0d}
+.film{height:980svh}
+.stage{min-height:0;background:radial-gradient(ellipse at 75% 47%,#132129 0%,#091115 43%,#040809 100%)}
+.stage::after{content:'';pointer-events:none;position:absolute;z-index:3;inset:0;background:radial-gradient(ellipse 85% 75% at 59% 64%,transparent 35%,#03080977 100%)}
+.scene-art{height:126%;width:auto;aspect-ratio:941/1672;top:-15%;right:2%;left:auto;margin:0;transform-origin:0 0;will-change:transform;filter:saturate(1.015)}
+.master-image,.clean-image{width:100%;height:100%;object-fit:fill;filter:none;user-select:none}
+.clean-image{opacity:0;z-index:1;position:absolute;inset:0}
+.scene-art:after{z-index:8;background:linear-gradient(to bottom,transparent 72%,#02090925)}
+.cinema-shade{z-index:4;background:linear-gradient(90deg,#060b0ef2 0%,#050a0de8 23%,#080f14aa 43%,transparent 79%),linear-gradient(to bottom,#02060880 0%,transparent 29%,transparent 65%,#02060575 100%);transition:none}
+.intro{z-index:11;top:clamp(138px,19svh,255px);max-width:min(760px,60vw)}
+.intro h1{font-size:clamp(53px,5.8vw,98px)}
+.intro>p{max-width:440px}
+.intro-cta{font-size:12px}
+/* chapter copy is a storyboard time state: no hard title swaps mid-camera movement */
+.chapters{position:absolute;z-index:18;inset:0;pointer-events:none}
+.chapter-panel{position:absolute;left:clamp(26px,6.1vw,114px);top:clamp(150px,23svh,260px);width:min(490px,36vw);opacity:0;visibility:hidden;transform:translateY(16px);text-shadow:0 2px 18px #000b;will-change:opacity,transform}
+.chapter-panel h2{font-family:'Barlow Condensed',Impact,sans-serif;font-size:clamp(46px,5.5vw,88px);line-height:.98;letter-spacing:-.01em;margin:16px 0 20px;font-weight:800}
+.chapter-panel h2 em{font-style:normal;color:var(--brand)}
+.chapter-panel p{color:#d8dddf;max-width:390px;font-size:clamp(13px,1.18vw,17px);line-height:1.65;margin:0}
+.chapter-label{font-size:10px;letter-spacing:.19em;color:#d7ff96}
+.chapter-cta{pointer-events:auto;display:inline-flex;align-items:center;gap:20px;color:#07110b;background:var(--brand);border-radius:4px;padding:14px 18px;font-size:12px;font-weight:900;margin-top:22px;text-shadow:none;box-shadow:0 5px 25px #a6fc2822}
+.chapter-cta:hover{background:#d6ff7a}
+/* distinct diagnostic card right beside the scanned device, tied to actual image coordinates */
+.diagnostics{z-index:24;opacity:1;transform:none;position:absolute;inset:0;pointer-events:none}
+.diagnostics .hud,.diagnostics .hud-freeze,.diagnostics .hud-disk,.diagnostics .hud-network,.diagnostics .hud-paper{position:absolute;inset:auto;top:0;left:0;right:auto;bottom:auto;width:250px;max-width:290px;min-height:0;display:block;padding:13px 16px 14px 18px;visibility:hidden;opacity:0;transform:translateY(12px);border-radius:4px;border:1px solid #9fb7bf7c;border-left:2px solid var(--danger);background:linear-gradient(155deg,#080e12f7,#10171de9);box-shadow:0 16px 42px #000a;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.diagnostics .hud:before,.diagnostics .hud:after{border-color:var(--brand)}
+.diagnostics .hud-no{font-family:Manrope,Arial,sans-serif;font-weight:900;color:#bac2cc;font-size:9px;letter-spacing:.15em;display:block;margin-bottom:7px}
+.diagnostics .hud b{font-size:12px;color:#fff;display:block;line-height:1.32;letter-spacing:.035em}
+.diagnostics .hud small{font-size:11px;color:#b7c1c9;display:block;line-height:1.38;margin-top:6px}
+.diagnostic-leader{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:23;overflow:visible;opacity:0}
+.diagnostic-leader path{stroke:var(--danger);stroke-width:1.4;fill:none;stroke-dasharray:3 4;filter:drop-shadow(0 0 4px #ff5b57aa)}
+.diagnostic-leader circle{fill:var(--danger);stroke:#fff;stroke-width:1.2;filter:drop-shadow(0 0 7px #ff5b57)}
+/* shot monitor face: scalable HTML UI over exactly the source photograph screen plane */
+.screen-effect{z-index:3;left:33.3%;top:41.45%;width:28.0%;height:11.2%;transform:rotate(-2.0deg);clip-path:polygon(1.2% 3.5%,98.4% 0,100% 92%,2.4% 99%);opacity:1;filter:none;background:#e8f4fd;font-size:7px;overflow:hidden}
+.screen-pdv,.screen-loading,.screen-storage,.screen-dark,.screen-control{position:absolute;inset:0;opacity:0}
+.screen-pdv{opacity:1;background:#eaf2fb;color:#12345a;font-family:Arial,sans-serif;display:flex;flex-direction:column;font-size:7px}
+.pdv-bar{display:flex;align-items:center;justify-content:space-between;height:21%;background:#0e2849;color:white;padding:0 6%;font-size:7px;font-weight:700;letter-spacing:.03em}
+.pdv-status{color:#86eb6a;font-size:6px}
+.pdv-row{flex:1;display:flex;min-height:0}
+.pdv-rail{width:25%;background:#17385e;color:#cdddf5;padding:6% 3%;font-size:6px;line-height:2.2}
+.pdv-items{flex:1;padding:5% 4%;display:flex;flex-direction:column;gap:5%}
+.pdv-items b{font-size:7px}.pdv-items i{display:block;height:10%;background:linear-gradient(90deg,#bad5eb 0 17%,#e4eff9 17% 74%,#c3daeb 74%);border:1px solid #c9deeb}
+.pdv-footer{font-size:5px;height:16%;display:flex;justify-content:space-between;align-items:center;padding:0 5%;background:#d9e6f5}.pdv-footer b{background:#10a15c;color:white;padding:2.5% 5%;border-radius:2px}
+.screen-loading{background:#090f17eb;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6%;text-align:center;font-family:Manrope,sans-serif}
+.screen-loading strong{font-size:7px;letter-spacing:.055em}.screen-loading small{font-size:5.5px;color:#ccd7df;letter-spacing:0}.spinner{width:27px;height:27px;border:3px solid #283b48;border-top-color:#b9ff28;border-right-color:#a1ea30;box-shadow:0 0 15px #b9ff2825}
+.screen-storage{background:#e9f0f8;color:#112235;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4%;padding:3%;text-align:center}
+.screen-storage .disk-symbol{display:grid;place-items:center;width:19px;height:19px;flex:0 0 auto;color:white;background:var(--danger);border-radius:50%;font-size:12px;font-weight:900}
+.screen-storage strong{font-size:8px;color:#c42432;line-height:1.2}
+.screen-storage small{color:#283a4f;font-size:5.4px;line-height:1.3}
+.screen-storage .disk-bar{display:block;width:70%;height:5px;background:#cbd5e1;border-radius:6px;overflow:hidden}.screen-storage .disk-bar i{display:block;width:95%;height:100%;background:linear-gradient(90deg,#f28351,var(--danger))}
+.screen-dark{background:#010204}
+.screen-control{background:#f4fcf7}.screen-control img{width:100%;height:100%;object-fit:contain}
+.screen-border{pointer-events:none;position:absolute;z-index:6;left:33.4%;top:41.35%;width:27.9%;height:11.3%;border:1px solid #b9ff2800;transform:rotate(-2deg);clip-path:polygon(1.2% 3.5%,98.4% 0,100% 92%,2.4% 99%);opacity:0;box-shadow:0 0 13px #bbff444d}
+.network-overlay{z-index:5;position:absolute;left:57%;top:43%;width:39%;height:16%;opacity:0;pointer-events:none;filter:drop-shadow(0 5px 9px #0009)}
+.network-overlay svg{width:100%;height:83%;overflow:visible;stroke:#f45a50;stroke-width:2.5;fill:#101b23ef}.network-overlay svg path.net-wire{fill:none;stroke-dasharray:6 5;animation:net-dash 1.2s linear infinite}.network-overlay .fault{stroke:#ff4a4a;stroke-width:2.5;fill:#571216}.network-overlay .fault-cross{fill:none;stroke:#fff;stroke-width:3}.network-overlay span{background:#0e131bf0;border-left:2px solid #ff4b4b;padding:4px 9px;color:white;font-size:8px;font-weight:900;white-space:nowrap;letter-spacing:.07em}
+@keyframes net-dash{to{stroke-dashoffset:-30}}
+.transfer-glow{position:absolute;z-index:6;left:48%;top:46%;width:9%;height:5%;border-radius:50%;background:#b9ff28;mix-blend-mode:screen;opacity:0;filter:blur(12px);pointer-events:none}
+.flying-papers{position:absolute;inset:0;pointer-events:none;z-index:5;perspective:1100px}
+.photo-paper{display:block;position:absolute;object-fit:fill;opacity:0;will-change:transform,opacity;filter:drop-shadow(0 2px 2px rgba(0,0,0,.7));transform-origin:center center;backface-visibility:visible;transform-style:preserve-3d}
+.scene-count{z-index:31}.stage-progress{z-index:31}.scroll-hint{z-index:31}.scene-nav{z-index:31}
+/* easing space around the wide frame is deliberate. On mobile the visual has its own cinema window. */
+@media(max-width:700px){
+ .site-header{min-height:70px;padding:17px 18px 10px}
+ .film{height:930svh}
+ .stage{height:100svh;min-height:0}
+ .scene-art{height:94%;width:auto;top:7%;right:auto;left:50%;margin-left:calc(-47svh * 941 / 1672);transform-origin:0 0}
+ .cinema-shade{background:linear-gradient(to bottom,#04080fee 0%,#060c16d8 21%,#05090c33 38%,transparent 52%,#04060924 78%,#010407ae 100%)}
+ .intro{top:clamp(119px,14.5svh,160px);left:23px;right:24px;max-width:none}
+ .intro h1{font-size:clamp(37px,9.8vw,52px);line-height:.96}
+ .intro>p{max-width:300px;font-size:12px}
+ .chapters{z-index:19}
+ .chapter-panel{top:clamp(117px,15svh,160px);left:23px;right:30px;width:auto;max-width:345px}
+ .chapter-panel h2{font-size:clamp(38px,9.4vw,57px);margin:12px 0 10px;line-height:.99}
+ .chapter-panel p{max-width:310px;font-size:11.5px;line-height:1.55}
+ .chapter-panel .chapter-label{font-size:8.5px;letter-spacing:.13em}
+ .chapter-cta{margin-top:15px;padding:11px 14px;font-size:11px}
+ .diagnostics .hud,.diagnostics .hud-freeze,.diagnostics .hud-disk,.diagnostics .hud-network,.diagnostics .hud-paper{top:0;left:0;right:auto;bottom:auto;width:225px;max-width:260px;min-height:0;padding:10px 13px 11px 14px}
+ .diagnostics .hud-no{font-size:8px;margin-bottom:5px}
+ .diagnostics .hud b{font-size:10px;line-height:1.24}
+ .diagnostics .hud small{font-size:9px;margin-top:4px}
+ .diagnostic-leader path{stroke-width:1.2}
+ .screen-effect{font-size:6px}
+ .pdv-bar{font-size:6px}.pdv-rail{font-size:5px}.pdv-items b{font-size:5.5px}.screen-loading strong{font-size:6.5px}.screen-storage strong{font-size:7px}
+ .spinner{width:17px;height:17px;border-width:2px}
+ .network-overlay{left:55%;width:43%}.network-overlay span{font-size:6px}
+ .scroll-hint{bottom:24px}.scene-count{bottom:24px}
+}
+@media(max-width:375px){.chapter-panel h2{font-size:35px}.intro h1{font-size:36px}.diagnostics .hud{max-width:225px}}
+@media(prefers-reduced-motion:reduce){.film{height:930svh}.photo-paper{display:none}.scene-art{will-change:auto}}
+/* V16 corrections after mobile visual QA */
+.network-overlay{left:65%;top:46%;width:23%;height:11%}
+.network-overlay span{display:none}
+.network-overlay svg{height:100%}
+@media(max-width:700px){.network-overlay{left:62%;top:47%;width:23%;height:11%}}

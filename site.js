@@ -1,167 +1,160 @@
 (()=>{
- 'use strict';
- const el=s=>document.querySelector(s),all=s=>[...document.querySelectorAll(s)];
- const film=el('#experiencia'),stage=el('#stage'),art=el('#scene-art');
- const intro=el('#intro'),diag=el('#diagnostics'),chapter=el('#chapter');
- const label=el('#chapter-label'),title=el('#chapter-title'),detail=el('#chapter-text'),tag=el('#chapter-tag');
- const number=el('#scene-number'),bar=el('#progress-fill'),nav=el('#scene-nav');
- const screen=el('#screen-effect'),loading=el('#screen-loading'),storage=el('#screen-storage'),black=el('#screen-dark'),control=el('#screen-control');
- const network=el('#network-beam'),hint=el('#scroll-hint'),clean=el('#desk-clean');
- const holder=el('#flying-papers'),hud=all('.diagnostics .hud');
- const prefersReduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const scenes=[
-  {name:'O cotidiano',eyebrow:'01 / A ROTINA DO COMÉRCIO',title:'Sua operação depende da tecnologia.',desc:'Todos os dias, computadores, rede e informações precisam funcionar juntos.',tag:'UM NEGÓCIO, MUITAS DEPENDÊNCIAS'},
-  {name:'Computador lento',eyebrow:'02 / COMPUTADOR LENTO',title:'Seu sistema travou. Seu cliente espera.',desc:'Máquinas lentas e sistemas sem resposta atrapalham vendas e atendimento.',tag:'DIAGNÓSTICO: SISTEMA SEM RESPOSTA'},
-  {name:'Rede interna',eyebrow:'03 / REDE INTERNA',title:'Seu comércio precisa estar conectado.',desc:'Falhas entre computadores, impressoras e equipamentos prejudicam a operação, mesmo com internet funcionando.',tag:'DIAGNÓSTICO: COMUNICAÇÃO LOCAL'},
-  {name:'Arquivos em risco',eyebrow:'04 / PROTEÇÃO DE DADOS',title:'O que acontece se seus arquivos sumirem?',desc:'Armazenamento cheio e ausência de backup colocam informações importantes em risco.',tag:'ALERTA: ARMAZENAMENTO ESGOTADO'},
-  {name:'Controles manuais',eyebrow:'05 / ROTINA MANUAL',title:'Fiados, cobranças e papéis por toda parte.',desc:'Anotações espalhadas consomem tempo e dificultam acompanhar o negócio.',tag:'DIAGNÓSTICO: INFORMAÇÕES DISPERSAS'},
-  {name:'A transformação começa',eyebrow:'06 / UMA NOVA FORMA DE TRABALHAR',title:'E se fosse possível simplificar?',desc:'Os registros manuais começam a abrir espaço para uma gestão mais simples.',tag:'TRANSFORMAÇÃO EM ANDAMENTO'},
-  {name:'Papéis se transformam',eyebrow:'07 / TRANSFORMAÇÃO DIGITAL',title:'Da papelada para a tecnologia.',desc:'A gestão manual abre espaço para um sistema pensado para o comércio.',tag:'PROCESSANDO TRANSFORMAÇÃO'},
-  {name:'Controle+ aparece',eyebrow:'08 / CONHEÇA O CONTROLE+',title:'O controle do negócio em um só lugar.',desc:'Conheça o Controle+: PDV, fiado, estoque e gestão comercial.',tag:'CONTROLE+ / SISTEMA REAL'},
-  {name:'Veja o Controle+',eyebrow:'09 / RICHARD TI + CONTROLE+',title:'Tecnologia para o seu comércio evoluir.',desc:'Suporte técnico, redes e software sob medida. Vamos conversar sobre a sua operação.',tag:'PRONTO PARA O PRÓXIMO PASSO'}
- ];
-
- // Coordinates are measured from the exact 941 × 1672 photographic master.
- // Focus point, magnification, and on-screen landing point are separate for desktop and mobile.
- const focuses=[
-  {x:.47,y:.49,sd:1,sm:1,dx:.73,dy:.54,mx:.50,my:.53},
-  {x:.47,y:.47,sd:2.43,sm:2.65,dx:.71,dy:.55,mx:.52,my:.60},
-  {x:.76,y:.51,sd:2.55,sm:2.8,dx:.72,dy:.56,mx:.53,my:.61},
-  {x:.47,y:.47,sd:2.48,sm:2.7,dx:.71,dy:.55,mx:.52,my:.60},
-  {x:.31,y:.59,sd:2.22,sm:2.5,dx:.71,dy:.58,mx:.49,my:.62},
-  {x:.48,y:.55,sd:1.07,sm:1.04,dx:.70,dy:.55,mx:.52,my:.55},
-  {x:.48,y:.54,sd:1.11,sm:1.12,dx:.70,dy:.56,mx:.52,my:.55},
-  {x:.47,y:.47,sd:1.55,sm:1.55,dx:.71,dy:.57,mx:.52,my:.57},
-  {x:.47,y:.47,sd:2.65,sm:2.76,dx:.70,dy:.55,mx:.50,my:.59}
- ];
- const manifest=[{"file":"paper-01.png","x":105,"y":912,"w":163,"h":73,"cx":186.5,"cy":948.5,"order":0},{"file":"paper-02.png","x":126,"y":944,"w":145,"h":63,"cx":198.5,"cy":975.5,"order":1},{"file":"paper-03.png","x":274,"y":928,"w":113,"h":60,"cx":330.5,"cy":958.0,"order":2},{"file":"paper-04.png","x":90,"y":985,"w":197,"h":106,"cx":188.5,"cy":1038.0,"order":3},{"file":"paper-05.png","x":226,"y":981,"w":178,"h":128,"cx":315.0,"cy":1045.0,"order":4},{"file":"paper-06.png","x":477,"y":954,"w":175,"h":75,"cx":564.5,"cy":991.5,"order":5},{"file":"paper-07.png","x":736,"y":882,"w":166,"h":71,"cx":819.0,"cy":917.5,"order":6},{"file":"paper-08.png","x":761,"y":918,"w":145,"h":58,"cx":833.5,"cy":947.0,"order":7},{"file":"paper-09.png","x":859,"y":739,"w":82,"h":49,"cx":900.0,"cy":763.5,"order":8},{"file":"paper-10.png","x":863,"y":772,"w":78,"h":48,"cx":902.0,"cy":796.0,"order":9},{"file":"paper-11.png","x":866,"y":805,"w":75,"h":49,"cx":903.5,"cy":829.5,"order":10},{"file":"paper-12.png","x":2,"y":910,"w":97,"h":65,"cx":50.5,"cy":942.5,"order":11}];
- const pieces=[];
- // The paper textures are pixels from the original photograph, not synthetic CSS rectangles.
- manifest.forEach((m,i)=>{
-   const node=document.createElement('img');node.className='photo-paper';node.src=m.file.startsWith('data:')?m.file:'assets/'+m.file;
-   node.alt='';node.setAttribute('aria-hidden','true');node.draggable=false;
-   node.style.left=(m.x/941*100)+'%';node.style.top=(m.y/1672*100)+'%';
-   node.style.width=(m.w/941*100)+'%';node.style.height=(m.h/1672*100)+'%';
-   node.style.opacity='0';holder.appendChild(node);pieces.push({node,...m,i});
- });
- const navBtns=[];
- scenes.forEach((s,i)=>{
-   const b=document.createElement('button');b.type='button';b.title=`Cena ${i+1}: ${s.name}`;
-   b.setAttribute('aria-label',`Ir para cena ${i+1}: ${s.name}`);
-   b.addEventListener('click',()=>scrollToScene(i,prefersReduced?'instant':'smooth'));
-   nav.appendChild(b);navBtns.push(b);
- });
- const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
- const ease=v=>{v=clamp(v);return v*v*(3-2*v)};
- const lerp=(a,b,p)=>a+(b-a)*p;
- const bell=(t,on,off,fade=.17)=>ease((t-on)/fade)*(1-ease((t-off)/fade));
- function scrollToScene(i,behavior='smooth'){
-   const max=Math.max(0,film.offsetHeight-stage.clientHeight);
-   scrollTo({top:film.offsetTop+max*i/8,behavior});
- }
- el('#intro-scroll').addEventListener('click',e=>{e.preventDefault();scrollToScene(1)});
- let lastScene=-1,displayed=0,started=false,visible=true;
- function cameraKey(i,isMobile){
-   const f=focuses[i],scale=isMobile?f.sm:f.sd;
-   if(i===0)return {scale:1,x:0,y:0};
-   const desiredX=stage.clientWidth*(isMobile?f.mx:f.dx);
-   const desiredY=stage.clientHeight*(isMobile?f.my:f.dy);
-   // Translate, then scale around the image's untransformed upper-left corner.
-   const x=desiredX-art.offsetLeft-f.x*art.clientWidth*scale;
-   const y=desiredY-art.offsetTop-f.y*art.clientHeight*scale;
-   return {scale,x,y};
- }
- function paint(t){
-   t=clamp(t,0,8);
-   const mobile=stage.clientWidth<=700;
-   let i=Math.min(8,Math.floor(t)),j=Math.min(8,i+1),p=ease(t-i);
-   const a=cameraKey(i,mobile),b=cameraKey(j,mobile);
-   const s=lerp(a.scale,b.scale,p),x=lerp(a.x,b.x,p),y=lerp(a.y,b.y,p);
-   art.style.transform=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) scale(${s.toFixed(4)})`;
-
-   // Opening: clean photograph + headline. Never show four error cards up front.
-   const introOpacity=1-ease((t-.1)/.62);
-   intro.style.opacity=introOpacity.toFixed(3);
-   intro.style.transform=`translateY(${-14*(1-introOpacity)}px)`;
-   intro.style.pointerEvents=introOpacity>.45?'auto':'none';
-
-   // A card only appears after the camera lands on its own pain point.
-   // The next card never appears simultaneously with the previous one.
-   const cardWindows=[[.78,1.72],[2.78,3.72],[1.78,2.72],[3.78,4.72]];
-   hud.forEach((card,k)=>{
-     const [on,off]=cardWindows[k],opacity=bell(t,on,off,.17);
-     card.style.opacity=opacity.toFixed(3);
-     card.style.transform=`translate3d(0,${(14*(1-opacity)).toFixed(1)}px,0)`;
-     card.style.visibility=opacity>.006?'visible':'hidden';
-   });
-
-   // Copy enters when the corresponding visual subject is already in focus.
-   const chapterOpacity=ease((t-.80)/.25);
-   chapter.style.opacity=chapterOpacity.toFixed(3);
-   chapter.style.transform=`translateY(${(12*(1-chapterOpacity)).toFixed(1)}px)`;
-
-   const freeze=bell(t,.78,1.78,.20);
-   const disk=bell(t,2.78,3.80,.20);
-   const net=bell(t,1.78,2.76,.20);
-   const blackout=ease((t-5.70)/.24)*(1-ease((t-6.83)/.18));
-   const controlVisible=ease((t-6.83)/.17);
-   screen.style.opacity=Math.min(1,Math.max(freeze,disk,blackout,controlVisible)*1.5).toFixed(3);
-   loading.style.opacity=freeze.toFixed(3);
-   storage.style.opacity=disk.toFixed(3);
-   black.style.opacity=blackout.toFixed(3);
-   control.style.opacity=controlVisible.toFixed(3);
-   network.style.opacity=net.toFixed(3);
-
-   // As each real paper cutout lifts, reveal only its region of the retouched table.
-   // The photo outside paper masks remains unchanged in every scene.
-   const liftState=ease((t-5.40)/1.02)*.83;
-   clean.style.opacity=liftState.toFixed(3);
-   for (const ppr of pieces){
-     const delay=(ppr.i%6)*.065 + Math.floor(ppr.i/6)*.035;
-     const u=clamp((t-(5.34+delay))/.96);
-     if(u<=0||u>=1){ppr.node.style.opacity='0';continue}
-     const q=ease(u);
-     const tx=445+((ppr.i%5)-2)*9,ty=773+((ppr.i%4)-2)*7;
-     const startX=ppr.cx,startY=ppr.cy;
-     const cx=lerp(startX,tx,.49)+(ppr.i%2?52:-38);
-     const cy=Math.min(startY,ty)-145-(ppr.i%3)*32;
-     const X=(1-q)*(1-q)*startX+2*(1-q)*q*cx+q*q*tx;
-     const Y=(1-q)*(1-q)*startY+2*(1-q)*q*cy+q*q*ty;
-     const sx=(X-startX)*(art.clientWidth/941),sy=(Y-startY)*(art.clientHeight/1672);
-     const scale=lerp(1,.11,q);
-     const angle=(ppr.i%2?1:-1)*(16+70*q)*Math.sin(Math.PI*q);
-     const tilt=(ppr.i%2?1:-1)*14*Math.sin(Math.PI*q);
-     ppr.node.style.transform=`translate3d(${sx.toFixed(1)}px,${sy.toFixed(1)}px,0) rotate(${angle.toFixed(1)}deg) rotateY(${tilt.toFixed(1)}deg) scale(${scale.toFixed(3)})`;
-     ppr.node.style.opacity=(ease(u/.10)*(1-ease((u-.77)/.23))).toFixed(3);
-   }
-   stage.classList.toggle('is-resolving',t>=5.05);
-   const n=Math.min(8,Math.floor(t+.12));
-   if(n!==lastScene){
-     lastScene=n;label.textContent=scenes[n].eyebrow;title.textContent=scenes[n].title;
-     detail.textContent=scenes[n].desc;tag.textContent=scenes[n].tag;
-     number.textContent=String(n+1).padStart(2,'0');
-     navBtns.forEach((btn,k)=>{btn.classList.toggle('active',k===n);if(k===n)btn.setAttribute('aria-current','step');else btn.removeAttribute('aria-current')});
-   }
-   hint.style.opacity=(1-ease((t-.08)/.9)).toFixed(3);
-   bar.style.width=(t/8*100).toFixed(3)+'%';
- }
- function tick(){
-   if(!visible){requestAnimationFrame(tick);return}
-   const span=Math.max(1,film.offsetHeight-stage.clientHeight);
-   const target=clamp(-film.getBoundingClientRect().top/span)*8;
-   if(!started){displayed=target;started=true}
-   else displayed=prefersReduced?target:lerp(displayed,target,.20);
-   if(Math.abs(target-displayed)<.0002)displayed=target;
-   paint(displayed);requestAnimationFrame(tick);
- }
- document.addEventListener('visibilitychange',()=>{visible=!document.hidden});
- requestAnimationFrame(tick);
- document.querySelectorAll('[data-wa]').forEach(a=>{
-   const forControl=a.dataset.wa==='controle';
-   const msg=forControl?'Olá! Vi o Controle+ no site da Richard TI e gostaria de saber como ele pode ajudar meu comércio.':'Olá! Vi o site da Richard TI e gostaria de conversar sobre tecnologia para o meu comércio.';
-   a.href='https://wa.me/5562999407334?text='+encodeURIComponent(msg);
-   a.addEventListener('click',()=>{try{if(window.gtag)window.gtag('event','generate_lead',{event_category:'contact',lead_source:a.dataset.wa});if(window.fbq)window.fbq('track','Lead',{content_name:a.dataset.wa})}catch(e){}});
- });
- const params=new URLSearchParams(location.search),initial=Number(params.get('scene'));
- if(Number.isInteger(initial)&&initial>=1&&initial<=9){addEventListener('load',()=>scrollToScene(initial-1,'instant'),{once:true});}
+  'use strict';
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+  const film=$('#experiencia'),stage=$('#stage'),art=$('#scene-art'),intro=$('#intro'),hint=$('#scroll-hint');
+  const hud=$$('.diagnostics .hud'),chapters=$$('.chapter-panel');
+  const leader=$('#diagnostic-leader'),leaderLine=$('#leader-line'),leaderEnd=$('#leader-end');
+  const loading=$('#screen-loading'),storage=$('#screen-storage'),dark=$('#screen-dark'),control=$('#screen-control'),pdv=$('#screen-pdv');
+  const screenBorder=$('#screen-border'),network=$('#network-overlay'),glow=$('#transfer-glow');
+  const number=$('#scene-number'),progress=$('#progress-fill'),nav=$('#scene-nav');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),smooth=v=>{v=clamp(v);return v*v*(3-2*v)};
+  const fade=(t,on,off,span=.23)=>smooth((t-on)/span)*(1-smooth((t-off)/span));
+  const lerp=(a,b,p)=>a+(b-a)*p;
+  const labels=['O cotidiano','Sistema travando','Rede interna','Armazenamento','Controles manuais','Papéis levantando','Papéis no monitor','Controle+','Zoom final'];
+  // Zoom is restricted by the photographic source. High-contrast UI is native DOM and remains crisp.
+  // Visual landmarks measured on the exact same master photo (941 x 1672).
+  const focus=[
+    {x:.47,y:.53,sd:1,sm:1,dx:.73,dy:.57,mx:.50,my:.57},
+    {x:.468,y:.468,sd:2.03,sm:2.37,dx:.71,dy:.57,mx:.50,my:.60},
+    {x:.752,y:.507,sd:2.15,sm:2.46,dx:.70,dy:.58,mx:.51,my:.60},
+    {x:.468,y:.468,sd:2.03,sm:2.37,dx:.71,dy:.57,mx:.50,my:.60},
+    {x:.300,y:.614,sd:1.82,sm:2.22,dx:.73,dy:.63,mx:.50,my:.64},
+    {x:.47,y:.53,sd:1.04,sm:1.04,dx:.73,dy:.57,mx:.50,my:.57},
+    {x:.47,y:.53,sd:1.05,sm:1.09,dx:.73,dy:.57,mx:.50,my:.57},
+    {x:.468,y:.468,sd:1.53,sm:1.52,dx:.70,dy:.57,mx:.50,my:.59},
+    {x:.468,y:.468,sd:2.45,sm:2.75,dx:.70,dy:.57,mx:.50,my:.61}
+  ];
+  const landmarks=[{x:.47,y:.47},{x:.752,y:.507},{x:.47,y:.47},{x:.30,y:.61}];
+  const manifest=[{"file":"folha-real-01.png","x":102,"y":914,"w":173,"h":97,"cx":188.5,"cy":962.5,"i":0,"patch":"vazio-folha-real-01.png","flight_file":"folha-voo-01.png","flight_x":157.5,"flight_y":922.5,"flight_w":62,"flight_h":80},{"file":"folha-real-02.png","x":275,"y":930,"w":107,"h":71,"cx":328.5,"cy":965.5,"i":1,"patch":"vazio-folha-real-02.png","flight_file":"folha-voo-02.png","flight_x":293.0,"flight_y":922.0,"flight_w":71,"flight_h":87},{"file":"folha-real-03.png","x":78,"y":994,"w":234,"h":155,"cx":195.0,"cy":1071.5,"i":2,"patch":"vazio-folha-real-03.png","flight_file":"folha-voo-03.png","flight_x":155.0,"flight_y":1024.5,"flight_w":80,"flight_h":94},{"file":"folha-real-04.png","x":234,"y":965,"w":201,"h":160,"cx":334.5,"cy":1045.0,"i":3,"patch":"vazio-folha-real-04.png","flight_file":"folha-voo-04.png","flight_x":303.5,"flight_y":994.5,"flight_w":62,"flight_h":101},{"file":"folha-real-05.png","x":448,"y":962,"w":206,"h":111,"cx":551.0,"cy":1017.5,"i":4,"patch":"vazio-folha-real-05.png","flight_file":"folha-voo-05.png","flight_x":515.5,"flight_y":977.5,"flight_w":71,"flight_h":80},{"file":"folha-real-06.png","x":776,"y":883,"w":137,"h":73,"cx":844.5,"cy":919.5,"i":5,"patch":"vazio-folha-real-06.png","flight_file":"folha-voo-06.png","flight_x":804.5,"flight_y":876.0,"flight_w":80,"flight_h":87},{"file":"folha-real-07.png","x":856,"y":745,"w":85,"h":58,"cx":898.5,"cy":774.0,"i":6,"patch":"vazio-folha-real-07.png","flight_file":"folha-voo-07.png","flight_x":867.5,"flight_y":727.0,"flight_w":62,"flight_h":94},{"file":"folha-real-08.png","x":849,"y":789,"w":92,"h":77,"cx":895.0,"cy":827.5,"i":7,"patch":"vazio-folha-real-08.png","flight_file":"folha-voo-08.png","flight_x":859.5,"flight_y":777.0,"flight_w":71,"flight_h":101},{"file":"folha-real-09.png","x":0,"y":885,"w":75,"h":91,"cx":37.5,"cy":930.5,"i":8,"patch":"vazio-folha-real-09.png","flight_file":"folha-voo-09.png","flight_x":-2.5,"flight_y":890.5,"flight_w":80,"flight_h":80},{"file":"folha-real-10.png","x":1,"y":938,"w":101,"h":91,"cx":51.5,"cy":983.5,"i":9,"patch":"vazio-folha-real-10.png","flight_file":"folha-voo-10.png","flight_x":20.5,"flight_y":940.0,"flight_w":62,"flight_h":87},{"file":"folha-real-11.png","x":365,"y":964,"w":233,"h":109,"cx":481.5,"cy":1018.5,"i":10,"patch":"vazio-folha-real-11.png","flight_file":"folha-voo-11.png","flight_x":446.0,"flight_y":971.5,"flight_w":71,"flight_h":94},{"file":"folha-real-12.png","x":708,"y":897,"w":191,"h":80,"cx":803.5,"cy":937.0,"i":11,"patch":"vazio-folha-real-12.png","flight_file":"folha-voo-12.png","flight_x":763.5,"flight_y":886.5,"flight_w":80,"flight_h":101}];
+  const flying=$('#flying-papers'),pieces=[];
+  manifest.forEach((p,i)=>{
+    const hole=new Image();hole.src='assets/'+p.patch;hole.alt='';hole.className='paper-void';hole.setAttribute('aria-hidden','true');
+    const sheet=new Image();sheet.src='assets/'+p.flight_file;sheet.alt='';sheet.className='photo-paper';sheet.setAttribute('aria-hidden','true');
+    for(const n of [hole,sheet]){
+      n.draggable=false;n.style.left=(n===sheet?p.flight_x:p.x)/941*100+'%';n.style.top=(n===sheet?p.flight_y:p.y)/1672*100+'%';
+      n.style.width=(n===sheet?p.flight_w:p.w)/941*100+'%';n.style.height=(n===sheet?p.flight_h:p.h)/1672*100+'%';flying.appendChild(n);
+    }
+    hole.style.position='absolute';hole.style.opacity='0';hole.style.zIndex=1;hole.style.pointerEvents='none';
+    sheet.style.opacity='0';sheet.style.zIndex=2;
+    pieces.push({...p,hole,sheet});
+  });
+  let lastNum=-1,played=false,displayed=0,frameToken=0;
+  const navBtns=[];
+  function scrollToScene(i,behavior='smooth'){
+    const range=Math.max(1,film.offsetHeight-stage.clientHeight);
+    window.scrollTo({top:film.offsetTop+range*(i/8),behavior});
+  }
+  labels.forEach((s,i)=>{
+    const b=document.createElement('button');b.type='button';b.title=`${i+1}. ${s}`;
+    b.setAttribute('aria-label',`Ir para etapa ${i+1}: ${s}`);
+    b.addEventListener('click',()=>scrollToScene(i,reduced?'instant':'smooth'));
+    nav.appendChild(b);navBtns.push(b);
+  });
+  $('#intro-scroll').addEventListener('click',e=>{e.preventDefault();scrollToScene(1)});
+  function cameraKey(i,mobile){
+    if(i===0||reduced)return {x:0,y:0,s:1};
+    const f=focus[i],s=mobile?f.sm:f.sd;
+    const desiredX=stage.clientWidth*(mobile?f.mx:f.dx),desiredY=stage.clientHeight*(mobile?f.my:f.dy);
+    return {s,x:desiredX-art.offsetLeft-f.x*art.clientWidth*s,y:desiredY-art.offsetTop-f.y*art.clientHeight*s};
+  }
+  function posOnScreen(pt,x,y,s){return {x:art.offsetLeft+x+pt.x*art.clientWidth*s,y:art.offsetTop+y+pt.y*art.clientHeight*s};}
+  function transformStage(t){
+    t=clamp(t,0,8);const mobile=stage.clientWidth<=700;
+    const i=Math.min(8,Math.floor(t)),j=Math.min(8,i+1),p=smooth(t-i);
+    const a=cameraKey(i,mobile),b=cameraKey(j,mobile);
+    const sc=lerp(a.s,b.s,p),camX=lerp(a.x,b.x,p),camY=lerp(a.y,b.y,p);
+    art.style.transform=`translate3d(${camX.toFixed(2)}px,${camY.toFixed(2)}px,0) scale(${sc.toFixed(4)})`;
+    // The opening is an unobstructed hero. Diagnostics have their own narrative moments.
+    const introOp=1-smooth((t-.06)/.53);
+    intro.style.opacity=introOp.toFixed(3);intro.style.pointerEvents=introOp>.3?'auto':'none';
+    intro.style.transform=`translate3d(0,${(-9*(1-introOp)).toFixed(1)}px,0)`;
+    chapters.forEach((ch,k)=>{
+      const scene=k+1,op=fade(t,scene-.42,scene+.28,.37);
+      ch.style.opacity=op.toFixed(3);ch.style.visibility=op>.007?'visible':'hidden';
+      ch.style.transform=`translateY(${(14*(1-op)).toFixed(1)}px)`;
+    });
+    const introCards=[hud[0],hud[1],hud[2],hud[3]];
+    let active=-1,maxOp=0;
+    introCards.forEach((card,k)=>{
+      const n=k+1,op=fade(t,n-.21,n+.34,.21);
+      card.style.opacity=op.toFixed(3);card.style.visibility=op>.009?'visible':'hidden';
+      if(op>maxOp){maxOp=op;active=k;}
+    });
+    if(active>=0&&maxOp>.009){
+      const card=hud[active],landmark=landmarks[active];
+      const point=posOnScreen(landmark,camX,camY,sc);
+      const sw=stage.clientWidth,sh=stage.clientHeight;
+      const cw=mobile?Math.min(232,sw-44):Math.min(290,sw*.21);
+      const ch=mobile?79:93;
+      // A short callout line links each physical device to the copy panel, not to the page footer.
+      let bx,by;
+      if(mobile){bx=clamp(point.x-75,19,sw-cw-21);by=clamp(point.y+95,sh*.52,sh-ch-84);}
+      else {bx=point.x>sw*.65?point.x-cw-42:point.x+40;bx=clamp(bx,sw*.46,sw-cw-37);by=clamp(point.y-105,sh*.24,sh-ch-85);}
+      card.style.width=cw+'px';card.style.left=Math.round(bx)+'px';card.style.top=Math.round(by)+'px';
+      card.style.transform=`translate3d(0,${(10*(1-maxOp)).toFixed(1)}px,0)`;
+      const qx=clamp(point.x,bx+6,bx+cw-6),qy=by>point.y?by:by+ch;
+      const midY=(point.y+qy)/2;
+      leader.setAttribute('viewBox',`0 0 ${sw} ${sh}`);
+      leaderLine.setAttribute('d',`M ${qx.toFixed(1)} ${qy.toFixed(1)} C ${qx.toFixed(1)} ${midY.toFixed(1)} ${point.x.toFixed(1)} ${midY.toFixed(1)} ${point.x.toFixed(1)} ${point.y.toFixed(1)}`);
+      leaderEnd.setAttribute('cx',point.x.toFixed(1));leaderEnd.setAttribute('cy',point.y.toFixed(1));
+      leader.style.opacity=(maxOp*.93).toFixed(3);
+    }else leader.style.opacity='0';
+    // True overlays on the source monitor: crisp text at high zoom, same physical display.
+    const freeze=fade(t,.70,1.44,.27),disk=fade(t,2.71,3.44,.26);
+    const blackout=smooth((t-5.72)/.32)*(1-smooth((t-6.83)/.18));
+    const controlOp=smooth((t-6.67)/.25);
+    pdv.style.opacity=clamp(1-Math.max(freeze,disk,blackout,controlOp)).toFixed(3);
+    loading.style.opacity=freeze.toFixed(3);storage.style.opacity=disk.toFixed(3);
+    dark.style.opacity=blackout.toFixed(3);control.style.opacity=controlOp.toFixed(3);
+    screenBorder.style.opacity=Math.max(freeze,disk,controlOp*.43).toFixed(3);
+    network.style.opacity=fade(t,1.69,2.52,.23).toFixed(3);
+    // Exactly the same photograph remains behind individual lifted pieces.
+    // Each void/photographic cutout shares its source pixel coordinates.
+    let intensity=0;
+    pieces.forEach((o,k)=>{
+      const start=5.10+(k%4)*.045+Math.floor(k/4)*.035;
+      const u=clamp((t-start)/1.52),q=smooth(u);
+      if(u<=0){o.hole.style.opacity='0';o.sheet.style.opacity='0';return;}
+      o.hole.style.opacity=smooth(u/.28).toFixed(3);
+      const paperOp=(smooth(u/.14))*(1-smooth((u-.75)/.22));
+      o.sheet.style.opacity=paperOp.toFixed(3);
+      // Cubic bezier flight, restrained twists and perspective reduction into one monitor.
+      const originX=o.cx,originY=o.cy,targetX=435+(k%3-1)*10,targetY=791+(k%4-1.5)*6;
+      const bendX=originX+(targetX-originX)*.55+((k%2)?-55:45);
+      const bendY=Math.min(originY,targetY)-112-(k%4)*20;
+      const x=(1-q)**2*originX+2*(1-q)*q*bendX+q*q*targetX;
+      const y=(1-q)**2*originY+2*(1-q)*q*bendY+q*q*targetY;
+      const tx=(x-originX)*art.clientWidth/941,ty=(y-originY)*art.clientHeight/1672;
+      const tiny=lerp(1,.08,q),roll=(k%2?-1:1)*18*Math.sin(Math.PI*q),pitch=(k%2?1:-1)*12*Math.sin(Math.PI*q);
+      o.sheet.style.transform=`translate3d(${tx.toFixed(1)}px,${ty.toFixed(1)}px,0) rotate(${roll.toFixed(1)}deg) rotateY(${pitch.toFixed(1)}deg) scale(${tiny.toFixed(3)})`;
+      intensity=Math.max(intensity,paperOp);
+    });
+    glow.style.opacity=(intensity*.24*(1-smooth((t-6.6)/.35))).toFixed(3);
+    const current=Math.min(8,Math.floor(t+.18));
+    if(current!==lastNum){
+      lastNum=current;number.textContent=String(current+1).padStart(2,'0');
+      navBtns.forEach((btn,k)=>{btn.classList.toggle('active',k===current);if(k===current)btn.setAttribute('aria-current','step');else btn.removeAttribute('aria-current');});
+    }
+    hint.style.opacity=(1-smooth((t-.05)/.8)).toFixed(3);
+    progress.style.width=(t/8*100).toFixed(3)+'%';
+  }
+  function update(){
+    const span=Math.max(1,film.offsetHeight-stage.clientHeight);
+    const target=clamp(-film.getBoundingClientRect().top/span)*8;
+    displayed=!played?target:reduced?target:lerp(displayed,target,.23);played=true;
+    if(Math.abs(target-displayed)<.0003)displayed=target;
+    transformStage(displayed);
+    frameToken=requestAnimationFrame(update);
+  }
+  frameToken=requestAnimationFrame(update);
+  addEventListener('pagehide',()=>cancelAnimationFrame(frameToken));
+  const url=new URL(location.href),at=Number(url.searchParams.get('scene'));
+  if(Number.isInteger(at)&&at>=1&&at<=9){addEventListener('load',()=>scrollToScene(at-1,'instant'),{once:true});}
+  $$('[data-wa]').forEach(a=>{
+    const ctl=a.dataset.wa==='controle'||a.dataset.wa==='final';
+    const msg=ctl?'Olá! Conheci o Controle+ no site da Richard TI e gostaria de saber mais.':'Olá! Vi o site da Richard TI e gostaria de conversar sobre tecnologia para o meu comércio.';
+    a.href='https://wa.me/5562999407334?text='+encodeURIComponent(msg);
+    a.addEventListener('click',()=>{try{if(window.gtag)window.gtag('event','generate_lead',{event_category:'contact',lead_source:a.dataset.wa});if(window.fbq)window.fbq('track','Lead',{content_name:a.dataset.wa});}catch(e){}});
+  });
 })();
