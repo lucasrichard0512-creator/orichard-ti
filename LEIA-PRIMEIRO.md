@@ -1,27 +1,33 @@
-# Richard TI | Teste 02: página inicial corrigida
+# Richard TI — Protótipo 2.5D em camadas
 
-**IDENTIFICAÇÃO:** Ao abrir a nova página você verá o título **Seu comércio não pode parar.** sobre a **mesa de escritório** e, no alto, a identificação **EXPERIÊNCIA DA MESA · TESTE 02**. Se ainda aparecer um diagrama de rede, o deploy antigo não foi substituído.
+Este pacote é **um experimento funcional para validar a mesa modular**, e não uma substituição da versão atualmente publicada no Vercel.
 
-**O que mudou:** Agora `index.html` abre o cenário da mesa e os movimentos da câmera. A V11 antiga foi preservada em `index-v11.html`. O antigo `camera-test.html` redireciona para a nova página inicial.
+## Como testar
 
-## Teste local
+- Use a prévia HTML autossuficiente compartilhada na conversa; ou
+- Abra `index.html` num servidor local, por exemplo `python -m http.server 8000`, e acesse `http://localhost:8000`.
+- Role a página para acompanhar quatro momentos: mesa → travamento → papéis → Controle+.
+- Os botões no rodapé permitem pular entre os momentos. **Ver camadas** destaca os objetos separados.
 
-1. Extraia o ZIP.
-2. Dentro da pasta `orichard-ti-main`, use um servidor local, por exemplo `python -m http.server 8000`, e abra `http://localhost:8000`.
-3. Arraste a rolagem; para pular para um quadro use `?scene=1` até `?scene=9` na URL.
-4. Para testar no celular, publique os arquivos em uma URL de testes (Vercel ou outra hospedagem estática). Teste a URL real.
+## O que está separado de verdade
 
-## Publicação
+- Mesa/superfície-base (`assets/desk-clean.png`), derivada da referência aprovada, sem o cenário externo.
+- Monitor (`assets/monitor.png`), impressora (`assets/printer.png`) e roteador (`assets/router.png`) como imagens transparentes independentes, colocadas nas coordenadas originais.
+- Tela interna do monitor como HTML transformado em perspectiva. Pode exibir estado de PDV e travamento sem ampliar texto da foto.
+- Três recortes reais dos documentos originais com alfa (`assets/paper-*.png`). Esses recortes mudam posição, rotação, profundidade e escala ao serem absorvidos pela tela.
+- Captura real do Controle+ (`assets/controle-original.jpg`) como imagem separada, não recriada por IA.
 
-O vídeo `Teste01.mp4` mostra `richard-ti.vercel.app` ainda servindo a V11. Baixar o ZIP não altera a hospedagem.
-Para a hospedagem mostrar o novo site, substitua os arquivos publicados pelo **conteúdo inteiro da pasta `orichard-ti-main`** e confirme que a raiz da publicação contém este novo `index.html`, `site.css`, `site.js` e a pasta `assets`.
-Se Vercel estiver ligado ao GitHub, atualize o repositório e faça deploy da branch usada em produção. Se não, faça deploy por arrastar a pasta ao Vercel.
+## Limites que ainda não foram resolvidos
 
-## Limitações honestas do protótipo
+- **Apenas três grupos de documentos** estão animados nesta prova de conceito. As pilhas maiores e o caderno continuam na mesa. A narrativa completa exigirá reconstruir os demais objetos, especialmente o espaço encoberto pelas pilhas.
+- O preenchimento dos espaços sob as três folhas é aproximado, baseado em uma só fotografia. Ainda não há uma mesa vazia renderizada com a mesma geometria, condição ideal para remover todas as folhas sem artefatos.
+- A imagem original tem 941 × 1672 px, o que limita texturas do monitor, teclado e objetos em aproximações extremas.
+- Esta versão é **2.5D**, não um modelo 3D editável. Os objetos são recortes de imagem reais e a tela é renderizada no navegador.
 
-- Imagem-mestre é um recorte programático do JPEG com quadriculado desenhado; o novo WebP tem alfa verdadeiro. O recorte ainda tem arestas pequenas que exigem retoque manual para publicação.
-- Cenas do monitor usam os mesmos pixels da mesa, com sobreposição em perspectiva, inclusive a captura real de Controle+.
-- Os papéis ainda não foram removidos fisicamente da textura de mesa-mestre quando saem voando; a animação dos papéis é uma prova de conceito. Uma versão sem os papéis e seus recortes individuais são necessários para finalizar a transformação.
-- O visual deve ser aprovado e testado em diferentes celulares antes de usar tráfego pago.
+## Produção completa
 
-Não alteramos a V11 original, que segue acessível em `index-v11.html`.
+Para finalizar as nove cenas com continuidade perfeita, criar a cena com todos os objetos separados desde a origem (Blender ou render 3D equivalente), incluindo uma mesa sem papéis, e manter as mesmas coordenadas/câmera em todas as saídas. Os sprites deste protótipo servem de referência funcional e técnica, não como prova de fotorrealismo definitivo.
+
+## Compatibilidade
+
+Testes no Chromium com 360 × 740, 390 × 844 e 1440 × 900. Sem erros de JavaScript ou rolagem horizontal nos estados avaliados. A V11, V15, V16 e o trabalho publicado não foram alterados.
