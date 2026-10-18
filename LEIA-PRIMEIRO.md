@@ -1,33 +1,29 @@
-# Richard TI — Protótipo 2.5D em camadas
+# Richard TI — versão V18, experiência 2.5D
 
-Este pacote é **um experimento funcional para validar a mesa modular**, e não uma substituição da versão atualmente publicada no Vercel.
+## Como abrir
 
-## Como testar
+- **Teste imediato:** abra o arquivo `richard-ti-preview-v18.html` disponibilizado separadamente (inclui imagens incorporadas).
+- **Projeto completo:** extraia este ZIP e abra `index.html` no navegador ou sirva a pasta com `python -m http.server 8000`.
+- Para publicar no Vercel, atualize o repositório conectado com **o conteúdo da pasta raiz**, incluindo o diretório `assets/`. Baixar o ZIP não atualiza o endereço público.
 
-- Use a prévia HTML autossuficiente compartilhada na conversa; ou
-- Abra `index.html` num servidor local, por exemplo `python -m http.server 8000`, e acesse `http://localhost:8000`.
-- Role a página para acompanhar quatro momentos: mesa → travamento → papéis → Controle+.
-- Os botões no rodapé permitem pular entre os momentos. **Ver camadas** destaca os objetos separados.
+## O que mudou
 
-## O que está separado de verdade
+1. **Scroll reduzido:** 335svh mobile / 365svh desktop. Há navegação direta entre as nove etapas pelos números e setas.
+2. **Monitor:** começa com a captura de cadastro de produtos de um PDV antigo fornecida pelo usuário. Uma transformação de perspectiva ajusta o conteúdo à área visível do monitor AOC sem colocar textos fora do vidro.
+3. **Roteiro preservado:** mesa completa, computador travando, falha na rede interna, armazenamento cheio, controles manuais, papéis se levantando, papéis sendo absorvidos com tela preta, Controle+ revelado e zoom final.
+4. **Cards contextuais:** apenas o problema atual recebe um diagnóstico e uma copy; a abertura não mostra cartões.
+5. **Papéis:** os grupos de documentos são camadas PNG independentes, sincronizadas com a mesa de base reconstruída sem papéis. No ponto final da absorção todos os sprites têm opacidade zero. Incluímos também um comprovante da impressora.
+6. **Identidade:** preto, branco e verde-limão da Richard TI. Vermelho aparece somente em alertas ou no acabamento físico já presente na mesa.
+7. **Contato:** botão WhatsApp com o número definido no código original Richard TI.
 
-- Mesa/superfície-base (`assets/desk-clean.png`), derivada da referência aprovada, sem o cenário externo.
-- Monitor (`assets/monitor.png`), impressora (`assets/printer.png`) e roteador (`assets/router.png`) como imagens transparentes independentes, colocadas nas coordenadas originais.
-- Tela interna do monitor como HTML transformado em perspectiva. Pode exibir estado de PDV e travamento sem ampliar texto da foto.
-- Três recortes reais dos documentos originais com alfa (`assets/paper-*.png`). Esses recortes mudam posição, rotação, profundidade e escala ao serem absorvidos pela tela.
-- Captura real do Controle+ (`assets/controle-original.jpg`) como imagem separada, não recriada por IA.
+## Observação importante de qualidade
 
-## Limites que ainda não foram resolvidos
+A versão é uma **composição 2.5D** que usa fotografias e reconstrução digital, não um modelo 3D nativo. A mesa depois da absorção não terá papéis animados ou sombras deles, mas o acabamento dos materiais reconstruídos é propositalmente mais simples do que uma cena modelada e renderizada de raiz. A fidelidade de um 3D real e interações físicas complexas exigiriam assets 3D criados individualmente.
 
-- **Apenas três grupos de documentos** estão animados nesta prova de conceito. As pilhas maiores e o caderno continuam na mesa. A narrativa completa exigirá reconstruir os demais objetos, especialmente o espaço encoberto pelas pilhas.
-- O preenchimento dos espaços sob as três folhas é aproximado, baseado em uma só fotografia. Ainda não há uma mesa vazia renderizada com a mesma geometria, condição ideal para remover todas as folhas sem artefatos.
-- A imagem original tem 941 × 1672 px, o que limita texturas do monitor, teclado e objetos em aproximações extremas.
-- Esta versão é **2.5D**, não um modelo 3D editável. Os objetos são recortes de imagem reais e a tela é renderizada no navegador.
+## Testes feitos
 
-## Produção completa
+- Chromium headless nas resoluções **360×740, 390×844 e 1440×900**.
+- Nenhum erro de JavaScript relatado e nenhuma rolagem horizontal nas amostras.
+- Tela preta confirmada antes do Controle+ e 12 sprites de documento com opacidade zero no fim da absorção.
 
-Para finalizar as nove cenas com continuidade perfeita, criar a cena com todos os objetos separados desde a origem (Blender ou render 3D equivalente), incluindo uma mesa sem papéis, e manter as mesmas coordenadas/câmera em todas as saídas. Os sprites deste protótipo servem de referência funcional e técnica, não como prova de fotorrealismo definitivo.
-
-## Compatibilidade
-
-Testes no Chromium com 360 × 740, 390 × 844 e 1440 × 900. Sem erros de JavaScript ou rolagem horizontal nos estados avaliados. A V11, V15, V16 e o trabalho publicado não foram alterados.
+O projeto antigo não foi publicado nem alterado. Um ZIP da V11 original está incluído na pasta `historico` como backup.
