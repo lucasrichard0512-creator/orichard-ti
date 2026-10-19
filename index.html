@@ -1,94 +1,210 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#070b08"><meta name="description" content="Richard TI: suporte técnico, redes e sistemas modernos para o seu comércio."><title>Richard TI | Seu comércio pode evoluir</title>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#060b08">
+<title>Richard TI | Tecnologia que acompanha seu comércio</title>
+<meta name="description" content="A Richard TI ajuda seu comércio a superar computadores lentos, problemas de rede, perda de dados e controles manuais. Conheça o Controle+.">
 <style>
-:root{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--green:#b9ff2c;--ink:#070a07;--white:#f2f7f1;--muted:#c4d0c0;color-scheme:dark}*{box-sizing:border-box}html{scroll-behavior:auto}body{margin:0;background:var(--ink);color:var(--white);overflow-x:hidden}a{color:inherit}button,a{font:inherit}a:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offset:4px}.story{height:100svh;position:relative;touch-action:pan-x}.stage{position:relative;height:100svh;min-height:400px;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse 67% 47% at 51% 58%,#1b2a18 0%,#101a10 59%,#070a07 100%);touch-action:none}.stage:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 56% 68%,transparent 20%,#02050384 85%);z-index:3;pointer-events:none}.brand{position:absolute;top:calc(env(safe-area-inset-top) + 24px);left:clamp(19px,4.5vw,70px);z-index:30;font-size:clamp(20px,1.7vw,26px);font-weight:900;letter-spacing:.055em;line-height:1}.brand b{color:var(--green)}.brand small{display:block;margin-top:9px;font-size:9px;letter-spacing:.22em;color:#a6b5a5;font-weight:650}.progress{position:absolute;z-index:30;right:clamp(20px,4.5vw,70px);top:calc(env(safe-area-inset-top) + 23px);font-variant-numeric:tabular-nums;color:#a3b1a3;letter-spacing:.12em;font-size:12px}.progress b{font-size:24px;color:var(--green);letter-spacing:.02em}
-.viewport{position:absolute;inset:0;z-index:4;pointer-events:none}.rig{position:absolute;width:941px;height:1672px;left:0;top:0;transform-origin:top left;will-change:transform}.rig img{user-select:none;-webkit-user-drag:none;pointer-events:none}.base{width:941px;height:1672px;position:absolute;top:0;left:0;filter:drop-shadow(0 24px 36px #0008)}.object{position:absolute;object-fit:fill}.monitor{position:absolute;left:250px;top:396px;width:389px;height:326px;z-index:7}.screen-layer,.bezel{position:absolute;left:0;top:0;width:389px;height:326px;object-fit:fill}.bezel{z-index:10}.screen-layer{z-index:9;opacity:0}.screen-layer.legacy{opacity:1}.paper{position:absolute;z-index:11;transform-origin:center;will-change:transform,opacity;object-fit:fill;pointer-events:none}.fly{position:absolute;z-index:12;width:54px;height:65px;object-fit:contain;transform-origin:center;opacity:0;will-change:transform,opacity}.printer{left:2px;top:535px;width:223px;height:206px;z-index:5}.router{left:664px;top:537px;width:167px;height:170px;z-index:8}
-.hero{z-index:20;position:absolute;top:clamp(110px,15vh,190px);left:clamp(22px,6vw,98px);max-width:430px;pointer-events:none;transition:opacity .25s}.hero small{color:var(--green);font-size:10px;font-weight:850;letter-spacing:.24em}.hero h1{font-size:clamp(34px,4.9vw,72px);line-height:1.04;letter-spacing:-.055em;font-weight:900;margin:15px 0 0}.hero h1 b{color:var(--green)}
-.diagnostic{position:absolute;z-index:25;width:min(370px,calc(100vw - 44px));border:1px solid #b9ff2c72;border-radius:15px;padding:19px 22px;background:linear-gradient(145deg,#0d160fef,#111e14ef);box-shadow:0 19px 64px #000b;opacity:0;pointer-events:none;backdrop-filter:blur(12px)}.diagnostic .overline{font-size:10px;font-weight:800;letter-spacing:.20em;color:var(--green)}.diagnostic h2{margin:10px 0 8px;font-size:clamp(19px,1.65vw,25px);letter-spacing:-.027em;line-height:1.16}.diagnostic p{margin:0;color:#d9e3d5;font-size:13px;line-height:1.53}.pin{position:absolute;z-index:21;inset:0;opacity:0;pointer-events:none}.pin path{stroke:#b9ff2c88;stroke-dasharray:3 6;fill:none;stroke-width:1.4}.pin circle{fill:var(--green)}
-.caption{position:absolute;left:50%;bottom:clamp(48px,8vh,96px);width:min(450px,calc(100vw - 48px));transform:translateX(-50%);text-align:center;text-shadow:0 3px 20px #000;opacity:0;z-index:20;pointer-events:none}.caption small{color:var(--green);font-size:10px;letter-spacing:.2em;font-weight:850}.caption h2{font-size:clamp(23px,3vw,42px);line-height:1.1;margin:11px 0;letter-spacing:-.045em}.outro{position:absolute;z-index:21;opacity:0;pointer-events:none;left:clamp(22px,6vw,98px);bottom:clamp(60px,15vh,144px);width:min(330px,34vw)}.outro .overline{color:var(--green);font-size:10px;font-weight:850;letter-spacing:.2em}.outro h2{font-size:clamp(31px,3.4vw,49px);line-height:1.05;letter-spacing:-.045em;margin:12px 0}.outro h2 b{color:var(--green)}.outro p{font-size:13px;line-height:1.55;color:var(--muted)}.outro a{display:inline-flex;text-decoration:none;background:var(--green);color:#10180a;font-size:13px;font-weight:850;padding:15px 19px;margin-top:6px;border-radius:10px;pointer-events:auto}
-.exit{padding:100px 22px 120px;text-align:center;background:#080d0a;min-height:55vh;display:grid;place-content:center}.exit h2{font-size:clamp(29px,5vw,59px);letter-spacing:-.047em;max-width:680px;line-height:1.05;margin:0 auto 17px}.exit h2 b{color:var(--green)}.exit p{color:#c4d1c0;font-size:15px;line-height:1.6;max-width:550px;margin:0 auto 22px}.exit a{display:inline-block;border:1px solid #9dd52b;text-decoration:none;border-radius:9px;padding:13px 22px;font-size:14px;font-weight:850;width:max-content;justify-self:center}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(max-width:700px){.hero{top:calc(env(safe-area-inset-top) + 130px);left:21px;max-width:285px}.hero h1{font-size:38px;max-width:280px}.hero small{font-size:9px}.brand{top:calc(env(safe-area-inset-top) + 23px)}.progress{top:calc(env(safe-area-inset-top) + 20px)}.diagnostic{left:20px!important;top:calc(env(safe-area-inset-top) + 115px)!important;padding:15px 16px;width:calc(100% - 40px)}.diagnostic h2{font-size:19px}.diagnostic p{font-size:12px}.outro{top:calc(env(safe-area-inset-top) + 125px);bottom:auto;left:22px;width:calc(100vw - 42px);max-width:360px}.outro h2{font-size:31px}.outro p{font-size:12px}.caption{bottom:clamp(30px,7vh,80px)}}
-@media(max-height:650px){.hero{top:100px}.diagnostic{top:90px!important}.caption{bottom:20px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-</style></head><body><main><section class="story" id="story" aria-label="História interativa Richard TI"><div class="stage" id="stage" tabindex="0" aria-label="História em nove etapas. Role, deslize ou use as setas para avançar."><div class="brand">RICHARD<b>.TI</b><small>TECNOLOGIA PARA O SEU COMÉRCIO</small></div><div class="progress"><b id="counter">01</b> / 09</div>
-<div class="viewport"><div class="rig" id="rig"><img class="base" src="assets/mesa-v20-base.png" alt="" draggable="false"><img class="object printer" src="assets/printer-sem-papel.png" alt=""><img class="object router" src="assets/router.png" alt=""><div class="monitor"><img class="screen-layer legacy" id="legacy" src="assets/screen-legacy.png" alt=""><img class="screen-layer" id="freeze" src="assets/screen-freeze.png" alt=""><img class="screen-layer" id="storage" src="assets/screen-storage.png" alt=""><img class="screen-layer" id="black" src="assets/screen-black.png" alt=""><img class="screen-layer" id="control" src="assets/screen-control.png" alt=""><img class="bezel" src="assets/moldura-v20.png" alt=""></div><div id="papers"></div><div id="flights"></div></div></div>
-<div class="hero" id="hero"><small>TECNOLOGIA SEM COMPLICAÇÃO</small><h1>Seu comércio pode <b>evoluir.</b></h1></div>
-<svg class="pin" id="pin" aria-hidden="true"><path id="pin-path" d=""/><circle id="pin-dot" cx="-30" cy="-30" r="3.5"/></svg>
-<div class="diagnostic" id="diagnostic" aria-live="polite"><div class="overline" id="eyebrow"></div><h2 id="diag-title"></h2><p id="diag-description"></p></div>
-<div class="caption" id="caption"><small id="caption-kicker"></small><h2 id="caption-title"></h2></div>
-<div class="outro" id="outro"><div class="overline">UMA NOVA FASE PARA SEU COMÉRCIO</div><h2>Conheça o <b>Controle+</b></h2><p>Mais organização, controle e tecnologia para a realidade do seu negócio.</p><a href="https://wa.me/5562999407334?text=Ol%C3%A1%2C%20quero%20conhecer%20as%20solu%C3%A7%C3%B5es%20da%20Richard%20TI" target="_blank" rel="noopener noreferrer">Conversar no WhatsApp ↗</a></div>
-<div class="sr-only" aria-live="polite" id="scene-announcement"></div></div></section><section class="exit" id="exit"><h2>Seu comércio não precisa ficar <b>no passado.</b></h2><p>Problemas no computador, na rede, nos arquivos ou na gestão? A Richard TI ajuda seu comércio a trabalhar com mais confiança e organização.</p><a href="https://wa.me/5562999407334?text=Ol%C3%A1%2C%20quero%20modernizar%20meu%20com%C3%A9rcio" target="_blank" rel="noopener noreferrer">Falar com a Richard TI ↗</a></section></main>
+:root{color-scheme:dark;--g:#b9f92f;--bg:#050a07;--white:#f5f7f3;--muted:#b9c4b7;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:auto}body{margin:0;background:var(--bg);color:var(--white);overflow-x:hidden}button,a{font:inherit}a{color:inherit}button:focus-visible,a:focus-visible,.stage:focus-visible{outline:2px solid var(--g);outline-offset:5px}
+.story{height:100svh;height:100dvh;position:relative}.stage{position:relative;height:100%;min-height:440px;overflow:hidden;isolation:isolate;touch-action:none;background:radial-gradient(ellipse 65% 48% at 52% 62%,#172418 0%,#0e1710 52%,#060a08 100%)}.stage::after{content:"";pointer-events:none;position:absolute;inset:0;z-index:2;background:radial-gradient(ellipse 80% 62% at 52% 61%,transparent 30%,#02060488 100%)}
+.brand{position:absolute;top:calc(env(safe-area-inset-top) + 28px);left:clamp(22px,5.2vw,76px);z-index:16;line-height:1;font-size:clamp(21px,2.1vw,31px);font-weight:900;letter-spacing:.055em}.brand em{color:var(--g);font-style:normal}.brand small{display:block;margin-top:10px;font-size:9px;color:#aebdb0;letter-spacing:.22em;font-weight:650}.count{position:absolute;z-index:16;right:clamp(20px,5.2vw,76px);top:calc(env(safe-area-inset-top) + 28px);font-variant-numeric:tabular-nums;color:#a1aea2;font-size:12px;letter-spacing:.12em}.count b{font-size:24px;letter-spacing:.01em;color:var(--g)}
+.world{position:absolute;inset:0;z-index:3;pointer-events:none}.rig{position:absolute;left:0;top:0;width:941px;height:1672px;transform-origin:0 0;will-change:transform;filter:drop-shadow(0 30px 42px #0008)}.rig svg{width:941px;height:1672px;display:block;overflow:visible}
+.hero{position:absolute;left:clamp(22px,5.2vw,76px);top:clamp(112px,15vh,180px);width:min(455px,85vw);z-index:10;pointer-events:none;opacity:1}.hero h1{font-size:clamp(34px,5vw,70px);font-weight:900;letter-spacing:-.057em;line-height:1.05;margin:0}.hero h1 span{color:var(--g)}
+.hud{position:absolute;z-index:12;opacity:0;visibility:hidden;pointer-events:none;width:min(365px,calc(100% - 40px));padding:17px 19px 18px;border:1px solid #b9f92f84;border-radius:15px;background:linear-gradient(140deg,#0d1a13f5,#101a14f3);box-shadow:0 19px 46px #000a;backdrop-filter:blur(8px)}.hud .eyebrow{color:var(--g);font-size:10px;letter-spacing:.20em;font-weight:800}.hud h2{font-size:clamp(19px,1.8vw,25px);font-weight:800;line-height:1.13;letter-spacing:-.025em;margin:8px 0 6px}.hud p{font-size:13px;line-height:1.43;color:#d2ddd0;margin:0}
+.connector{position:absolute;inset:0;z-index:11;pointer-events:none;opacity:0;visibility:hidden;width:100%;height:100%;overflow:visible}.connector path{stroke:var(--g);stroke-width:1.8;fill:none;filter:drop-shadow(0 0 5px #b9f92f99)}.connector .dot{fill:var(--g);stroke:#121e12;stroke-width:2}.connector .root{fill:#0b170e;stroke:var(--g);stroke-width:2}
+.caption{position:absolute;z-index:9;left:50%;bottom:clamp(36px,7.5vh,110px);transform:translateX(-50%);width:min(540px,calc(100% - 36px));text-align:center;pointer-events:none;opacity:0;text-shadow:0 3px 18px #000}.caption small{display:block;color:var(--g);font-weight:800;font-size:10px;letter-spacing:.23em;margin-bottom:10px}.caption h2{margin:0;font-size:clamp(22px,3vw,40px);line-height:1.12;letter-spacing:-.045em}
+.finish{position:absolute;z-index:12;top:clamp(125px,19vh,200px);left:clamp(22px,5.2vw,76px);width:min(380px,82vw);pointer-events:none;opacity:0}.finish small{color:var(--g);font-weight:850;letter-spacing:.17em;font-size:10px}.finish h2{font-size:clamp(28px,3.6vw,48px);letter-spacing:-.048em;line-height:1.08;margin:10px 0}.finish h2 span{color:var(--g)}.finish p{font-size:13px;color:var(--muted);line-height:1.52}.finish a{display:inline-flex;align-items:center;gap:8px;margin-top:12px;text-decoration:none;background:var(--g);color:#15200f;padding:14px 18px;border-radius:10px;font-size:13px;font-weight:800;pointer-events:auto}
+.tail{min-height:55vh;display:grid;align-content:center;justify-items:center;padding:80px 24px 110px;text-align:center;background:radial-gradient(circle at 50% 0%,#132414,#080e09 70%)}.tail h2{font-size:clamp(29px,5vw,56px);letter-spacing:-.045em;line-height:1.12;margin:0 0 16px;max-width:660px}.tail h2 span{color:var(--g)}.tail p{max-width:570px;color:#bfccbe;font-size:15px;line-height:1.6;margin:0 0 24px}.tail a{border:1px solid #b9f92f9f;text-decoration:none;border-radius:9px;padding:14px 23px;font-size:14px;font-weight:750}
+.visually-hidden{position:absolute;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;width:1px;height:1px}
+@media(max-width:700px){.hero{top:calc(env(safe-area-inset-top) + 136px);left:22px}.hero h1{font-size:37px;max-width:310px}.hud{top:calc(env(safe-area-inset-top) + 112px)!important;left:18px!important;width:calc(100% - 36px);padding:14px 16px}.hud h2{font-size:19px}.hud p{font-size:12px;line-height:1.38}.finish{top:calc(env(safe-area-inset-top) + 126px);left:22px}.finish h2{font-size:30px}.finish p{font-size:12px;max-width:310px}.caption{bottom:clamp(24px,5vh,55px)}.caption h2{font-size:25px}}
+@media(max-height:630px){.hud{top:92px!important}.hero{top:115px}.finish{top:105px}}
+@media(prefers-reduced-motion:reduce){.rig,.hud,.caption,.finish,.connector{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body><main>
+<section class="story" id="story"><div class="stage" id="stage" tabindex="0" aria-label="História interativa em nove etapas. Deslize para cima para avançar e para baixo para voltar.">
+ <div class="brand">RICHARD<em>.TI</em><small>TECNOLOGIA PARA O SEU COMÉRCIO</small></div>
+ <div class="count"><b id="count">01</b> / 09</div>
+ <div class="world"><div class="rig" id="rig">
+ <svg id="workstation" viewBox="0 0 941 1672" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="topFill" x1="0" y1="0" x2=".75" y2="1"><stop stop-color="#232626"/><stop offset=".34" stop-color="#151a1b"/><stop offset=".72" stop-color="#242525"/><stop offset="1" stop-color="#101314"/></linearGradient>
+  <linearGradient id="edge" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#4c4c49"/><stop offset=".38" stop-color="#242528"/><stop offset="1" stop-color="#111214"/></linearGradient>
+  <linearGradient id="legs" x1="0" x2="1" y1="0" y2=".2"><stop stop-color="#272423"/><stop offset=".5" stop-color="#141516"/><stop offset="1" stop-color="#0b0d0f"/></linearGradient>
+  <linearGradient id="rim" x1="0" x2="1"><stop stop-color="#d84a48"/><stop offset=".3" stop-color="#c42f2b"/><stop offset=".8" stop-color="#fd5352"/><stop offset="1" stop-color="#9b2325"/></linearGradient>
+  <radialGradient id="halo"><stop stop-color="#b9f92f" stop-opacity=".10"/><stop offset="1" stop-color="#b9f92f" stop-opacity="0"/></radialGradient>
+  <filter id="deskShadow" x="-25%" y="-25%" width="150%" height="180%"><feGaussianBlur stdDeviation="23"/></filter>
+  <filter id="softObject" x="-20%" y="-30%" width="140%" height="170%"><feGaussianBlur stdDeviation="10"/></filter>
+ </defs>
+ <!-- THESE PIXELS NEVER CHANGE WHEN THE DOCUMENTS LEAVE. THE DESK HAS NO PAPER BUILT INTO IT. -->
+ <g id="empty-desk">
+  <ellipse cx="470" cy="1355" rx="428" ry="84" fill="#000" opacity=".56" filter="url(#deskShadow)"/>
+  <path d="M4 748 L140 918 L140 1395 L15 1378 L15 900Z" fill="url(#legs)" stroke="#322c2b" stroke-width="2"/>
+  <path d="M141 921L203 908L205 1293L141 1395Z" fill="#0e1011" stroke="#303035" stroke-width="1.3"/>
+  <path d="M142 941L203 923L203 1292L144 1309Z" fill="#222322" opacity=".37"/>
+  <path d="M850 807L917 786L924 1223L872 1252Z" fill="url(#legs)" stroke="#292b2a" stroke-width="2"/>
+  <path d="M137 914L868 792L870 835L145 975Z" fill="#0d0f10" opacity=".87"/>
+  <path d="M0 704L941 663L941 782L138 935L0 767Z" fill="url(#topFill)" stroke="#3f3b3a" stroke-width="2"/>
+  <path d="M0 704L941 663L941 782L138 935L0 767Z" fill="url(#halo)" opacity=".3"/>
+  <image href="assets/tampo-grain.webp" x="0" y="0" width="941" height="1672" opacity=".36"/>
+  <path d="M0 767L139 939L941 786" stroke="#140e10" stroke-width="16" fill="none" opacity=".85"/>
+  <path d="M1 760L139 927L940 775" stroke="url(#rim)" stroke-width="4" fill="none" stroke-linejoin="round"/>
+  <path d="M139 936L941 783" stroke="#272629" stroke-width="7" fill="none"/>
+  <path d="M142 952L925 810" stroke="#000" stroke-width="4" opacity=".28"/>
+ </g>
+ <!-- Photographic equipment isolated from the original image. No trays or papers baked into the desk. -->
+ <image href="assets/printer-sem-papel.png" x="2" y="535" width="223" height="206"/>
+ <image href="assets/porta-lapis.png" x="198" y="579" width="98" height="165"/>
+ <image href="assets/terminal.png" x="522" y="640" width="94" height="105"/>
+ <image href="assets/router.png" x="664" y="537" width="167" height="170"/>
+ <image href="assets/leitor.png" x="615" y="558" width="93" height="178"/>
+ <image href="assets/teclado.png" x="368" y="698" width="302" height="113"/>
+ <path d="M647 755L748 729L842 764L838 795L720 821L634 783Z" fill="#151719" stroke="#aa2c2e" stroke-width="3.5"/><path d="M653 756L748 735L835 764" fill="none" stroke="#484446" stroke-width="1.6"/><image href="assets/mouse.png" x="686" y="730" width="105" height="70"/>
+ <image href="assets/calculadora.png" x="355" y="785" width="162" height="107"/>
+ 
+ <!-- Screens are separate high-resolution layers; fixed cutout matches monitor glass. -->
+ <g id="display" transform="translate(250 396)">
+  <image class="screen" id="s-legacy" href="assets/screen-legacy.png" x="0" y="0" width="389" height="326" preserveAspectRatio="none"/>
+  <image class="screen" id="s-freeze" href="assets/screen-freeze.png" x="0" y="0" width="389" height="326" preserveAspectRatio="none" opacity="0"/>
+  <image class="screen" id="s-storage" href="assets/screen-storage.png" x="0" y="0" width="389" height="326" preserveAspectRatio="none" opacity="0"/>
+  <image class="screen" id="s-black" href="assets/screen-black.png" x="0" y="0" width="389" height="326" preserveAspectRatio="none" opacity="0"/>
+  <image class="screen" id="s-control" href="assets/screen-control.png" x="0" y="0" width="389" height="326" preserveAspectRatio="none" opacity="0"/>
+  <image href="assets/moldura-v20.png" width="389" height="326" x="0" y="0" preserveAspectRatio="none"/>
+ </g>
+ <g id="papers"></g>
+ <!-- Chair is one physical object, over the desk front. -->
+ <image href="assets/chair.png" x="330" y="772" width="590" height="721"/>
+ </svg></div></div>
+ <div class="hero" id="hero"><h1>Seu comércio pode <span>evoluir.</span></h1></div>
+ <svg class="connector" id="connector" aria-hidden="true"><path id="connector-path"/><circle class="dot" id="connector-dot" r="6"/><circle class="root" id="connector-root" r="4"/></svg>
+ <div class="hud" id="hud" aria-live="polite"><div class="eyebrow" id="eyebrow"></div><h2 id="diagnosis"></h2><p id="detail"></p></div>
+ <div class="caption" id="caption"><small id="caption-kicker"></small><h2 id="caption-title"></h2></div>
+ <div class="finish" id="finish"><small>A EVOLUÇÃO DO SEU COMÉRCIO</small><h2>Conheça o <span>Controle+</span></h2><p>Mais organização e controle para a rotina do seu negócio.</p><a href="https://wa.me/5562999407334?text=Ol%C3%A1%2C%20quero%20conhecer%20as%20solu%C3%A7%C3%B5es%20da%20Richard%20TI" target="_blank" rel="noopener noreferrer">Conversar no WhatsApp ↗</a></div>
+ <span class="visually-hidden" id="announcement" aria-live="polite"></span>
+ </div></section>
+ <section class="tail" id="tail"><h2>Sua tecnologia pode trabalhar <span>a favor do seu negócio.</span></h2><p>Computadores, redes, proteção de arquivos e sistemas de gestão: a Richard TI ajuda você a modernizar a operação.</p><a href="https://wa.me/5562999407334?text=Ol%C3%A1%2C%20quero%20modernizar%20meu%20com%C3%A9rcio" target="_blank" rel="noopener noreferrer">Falar com a Richard TI ↗</a></section>
+</main>
 <script>
 (()=>{'use strict';
-const el=id=>document.getElementById(id),stage=el('stage'),rig=el('rig'),paperBox=el('papers'),flightBox=el('flights'),hero=el('hero'),diagnostic=el('diagnostic'),pin=el('pin'),caption=el('caption'),outro=el('outro'),sceneLabel=el('scene-announcement');
-const paperSpecs=[['recibos-esquerda.png',0,672,117,133],['pilha-recibos.png',86,681,185,132],['cupom-solto.png',265,711,124,88],['caderno-fiado.png',60,746,355,203],['formulario.png',437,749,227,112],['documentos-direita.png',723,681,208,122],['ticket-menor.png',265,665,75,68],['recibo-impressora.png',50,536,118,105]];
-const paperNodes=paperSpecs.map((d,i)=>{let image=document.createElement('img');image.src=(window.__assetData&&window.__assetData[d[0]])||('assets/'+d[0]);image.alt='';image.className='paper';image.style.cssText=`left:${d[1]}px;top:${d[2]}px;width:${d[3]}px;height:${d[4]}px`;paperBox.appendChild(image);return image});
-const flightNodes=Array.from({length:22},(_,i)=>{let image=document.createElement('img');image.src=window.__assetData?(window.__assetData[i%3===0?'cupom-solto.png':i%3===1?'ticket-menor.png':'formulario.png']):(i%3===0?'assets/cupom-solto.png':i%3===1?'assets/ticket-menor.png':'assets/formulario.png');image.alt='';image.className='fly';flightBox.appendChild(image);return image});
-const focus={1:{x:443,y:549,w:380},2:{x:748,y:619,w:218},3:{x:443,y:549,w:380},4:{x:305,y:809,w:420},8:{x:443,y:549,w:380}};
-const messages={1:['01 / SUPORTE TÉCNICO','Computador lento ou travando?','Um sistema que não responde atrasa o atendimento e prejudica as vendas.'],2:['02 / REDE INTERNA','Equipamentos sem comunicação?','Computador, impressora e servidor precisam funcionar na mesma rede.'],3:['03 / PROTEÇÃO DE DADOS','Armazenamento cheio?','Arquivos importantes precisam de espaço, backup e proteção.'],4:['04 / GESTÃO COMERCIAL','Fiados e controles no papel?','Anotações manuais dificultam acompanhar cobranças e estoque.']};
-const screens={legacy:el('legacy'),freeze:el('freeze'),storage:el('storage'),black:el('black'),control:el('control')};
-let state=0,busy=false,cam=null,w=390,h=844,lastGesture=0,touchStart=null,papersProgress=0,active=true,scrollFromExit=false;
-const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));const ease=t=>{t=clamp(t);return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2};const mix=(a,b,t)=>a+(b-a)*t;
-const baseCamera=()=>{let mobile=w<=700,scale=mobile?Math.min(w*.99/941,h*.81/1280):Math.min(w*.74/941,h*.92/1220,.91);let cx=470,cy=mobile?910:938,px=w*(mobile?.50:.60),py=h*(mobile?.53:.55);return {scale,ox:px-cx*scale,oy:py-cy*scale}};
-const focusCamera=idx=>{let target=focus[idx],mobile=w<=700;if(!target)return baseCamera();let scale=mobile?Math.min(w*.91/target.w,idx===2?1.53:1.24):Math.min(w*.57/target.w,idx===2?3.15:2.34);let px=w*(mobile?.5:.56),py=h*(mobile?.57:.56);return {scale,ox:px-target.x*scale,oy:py-target.y*scale}};
-function pose(c){cam=c;rig.style.transform=`translate3d(${c.ox.toFixed(3)}px,${c.oy.toFixed(3)}px,0) scale(${c.scale.toFixed(5)})`}
-function animate(duration,fn){if(matchMedia('(prefers-reduced-motion: reduce)').matches){fn(1);return Promise.resolve()}return new Promise(resolve=>{let start=performance.now();const tick=now=>{let t=clamp((now-start)/duration);fn(ease(t));if(t<1)requestAnimationFrame(tick);else resolve()};requestAnimationFrame(tick)})}
-function cameraTo(target,duration){const a={...cam},b=target;return animate(duration,t=>pose({scale:mix(a.scale,b.scale,t),ox:mix(a.ox,b.ox,t),oy:mix(a.oy,b.oy,t)}))}
-function fade(node,val){node.style.opacity=val;node.style.visibility=val<=.001?'hidden':'visible'}
-function sceneScreen(which){Object.entries(screens).forEach(([k,v])=>fade(v,k===which?1:0))}
-function showDiag(i){const data=messages[i];if(!data){fade(diagnostic,0);fade(pin,0);return}el('eyebrow').textContent=data[0];el('diag-title').textContent=data[1];el('diag-description').textContent=data[2];if(w>700){let f=focus[i],a=[cam.ox+f.x*cam.scale,cam.oy+f.y*cam.scale],left=clamp(a[0]+95,30,w-400),top=clamp(a[1]-200,125,h-240);diagnostic.style.left=left+'px';diagnostic.style.top=top+'px';let to=[left+5,top+diagnostic.offsetHeight*.7];el('pin-path').setAttribute('d',`M${a[0]} ${a[1]}Q${(a[0]+to[0])/2} ${a[1]-70} ${to[0]} ${to[1]}`);el('pin-dot').setAttribute('cx',a[0]);el('pin-dot').setAttribute('cy',a[1]);fade(pin,1)}else fade(pin,0);fade(diagnostic,1)}
-function setPapers(t){
- papersProgress=t;
- const rise=ease(clamp(t/.25));
- paperNodes.forEach((node,i)=>{
-  const spec=paperSpecs[i], stagger=(i%3)*.07+Math.floor(i/3)*.03;
-  const flight=ease(clamp((t-.25-stagger*.35)/(.75-stagger*.35)));
-  const centerX=spec[1]+spec[3]/2, centerY=spec[2]+spec[4]/2;
-  const dx=(445-centerX)*flight+((i%2)?-1:1)*12*rise*(1-flight);
-  const dy=-80*rise+(535-centerY+80)*flight-(110+20*(i%4))*Math.sin(Math.PI*flight);
-  const scale=1-.94*flight;
-  node.style.transform=`translate3d(${dx.toFixed(1)}px,${dy.toFixed(1)}px,0) rotate(${((i%2?1:-1)*(10*rise+28*Math.sin(Math.PI*flight))).toFixed(1)}deg) scale(${scale.toFixed(3)})`;
-  fade(node,1-ease((flight-.73)/.27));
+const $=s=>document.getElementById(s),stage=$('stage'),rig=$('rig'),hud=$('hud'),connector=$('connector'),hero=$('hero'),caption=$('caption'),finish=$('finish'),paperRoot=$('papers');
+const NS='http://www.w3.org/2000/svg';
+const data=[
+ {name:'Mesa completa',screen:'legacy'},
+ {name:'Computador travando',screen:'freeze',target:{x:443,y:528,w:390,h:265},pin:{x:442,y:550},eyebrow:'01 / COMPUTADOR',title:'Computador lento ou travando?',copy:'Um sistema que não responde atrasa as vendas e o atendimento.'},
+ {name:'Falha na rede interna',screen:'legacy',target:{x:755,y:622,w:210,h:188},pin:{x:748,y:631},eyebrow:'02 / REDE INTERNA',title:'Equipamentos sem comunicação?',copy:'Computador, impressora e servidor precisam funcionar na mesma rede.'},
+ {name:'Armazenamento cheio',screen:'storage',target:{x:443,y:528,w:390,h:265},pin:{x:445,y:544},eyebrow:'03 / ARQUIVOS',title:'Armazenamento cheio?',copy:'Proteja seus arquivos com espaço adequado, backup e manutenção.'},
+ {name:'Papéis e controles manuais',screen:'legacy',target:{x:273,y:810,w:470,h:235},pin:{x:290,y:805},eyebrow:'04 / ORGANIZAÇÃO',title:'Fiados e controles no papel?',copy:'Anotações soltas dificultam acompanhar cobranças e estoque.'},
+ {name:'Os papéis começam a subir',screen:'legacy',caption:['A TRANSFORMAÇÃO COMEÇA','Menos papel, mais controle.']},
+ {name:'Todos os papéis entram no monitor',screen:'black',caption:['DO PAPEL PARA O DIGITAL','Um novo jeito de organizar.']},
+ {name:'Controle+ aparece na tela',screen:'control'},
+ {name:'Zoom final no Controle+',screen:'control',target:{x:445,y:526,w:400,h:265}}
+];
+// Every physical paper and its shadow is part of this collection; the underlying desk is the same at every stage.
+const specs=[
+ ['recibos-esquerda.png',0,672,117,133],['pilha-recibos.png',86,681,185,132],
+ ['cupom-solto.png',265,711,124,88],['caderno-fiado.png',60,746,355,203],
+ ['formulario.png',437,749,227,112],['documentos-direita.png',723,681,208,122],
+ ['ticket-menor.png',265,665,75,68],['recibo-impressora.png',50,536,118,105],
+ ['ticket-menor.png',199,710,66,60],['cupom-solto.png',510,693,94,68]
+];
+const paperNodes=specs.map(([file,x,y,w,h],i)=>{
+ const g=document.createElementNS(NS,'g');g.setAttribute('data-paper',i);const image=document.createElementNS(NS,'image');image.setAttribute('href','assets/'+file);image.setAttribute('x',x);image.setAttribute('y',y);image.setAttribute('width',w);image.setAttribute('height',h);g.append(image);paperRoot.append(g);return {g,cx:x+w/2,cy:y+h/2,x,y,w,h};
+});
+// Additional loose sheets appear only mid-flight, and are also removed completely.
+const flights=Array.from({length:15},(_,i)=>{
+ const g=document.createElementNS(NS,'g');const image=document.createElementNS(NS,'image');image.setAttribute('href','assets/'+(i%3?'cupom-solto.png':'ticket-menor.png'));
+ image.setAttribute('x',-29);image.setAttribute('y',-39);image.setAttribute('width',58);image.setAttribute('height',78);g.append(image);g.style.opacity=0;paperRoot.append(g);return g;
+});
+let state=0,blocked=false,cam=null,W=390,H=844,lastTouch=null,lastWheel=0,reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,progress=0,scrollNext=false;
+const clamp=(v,min=0,max=1)=>Math.min(max,Math.max(min,v));const ease=t=>1-Math.pow(1-clamp(t),3);const mix=(a,b,t)=>a+(b-a)*t;const sleep=ms=>new Promise(r=>setTimeout(r,reduced?0:ms));
+function cameraBase(){const mobile=W<760;let s=mobile?Math.min(W*.93/941,H*.72/1050):Math.min(W*.79/941,H*.87/1150,.91);const cx=465,cy=mobile?929:918;return {s,ox:W*(mobile?.50:.57)-cx*s,oy:H*(mobile?.585:.575)-cy*s}}
+function cameraFocus(index){const f=data[index].target;if(!f)return cameraBase();const mobile=W<760;
+ // reserve top area for the diagnostic card, fit the ENTIRE physical target below it.
+ const reserved=mobile?Math.max(290,H*.325):Math.max(145,H*.18),availableH=H-reserved-55;
+ const wantedW=W*(mobile?.83:.51),wantedH=availableH*(mobile?.76:.70);
+ let s=Math.min(wantedW/f.w,wantedH/f.h,mobile?1.42:2.30);
+ // The object center is always visible, and never underneath the card.
+ const px=W*(mobile?.50:.48),py=reserved+availableH*.47;
+ return {s,ox:px-f.x*s,oy:py-f.y*s}
+}
+function showWorld(c){cam=c;rig.style.transform=`translate3d(${c.ox}px,${c.oy}px,0) scale(${c.s})`;if(hud.style.visibility==='visible')drawLink()}
+function animate(duration,onframe){if(reduced){onframe(1);return Promise.resolve()}return new Promise(resolve=>{const start=performance.now();function frame(now){const t=clamp((now-start)/duration);onframe(ease(t));if(t<1)requestAnimationFrame(frame);else resolve()}requestAnimationFrame(frame)})}
+function cameraTo(destination,duration=760){const a={...cam};return animate(duration,t=>showWorld({s:mix(a.s,destination.s,t),ox:mix(a.ox,destination.ox,t),oy:mix(a.oy,destination.oy,t)}))}
+const screens={legacy:$('s-legacy'),freeze:$('s-freeze'),storage:$('s-storage'),black:$('s-black'),control:$('s-control')};
+function selectScreen(name){Object.entries(screens).forEach(([key,node])=>node.setAttribute('opacity',key===name?'1':'0'))}
+function appear(node,yes){node.style.opacity=yes?'1':'0';node.style.visibility=yes?'visible':'hidden'}
+function hideHud(){appear(hud,false);appear(connector,false)}
+function drawLink(){if(state<1||state>4)return;const anchor=data[state].pin;
+ const ax=cam.ox+anchor.x*cam.s,ay=cam.oy+anchor.y*cam.s;
+ const r=hud.getBoundingClientRect(),sr=stage.getBoundingClientRect();
+ let sx,sy;if(W<760){sx=r.left-sr.left+r.width*.66;sy=r.bottom-sr.top+1}else{sx=r.left-sr.left+4;sy=r.top-sr.top+r.height*.62}
+ const mx=(sx+ax)/2,my=W<760?sy+(ay-sy)*.38:Math.min(sy,ay)-24;
+ $('connector-path').setAttribute('d',`M${sx.toFixed(1)} ${sy.toFixed(1)} Q${mx.toFixed(1)} ${my.toFixed(1)} ${ax.toFixed(1)} ${ay.toFixed(1)}`);
+ $('connector-dot').setAttribute('cx',ax);$('connector-dot').setAttribute('cy',ay);
+ $('connector-root').setAttribute('cx',sx);$('connector-root').setAttribute('cy',sy)
+}
+function showHud(n){$('eyebrow').textContent=data[n].eyebrow;$('diagnosis').textContent=data[n].title;$('detail').textContent=data[n].copy;
+ if(W>=760){hud.style.left=(W-Math.min(365,W*.27)-clamp(W*.05,28,80))+'px';hud.style.top=Math.max(145,H*.26)+'px';hud.style.width=Math.min(365,W*.27)+'px'}else{hud.style.width='';hud.style.left='';hud.style.top=''}
+ appear(hud,true);drawLink();appear(connector,true)}
+function cap(kicker,title){$('caption-kicker').textContent=kicker;$('caption-title').textContent=title;appear(caption,true)}
+function papers(t){progress=t;
+ paperNodes.forEach((p,i)=>{
+  const start=.15+((i*3)%7)*.025;
+  const ascent=ease(clamp(t/.3));const flying=ease(clamp((t-start)/(.94-start)));
+  const dx=(455-p.cx)*flying+Math.sin(i*1.83)*18*ascent*(1-flying);
+  const dy=-55*ascent+(533-p.cy+55)*flying-115*Math.sin(Math.PI*flying);
+  const a=((i%2)?1:-1)*(12*ascent+115*flying);
+  const scale=1-.96*flying;
+  p.g.setAttribute('transform',`translate(${dx.toFixed(2)} ${dy.toFixed(2)}) translate(${p.cx} ${p.cy}) rotate(${a.toFixed(2)}) scale(${scale.toFixed(3)}) translate(${-p.cx} ${-p.cy})`);
+  p.g.style.opacity=(1-ease(clamp((flying-.78)/.22))).toFixed(3)
  });
- flightNodes.forEach((node,i)=>{
-  const source=paperSpecs[i%paperSpecs.length];
-  const stagger=.25+(i%8)*.055+Math.floor(i/8)*.03;
-  const fraction=ease(clamp((t-stagger)/(1-stagger)));
-  const fromX=source[1]+source[3]*(.12+.7*((i%5)/4));
-  const fromY=source[2]+source[4]*(.2+.55*((i%3)/2))-70;
-  const dx=mix(fromX,445,fraction)-27;
-  const dy=mix(fromY,535,fraction)-32-155*Math.sin(Math.PI*fraction);
-  node.style.transform=`translate3d(${dx.toFixed(1)}px,${dy.toFixed(1)}px,0) rotate(${((i%2?-1:1)*130*fraction).toFixed(1)}deg) scale(${(1-.96*fraction).toFixed(3)})`;
-  fade(node,t>=stagger?Math.min(1,fraction*13)*(1-ease((fraction-.79)/.21)):0);
+ flights.forEach((g,i)=>{
+  const p=paperNodes[i%paperNodes.length],offset=.28+(i%5)*.075+Math.floor(i/5)*.025;
+  const v=ease(clamp((t-offset)/(1-offset)));const x=mix(p.cx,449,v);const y=mix(p.cy-55,530,v)-105*Math.sin(Math.PI*v);
+  g.setAttribute('transform',`translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${(i%2?1:-1)*195*v}) scale(${(1-.93*v).toFixed(3)})`);
+  g.style.opacity=t<=offset?'0':(Math.min(1,v*10)*(1-ease(clamp((v-.78)/.22)))).toFixed(3)
  });
 }
-function setText(kicker,title){el('caption-kicker').textContent=kicker;el('caption-title').textContent=title}
-function announce(n){el('counter').textContent=String(n+1).padStart(2,'0');sceneLabel.textContent=['Mesa completa','Computador travando','Rede interna','Armazenamento cheio','Papéis e controles manuais','Papéis se levantando','Papéis entram no monitor','Controle+','Zoom final no Controle+'][n]}
-async function goto(next){if(busy||next===state||next<0||next>8)return;busy=true;const previous=state;state=next;announce(next);fade(hero,0);fade(diagnostic,0);fade(pin,0);fade(caption,0);fade(outro,0);
- // The camera always retracts fully before starting a NEW independent diagnostic zoom.
- if([1,2,3,4,8].includes(previous)&&!(previous===8&&next===7)) await cameraTo(baseCamera(),670);
- if(next<=4){sceneScreen(next===1?'freeze':next===3?'storage':'legacy');if(next>0){await cameraTo(focusCamera(next),940);showDiag(next)}else{await cameraTo(baseCamera(),600);fade(hero,1)} }
- else if(next===5){await cameraTo(baseCamera(),650);sceneScreen('legacy');setText('A TRANSFORMAÇÃO COMEÇA','Os papéis começam a sair da mesa.');await animate(1300,t=>setPapers(.25*t));fade(caption,1)}
- else if(next===6){await cameraTo(baseCamera(),580);setText('DO PAPEL PARA O DIGITAL','Tudo em um só lugar.');fade(caption,1);await animate(2000,t=>{setPapers(mix(papersProgress,1,t));if(t>.67)sceneScreen('black')});setPapers(1);sceneScreen('black')}
- else if(next===7){await cameraTo(baseCamera(),650);setPapers(1);sceneScreen('black');await animate(750,t=>{fade(screens.control,t);fade(screens.black,1-t)});fade(caption,0)}
- else if(next===8){setPapers(1);sceneScreen('control');await cameraTo(focusCamera(8),1050);fade(outro,1);outro.style.pointerEvents='auto'}
- // Reverse navigation: recover documents and screen safely.
- if(next<=4){setPapers(0);if(next===0){sceneScreen('legacy');fade(hero,1)} }
- if(next===5){sceneScreen('legacy')}
- if(next===6){sceneScreen('black')}
- await new Promise(r=>setTimeout(r,570));busy=false;
+function updateHeader(n){$('count').textContent=String(n+1).padStart(2,'0');$('announcement').textContent=data[n].name;stage.setAttribute('aria-label',data[n].name+'. Deslize para avançar ou voltar.')}
+async function move(dir){if(blocked)return;if(dir>0&&state===8){window.scrollTo({top:$('tail').offsetTop,behavior:'smooth'});return}const next=state+dir;if(next<0||next>8)return;
+ blocked=true;const prev=state;hideHud();appear(hero,false);appear(caption,false);appear(finish,false);
+ // Mandatory retract before ANY independent zoom, including reverse navigation.
+ if([1,2,3,4,8].includes(prev)){await cameraTo(cameraBase(),850);await sleep(200)}
+ state=next;updateHeader(next);
+ if(next<=4){
+  if(next<=4&&progress>0){await animate(680,t=>papers(mix(progress,0,t)));papers(0)}
+  selectScreen(data[next].screen);
+  if(next===0){await cameraTo(cameraBase(),570);appear(hero,true)}
+  else{await cameraTo(cameraFocus(next),960);await sleep(135);showHud(next)}
+ }else if(next===5){await cameraTo(cameraBase(),700);selectScreen('legacy');const begin=progress;await animate(1250,t=>papers(mix(begin,.30,t)));cap(...data[next].caption)}
+ else if(next===6){await cameraTo(cameraBase(),680);const begin=progress;await animate(2000,t=>{papers(mix(begin,1,t));if(t>.78)selectScreen('black')});papers(1);selectScreen('black');cap(...data[next].caption)}
+ else if(next===7){await cameraTo(cameraBase(),650);papers(1);selectScreen('black');await sleep(350);await animate(780,t=>{screens.control.setAttribute('opacity',t.toFixed(3));screens.black.setAttribute('opacity',(1-t).toFixed(3))});selectScreen('control')}
+ else if(next===8){papers(1);selectScreen('control');await cameraTo(cameraFocus(8),1050);appear(finish,true)}
+ // Revisiting reverse states must restore the documents without stale shadows or patches.
+ if(next===5){selectScreen('legacy')}
+ await sleep(280);blocked=false;
 }
-function nextBy(dir){let now=performance.now();if(now-lastGesture<290)return;lastGesture=now;if(busy)return;if(dir>0&&state===8){active=false;window.scrollTo({top:document.getElementById('exit').offsetTop,behavior:'smooth'});return}if(dir<0&&state===0){return}goto(state+(dir>0?1:-1))}
-function onStage(){let b=stage.getBoundingClientRect();return b.bottom>h*.46&&b.top<h*.48}
-window.addEventListener('wheel',e=>{if(!active&&!onStage())return;if(onStage()){e.preventDefault();if(Math.abs(e.deltaY)>4)nextBy(Math.sign(e.deltaY))}},{passive:false});
-stage.addEventListener('touchstart',e=>{touchStart={x:e.touches[0].clientX,y:e.touches[0].clientY,t:performance.now()}},{passive:true});
-stage.addEventListener('touchmove',e=>{if(active)e.preventDefault()},{passive:false});
-stage.addEventListener('touchend',e=>{if(!touchStart)return;let y=e.changedTouches[0].clientY-touchStart.y;let x=e.changedTouches[0].clientX-touchStart.x;if(Math.abs(y)>42&&Math.abs(y)>Math.abs(x)*1.1){nextBy(y<0?1:-1)}touchStart=null},{passive:true});
-window.addEventListener('keydown',e=>{if(e.target.closest('input,textarea,select'))return;if(['ArrowDown','PageDown',' ','ArrowRight'].includes(e.key)&&onStage()){e.preventDefault();nextBy(1)}else if(['ArrowUp','PageUp','ArrowLeft'].includes(e.key)&&onStage()){e.preventDefault();nextBy(-1)}});
-window.addEventListener('scroll',()=>{if(window.scrollY>stage.clientHeight*.75)active=false;else if(onStage())active=true},{passive:true});
-window.addEventListener('resize',()=>{let previousBase=state<=0||![1,2,3,4,8].includes(state);w=stage.clientWidth;h=stage.clientHeight;pose(previousBase?baseCamera():focusCamera(state));if(messages[state]&&diagnostic.style.opacity!=='0')showDiag(state)},{passive:true});
-w=stage.clientWidth;h=stage.clientHeight;pose(baseCamera());setPapers(0);sceneScreen('legacy');fade(hero,1);announce(0);
-// QA: query parameter opens a scene using normal transitions instead of faking a screenshot.
-const start=Number(new URLSearchParams(location.search).get('scene'));if(Number.isInteger(start)&&start>0&&start<=8){window.addEventListener('load',()=>{const run=async()=>{for(let j=1;j<=start;j++){await goto(j)}};run()},{once:true})}
+function request(dir){move(dir)}
+// One wheel burst = one deliberate step, regardless of delta, even on high-resolution trackpads.
+let wheelAccum=0,wheelTriggered=false,wheelIdle;
+window.addEventListener('wheel',e=>{if($('stage').getBoundingClientRect().bottom<H*.5||window.scrollY>H*.7)return;
+ e.preventDefault();
+ // A trackpad's long inertial tail belongs to the original gesture. Never let it trigger a second scene.
+ clearTimeout(wheelIdle);wheelIdle=setTimeout(()=>{wheelAccum=0;wheelTriggered=false},480);
+ if(wheelTriggered)return;
+ wheelAccum+=e.deltaY;
+ if(Math.abs(wheelAccum)>32){const d=Math.sign(wheelAccum);wheelAccum=0;wheelTriggered=true;request(d)}
+},{passive:false});
+stage.addEventListener('touchstart',e=>{if(e.touches.length!==1)return;lastTouch={x:e.touches[0].clientX,y:e.touches[0].clientY}},{passive:true});
+stage.addEventListener('touchmove',e=>{e.preventDefault()},{passive:false});
+stage.addEventListener('touchend',e=>{if(!lastTouch)return;const dy=e.changedTouches[0].clientY-lastTouch.y,dx=e.changedTouches[0].clientX-lastTouch.x;lastTouch=null;if(Math.abs(dy)>=48&&Math.abs(dy)>Math.abs(dx)*1.18)request(dy<0?1:-1)},{passive:true});
+window.addEventListener('keydown',e=>{if(e.target.closest('a,button,input,textarea,select'))return;const down=['ArrowDown','ArrowRight','PageDown',' '],up=['ArrowUp','ArrowLeft','PageUp'];if(!e.repeat&&window.scrollY<H*.6&&(down.includes(e.key)||up.includes(e.key))){e.preventDefault();request(down.includes(e.key)?1:-1)}});
+function resize(){W=stage.clientWidth;H=stage.clientHeight;showWorld(data[state].target&&[1,2,3,4,8].includes(state)?cameraFocus(state):cameraBase());if(hud.style.visibility==='visible'){showHud(state)}}
+window.addEventListener('resize',resize,{passive:true});resize();papers(0);selectScreen('legacy');updateHeader(0);
+// Test scenes directly with ?scene=N. This is a QA feature, not visible navigation.
+const initial=Number(new URLSearchParams(location.search).get('scene'));
+if(Number.isInteger(initial)&&initial>=2&&initial<=9){window.addEventListener('load',async()=>{for(let i=1;i<initial;i++){await move(1)}},{once:true})}
 })();
-</script></body></html>
+</script>
+</body></html>
