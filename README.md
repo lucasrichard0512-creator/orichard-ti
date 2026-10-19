@@ -1,27 +1,39 @@
-# Richard TI • V24 premium
+# Richard TI — V27 | Experiência cinematográfica
 
-## O que mudou
+## Comece aqui
 
-**Correção das telas dentro do monitor:** foi removida a projeção `matrix3d` do navegador. As cinco telas (sistema antigo, travamento, aviso de armazenamento, tela preta e captura REAL do Controle+) agora são texturas de alta resolução pré-mapeadas nos quatro cantos internos do monitor. Cada textura possui canal alfa com recorte exato da superfície. A moldura e o pé físicos continuam da mesma fotografia, sem peças artificiais em cima da mesa.
+- Abra `index.html` em um navegador para visualizar o site.
+- Para publicar, envie **o arquivo `index.html` e a pasta `assets/` juntos**, preservando a estrutura de pastas.
+- O projeto é estático, sem dependências externas, e pode ser publicado na Vercel ou no GitHub Pages.
+- A versão demonstrativa autossuficiente (`richard-ti-v27-preview.html`) acompanha a entrega separadamente, para testar sem instalar nada.
 
-**Direção de arte:** novos ajustes de cor/contraste do equipamento, fundo com iluminação discreta de estúdio, textura sutil, tipografia refinada, card redesenhado e CTA melhor acabado. Os elementos principais não mudaram de lugar.
+## O que mudou nesta versão
 
-**O que permaneceu:** o controlador contínuo da V23, timings dos zooms, nove quadros, conexão dos cards, mobilidade dos papéis, textos de diagnóstico e resposta à rolagem. O botão de pular fica oculto depois da revelação do Controle+.
+1. Câmera com trajetória contínua e direção de movimento específica para as quatro dores do roteiro.
+2. Movimento vertical do cenário ao longo da rolagem, sem travar os gestos.
+3. Cards com menos poluição visual, linha conectada ao objeto e tipografia revisada.
+4. Captura **real** da tela de login do Controle+, recortada sem inventar outra interface e com projeção no vidro do monitor.
+5. Caneta frontal preservada na frente da tela e papéis independentes desaparecendo por completo no final.
+6. Melhor equilíbrio de iluminação, contraste, sombras e uso do espaço, com atenção especial ao celular.
 
-## Testar
+## Roteiro
 
-- Abra `preview.html` no navegador (autossuficiente, imagens incorporadas).
-- Role continuamente, experimente voltar e focalize o monitor nos quadros 02, 04 e 09.
-- Teste também num iPhone, especialmente pelo navegador interno do Instagram.
+1. Mesa completa e sistema antigo.
+2. Computador lento ou travando.
+3. Rede interna com problemas de comunicação.
+4. Falta de espaço e risco para arquivos.
+5. Papéis, fiados e controles manuais.
+6. Retorno à mesa, papéis levantando.
+7. Papéis indo para o monitor, que fica preto.
+8. Tela de login real do Controle+.
+9. Zoom final no monitor e convite para conversar.
 
-## Publicar na Vercel
+## Limites de produção
 
-Publique `index.html` e a pasta `assets/` na raiz de um projeto estático; mantenha os caminhos originais. `preview.html` é apenas uma prévia e não precisa estar publicada. O endereço público da Richard TI **não foi modificado** por esta entrega.
+A mesa continua sendo uma base fotográfica de **941 × 1672 pixels** com camadas 2.5D. Não é uma modelagem 3D real. A câmera e a UI podem ser refinadas pelo código, mas novos detalhes fotográficos não aparecem magicamente quando há zoom extremo. Para ultrapassar esse limite seria necessário fotografar/renderizar os objetos separadamente em alta resolução ou criar a cena 3D.
 
-## Fontes visuais
+## Testes
 
-Em `sources/` estão preservadas as capturas originais e a mesa de referência. As texturas de tela em `assets/screen-*.webp` foram geradas a partir delas. O código de reconstrução das texturas está em `tools/build_screens.py`. A imagem Controle+ foi usada sem inventar outro dashboard.
+Validação automatizada em Chromium: 320×650, 360×740, 390×844 e 1440×900; rolagem para frente e para trás; estados intermediários de câmera; ausência de rolagem horizontal, imagens ausentes e erros de JavaScript; ocultação dos cinco grupos de documentos na conclusão; botão de contato alcançável. **Não substitui o teste no Safari/Instagram do iPhone real.**
 
-## Limites conhecidos
-
-A cena de equipamentos continua sendo uma composição fotográfica 2.5D. A melhoria de nitidez nas texturas da tela não adiciona detalhes reais à fotografia da mesa. Testes automatizados foram feitos em Chromium com larguras de 360, 390 e 1440 px. O Safari interno do Instagram no iPhone exige validação no aparelho real.
+Consulte `PLANO-E-VALIDACAO.md` para o raciocínio de implementação e os critérios de aceitação.
