@@ -1,31 +1,27 @@
-# Richard TI — Site cinematográfico V15
+# Richard TI • V24 premium
 
-Esta versão substitui a página inicial pelo cenário cinematográfico da mesa comercial, mantendo a identidade original preto, branco e verde-limão da Richard TI. A V11 original continua preservada em `index-v11.html`.
+## O que mudou
 
-## O que foi corrigido após o Teste 03
+**Correção das telas dentro do monitor:** foi removida a projeção `matrix3d` do navegador. As cinco telas (sistema antigo, travamento, aviso de armazenamento, tela preta e captura REAL do Controle+) agora são texturas de alta resolução pré-mapeadas nos quatro cantos internos do monitor. Cada textura possui canal alfa com recorte exato da superfície. A moldura e o pé físicos continuam da mesma fotografia, sem peças artificiais em cima da mesa.
 
-- A tela inicial tem a headline e a fotografia sem os quatro cards sobrepostos.
-- Os cards aparecem individualmente, sincronizados com as cenas 2 a 5.
-- Os zooms focalizam o monitor, a infraestrutura de rede e os papéis, com composição própria no celular.
-- A animação não cria mais folhas retangulares genéricas por CSS: 12 recortes da fotografia original são animados em trajetórias curvas até o monitor.
-- Uma versão retocada localmente da mesa é revelada por baixo dos documentos enquanto eles saem.
-- A tela fica preta durante a absorção dos papéis; a interface verdadeira do Controle+ aparece antes do zoom final.
+**Direção de arte:** novos ajustes de cor/contraste do equipamento, fundo com iluminação discreta de estúdio, textura sutil, tipografia refinada, card redesenhado e CTA melhor acabado. Os elementos principais não mudaram de lugar.
 
-## Como abrir
+**O que permaneceu:** o controlador contínuo da V23, timings dos zooms, nove quadros, conexão dos cards, mobilidade dos papéis, textos de diagnóstico e resposta à rolagem. O botão de pular fica oculto depois da revelação do Controle+.
 
-Abra `index.html` a partir de qualquer servidor web estático (incluindo Vercel). A prévia independente `richard-ti-preview-v15.html` é disponibilizada separadamente para testes sem servidor.
+## Testar
 
-Use o parâmetro `?scene=1` a `?scene=9` para acessar uma etapa diretamente. Os pontos à direita do palco também navegam entre cenas.
+- Abra `preview.html` no navegador (autossuficiente, imagens incorporadas).
+- Role continuamente, experimente voltar e focalize o monitor nos quadros 02, 04 e 09.
+- Teste também num iPhone, especialmente pelo navegador interno do Instagram.
 
-## Limite visual importante
+## Publicar na Vercel
 
-A animação de papéis parte de uma *única fotografia* da mesa, não de renderização 3D com objetos isolados. A versão da mesa sem papéis usa retoque aproximado, sobretudo nas áreas de documentos grandes. A etapa resolve a continuidade e o comportamento, mas não substitui uma produção com camadas originais separadas ou um modelo 3D, que seria necessário para retirada fisicamente perfeita de cada folha.
+Publique `index.html` e a pasta `assets/` na raiz de um projeto estático; mantenha os caminhos originais. `preview.html` é apenas uma prévia e não precisa estar publicada. O endereço público da Richard TI **não foi modificado** por esta entrega.
 
-## Verificações efetuadas
+## Fontes visuais
 
-- `node --check site.js` sem erros de sintaxe.
-- Navegação programática pelas 9 cenas no Chromium em 360px de largura, sem erros JS nem rolagem horizontal.
-- Capturas visuais em 390px mobile e 1440px desktop.
-- Integridade do ZIP e referências dos assets.
+Em `sources/` estão preservadas as capturas originais e a mesa de referência. As texturas de tela em `assets/screen-*.webp` foram geradas a partir delas. O código de reconstrução das texturas está em `tools/build_screens.py`. A imagem Controle+ foi usada sem inventar outro dashboard.
 
-O pacote não faz deploy automático no endereço público. Publique os arquivos pelo repositório conectado ao Vercel.
+## Limites conhecidos
+
+A cena de equipamentos continua sendo uma composição fotográfica 2.5D. A melhoria de nitidez nas texturas da tela não adiciona detalhes reais à fotografia da mesa. Testes automatizados foram feitos em Chromium com larguras de 360, 390 e 1440 px. O Safari interno do Instagram no iPhone exige validação no aparelho real.
