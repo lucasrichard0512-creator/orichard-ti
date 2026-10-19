@@ -1,48 +1,38 @@
-# Richard TI — V21 | Reconstrução da cena
+# Richard TI — V22 | Cena contínua
 
-## Abrir
+Esta versão substitui a composição reconstruída artificialmente da V21 por uma **única fotografia de mesa vazia** usada do início ao fim. A origem das imagens é a dupla de cenas de mesa criada a pedido do usuário; os documentos foram isolados do estado com papéis e inseridos como camadas móveis.
 
-- Abra `index.html` no navegador depois de extrair todos os arquivos em uma pasta ou publique a pasta em um servidor estático, por exemplo na Vercel.
-- `index.html` usa arquivos na subpasta `assets/`.
-- Existe uma prévia autossuficiente (`richard-ti-v21-preview.html`) entregue separadamente na conversa que incorpora seus próprios recursos.
+## Como executar
 
-## O que mudou
+- Descompacte o projeto e abra `index.html` num servidor estático (Vercel, GitHub Pages, `python -m http.server 8000`, etc.).
+- A pasta `assets/` deve permanecer ao lado do `index.html`.
+- Para conferir sem servidor nem pasta separada, use o arquivo independente `richard-ti-v22-preview.html` fornecido à parte.
 
-1. **Mesa sem papéis desde o início:** o tampo escuro é feito em SVG com uma textura própria, não uma foto cheia de papéis que são apagados depois.
-2. **Elementos físicos independentes:** impressora, roteador, teclado, mouse, leitor e cadeira são objetos fotográficos isolados. A bandeja lateral foi removida.
-3. **Documentos independentes:** dez grupos reais de imagens transparentes, cada qual com sua transformação e opacidade. As folhas extras aparecem apenas em voo. O fundo do tampo não muda quando desaparecem.
-4. **Monitor em camadas:** interfaces pré-renderizadas em alta resolução ficam em uma camada separada da moldura do monitor. Há cinco estados (antigo, travamento, armazenamento, preto e Controle+). O Controle+ é a captura de login disponibilizada no projeto anterior, não um dashboard novo inventado.
-5. **Câmera em estados:** aproxima, para com card e linha, volta à mesa antes de aproximar o próximo objeto.
-6. **Navegação:** um gesto de rolagem ou deslize por etapa, com trava durante as animações. Rajadas longas de trackpad não pulam cenas.
-7. **Mobile:** a linha de conexão continua visível no celular; cards ocupam espaço reservado acima do equipamento.
+## Novidades
 
-## Roteiro 01–09
+- **Uma única mesa:** não há cortes entre fotografias da mesa, nem reconstrução por grandes remendos pretos.
+- **Pé e estrutura do monitor:** fazem parte da fotografia-base original e não são recortes reposicionados.
+- **Tela dentro do monitor:** a interface do sistema antigo e a captura real do Controle+ são fontes separadas, projetadas por uma homografia e mantidas dentro dos cantos do vidro.
+- **Quatro diagnósticos com zooms, pausa e card conectado:** computador, rede interna, armazenamento e controles manuais.
+- **Papéis:** cinco grupos fotográficos de origem e 21 folhas individuais animadas em direção ao monitor. Terminada a animação, todas essas camadas somem, sem modificar a base da mesa.
+- **Controles da navegação:** um gesto vertical ou evento de roda avança uma cena; a inércia não pula capítulos. Keyboard: setas, Page Up/Down, barra de espaço. Link discreto de pular no canto inferior.
+- **Contato:** utiliza o WhatsApp `5562999407334` presente no código das versões anteriores da Richard TI.
 
-1. Mesa completa com sistema antigo
-2. Zoom no monitor travando + card
-3. Retorno e zoom na rede interna + card
-4. Retorno e zoom no armazenamento + card
-5. Retorno e zoom nos papéis, fiados e controles manuais + card
-6. Mesa completa, papéis começando a subir
-7. Todos os documentos se deslocam para o monitor, que fica preto
-8. Monitor exibe Controle+ e mesa está vazia
-9. Zoom final no mesmo monitor e chamada para WhatsApp
+## Roteiro visual (9 etapas)
 
-## Testes executados neste ambiente
-
-- Chromium em larguras 360, 390 e 1440 px: sem erro de JavaScript e sem rolagem horizontal.
-- Rajada de 45 eventos de roda: avançou só uma etapa.
-- Navegação reversa: voltou ao diagnóstico anterior.
-- Na cena final, os dez grupos de papel têm opacidade igual a zero.
-- Imagens da mesa limpa e do monitor conferidas em capturas reais do Chromium.
+1. Mesa completa com sistema antigo.
+2. Aproximação fixa do computador travando, card conectado.
+3. Volta ao geral e aproximação da rede interna, card conectado.
+4. Volta ao geral e aproximação da falta de espaço, card conectado.
+5. Volta ao geral e aproximação dos papéis/fiado, card conectado.
+6. Volta à mesa e documentos começam a se levantar.
+7. Folhas entram no monitor enquanto a tela escurece.
+8. A mesa fica vazia e aparece a captura real do Controle+.
+9. Zoom final no monitor, com chamada para contato.
 
 ## Limitações honestas
 
-- Cena **2.5D híbrida**, não modelo 3D físico. Os equipamentos são recortes fotográficos e o tampo é desenhado por SVG; iluminação e perspectiva ainda podem se beneficiar de refinamento artístico.
-- As telas foram separadas da moldura e usam imagens rasterizadas de alta resolução; não são aplicativos HTML vivos. Um redesenho vetorial completo da interface legada seria um trabalho adicional.
-- Não foi possível executar o navegador interno do Instagram no iPhone neste ambiente. É fundamental conferir nele antes de substituir o site publicado.
-- Esta entrega não publica nem altera o domínio `richard-ti.vercel.app`.
-
-## Publicar
-
-Extraia o ZIP completo; envie `index.html` e `assets/` ao repositório de implantação ou projeto Vercel, mantendo os caminhos relativos.
+- É uma **composição 2.5D**, não um ambiente 3D com luz e física simuladas. Os fragmentos dos documentos são extraídos da foto e alguns se repetem durante o voo. Para obter realismo totalmente cinematográfico no movimento individual de cada folha, o próximo nível é um modelo 3D rigado ou renderizações em camadas feitas na mesma câmera.
+- A fotografia da mesa tem **941 × 1672 px**; ampliação extrema em telas 4K mostrará a limitação da foto, embora as telas do monitor sejam fontes distintas.
+- Testado no Chromium em desktop e emulaçāo móvel (360/390 px), inclusive eventos touch simulados. **Não foi testado diretamente dentro do navegador do Instagram no iPhone físico**.
+- Não altera automaticamente o site já publicado em `richard-ti.vercel.app`.

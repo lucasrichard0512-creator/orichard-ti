@@ -1,210 +1,216 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#060b08">
-<title>Richard TI | Tecnologia que acompanha seu comércio</title>
-<meta name="description" content="A Richard TI ajuda seu comércio a superar computadores lentos, problemas de rede, perda de dados e controles manuais. Conheça o Controle+.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080d0a">
+<title>Richard TI • Evolução para o seu comércio</title>
+<meta name="description" content="Seu comércio merece tecnologia que acompanha o seu ritmo. Conheça a Richard TI e o Controle+.">
 <style>
-:root{color-scheme:dark;--g:#b9f92f;--bg:#050a07;--white:#f5f7f3;--muted:#b9c4b7;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
-*{box-sizing:border-box}html{scroll-behavior:auto}body{margin:0;background:var(--bg);color:var(--white);overflow-x:hidden}button,a{font:inherit}a{color:inherit}button:focus-visible,a:focus-visible,.stage:focus-visible{outline:2px solid var(--g);outline-offset:5px}
-.story{height:100svh;height:100dvh;position:relative}.stage{position:relative;height:100%;min-height:440px;overflow:hidden;isolation:isolate;touch-action:none;background:radial-gradient(ellipse 65% 48% at 52% 62%,#172418 0%,#0e1710 52%,#060a08 100%)}.stage::after{content:"";pointer-events:none;position:absolute;inset:0;z-index:2;background:radial-gradient(ellipse 80% 62% at 52% 61%,transparent 30%,#02060488 100%)}
-.brand{position:absolute;top:calc(env(safe-area-inset-top) + 28px);left:clamp(22px,5.2vw,76px);z-index:16;line-height:1;font-size:clamp(21px,2.1vw,31px);font-weight:900;letter-spacing:.055em}.brand em{color:var(--g);font-style:normal}.brand small{display:block;margin-top:10px;font-size:9px;color:#aebdb0;letter-spacing:.22em;font-weight:650}.count{position:absolute;z-index:16;right:clamp(20px,5.2vw,76px);top:calc(env(safe-area-inset-top) + 28px);font-variant-numeric:tabular-nums;color:#a1aea2;font-size:12px;letter-spacing:.12em}.count b{font-size:24px;letter-spacing:.01em;color:var(--g)}
-.world{position:absolute;inset:0;z-index:3;pointer-events:none}.rig{position:absolute;left:0;top:0;width:941px;height:1672px;transform-origin:0 0;will-change:transform;filter:drop-shadow(0 30px 42px #0008)}.rig svg{width:941px;height:1672px;display:block;overflow:visible}
-.hero{position:absolute;left:clamp(22px,5.2vw,76px);top:clamp(112px,15vh,180px);width:min(455px,85vw);z-index:10;pointer-events:none;opacity:1}.hero h1{font-size:clamp(34px,5vw,70px);font-weight:900;letter-spacing:-.057em;line-height:1.05;margin:0}.hero h1 span{color:var(--g)}
-.hud{position:absolute;z-index:12;opacity:0;visibility:hidden;pointer-events:none;width:min(365px,calc(100% - 40px));padding:17px 19px 18px;border:1px solid #b9f92f84;border-radius:15px;background:linear-gradient(140deg,#0d1a13f5,#101a14f3);box-shadow:0 19px 46px #000a;backdrop-filter:blur(8px)}.hud .eyebrow{color:var(--g);font-size:10px;letter-spacing:.20em;font-weight:800}.hud h2{font-size:clamp(19px,1.8vw,25px);font-weight:800;line-height:1.13;letter-spacing:-.025em;margin:8px 0 6px}.hud p{font-size:13px;line-height:1.43;color:#d2ddd0;margin:0}
-.connector{position:absolute;inset:0;z-index:11;pointer-events:none;opacity:0;visibility:hidden;width:100%;height:100%;overflow:visible}.connector path{stroke:var(--g);stroke-width:1.8;fill:none;filter:drop-shadow(0 0 5px #b9f92f99)}.connector .dot{fill:var(--g);stroke:#121e12;stroke-width:2}.connector .root{fill:#0b170e;stroke:var(--g);stroke-width:2}
-.caption{position:absolute;z-index:9;left:50%;bottom:clamp(36px,7.5vh,110px);transform:translateX(-50%);width:min(540px,calc(100% - 36px));text-align:center;pointer-events:none;opacity:0;text-shadow:0 3px 18px #000}.caption small{display:block;color:var(--g);font-weight:800;font-size:10px;letter-spacing:.23em;margin-bottom:10px}.caption h2{margin:0;font-size:clamp(22px,3vw,40px);line-height:1.12;letter-spacing:-.045em}
-.finish{position:absolute;z-index:12;top:clamp(125px,19vh,200px);left:clamp(22px,5.2vw,76px);width:min(380px,82vw);pointer-events:none;opacity:0}.finish small{color:var(--g);font-weight:850;letter-spacing:.17em;font-size:10px}.finish h2{font-size:clamp(28px,3.6vw,48px);letter-spacing:-.048em;line-height:1.08;margin:10px 0}.finish h2 span{color:var(--g)}.finish p{font-size:13px;color:var(--muted);line-height:1.52}.finish a{display:inline-flex;align-items:center;gap:8px;margin-top:12px;text-decoration:none;background:var(--g);color:#15200f;padding:14px 18px;border-radius:10px;font-size:13px;font-weight:800;pointer-events:auto}
-.tail{min-height:55vh;display:grid;align-content:center;justify-items:center;padding:80px 24px 110px;text-align:center;background:radial-gradient(circle at 50% 0%,#132414,#080e09 70%)}.tail h2{font-size:clamp(29px,5vw,56px);letter-spacing:-.045em;line-height:1.12;margin:0 0 16px;max-width:660px}.tail h2 span{color:var(--g)}.tail p{max-width:570px;color:#bfccbe;font-size:15px;line-height:1.6;margin:0 0 24px}.tail a{border:1px solid #b9f92f9f;text-decoration:none;border-radius:9px;padding:14px 23px;font-size:14px;font-weight:750}
-.visually-hidden{position:absolute;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;width:1px;height:1px}
-@media(max-width:700px){.hero{top:calc(env(safe-area-inset-top) + 136px);left:22px}.hero h1{font-size:37px;max-width:310px}.hud{top:calc(env(safe-area-inset-top) + 112px)!important;left:18px!important;width:calc(100% - 36px);padding:14px 16px}.hud h2{font-size:19px}.hud p{font-size:12px;line-height:1.38}.finish{top:calc(env(safe-area-inset-top) + 126px);left:22px}.finish h2{font-size:30px}.finish p{font-size:12px;max-width:310px}.caption{bottom:clamp(24px,5vh,55px)}.caption h2{font-size:25px}}
-@media(max-height:630px){.hud{top:92px!important}.hero{top:115px}.finish{top:105px}}
-@media(prefers-reduced-motion:reduce){.rig,.hud,.caption,.finish,.connector{transition:none!important;animation:none!important}}
+:root{color-scheme:dark;--bg:#070b09;--green:#bcfa3d;--white:#f8fbf6;--muted:#b7c1b5;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--white);-webkit-font-smoothing:antialiased}button,a{font:inherit}button{cursor:pointer}a{color:inherit}
+:focus-visible{outline:2px solid var(--green);outline-offset:5px}
+#scrollport{height:100svh;height:100dvh;width:100%;overflow-y:auto;overflow-x:hidden;scroll-snap-type:y mandatory;scroll-behavior:smooth;overscroll-behavior-y:contain;scrollbar-width:none;touch-action:none}
+#scrollport::-webkit-scrollbar{display:none}.chapter{height:100svh;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;pointer-events:none}
+.stage{position:fixed;inset:0;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse 62% 52% at 55% 58%,#182b1b 0%,#0d1710 55%,#060b08 100%);pointer-events:none}
+.stage:after{content:"";position:absolute;inset:0;z-index:3;background:radial-gradient(ellipse 75% 60% at 55% 58%,transparent 31%,#01040283 100%);pointer-events:none}
+.halo{position:absolute;left:50%;top:56%;width:min(95vw,1000px);height:min(60vh,540px);transform:translate(-50%,-50%);border-radius:50%;background:#b9fa2814;filter:blur(86px);z-index:0}
+.brand{position:absolute;z-index:18;top:calc(env(safe-area-inset-top) + 25px);left:clamp(22px,4.5vw,72px);font-weight:950;font-size:clamp(20px,2.4vw,30px);letter-spacing:.045em;line-height:1.05}.brand b{color:var(--green)}.brand span{display:block;margin-top:9px;color:#9cab9c;font-size:9px;font-weight:650;letter-spacing:.22em}
+.counter{position:absolute;z-index:18;top:calc(env(safe-area-inset-top) + 30px);right:clamp(22px,4.5vw,72px);font-size:12px;letter-spacing:.12em;color:#a4afa2}.counter strong{color:var(--green);font-size:22px;letter-spacing:.01em}
+.rail{position:absolute;z-index:18;right:clamp(17px,3vw,43px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:7px;opacity:.72}.rail span{width:2px;height:18px;border-radius:4px;background:#f1f9e740;transition:background .35s,height .35s}.rail span.active{height:30px;background:var(--green)}
+.world{position:absolute;inset:0;z-index:5;pointer-events:none}.rig{position:absolute;left:0;top:0;width:941px;height:1672px;transform-origin:0 0;will-change:transform;filter:drop-shadow(0 21px 32px #0005)}.desk{position:absolute;inset:0;width:941px;height:1672px;object-fit:fill;user-select:none;pointer-events:none}
+.papers{position:absolute;inset:0}.flyleaf{position:absolute;pointer-events:none;opacity:0;transform-origin:50% 50%;will-change:transform,opacity;filter:drop-shadow(0 3px 6px #0008)}.intake-glow{position:absolute;left:416px;top:457px;width:152px;height:152px;border-radius:50%;pointer-events:none;opacity:0;background:radial-gradient(circle,#c5ff4c80 0%,#82de2780 13%,#bcff2b26 36%,transparent 68%);filter:blur(12px);mix-blend-mode:screen}.paper{position:absolute;display:block;object-fit:fill;transform-origin:50% 50%;will-change:transform,opacity;pointer-events:none;filter:drop-shadow(0 2px 2px #0005)}
+.screen{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:0 0;transform:matrix3d(.348652632,-.006484794,0,.000021270,.004210413,.330064598,0,.000010005,0,0,1,0,281,412,0,1);background:#090b0b;backface-visibility:hidden;overflow:hidden;box-shadow:inset 0 0 24px #000;will-change:contents}
+.screen>div{position:absolute;inset:0;opacity:0;transition:opacity 0.38s ease;overflow:hidden}.screen>div.visible{opacity:1}
+.screen img{display:block;width:100%;height:100%;object-fit:fill}
+.screen .black{background:radial-gradient(ellipse at 35% 28%,#111a18,#010303 75%)}
+.screen .fault{position:absolute;left:29%;top:29%;width:47%;min-height:170px;background:linear-gradient(#ecf0f4,#d8dce2);color:#18212e;border-radius:9px;border:1px solid #a2aab2;box-shadow:0 24px 66px #0008;padding:24px 26px;font:23px 'Segoe UI',Arial,sans-serif}
+.fault b{display:block;margin-bottom:11px;font-size:28px}.fault small{display:block;font-size:19px;color:#404b56}.fault .bar{height:6px;background:#c5cad0;border-radius:10px;margin-top:24px;overflow:hidden}.fault .bar:before{content:"";display:block;width:36%;height:100%;background:#2479d8;animation:progress 2s ease-in-out infinite alternate}@keyframes progress{to{width:84%}}
+.screen .warning{position:absolute;left:24%;top:26%;width:53%;background:#f0f2f3;color:#202328;border:1px solid #adb5b9;box-shadow:0 20px 50px #0008;border-radius:8px;padding:27px;font:21px 'Segoe UI',Arial,sans-serif}.warning b{display:block;font-size:29px;margin-bottom:15px}.warning .danger{color:#ce4141;font-weight:700}
+.screen .glass{pointer-events:none;position:absolute;inset:0;background:linear-gradient(133deg,#fff1 0%,transparent 38%,#fff0 60%,#fff1 100%);mix-blend-mode:screen}
+.hero{position:absolute;left:clamp(24px,5vw,86px);top:clamp(140px,18vh,205px);z-index:12;width:min(445px,88vw);opacity:1;transform:translateY(0);pointer-events:none;text-shadow:0 3px 17px #000b}
+.hero .eyebrow,.kicker{font-size:10px;font-weight:800;letter-spacing:.22em;color:var(--green)}.hero h1{margin:11px 0 0;font-size:clamp(37px,5vw,68px);line-height:1.04;letter-spacing:-.059em;font-weight:900}.hero h1 em{color:var(--green);font-style:normal}
+.card{position:absolute;z-index:15;left:0;top:0;max-width:355px;border:1px solid #b9fa3d75;border-radius:15px;background:linear-gradient(142deg,#0b1810f9,#122019f7);backdrop-filter:blur(16px);box-shadow:0 18px 56px #000b;padding:19px 21px 19px;opacity:0;visibility:hidden;transform:translateY(12px);pointer-events:none}.card .code{font-size:10px;color:var(--green);font-weight:850;letter-spacing:.18em}.card h2{font-size:clamp(20px,2vw,28px);line-height:1.12;letter-spacing:-.035em;margin:8px 0 7px}.card p{font-size:13px;line-height:1.48;color:#cad6c9;margin:0}
+.line{position:absolute;z-index:14;inset:0;width:100%;height:100%;opacity:0;pointer-events:none;overflow:visible}.line path{stroke:var(--green);stroke-width:1.65;fill:none;filter:drop-shadow(0 0 6px #b9fa4580)}.line circle{fill:var(--green);stroke:#111a11;stroke-width:2}
+.caption{position:absolute;z-index:13;left:50%;top:clamp(145px,20vh,220px);bottom:auto;transform:translate(-50%,10px);width:min(520px,calc(100% - 44px));text-align:center;opacity:0;pointer-events:none;text-shadow:0 3px 16px #000}.caption h2{font-size:clamp(25px,3vw,41px);letter-spacing:-.045em;line-height:1.08;margin:10px 0 0}
+.finish{position:absolute;z-index:15;left:clamp(24px,5vw,86px);top:clamp(147px,19vh,210px);width:min(420px,84vw);opacity:0;transform:translateY(14px);pointer-events:none;text-shadow:0 3px 20px #000a}.finish h2{font-size:clamp(31px,4vw,54px);line-height:1.07;letter-spacing:-.05em;margin:10px 0}.finish h2 em{color:var(--green);font-style:normal}.finish p{max-width:320px;font-size:14px;line-height:1.52;color:#d5dfd3}.finish a{display:inline-flex;margin-top:14px;padding:13px 19px;background:var(--green);color:#0d160a;border-radius:9px;font-size:13px;font-weight:850;text-decoration:none;pointer-events:auto;text-shadow:none;box-shadow:0 10px 32px #aafa2a20}
+.mini{position:absolute;z-index:18;bottom:calc(env(safe-area-inset-bottom) + 20px);right:clamp(24px,5vw,80px);font-size:10px;color:#839281;letter-spacing:.12em;opacity:.8}.mini b{color:#bbfa3d}
+.skip{position:absolute;z-index:18;left:clamp(24px,5vw,86px);bottom:calc(env(safe-area-inset-bottom) + 20px);font-size:11px;color:#c7d3c4;text-decoration:none;pointer-events:auto;opacity:.74}.skip:hover{opacity:1;color:var(--green)}
+#announcement{position:absolute;left:-99999px}
+@media(max-width:760px){.brand{top:calc(env(safe-area-inset-top) + 25px)}.brand span{font-size:8px;letter-spacing:.15em}.counter{top:calc(env(safe-area-inset-top) + 27px)}.rail{right:12px;gap:5px}.rail span{height:12px}.rail span.active{height:21px}.hero{top:calc(env(safe-area-inset-top) + 130px);left:23px;width:calc(100% - 46px)}.hero h1{font-size:36px;max-width:310px}.card{left:19px!important;top:calc(env(safe-area-inset-top) + 116px)!important;width:calc(100% - 38px)!important;max-width:none;padding:14px 17px}.card h2{font-size:20px;margin:6px 0}.card p{font-size:12px;line-height:1.37}.finish{left:23px;top:calc(env(safe-area-inset-top) + 122px)}.finish h2{font-size:31px}.finish p{font-size:12px}.caption{top:calc(env(safe-area-inset-top) + 130px);bottom:auto}.mini{right:20px;bottom:calc(env(safe-area-inset-bottom) + 16px)}.skip{left:22px;bottom:calc(env(safe-area-inset-bottom) + 16px)}}
+@media(max-height:630px){.hero{top:108px}.card{top:97px!important}.finish{top:112px}}
+@media(prefers-reduced-motion:reduce){.fault .bar:before{animation:none}.rig,.card,.line{transition:none!important}}
 </style>
 </head>
-<body><main>
-<section class="story" id="story"><div class="stage" id="stage" tabindex="0" aria-label="História interativa em nove etapas. Deslize para cima para avançar e para baixo para voltar.">
- <div class="brand">RICHARD<em>.TI</em><small>TECNOLOGIA PARA O SEU COMÉRCIO</small></div>
- <div class="count"><b id="count">01</b> / 09</div>
+<body>
+<div class="stage" id="stage" aria-live="off">
+ <div class="halo"></div><div class="brand">RICHARD<b>.TI</b><span>TECNOLOGIA PARA O SEU COMÉRCIO</span></div>
+ <div class="counter"><strong id="n">01</strong> / 09</div>
+ <div class="rail" id="rail" aria-hidden="true"><span class="active"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
  <div class="world"><div class="rig" id="rig">
- <svg id="workstation" viewBox="0 0 941 1672" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
- <defs>
-  <linearGradient id="topFill" x1="0" y1="0" x2=".75" y2="1"><stop stop-color="#232626"/><stop offset=".34" stop-color="#151a1b"/><stop offset=".72" stop-color="#242525"/><stop offset="1" stop-color="#101314"/></linearGradient>
-  <linearGradient id="edge" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#4c4c49"/><stop offset=".38" stop-color="#242528"/><stop offset="1" stop-color="#111214"/></linearGradient>
-  <linearGradient id="legs" x1="0" x2="1" y1="0" y2=".2"><stop stop-color="#272423"/><stop offset=".5" stop-color="#141516"/><stop offset="1" stop-color="#0b0d0f"/></linearGradient>
-  <linearGradient id="rim" x1="0" x2="1"><stop stop-color="#d84a48"/><stop offset=".3" stop-color="#c42f2b"/><stop offset=".8" stop-color="#fd5352"/><stop offset="1" stop-color="#9b2325"/></linearGradient>
-  <radialGradient id="halo"><stop stop-color="#b9f92f" stop-opacity=".10"/><stop offset="1" stop-color="#b9f92f" stop-opacity="0"/></radialGradient>
-  <filter id="deskShadow" x="-25%" y="-25%" width="150%" height="180%"><feGaussianBlur stdDeviation="23"/></filter>
-  <filter id="softObject" x="-20%" y="-30%" width="140%" height="170%"><feGaussianBlur stdDeviation="10"/></filter>
- </defs>
- <!-- THESE PIXELS NEVER CHANGE WHEN THE DOCUMENTS LEAVE. THE DESK HAS NO PAPER BUILT INTO IT. -->
- <g id="empty-desk">
-  <ellipse cx="470" cy="1355" rx="428" ry="84" fill="#000" opacity=".56" filter="url(#deskShadow)"/>
-  <path d="M4 748 L140 918 L140 1395 L15 1378 L15 900Z" fill="url(#legs)" stroke="#322c2b" stroke-width="2"/>
-  <path d="M141 921L203 908L205 1293L141 1395Z" fill="#0e1011" stroke="#303035" stroke-width="1.3"/>
-  <path d="M142 941L203 923L203 1292L144 1309Z" fill="#222322" opacity=".37"/>
-  <path d="M850 807L917 786L924 1223L872 1252Z" fill="url(#legs)" stroke="#292b2a" stroke-width="2"/>
-  <path d="M137 914L868 792L870 835L145 975Z" fill="#0d0f10" opacity=".87"/>
-  <path d="M0 704L941 663L941 782L138 935L0 767Z" fill="url(#topFill)" stroke="#3f3b3a" stroke-width="2"/>
-  <path d="M0 704L941 663L941 782L138 935L0 767Z" fill="url(#halo)" opacity=".3"/>
-  <image href="assets/tampo-grain.webp" x="0" y="0" width="941" height="1672" opacity=".36"/>
-  <path d="M0 767L139 939L941 786" stroke="#140e10" stroke-width="16" fill="none" opacity=".85"/>
-  <path d="M1 760L139 927L940 775" stroke="url(#rim)" stroke-width="4" fill="none" stroke-linejoin="round"/>
-  <path d="M139 936L941 783" stroke="#272629" stroke-width="7" fill="none"/>
-  <path d="M142 952L925 810" stroke="#000" stroke-width="4" opacity=".28"/>
- </g>
- <!-- Photographic equipment isolated from the original image. No trays or papers baked into the desk. -->
- <image href="assets/printer-sem-papel.png" x="2" y="535" width="223" height="206"/>
- <image href="assets/porta-lapis.png" x="198" y="579" width="98" height="165"/>
- <image href="assets/terminal.png" x="522" y="640" width="94" height="105"/>
- <image href="assets/router.png" x="664" y="537" width="167" height="170"/>
- <image href="assets/leitor.png" x="615" y="558" width="93" height="178"/>
- <image href="assets/teclado.png" x="368" y="698" width="302" height="113"/>
- <path d="M647 755L748 729L842 764L838 795L720 821L634 783Z" fill="#151719" stroke="#aa2c2e" stroke-width="3.5"/><path d="M653 756L748 735L835 764" fill="none" stroke="#484446" stroke-width="1.6"/><image href="assets/mouse.png" x="686" y="730" width="105" height="70"/>
- <image href="assets/calculadora.png" x="355" y="785" width="162" height="107"/>
- 
- <!-- Screens are separate high-resolution layers; fixed cutout matches monitor glass. -->
- <g id="display" transform="translate(250 396)">
-  <image class="screen" id="s-legacy" href="assets/screen-legacy.png" x="0" y="0" width="389" height="326" preserveAspectRatio="none"/>
-  <image class="screen" id="s-freeze" href="assets/screen-freeze.png" x="0" y="0" width="389" height="326" preserveAspectRatio="none" opacity="0"/>
-  <image class="screen" id="s-storage" href="assets/screen-storage.png" x="0" y="0" width="389" height="326" preserveAspectRatio="none" opacity="0"/>
-  <image class="screen" id="s-black" href="assets/screen-black.png" x="0" y="0" width="389" height="326" preserveAspectRatio="none" opacity="0"/>
-  <image class="screen" id="s-control" href="assets/screen-control.png" x="0" y="0" width="389" height="326" preserveAspectRatio="none" opacity="0"/>
-  <image href="assets/moldura-v20.png" width="389" height="326" x="0" y="0" preserveAspectRatio="none"/>
- </g>
- <g id="papers"></g>
- <!-- Chair is one physical object, over the desk front. -->
- <image href="assets/chair.png" x="330" y="772" width="590" height="721"/>
- </svg></div></div>
- <div class="hero" id="hero"><h1>Seu comércio pode <span>evoluir.</span></h1></div>
- <svg class="connector" id="connector" aria-hidden="true"><path id="connector-path"/><circle class="dot" id="connector-dot" r="6"/><circle class="root" id="connector-root" r="4"/></svg>
- <div class="hud" id="hud" aria-live="polite"><div class="eyebrow" id="eyebrow"></div><h2 id="diagnosis"></h2><p id="detail"></p></div>
- <div class="caption" id="caption"><small id="caption-kicker"></small><h2 id="caption-title"></h2></div>
- <div class="finish" id="finish"><small>A EVOLUÇÃO DO SEU COMÉRCIO</small><h2>Conheça o <span>Controle+</span></h2><p>Mais organização e controle para a rotina do seu negócio.</p><a href="https://wa.me/5562999407334?text=Ol%C3%A1%2C%20quero%20conhecer%20as%20solu%C3%A7%C3%B5es%20da%20Richard%20TI" target="_blank" rel="noopener noreferrer">Conversar no WhatsApp ↗</a></div>
- <span class="visually-hidden" id="announcement" aria-live="polite"></span>
- </div></section>
- <section class="tail" id="tail"><h2>Sua tecnologia pode trabalhar <span>a favor do seu negócio.</span></h2><p>Computadores, redes, proteção de arquivos e sistemas de gestão: a Richard TI ajuda você a modernizar a operação.</p><a href="https://wa.me/5562999407334?text=Ol%C3%A1%2C%20quero%20modernizar%20meu%20com%C3%A9rcio" target="_blank" rel="noopener noreferrer">Falar com a Richard TI ↗</a></section>
+  <img class="desk" src="assets/mesa-limpa.webp" alt="" aria-hidden="true">
+  <div class="screen" id="monitor-screen">
+   <div id="screen-legacy" class="visible"><img src="assets/sistema-antigo.webp" alt=""></div>
+   <div id="screen-freeze"><img src="assets/sistema-antigo.webp" alt=""><div class="fault"><b>Programa não responde</b><small>Aguarde enquanto o sistema processa a operação...</small><div class="bar"></div></div></div>
+   <div id="screen-storage"><img src="assets/sistema-antigo.webp" alt=""><div class="warning"><b>Armazenamento cheio</b>Não foi possível salvar este arquivo.<br><br><span class="danger">Espaço insuficiente no disco.</span></div></div>
+   <div id="screen-black" class="black"></div>
+   <div id="screen-control"><img src="assets/controle-real.webp" alt=""></div>
+   <div class="glass"></div>
+  </div>
+  <div class="intake-glow" id="intake-glow"></div>
+  <div class="papers" id="papers">
+   <img class="paper" data-x="50" data-y="541" style="left:50px;top:541px;width:117px;height:131px" src="assets/cupom-impressora.png" alt="">
+   <img class="paper" data-x="146" data-y="713" style="left:146px;top:713px;width:168px;height:139px" src="assets/pilha-notas.png" alt="">
+   <img class="paper" data-x="287" data-y="716" style="left:287px;top:716px;width:126px;height:115px" src="assets/comprovante.png" alt="">
+   <img class="paper" data-x="64" data-y="791" style="left:64px;top:791px;width:393px;height:198px" src="assets/caderno-fiado.png" alt="">
+   <img class="paper" data-x="651" data-y="768" style="left:651px;top:768px;width:261px;height:147px" src="assets/prancheta.png" alt="">
+  </div>
+ </div></div>
+ <div class="hero" id="hero"><div class="eyebrow">TECNOLOGIA SEM COMPLICAÇÃO</div><h1>Seu comércio pode <em>evoluir.</em></h1></div>
+ <svg class="line" id="line" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path id="link-path"/><circle id="link-a" r="4"/><circle id="link-b" r="5"/></svg>
+ <div class="card" id="card"><div class="code" id="code"></div><h2 id="card-title"></h2><p id="card-copy"></p></div>
+ <div class="caption" id="caption"><div class="kicker" id="caption-kicker"></div><h2 id="caption-title"></h2></div>
+ <div class="finish" id="finish"><div class="kicker">UMA NOVA ETAPA</div><h2>Seu negócio merece <em>evoluir.</em></h2><p>Do sistema antigo e dos controles manuais a uma rotina mais organizada. Conheça o Controle+.</p><a href="https://wa.me/5562999407334" id="contact">Conversar com a Richard TI <span aria-hidden="true">↗</span></a></div>
+ <a class="skip" href="#" id="skip">Pular apresentação</a>
+ <span id="announcement" role="status" aria-live="polite"></span>
+</div>
+<main id="scrollport" aria-label="Conheça as soluções Richard TI em nove etapas">
+ <section class="chapter" data-scene="0" aria-label="01, mesa do comércio"></section>
+ <section class="chapter" data-scene="1" aria-label="02, computador lento"></section>
+ <section class="chapter" data-scene="2" aria-label="03, rede interna"></section>
+ <section class="chapter" data-scene="3" aria-label="04, armazenamento e arquivos"></section>
+ <section class="chapter" data-scene="4" aria-label="05, papéis e controles manuais"></section>
+ <section class="chapter" data-scene="5" aria-label="06, papéis começam a se levantar"></section>
+ <section class="chapter" data-scene="6" aria-label="07, papéis entram no monitor"></section>
+ <section class="chapter" data-scene="7" aria-label="08, revelação do Controle Mais"></section>
+ <section class="chapter" data-scene="8" aria-label="09, zoom final no sistema Controle Mais"></section>
 </main>
 <script>
-(()=>{'use strict';
-const $=s=>document.getElementById(s),stage=$('stage'),rig=$('rig'),hud=$('hud'),connector=$('connector'),hero=$('hero'),caption=$('caption'),finish=$('finish'),paperRoot=$('papers');
-const NS='http://www.w3.org/2000/svg';
-const data=[
- {name:'Mesa completa',screen:'legacy'},
- {name:'Computador travando',screen:'freeze',target:{x:443,y:528,w:390,h:265},pin:{x:442,y:550},eyebrow:'01 / COMPUTADOR',title:'Computador lento ou travando?',copy:'Um sistema que não responde atrasa as vendas e o atendimento.'},
- {name:'Falha na rede interna',screen:'legacy',target:{x:755,y:622,w:210,h:188},pin:{x:748,y:631},eyebrow:'02 / REDE INTERNA',title:'Equipamentos sem comunicação?',copy:'Computador, impressora e servidor precisam funcionar na mesma rede.'},
- {name:'Armazenamento cheio',screen:'storage',target:{x:443,y:528,w:390,h:265},pin:{x:445,y:544},eyebrow:'03 / ARQUIVOS',title:'Armazenamento cheio?',copy:'Proteja seus arquivos com espaço adequado, backup e manutenção.'},
- {name:'Papéis e controles manuais',screen:'legacy',target:{x:273,y:810,w:470,h:235},pin:{x:290,y:805},eyebrow:'04 / ORGANIZAÇÃO',title:'Fiados e controles no papel?',copy:'Anotações soltas dificultam acompanhar cobranças e estoque.'},
- {name:'Os papéis começam a subir',screen:'legacy',caption:['A TRANSFORMAÇÃO COMEÇA','Menos papel, mais controle.']},
- {name:'Todos os papéis entram no monitor',screen:'black',caption:['DO PAPEL PARA O DIGITAL','Um novo jeito de organizar.']},
- {name:'Controle+ aparece na tela',screen:'control'},
- {name:'Zoom final no Controle+',screen:'control',target:{x:445,y:526,w:400,h:265}}
-];
-// Every physical paper and its shadow is part of this collection; the underlying desk is the same at every stage.
-const specs=[
- ['recibos-esquerda.png',0,672,117,133],['pilha-recibos.png',86,681,185,132],
- ['cupom-solto.png',265,711,124,88],['caderno-fiado.png',60,746,355,203],
- ['formulario.png',437,749,227,112],['documentos-direita.png',723,681,208,122],
- ['ticket-menor.png',265,665,75,68],['recibo-impressora.png',50,536,118,105],
- ['ticket-menor.png',199,710,66,60],['cupom-solto.png',510,693,94,68]
-];
-const paperNodes=specs.map(([file,x,y,w,h],i)=>{
- const g=document.createElementNS(NS,'g');g.setAttribute('data-paper',i);const image=document.createElementNS(NS,'image');image.setAttribute('href','assets/'+file);image.setAttribute('x',x);image.setAttribute('y',y);image.setAttribute('width',w);image.setAttribute('height',h);g.append(image);paperRoot.append(g);return {g,cx:x+w/2,cy:y+h/2,x,y,w,h};
-});
-// Additional loose sheets appear only mid-flight, and are also removed completely.
-const flights=Array.from({length:15},(_,i)=>{
- const g=document.createElementNS(NS,'g');const image=document.createElementNS(NS,'image');image.setAttribute('href','assets/'+(i%3?'cupom-solto.png':'ticket-menor.png'));
- image.setAttribute('x',-29);image.setAttribute('y',-39);image.setAttribute('width',58);image.setAttribute('height',78);g.append(image);g.style.opacity=0;paperRoot.append(g);return g;
-});
-let state=0,blocked=false,cam=null,W=390,H=844,lastTouch=null,lastWheel=0,reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,progress=0,scrollNext=false;
-const clamp=(v,min=0,max=1)=>Math.min(max,Math.max(min,v));const ease=t=>1-Math.pow(1-clamp(t),3);const mix=(a,b,t)=>a+(b-a)*t;const sleep=ms=>new Promise(r=>setTimeout(r,reduced?0:ms));
-function cameraBase(){const mobile=W<760;let s=mobile?Math.min(W*.93/941,H*.72/1050):Math.min(W*.79/941,H*.87/1150,.91);const cx=465,cy=mobile?929:918;return {s,ox:W*(mobile?.50:.57)-cx*s,oy:H*(mobile?.585:.575)-cy*s}}
-function cameraFocus(index){const f=data[index].target;if(!f)return cameraBase();const mobile=W<760;
- // reserve top area for the diagnostic card, fit the ENTIRE physical target below it.
- const reserved=mobile?Math.max(290,H*.325):Math.max(145,H*.18),availableH=H-reserved-55;
- const wantedW=W*(mobile?.83:.51),wantedH=availableH*(mobile?.76:.70);
- let s=Math.min(wantedW/f.w,wantedH/f.h,mobile?1.42:2.30);
- // The object center is always visible, and never underneath the card.
- const px=W*(mobile?.50:.48),py=reserved+availableH*.47;
- return {s,ox:px-f.x*s,oy:py-f.y*s}
-}
-function showWorld(c){cam=c;rig.style.transform=`translate3d(${c.ox}px,${c.oy}px,0) scale(${c.s})`;if(hud.style.visibility==='visible')drawLink()}
-function animate(duration,onframe){if(reduced){onframe(1);return Promise.resolve()}return new Promise(resolve=>{const start=performance.now();function frame(now){const t=clamp((now-start)/duration);onframe(ease(t));if(t<1)requestAnimationFrame(frame);else resolve()}requestAnimationFrame(frame)})}
-function cameraTo(destination,duration=760){const a={...cam};return animate(duration,t=>showWorld({s:mix(a.s,destination.s,t),ox:mix(a.ox,destination.ox,t),oy:mix(a.oy,destination.oy,t)}))}
-const screens={legacy:$('s-legacy'),freeze:$('s-freeze'),storage:$('s-storage'),black:$('s-black'),control:$('s-control')};
-function selectScreen(name){Object.entries(screens).forEach(([key,node])=>node.setAttribute('opacity',key===name?'1':'0'))}
-function appear(node,yes){node.style.opacity=yes?'1':'0';node.style.visibility=yes?'visible':'hidden'}
-function hideHud(){appear(hud,false);appear(connector,false)}
-function drawLink(){if(state<1||state>4)return;const anchor=data[state].pin;
- const ax=cam.ox+anchor.x*cam.s,ay=cam.oy+anchor.y*cam.s;
- const r=hud.getBoundingClientRect(),sr=stage.getBoundingClientRect();
- let sx,sy;if(W<760){sx=r.left-sr.left+r.width*.66;sy=r.bottom-sr.top+1}else{sx=r.left-sr.left+4;sy=r.top-sr.top+r.height*.62}
- const mx=(sx+ax)/2,my=W<760?sy+(ay-sy)*.38:Math.min(sy,ay)-24;
- $('connector-path').setAttribute('d',`M${sx.toFixed(1)} ${sy.toFixed(1)} Q${mx.toFixed(1)} ${my.toFixed(1)} ${ax.toFixed(1)} ${ay.toFixed(1)}`);
- $('connector-dot').setAttribute('cx',ax);$('connector-dot').setAttribute('cy',ay);
- $('connector-root').setAttribute('cx',sx);$('connector-root').setAttribute('cy',sy)
-}
-function showHud(n){$('eyebrow').textContent=data[n].eyebrow;$('diagnosis').textContent=data[n].title;$('detail').textContent=data[n].copy;
- if(W>=760){hud.style.left=(W-Math.min(365,W*.27)-clamp(W*.05,28,80))+'px';hud.style.top=Math.max(145,H*.26)+'px';hud.style.width=Math.min(365,W*.27)+'px'}else{hud.style.width='';hud.style.left='';hud.style.top=''}
- appear(hud,true);drawLink();appear(connector,true)}
-function cap(kicker,title){$('caption-kicker').textContent=kicker;$('caption-title').textContent=title;appear(caption,true)}
-function papers(t){progress=t;
- paperNodes.forEach((p,i)=>{
-  const start=.15+((i*3)%7)*.025;
-  const ascent=ease(clamp(t/.3));const flying=ease(clamp((t-start)/(.94-start)));
-  const dx=(455-p.cx)*flying+Math.sin(i*1.83)*18*ascent*(1-flying);
-  const dy=-55*ascent+(533-p.cy+55)*flying-115*Math.sin(Math.PI*flying);
-  const a=((i%2)?1:-1)*(12*ascent+115*flying);
-  const scale=1-.96*flying;
-  p.g.setAttribute('transform',`translate(${dx.toFixed(2)} ${dy.toFixed(2)}) translate(${p.cx} ${p.cy}) rotate(${a.toFixed(2)}) scale(${scale.toFixed(3)}) translate(${-p.cx} ${-p.cy})`);
-  p.g.style.opacity=(1-ease(clamp((flying-.78)/.22))).toFixed(3)
+(()=>{
+ 'use strict';
+ const $=id=>document.getElementById(id),stage=$('stage'),scroller=$('scrollport'),rig=$('rig'),card=$('card'),line=$('line'),hero=$('hero'),caption=$('caption'),finish=$('finish');
+ const paperNodes=[...document.querySelectorAll('.paper')];
+ const origins=[[110,609],[216,758],[354,773],[235,851],[779,832]];
+ const leaves=Array.from({length:21},(_,i)=>{
+  const img=document.createElement('img');img.src='assets/folha-voando.png';img.alt='';img.className='flyleaf';img.style.width=(68+(i%4)*10)+'px';img.style.height=(64+(i%3)*9)+'px';
+  const [x,y]=origins[i%origins.length];img.style.left=x+'px';img.style.top=y+'px';$('papers').append(img);
+  return {el:img,x,y,w:parseInt(img.style.width),h:parseInt(img.style.height),i}
  });
- flights.forEach((g,i)=>{
-  const p=paperNodes[i%paperNodes.length],offset=.28+(i%5)*.075+Math.floor(i/5)*.025;
-  const v=ease(clamp((t-offset)/(1-offset)));const x=mix(p.cx,449,v);const y=mix(p.cy-55,530,v)-105*Math.sin(Math.PI*v);
-  g.setAttribute('transform',`translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${(i%2?1:-1)*195*v}) scale(${(1-.93*v).toFixed(3)})`);
-  g.style.opacity=t<=offset?'0':(Math.min(1,v*10)*(1-ease(clamp((v-.78)/.22)))).toFixed(3)
+ const sceneInfo=[
+  {name:'Abertura',screen:'legacy'},
+  {name:'Computador lento',screen:'freeze',label:'01 / COMPUTADOR',title:'Seu sistema vive travando?',copy:'Cada parada atrasa a venda e o atendimento.',focus:[490,525,465,280],pin:[495,506]},
+  {name:'Rede interna',screen:'legacy',label:'02 / REDE INTERNA',title:'Equipamentos sem comunicação?',copy:'Computador, impressora e equipamentos precisam trabalhar juntos.',focus:[839,657,245,198],pin:[843,676]},
+  {name:'Armazenamento',screen:'storage',label:'03 / ARQUIVOS',title:'Não consegue salvar arquivos?',copy:'Espaço insuficiente e falhas de backup colocam informações em risco.',focus:[490,525,465,280],pin:[570,525]},
+  {name:'Controles manuais',screen:'legacy',label:'04 / CONTROLES MANUAIS',title:'Fiado e estoque no papel?',copy:'Anotações espalhadas dificultam a organização e a conferência.',focus:[281,837,495,225],pin:[269,871]},
+  {name:'Levantamento',screen:'legacy',caption:['A TRANSFORMAÇÃO COMEÇA','Do papel para o digital.']},
+  {name:'Papéis ao monitor',screen:'black',caption:['TUDO EM UM SÓ LUGAR','Menos improviso. Mais controle.']},
+  {name:'Controle+',screen:'control'},
+  {name:'Controle+ em foco',screen:'control',focus:[495,520,470,280]}
+ ];
+ const clamp=(v,min=0,max=1)=>Math.min(max,Math.max(min,v)),ease=t=>1-Math.pow(1-clamp(t),3),lerp=(a,b,t)=>a+(b-a)*t;
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let W=stage.clientWidth,H=stage.clientHeight,cam=null,state=0,requested=0,animating=false,paperP=0,rafLink=0;
+ function home(){let s,ox,oy;if(W<760){s=Math.min(W*.99/941,H*.96/1672,.48);ox=(W-941*s)/2;oy=H*.555-914*s}
+  else{s=Math.min(W*.63/941,H*.93/1320,.83);ox=W*.66-485*s;oy=H*.59-840*s}return {s,ox,oy}}
+ function focused(n){const f=sceneInfo[n].focus;if(!f)return home();const mobile=W<760;
+  let s=Math.min((mobile?W*.91:W*.56)/f[2],(mobile?H*.48:H*.63)/f[3],mobile?1.28:1.32);
+  const tx=mobile?W*.49:W*.47,ty=mobile?H*.60:H*.58;
+  return {s,ox:tx-f[0]*s,oy:ty-f[1]*s}
+ }
+ function moveCamera(c){cam=c;rig.style.transform=`translate3d(${c.ox}px,${c.oy}px,0) scale(${c.s})`;if(card.style.visibility==='visible')drawConnector()}
+ function tween(ms,step){if(reduced){step(1);return Promise.resolve()}
+  return new Promise(resolve=>{let start=null;function frame(t){if(start===null)start=t;const k=clamp((t-start)/ms);step(ease(k));if(k<1)requestAnimationFrame(frame);else resolve()}requestAnimationFrame(frame)})}
+ function tweenLinear(ms,step){if(reduced){step(1);return Promise.resolve()}
+  return new Promise(resolve=>{let start=null;function frame(t){if(start===null)start=t;const k=clamp((t-start)/ms);step(k);if(k<1)requestAnimationFrame(frame);else resolve()}requestAnimationFrame(frame)})}
+ const pause=ms=>new Promise(r=>setTimeout(r,reduced?0:ms));
+ function cameraTo(c,ms){const a={...cam};return tween(ms,t=>moveCamera({s:lerp(a.s,c.s,t),ox:lerp(a.ox,c.ox,t),oy:lerp(a.oy,c.oy,t)}))}
+ function fade(node,visible){node.style.visibility=visible?'visible':'hidden';node.style.opacity=visible?'1':'0';node.style.transform=node===caption?(visible?'translate(-50%,0)':'translate(-50%,10px)'):(visible?'translateY(0)':'translateY(11px)')}
+ function screen(name){['legacy','freeze','storage','black','control'].forEach(k=>{const el=$('screen-'+k);el.classList.toggle('visible',k===name)})}
+ function hideCard(){fade(card,false);line.style.opacity='0'}
+ function showCard(n){const scene=sceneInfo[n];$('code').textContent=scene.label;$('card-title').textContent=scene.title;$('card-copy').textContent=scene.copy;
+  if(W>=760){card.style.width='min(340px,28vw)';card.style.left=Math.round(W*.73)+'px';card.style.top=Math.round(H*.31)+'px'}else{card.style.left='';card.style.top='';card.style.width=''}
+  fade(card,true);drawConnector();line.style.opacity='1'}
+ function drawConnector(){if(!sceneInfo[state].pin)return;
+  const [x,y]=sceneInfo[state].pin,[px,py]=[cam.ox+x*cam.s,cam.oy+y*cam.s];
+  const a=card.getBoundingClientRect(),b=stage.getBoundingClientRect();let x0,y0;
+  if(W<760){x0=a.left-b.left+a.width*.63;y0=a.bottom-b.top}else{x0=a.left-b.left;y0=a.top-b.top+a.height*.57}
+  const mx=W<760?x0+(px-x0)*.38:x0-(x0-px)*.40,my=W<760?y0+(py-y0)*.30:Math.min(y0,py)-30;
+  $('link-path').setAttribute('d',`M ${x0.toFixed(1)} ${y0.toFixed(1)} Q ${mx.toFixed(1)} ${my.toFixed(1)} ${px.toFixed(1)} ${py.toFixed(1)}`);
+  $('link-a').setAttribute('cx',x0);$('link-a').setAttribute('cy',y0);$('link-b').setAttribute('cx',px);$('link-b').setAttribute('cy',py)
+ }
+ function papers(t){paperP=t;paperNodes.forEach((el,i)=>{
+  const lift=ease(clamp(t/.28));const dissolve=ease(clamp((t-.31)/.34));
+  const wiggle=((i%2)?1:-1)*(3.5*lift+7*dissolve);
+  const offsetX=Math.sin(i*2.4)*9*lift,offsetY=-34*lift-20*dissolve;
+  el.style.transform=`translate3d(${offsetX.toFixed(2)}px,${offsetY.toFixed(2)}px,0) rotate(${wiggle.toFixed(2)}deg) scale(${(1-.22*dissolve).toFixed(3)})`;
+  el.style.opacity=t>=.999?'0':(1-dissolve).toFixed(3);
  });
-}
-function updateHeader(n){$('count').textContent=String(n+1).padStart(2,'0');$('announcement').textContent=data[n].name;stage.setAttribute('aria-label',data[n].name+'. Deslize para avançar ou voltar.')}
-async function move(dir){if(blocked)return;if(dir>0&&state===8){window.scrollTo({top:$('tail').offsetTop,behavior:'smooth'});return}const next=state+dir;if(next<0||next>8)return;
- blocked=true;const prev=state;hideHud();appear(hero,false);appear(caption,false);appear(finish,false);
- // Mandatory retract before ANY independent zoom, including reverse navigation.
- if([1,2,3,4,8].includes(prev)){await cameraTo(cameraBase(),850);await sleep(200)}
- state=next;updateHeader(next);
- if(next<=4){
-  if(next<=4&&progress>0){await animate(680,t=>papers(mix(progress,0,t)));papers(0)}
-  selectScreen(data[next].screen);
-  if(next===0){await cameraTo(cameraBase(),570);appear(hero,true)}
-  else{await cameraTo(cameraFocus(next),960);await sleep(135);showHud(next)}
- }else if(next===5){await cameraTo(cameraBase(),700);selectScreen('legacy');const begin=progress;await animate(1250,t=>papers(mix(begin,.30,t)));cap(...data[next].caption)}
- else if(next===6){await cameraTo(cameraBase(),680);const begin=progress;await animate(2000,t=>{papers(mix(begin,1,t));if(t>.78)selectScreen('black')});papers(1);selectScreen('black');cap(...data[next].caption)}
- else if(next===7){await cameraTo(cameraBase(),650);papers(1);selectScreen('black');await sleep(350);await animate(780,t=>{screens.control.setAttribute('opacity',t.toFixed(3));screens.black.setAttribute('opacity',(1-t).toFixed(3))});selectScreen('control')}
- else if(next===8){papers(1);selectScreen('control');await cameraTo(cameraFocus(8),1050);appear(finish,true)}
- // Revisiting reverse states must restore the documents without stale shadows or patches.
- if(next===5){selectScreen('legacy')}
- await sleep(280);blocked=false;
-}
-function request(dir){move(dir)}
-// One wheel burst = one deliberate step, regardless of delta, even on high-resolution trackpads.
-let wheelAccum=0,wheelTriggered=false,wheelIdle;
-window.addEventListener('wheel',e=>{if($('stage').getBoundingClientRect().bottom<H*.5||window.scrollY>H*.7)return;
- e.preventDefault();
- // A trackpad's long inertial tail belongs to the original gesture. Never let it trigger a second scene.
- clearTimeout(wheelIdle);wheelIdle=setTimeout(()=>{wheelAccum=0;wheelTriggered=false},480);
- if(wheelTriggered)return;
- wheelAccum+=e.deltaY;
- if(Math.abs(wheelAccum)>32){const d=Math.sign(wheelAccum);wheelAccum=0;wheelTriggered=true;request(d)}
-},{passive:false});
-stage.addEventListener('touchstart',e=>{if(e.touches.length!==1)return;lastTouch={x:e.touches[0].clientX,y:e.touches[0].clientY}},{passive:true});
-stage.addEventListener('touchmove',e=>{e.preventDefault()},{passive:false});
-stage.addEventListener('touchend',e=>{if(!lastTouch)return;const dy=e.changedTouches[0].clientY-lastTouch.y,dx=e.changedTouches[0].clientX-lastTouch.x;lastTouch=null;if(Math.abs(dy)>=48&&Math.abs(dy)>Math.abs(dx)*1.18)request(dy<0?1:-1)},{passive:true});
-window.addEventListener('keydown',e=>{if(e.target.closest('a,button,input,textarea,select'))return;const down=['ArrowDown','ArrowRight','PageDown',' '],up=['ArrowUp','ArrowLeft','PageUp'];if(!e.repeat&&window.scrollY<H*.6&&(down.includes(e.key)||up.includes(e.key))){e.preventDefault();request(down.includes(e.key)?1:-1)}});
-function resize(){W=stage.clientWidth;H=stage.clientHeight;showWorld(data[state].target&&[1,2,3,4,8].includes(state)?cameraFocus(state):cameraBase());if(hud.style.visibility==='visible'){showHud(state)}}
-window.addEventListener('resize',resize,{passive:true});resize();papers(0);selectScreen('legacy');updateHeader(0);
-// Test scenes directly with ?scene=N. This is a QA feature, not visible navigation.
-const initial=Number(new URLSearchParams(location.search).get('scene'));
-if(Number.isInteger(initial)&&initial>=2&&initial<=9){window.addEventListener('load',async()=>{for(let i=1;i<initial;i++){await move(1)}},{once:true})}
+ leaves.forEach(({el,x,y,w,h,i})=>{
+  const st=.29+(i%6)*.018;
+  const travel=ease(clamp((t-st)/(1-st)));
+  const dx=(478-(x+w*.5))*travel+(Math.sin(i*2.12)*29)*Math.sin(Math.PI*travel);
+  const dy=(512-(y+h*.5))*travel-135*Math.sin(Math.PI*travel);
+  const rotation=((i%2)?1:-1)*(16+125*travel)+i*13;
+  const sc=.72+(i%4)*.11-(.71+(i%4)*.10)*travel;
+  el.style.transform=`translate3d(${dx.toFixed(2)}px,${dy.toFixed(2)}px,0) rotate(${rotation.toFixed(2)}deg) scale(${Math.max(.04,sc).toFixed(3)})`;
+  el.style.opacity=t<st?'0':(clamp(travel*12)*(1-ease(clamp((travel-.78)/.22)))).toFixed(3)
+ });
+ const glow=clamp((t-.42)/.22)*(1-clamp((t-.93)/.07));
+ $('intake-glow').style.opacity=(glow*.82).toFixed(3);
+ }
+ function showCaption(n){$('caption-kicker').textContent=sceneInfo[n].caption[0];$('caption-title').textContent=sceneInfo[n].caption[1];fade(caption,true)}
+ function header(n){$('n').textContent=String(n+1).padStart(2,'0');[...$('rail').children].forEach((el,i)=>el.classList.toggle('active',i===n));$('announcement').textContent=sceneInfo[n].name}
+ async function transition(next){
+  animating=true;const prev=state;hideCard();fade(caption,false);fade(finish,false);fade(hero,false);
+  if([1,2,3,4,8].includes(prev)){await cameraTo(home(),reduced?0:590);await pause(90)}
+  state=next;header(next);
+  if(next<=4){const start=paperP;if(start>0)await tween(650,t=>papers(lerp(start,0,t)));
+   papers(0);screen(sceneInfo[next].screen);
+   if(next===0){await cameraTo(home(),420);fade(hero,true)}
+   else{await cameraTo(focused(next),920);await pause(145);showCard(next)}
+  }else if(next===5){screen('legacy');await cameraTo(home(),640);const p=paperP;await tweenLinear(1370,t=>papers(lerp(p,.28,t)));showCaption(next)}
+  else if(next===6){await cameraTo(home(),530);screen('legacy');const p=paperP,black=$('screen-black');black.style.opacity='0';await tweenLinear(2250,t=>{papers(lerp(p,1,t));black.style.opacity=clamp((t-.53)/.35).toFixed(3)});papers(1);screen('black');black.style.opacity='';showCaption(next)}
+  else if(next===7){await cameraTo(home(),490);papers(1);screen('black');await pause(320);screen('control')}
+  else if(next===8){papers(1);screen('control');await cameraTo(focused(next),980);fade(finish,true)}
+  await pause(100);animating=false;
+  if(requested!==state){const d=Math.sign(requested-state);requestAnimationFrame(()=>transition(state+d))}
+ }
+ function onScene(n){requested=n;if(animating)return;if(n===state)return;const dir=Math.sign(n-state);transition(state+dir)}
+ // One deliberate gesture always means one chapter. Browser momentum cannot skip a diagnosis.
+ function go(index){const n=clamp(index,0,8);if(animating||n===state)return;requested=n;
+  scroller.scrollTo({top:n*scroller.clientHeight,behavior:'instant'});onScene(n)}
+ let wheelBurst=false,wheelSum=0,wheelSilence;
+ scroller.addEventListener('wheel',e=>{
+  e.preventDefault();clearTimeout(wheelSilence);wheelSilence=setTimeout(()=>{wheelBurst=false;wheelSum=0},780);
+  if(wheelBurst||animating)return;wheelSum+=e.deltaY;
+  if(Math.abs(wheelSum)>48){const d=Math.sign(wheelSum);wheelSum=0;wheelBurst=true;go(state+d)}
+ },{passive:false});
+ let startTouch=null;
+ scroller.addEventListener('touchstart',e=>{if(e.touches.length===1)startTouch={x:e.touches[0].clientX,y:e.touches[0].clientY}},{passive:true});
+ scroller.addEventListener('touchmove',e=>{if(startTouch&&e.cancelable)e.preventDefault()},{passive:false});
+ scroller.addEventListener('touchend',e=>{if(!startTouch)return;
+  const dy=e.changedTouches[0].clientY-startTouch.y,dx=e.changedTouches[0].clientX-startTouch.x;startTouch=null;
+  if(Math.abs(dy)>47&&Math.abs(dy)>Math.abs(dx)*1.15)go(state+(dy<0?1:-1))
+ },{passive:true});
+ scroller.addEventListener('touchcancel',()=>startTouch=null,{passive:true});
+ // Keyboard support, replay and direct skip remain available without a bottom navigation bar.
+ $('skip').addEventListener('click',async e=>{e.preventDefault();if(animating)return;hideCard();fade(hero,false);fade(caption,false);state=8;requested=8;papers(1);screen('control');header(8);scroller.scrollTo({top:8*scroller.clientHeight,behavior:'instant'});await cameraTo(focused(8),950);fade(finish,true)});
+ window.addEventListener('keydown',e=>{if(e.target.closest('a,button,input,textarea'))return;
+  const forwards=['ArrowDown','ArrowRight','PageDown',' '],backwards=['ArrowUp','ArrowLeft','PageUp'];if(forwards.includes(e.key)||backwards.includes(e.key)){
+   e.preventDefault();if(!e.repeat)go(state+(forwards.includes(e.key)?1:-1))
+  }
+ });
+ // Only expose a verified contact link. Do not silently send potential clients to a fabricated number.
+ $('contact').setAttribute('href','https://wa.me/5562999407334');
+ const resize=()=>{W=stage.clientWidth;H=stage.clientHeight;moveCamera([1,2,3,4,8].includes(state)?focused(state):home());if(card.style.visibility==='visible')showCard(state)};
+ window.addEventListener('resize',resize,{passive:true});resize();screen('legacy');papers(0);header(0);fade(hero,true);
+ // QA: ?scene=3 renders a single state immediately for deterministic visual testing.
+ const direct=Number(new URLSearchParams(location.search).get('scene'));
+ if(Number.isInteger(direct)&&direct>=1&&direct<=9){const k=direct-1;state=k;requested=k;header(k);
+  papers(k<=4?0:k===5?.28:1);screen(sceneInfo[k].screen);fade(hero,k===0);
+  if([1,2,3,4,8].includes(k)){moveCamera(focused(k));if(k<=4)showCard(k);if(k===8)fade(finish,true)}else{moveCamera(home());if([5,6].includes(k))showCaption(k)}
+ }
 })();
 </script>
-</body></html>
+</body>
+</html>
