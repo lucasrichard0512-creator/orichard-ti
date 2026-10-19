@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#080d0a">
-<title>Richard TI • Tecnologia para o seu comércio</title>
+<title>Richard TI • Controle+ no monitor • V25</title>
 <meta name="description" content="Seu comércio merece tecnologia que acompanha o seu ritmo. Conheça a Richard TI e o Controle+.">
 <style>
 :root{color-scheme:dark;--bg:#070b09;--green:#bcfa3d;--white:#f8fbf6;--muted:#b7c1b5;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -103,6 +103,17 @@
 @media(prefers-reduced-motion:reduce){.finish a{transition:none}.halo{filter:none}}
 
  .finish a span{margin-left:11px;display:inline-block;transition:transform .18s}.finish a:hover span{transform:translate(2px,-2px)}
+
+/* V25 — Retina compositing at the image native dimensions.
+   Physical layout remains 448×274, but each screen image is a 1792×1096
+   decoded texture, scaled ONCE inside the aperture. This avoids the browser
+   rasterizing the screens at only 448 pixels before the camera zoom. */
+.screen-premium{overflow:hidden;contain:paint}
+.screen-premium .screen-layer,.screen-premium .screen-reflection{
+ width:1792px;height:1096px;max-width:none;
+ transform:scale(.25);transform-origin:top left;
+ image-rendering:auto;backface-visibility:hidden;
+}
 </style>
 </head>
 <body>
@@ -112,8 +123,8 @@
  <div class="rail" id="rail" aria-hidden="true"><span class="active"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
  <div class="world"><div class="rig" id="rig">
   <img class="desk" src="assets/mesa-premium.webp" alt="" aria-hidden="true">
-  <!-- All display states are pre-mapped to the four corners of the ACTUAL LCD,
-       with a physical-pixel alpha mask; no browser CSS matrix3d or overhanging UI. -->
+  <!-- V25: LCD display textures come from the genuine user-provided screenshots.
+       Registered to the exact 4-corner glass aperture, with no false dashboard. -->
   <div class="screen-premium" id="monitor-screen" aria-hidden="true">
    <img class="screen-layer" id="screen-legacy" src="assets/screen-legacy.webp" alt="" decoding="async" fetchpriority="high">
    <img class="screen-layer" id="screen-freeze" src="assets/screen-freeze.webp" alt="" decoding="async">
