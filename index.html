@@ -1,264 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080d0b">
-<meta name="description" content="Richard TI. Tecnologia feita para a realidade do seu comércio. Do sistema antigo e do papel à organização com Controle+.">
-<title>Richard TI | Tecnologia para seu comércio</title>
-<style>
-:root{--ink:#f2f5ef;--green:#c6fa72;--green-dim:#a4d565;--ash:#adbbad;--bg:#060a08;--red:#e98779;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color-scheme:dark}
-*,*::before,*::after{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
-a{color:inherit}a:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offset:4px}
-#scrollport{position:fixed;inset:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior-y:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;scrollbar-width:none;z-index:1}
-#scrollport::-webkit-scrollbar{display:none}
-#scroll-length{height:835vh;height:835dvh;pointer-events:none}
-#stage{position:fixed;inset:0;overflow:hidden;isolation:isolate;pointer-events:none;background:linear-gradient(145deg,#0c120e 0%,#07100b 58%,#030604 100%);z-index:2}
-#stage::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 70% 61% at 48% 65%,transparent 40%,#01030255 97%)}
-.ambient{position:absolute;inset:-8%;z-index:0;opacity:.75;pointer-events:none;background:radial-gradient(ellipse 58% 39% at 68% 59%,#2e532838,transparent 80%),radial-gradient(ellipse 55% 35% at 19% 91%,#705d3719,transparent 78%)}
-.light-orb{position:absolute;z-index:0;width:min(105vw,1250px);height:min(75vh,650px);left:50%;top:45%;border-radius:50%;background:radial-gradient(ellipse,#a0c8561c 0%,#4d71300a 42%,transparent 73%);filter:blur(48px);transform:translate3d(-50%,-50%,0);will-change:transform,opacity;pointer-events:none}
-.fine-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(to right,#b6d5a009 1px,transparent 1px),linear-gradient(to bottom,#b6d5a007 1px,transparent 1px);background-size:110px 110px;mask-image:radial-gradient(ellipse 67% 69% at 52% 60%,black 0%,transparent 89%);opacity:.55}
-.grain{position:absolute;inset:0;z-index:15;pointer-events:none;opacity:.022;background-image:url('assets/grain.webp');background-size:190px 190px;mix-blend-mode:soft-light}
-.world{position:absolute;inset:0;z-index:4;pointer-events:none;perspective:1200px}
-#rig{position:absolute;left:0;top:0;width:941px;height:1672px;transform-origin:0 0;will-change:transform;filter:drop-shadow(0 28px 45px #0009)}
-.desk{position:absolute;inset:0;display:block;width:941px;height:1672px;object-fit:fill;user-select:none;-webkit-user-drag:none;filter:brightness(1.035) contrast(1.055) saturate(1.015)}
-/* The same photographed monitor stays in every scene. All LCD states occupy its glass plane. */
-.lcd{position:absolute;left:277px;top:388px;width:440px;height:283px;z-index:3;isolation:isolate;pointer-events:none}
-.lcd>img{position:absolute;inset:0;width:1320px;height:849px;max-width:none;object-fit:fill;transform-origin:0 0;transform:scale(.3333333333);opacity:0;visibility:hidden;pointer-events:none;image-rendering:auto;backface-visibility:hidden}
-.lcd-glass{position:absolute;inset:11px 11px 15px 9px;pointer-events:none;box-shadow:inset 0 0 19px #0005,inset 0 0 0 1px #ffffff07;border-radius:2px;background:linear-gradient(116deg,#ffffff0b 0%,transparent 22%,transparent 72%,#ffffff07 100%);opacity:.42}
-.pen-foreground{position:absolute;z-index:9;left:269px;top:615px;width:54px;height:88px;object-fit:fill;pointer-events:none}
-.lcd-glow{position:absolute;left:292px;top:411px;width:425px;height:256px;background:#d9ffca;filter:blur(41px);opacity:0;mix-blend-mode:screen;z-index:2;pointer-events:none}
-#papers{position:absolute;inset:0;z-index:10;pointer-events:none}
-.paper{position:absolute;display:block;object-fit:fill;transform-origin:50% 55%;will-change:transform,opacity;filter:drop-shadow(0 2px 3px #0006)}
-.flyleaf{position:absolute;opacity:0;transform-origin:50% 50%;will-change:transform,opacity;filter:drop-shadow(0 6px 9px #0008)}
-.intake-glow{position:absolute;z-index:8;left:412px;top:443px;width:164px;height:175px;opacity:0;border-radius:50%;background:radial-gradient(circle,#d7ff9b99 0%,#a3f54a5c 23%,#9bea3630 42%,transparent 70%);filter:blur(18px);mix-blend-mode:screen}
-/* Lens effects are purposely subtle: a real camera, not an arcade HUD. */
-.lens-shade{position:absolute;inset:0;pointer-events:none;z-index:6;opacity:0;background:radial-gradient(ellipse 56% 48% at var(--fx,53%) var(--fy,63%),transparent 21%,#0000006b 100%);will-change:opacity}
-.frame-lines{position:absolute;z-index:3;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 0%,#d1e8ba0a 50%,transparent 100%);opacity:.15}
-.header{position:absolute;z-index:24;top:calc(env(safe-area-inset-top) + 28px);left:clamp(23px,4.8vw,82px);right:clamp(22px,4.8vw,82px);display:flex;align-items:flex-start;justify-content:space-between;pointer-events:none}
-.logo{font-size:clamp(22px,2.5vw,30px);line-height:1;font-weight:840;letter-spacing:.016em;text-shadow:0 2px 18px #0009}.logo b{color:var(--green)}
-.logo span{display:block;margin-top:11px;font-size:9px;font-weight:600;letter-spacing:.255em;color:#97a69a}
-.scene-meta{text-align:right;display:flex;align-items:baseline;gap:7px;color:#87978a;font-size:11px;letter-spacing:.19em;padding-top:1px}
-.scene-meta strong{font-size:23px;font-weight:720;letter-spacing:-.06em;color:var(--green)}
-.progress-rail{position:absolute;z-index:22;right:clamp(15px,3.4vw,47px);top:33%;height:32%;width:1px;background:#d8efd021;pointer-events:none}
-.progress-rail .fill{position:absolute;left:0;top:0;width:2px;height:0;background:linear-gradient(var(--green),#67a551);box-shadow:0 0 13px #9cea4965;transform-origin:top}
-.progress-rail .tick{position:absolute;left:-2px;width:5px;height:1px;background:#b5cc9b49}
-.hero,.card,.intertitle,.final-copy{position:absolute;z-index:20;will-change:transform,opacity;pointer-events:none}
-.hero{left:clamp(28px,6.2vw,106px);top:clamp(175px,24vh,255px);width:min(480px,82vw);opacity:1;text-shadow:0 12px 38px #000c}
-.eyebrow{font-size:10px;color:var(--green);font-weight:760;letter-spacing:.24em;display:flex;align-items:center;gap:12px}.eyebrow::before{content:"";width:26px;height:1px;background:var(--green)}
-.hero h1{font-weight:775;font-size:clamp(42px,5.5vw,77px);letter-spacing:-.065em;line-height:1.02;margin:16px 0 0;text-wrap:balance}
-.hero h1 span,.final-copy h2 span{color:var(--green)}
-.hero .sub{margin:17px 0 0;color:#becdbf;max-width:340px;font-size:clamp(13px,1vw,15px);line-height:1.56}
-.card{left:0;top:0;width:370px;padding:22px 25px 22px 27px;background:linear-gradient(120deg,#101a14f5,#0b110df1);border:1px solid #667c6887;border-radius:13px;box-shadow:0 25px 65px #000b,0 2px 13px #0007,inset 0 1px #ffffff13;backdrop-filter:blur(21px);-webkit-backdrop-filter:blur(21px);opacity:0;visibility:hidden;overflow:hidden}
-.card::before{content:"";position:absolute;left:0;top:24px;bottom:24px;width:2px;background:var(--green);box-shadow:0 0 14px #b9ff6c55}
-.card-kicker{color:var(--green);font-size:10px;letter-spacing:.2em;font-weight:790}
-.card h2{font-size:clamp(24px,2.1vw,30px);line-height:1.12;letter-spacing:-.046em;font-weight:750;margin:12px 0 11px}
-.card p{font-size:13px;line-height:1.62;letter-spacing:.005em;color:#c1cec1;margin:0;max-width:315px}
-.card-foot{margin-top:18px;display:flex;align-items:center;gap:8px;color:#8da28d;font-size:9px;font-weight:600;letter-spacing:.19em;text-transform:uppercase}
-.card-foot::before{content:"";height:1px;width:26px;background:#9cd05f80}
-.card.warning::before{background:#e1a07c;box-shadow:0 0 10px #e1a07c50}.card.warning .card-kicker{color:#efa78a}
-.connector{position:absolute;z-index:17;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;opacity:0}
-.connector path{stroke:#bcf07e;stroke-width:1.4;fill:none;stroke-linecap:round;filter:drop-shadow(0 0 5px #b5ee7860)}
-.connector circle.start{fill:#b9ff83;opacity:.9}.connector circle.end{fill:var(--green);stroke:#102010;stroke-width:3}
-.intertitle{left:50%;top:clamp(146px,19vh,210px);width:min(640px,calc(100% - 46px));text-align:center;transform:translate(-50%,16px);opacity:0;text-shadow:0 10px 26px #000e}
-.intertitle .eyebrow{justify-content:center}
-.intertitle h2{margin:17px 0 0;font-size:clamp(32px,4vw,57px);font-weight:735;line-height:1.07;letter-spacing:-.057em}
-.final-copy{left:clamp(28px,6.2vw,106px);top:clamp(162px,21vh,230px);width:min(470px,85vw);opacity:0;transform:translateY(22px);text-shadow:0 10px 28px #000d}
-.final-copy h2{font-size:clamp(40px,4.4vw,68px);font-weight:765;letter-spacing:-.065em;line-height:1.04;margin:15px 0 18px}
-.final-copy p{max-width:335px;font-size:14px;color:#c7d1c5;line-height:1.7}
-.final-copy a{pointer-events:auto;display:inline-flex;gap:21px;align-items:center;background:var(--green);border-radius:8px;color:#0b1508;padding:17px 21px;margin-top:21px;text-decoration:none;font-weight:800;font-size:13px;letter-spacing:.006em;box-shadow:0 15px 42px #a8ef462e;transition:transform .22s,filter .22s}
-.final-copy a:hover{transform:translateY(-3px);filter:brightness(1.08)}
-.final-copy .arrow{font-size:17px}
-.bottom-note{position:absolute;z-index:20;bottom:calc(24px + env(safe-area-inset-bottom));right:clamp(24px,5vw,80px);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#829885;pointer-events:none}
-#access-live{position:absolute;left:-9999px}
-@media(max-width:760px){
- .header{top:calc(20px + env(safe-area-inset-top));left:23px;right:24px}
- .logo{font-size:21px}.logo span{font-size:7.4px;letter-spacing:.18em;margin-top:8px}
- .scene-meta strong{font-size:20px}.scene-meta{font-size:9px}
- .progress-rail{right:11px;top:35%;height:27%;opacity:.68}
- .hero{left:24px;top:calc(130px + env(safe-area-inset-top));width:calc(100% - 48px)}
- .hero h1{font-size:clamp(36px,9.8vw,43px);line-height:1.04;max-width:332px;margin-top:12px}
- .hero .sub{font-size:12px;line-height:1.46;margin-top:13px;max-width:275px}
- .eyebrow{font-size:8.5px;letter-spacing:.2em;gap:9px}.eyebrow::before{width:18px}
- .card{left:20px!important;top:calc(119px + env(safe-area-inset-top))!important;width:calc(100% - 40px)!important;padding:17px 18px 17px 21px;border-radius:12px}
- .card::before{top:19px;bottom:19px}
- .card-kicker{font-size:8.7px}.card h2{font-size:22px;margin:9px 0 8px}.card p{font-size:12px;line-height:1.45}.card-foot{font-size:8px;margin-top:12px}
- .intertitle{top:calc(144px + env(safe-area-inset-top))}.intertitle h2{font-size:clamp(28px,7.6vw,35px)}
- .final-copy{left:24px;top:calc(127px + env(safe-area-inset-top));width:calc(100% - 48px)}
- .final-copy h2{font-size:clamp(34px,8.5vw,41px);line-height:1.04;margin:12px 0}
- .final-copy p{font-size:12.5px;line-height:1.55;max-width:330px}
- .final-copy a{font-size:12px;padding:14px 16px;margin-top:14px;gap:12px}
- .bottom-note{right:23px;bottom:calc(17px + env(safe-area-inset-bottom));font-size:8px}
- .fine-grid{opacity:.4}
-}
-@media(max-height:650px){.hero{top:105px}.card{top:93px!important}.final-copy{top:100px}}
-@media(prefers-reduced-motion:reduce){.grain,.light-orb{display:none}.final-copy a{transition:none}}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#090c0f">
+<meta name="description" content="A Richard TI cuida da tecnologia do seu comércio. Computadores, redes internas, arquivos e soluções de gestão para quem precisa trabalhar sem parar.">
+<meta property="og:title" content="Richard TI | Seu comércio não pode parar">
+<meta property="og:description" content="Uma experiência sobre os desafios de tecnologia que todo comércio conhece. Conheça a Richard TI.">
+<meta property="og:type" content="website">
+<title>Richard TI | Tecnologia que acompanha seu comércio</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="assets/escritorio.webp">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div id="stage">
- <div class="ambient"></div><div class="fine-grid" aria-hidden="true"></div><div class="light-orb" id="light-orb"></div><div class="frame-lines" aria-hidden="true"></div>
- <div class="world"><div id="rig">
-  <img class="desk" src="assets/mesa-premium-hi.webp" alt="" aria-hidden="true" fetchpriority="high">
-  <div class="lcd" id="lcd" aria-hidden="true">
-   <img id="lcd-legacy" src="assets/lcd-legacy-3x.webp" alt="" decoding="async" fetchpriority="high">
-   <img id="lcd-freeze" src="assets/lcd-freeze-3x.webp" alt="" decoding="async">
-   <img id="lcd-storage" src="assets/lcd-storage-3x.webp" alt="" decoding="async">
-   <img id="lcd-black" src="assets/lcd-black-3x.webp" alt="" decoding="async">
-   <img id="lcd-control" src="assets/lcd-control-3x.webp" alt="" decoding="async">
-   <div class="lcd-glass"></div>
-  </div>
-  <div class="lcd-glow" id="lcd-glow"></div>
-  <img class="pen-foreground" src="assets/pen-foreground.png" alt="" aria-hidden="true">
-  <div id="papers">
-   <img class="paper" style="left:50px;top:541px;width:117px;height:131px" src="assets/cupom-impressora.png" alt="">
-   <img class="paper" style="left:146px;top:713px;width:168px;height:139px" src="assets/pilha-notas.png" alt="">
-   <img class="paper" style="left:287px;top:716px;width:126px;height:115px" src="assets/comprovante.png" alt="">
-   <img class="paper" style="left:64px;top:791px;width:393px;height:198px" src="assets/caderno-fiado.png" alt="">
-   <img class="paper" style="left:651px;top:768px;width:261px;height:147px" src="assets/prancheta.png" alt="">
-  </div>
-  <div class="intake-glow" id="intake-glow"></div>
- </div></div>
- <div class="lens-shade" id="lens-shade"></div><div class="grain" aria-hidden="true"></div>
- <header class="header"><div class="logo">RICHARD<b>.TI</b><span>TECNOLOGIA PARA SEU COMÉRCIO</span></div><div class="scene-meta"><strong id="scene-number">01</strong> / 09</div></header>
- <div class="progress-rail" aria-hidden="true"><div class="fill" id="progress-fill"></div><span class="tick" style="top:0"></span><span class="tick" style="top:25%"></span><span class="tick" style="top:50%"></span><span class="tick" style="top:75%"></span><span class="tick" style="top:100%"></span></div>
- <section class="hero" id="hero"><div class="eyebrow">TECNOLOGIA SEM COMPLICAÇÃO</div><h1>Seu comércio pode <span>evoluir.</span></h1></section>
- <svg class="connector" id="connector" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path id="connector-path"></path><circle class="start" id="connector-start" r="3"></circle><circle class="end" id="connector-end" r="5"></circle></svg>
- <section class="card" id="card" aria-hidden="true"><div class="card-kicker" id="card-kicker"></div><h2 id="card-title"></h2><p id="card-copy"></p><div class="card-foot">RICHARD TI / DIAGNÓSTICO</div></section>
- <section class="intertitle" id="intertitle" aria-hidden="true"><div class="eyebrow" id="inter-eyebrow"></div><h2 id="inter-title"></h2></section>
- <section class="final-copy" id="final-copy" aria-hidden="true"><div class="eyebrow">UMA NOVA ETAPA</div><h2>Seu negócio merece <span>evoluir.</span></h2><p>Do sistema antigo e dos controles manuais a uma rotina mais organizada. Conheça o Controle+.</p><a id="contact" href="https://wa.me/5562999407334">Conversar com a Richard TI <span class="arrow" aria-hidden="true">↗</span></a></section>
- <span id="access-live" role="status" aria-live="polite"></span>
+<a class="sr-only skip-to" href="#depois-da-historia">Pular animação e ir para o contato</a>
+<div class="site-shell">
+  <header class="topbar" aria-label="Navegação principal">
+    <a class="wordmark" href="#inicio" aria-label="Richard TI, início">RICHARD<span class="wordmark-dot">.</span>TI<span class="wordmark-mark" aria-hidden="true">✳</span></a>
+    <div class="topbar-right"><span class="topline" aria-hidden="true"><span class="live-light"></span> TECNOLOGIA PARA O COMÉRCIO REAL</span><a class="top-cta" href="https://wa.me/5562999407334?text=Ol%C3%A1%2C%20quero%20conversar%20com%20a%20Richard%20TI." target="_blank" rel="noopener noreferrer">Vamos conversar <span aria-hidden="true">↗</span></a></div>
+  </header>
+
+  <section id="inicio" class="film" aria-label="Apresentação interativa da Richard TI">
+    <div class="film-backdrop" aria-hidden="true"><div class="mesh"></div><div class="beam beam-one"></div><div class="beam beam-two"></div><div class="flicker"></div></div>
+    <div class="film-glow" id="film-glow" aria-hidden="true"></div>
+    <div class="story-copy" id="story-copy" aria-live="polite" aria-atomic="true">
+      <div class="chapter-label"><span class="chapter-index" id="chapter-index">01</span><span class="chapter-rule"></span><span id="chapter-kicker">O SEU DIA A DIA</span></div>
+      <h1 class="story-heading" id="story-heading">Seu comércio <em>não pode parar.</em></h1>
+      <p class="story-description" id="story-description">Por trás de cada venda existe uma operação inteira. E a tecnologia deveria ajudar, não atrapalhar.</p>
+      <div class="story-tag" id="story-tag"><span class="tag-spark">✳</span><span>Conheça os desafios. Descubra a solução.</span></div>
+    </div>
+    <div class="visual-viewport" id="visual-viewport" aria-hidden="true">
+      <div class="world" id="world">
+        <img class="office" id="office" src="assets/escritorio.webp" width="1448" height="1086" alt="" fetchpriority="high" draggable="false">
+        <div class="light-sweep"></div>
+        <div class="monitor-lcd" id="monitor-lcd">
+          <div class="monitor-loader" id="monitor-loader"><span class="spinner"></span><span>O sistema não está respondendo</span><small>Por favor, aguarde...</small></div>
+          <div class="monitor-storage" id="monitor-storage"><div class="storage-top"><span class="alert-icon">!</span><b>Espaço insuficiente</b></div><div class="storage-copy">O disco está quase cheio.<br>Seus arquivos podem estar em risco.</div><div class="storage-meter"><span></span></div><small>98% utilizado</small></div>
+          <img class="controle-login" id="controle-login" src="assets/controle-login.webp" alt="" decoding="async">
+          <div class="monitor-scan"></div>
+        </div>
+        <div class="router-pulse" id="router-pulse"><i></i><i></i><i></i><span></span></div>
+        <div class="floating-papers" id="floating-papers"></div>
+      </div>
+    </div>
+    <div class="scene-annotation" id="scene-annotation" aria-hidden="true"><span class="annotation-line"></span><span id="annotation-label">OPERAÇÃO DO DIA A DIA</span></div>
+    <div class="left-marker" aria-hidden="true">RICHARD TI <span> / </span> EXPERIÊNCIA 001</div>
+    <nav class="scene-rail" id="scene-rail" aria-label="Ir para uma cena">
+      <span class="rail-caption">CENAS</span>
+      <button type="button" data-step="0" aria-label="Cena 1, mesa completa" class="is-current"><span></span></button>
+      <button type="button" data-step="1" aria-label="Cena 2, computador lento"><span></span></button>
+      <button type="button" data-step="2" aria-label="Cena 3, rede interna"><span></span></button>
+      <button type="button" data-step="3" aria-label="Cena 4, arquivos em risco"><span></span></button>
+      <button type="button" data-step="4" aria-label="Cena 5, controles manuais"><span></span></button>
+      <button type="button" data-step="5" aria-label="Cena 6, papéis se levantando"><span></span></button>
+      <button type="button" data-step="6" aria-label="Cena 7, papéis entram no monitor"><span></span></button>
+      <button type="button" data-step="7" aria-label="Cena 8, Controle+"><span></span></button>
+      <button type="button" data-step="8" aria-label="Cena 9, foco final no monitor"><span></span></button>
+    </nav>
+    <div class="bottom-panel"><div class="scroll-instruction"><span class="scroll-mouse" aria-hidden="true"><span></span></span><span>ROLE PARA EXPLORAR<br><b>O DIA A DIA DO SEU COMÉRCIO</b></span></div><div class="progress-wrap"><span id="scene-count">01 / 09</span><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div><span class="progress-end">09</span></div><button type="button" class="skip-film" id="skip-film">Pular apresentação <span aria-hidden="true">↘</span></button></div>
+    <div class="scene-caption" aria-hidden="true" id="scene-caption">ESSA CENA É SOBRE A SUA REALIDADE</div>
+  </section>
+
+  <main>
+    <div id="story-track" class="story-track" aria-hidden="true"></div>
+    <section id="depois-da-historia" class="closing" aria-label="Conheça a Richard TI">
+      <div class="closing-ambient" aria-hidden="true"></div>
+      <div class="closing-inner">
+        <div class="closing-eyebrow"><span class="live-light"></span> MAIS TECNOLOGIA. MENOS PROBLEMAS.</div>
+        <h2>Seu comércio merece <em>funcionar melhor.</em></h2>
+        <p>Computadores, rede interna, organização de arquivos e soluções digitais pensadas para a realidade de mercados, lojas e pequenos negócios.</p>
+        <div class="closing-actions"><a href="https://wa.me/5562999407334?text=Ol%C3%A1%2C%20quero%20saber%20como%20a%20Richard%20TI%20pode%20ajudar%20meu%20com%C3%A9rcio." target="_blank" rel="noopener noreferrer" class="primary-action">Conversar com a Richard TI <span>↗</span></a><a href="#inicio" class="secondary-action" id="replay">Rever a experiência <span>↑</span></a></div>
+        <div class="service-row"><span>SUPORTE EM TI</span><span>REDES INTERNAS</span><span>ARQUIVOS E BACKUP</span><span>CONTROLE+</span></div>
+      </div>
+      <footer class="footer"><a class="footer-logo" href="#inicio">RICHARD<span>.</span>TI</a><span>TECNOLOGIA PARA O COMÉRCIO DE VERDADE</span><span>© <span id="year"></span> RICHARD TI</span></footer>
+    </section>
+  </main>
 </div>
-<main id="scrollport" aria-label="Percorra a apresentação da Richard TI rolando a página"><div id="scroll-length" aria-hidden="true"></div></main>
-<script>
-(()=>{
-'use strict';
-const $=id=>document.getElementById(id);
-const stage=$('stage'),rig=$('rig'),scrollport=$('scrollport'),card=$('card'),hero=$('hero'),intertitle=$('intertitle'),finalCopy=$('final-copy'),connector=$('connector');
-const lcdNames=['legacy','freeze','storage','black','control'], lcds=Object.fromEntries(lcdNames.map(name=>[name,$('lcd-'+name)]));
-const paperNodes=[...document.querySelectorAll('.paper')], origins=[[110,609],[216,758],[354,773],[235,851],[779,832]];
-const leaves=Array.from({length:21},(_,i)=>{const el=document.createElement('img');el.className='flyleaf';el.src='assets/folha-voando.png';el.alt='';el.style.width=(68+(i%4)*10)+'px';el.style.height=(64+(i%3)*9)+'px';const [x,y]=origins[i%origins.length];el.style.left=x+'px';el.style.top=y+'px';$('papers').append(el);return {el,i,x,y,w:parseInt(el.style.width,10),h:parseInt(el.style.height,10)}});
-const data=[
- {name:'Abertura'},
- {name:'Computador lento',eyebrow:'01 / COMPUTADOR',title:'O sistema não pode parar.',copy:'Quando a tela trava, a fila cresce e cada venda leva mais tempo.',pin:[501,520],point:[496,528],warning:false},
- {name:'Rede interna',eyebrow:'02 / REDE LOCAL',title:'Tudo precisa se comunicar.',copy:'Computador, impressora e equipamentos da loja dependem de uma rede interna estável.',pin:[845,656],point:[834,656],warning:false},
- {name:'Armazenamento',eyebrow:'03 / SEUS ARQUIVOS',title:'Seus dados são essenciais.',copy:'Espaço cheio e backup ausente aumentam o risco de perder informações importantes.',pin:[535,490],point:[496,528],warning:true},
- {name:'Controles manuais',eyebrow:'04 / CONTROLE DIÁRIO',title:'Muito papel. Pouco controle.',copy:'Fiado, estoque e anotações espalhadas tornam a rotina mais difícil do que deveria.',pin:[265,854],point:[289,855],warning:false},
- {name:'Transformação começa'}, {name:'Documentos ao monitor'}, {name:'Controle+'}, {name:'Controle+ em foco'}
-];
-const END=7.26;
-const beats=[
- {id:1,enter:.52,read:.68,hold:1.00,exit:1.18},
- {id:2,enter:1.50,read:1.66,hold:1.99,exit:2.18},
- {id:3,enter:2.49,read:2.66,hold:2.99,exit:3.18},
- {id:4,enter:3.47,read:3.64,hold:3.99,exit:4.19}
-];
-const sceneMarks=[0,.46,1.43,2.43,3.41,4.36,4.98,5.84,6.35];
-const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),lerp=(a,b,t)=>a+(b-a)*t,sm=t=>{t=clamp(t);return t*t*(3-2*t)},seg=(p,a,b)=>sm((p-a)/(b-a)),win=(p,a,b,c,d)=>seg(p,a,b)*(1-seg(p,c,d));
-const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-let W=stage.clientWidth,H=stage.clientHeight,camera=null,shown=0,target=0,last=0,raf=0,currentChapter=-1,cardCurrent=0,cardAnchor=null,paperProg=-1,lastInter='';
-const rad=x=>x*Math.PI/180;
-function baseCamera(){let s,ox,oy;if(W<760){s=Math.min(W*1.025/941,H*.94/1672,.49);ox=(W-941*s)/2;oy=H*.59-900*s;}else{s=Math.min(W*.74/941,H*.97/1470,.76);ox=W*.73-475*s;oy=H*.61-830*s;}return {s,ox,oy,r:0};}
-function focusCamera(type){const mobile=W<760;const targets={monitor:{x:494,y:524,w:475,h:290},network:{x:839,y:662,w:268,h:218},paper:{x:282,y:842,w:515,h:255}};
- const f=targets[type],wid=mobile?W*.96:W*.62,hei=mobile?H*.52:H*.76;
- const s=Math.min(wid/f.w,hei/f.h,mobile?1.22:1.48);
- const tx=mobile?W*.495:W*.705,ty=mobile?H*.63:H*.58;
- return {s,ox:tx-f.x*s,oy:ty-f.y*s,r:0};
-}
-function makeTrack(){return [
- [0,'home',0,0,1,0], [.19,'home',-6,22,1.025,-.15],
- [.44,'monitor',-7,18,.79,-.13], [.70,'monitor',0,0,1,0], [1.00,'monitor',-5,7,1.015,-.09],
- [1.21,'home',18,14,1.13,.12], [1.42,'network',-5,3,.74,.12], [1.68,'network',0,0,1,0], [2.00,'network',-9,6,1.016,.08],
- [2.20,'home',14,15,1.12,0], [2.45,'monitor',7,10,.80,.12], [2.68,'monitor',0,0,1,0], [3.00,'monitor',-4,5,1.01,-.08],
- [3.20,'home',-13,18,1.11,-.05], [3.43,'paper',-7,9,.83,-.11], [3.65,'paper',0,0,1,0], [4.02,'paper',-7,-2,1.013,.12],
- [4.23,'home',7,6,1.06,0], [4.48,'home',0,12,1.00,0], [4.98,'home',-8,0,1.075,-.12],
- [5.33,'home',-4,-18,1.12,-.25], [5.67,'monitor',-5,1,.72,-.10],
- [5.85,'home',10,0,1.08,0], [6.09,'home',0,2,1.055,.05],
- [6.40,'monitor',8,-10,.92,.13], [6.72,'monitor',0,0,1.01,0], [7.26,'monitor',-3,4,1.025,0]
- ];}
-let kf=[];
-function rebuildTrack(){const home=baseCamera(),monitor=focusCamera('monitor'),network=focusCamera('network'),paper=focusCamera('paper');const refs={home,monitor,network,paper};
- kf=makeTrack().map(([p,kind,dx,dy,mul,r])=>{const b=refs[kind];return {p,s:b.s*mul,ox:b.ox+dx,oy:b.oy+dy,r}});
-}
-// Continuous C1 camera trajectory: no forced stop at every keyframe.
-function cameraAt(p){let i=1;while(i<kf.length-1&&p>kf[i].p)i++;
- const a=kf[i-1],b=kf[i],pre=kf[Math.max(0,i-2)],post=kf[Math.min(kf.length-1,i+1)];
- const span=b.p-a.p,t=clamp((p-a.p)/span),t2=t*t,t3=t2*t;
- const h00=2*t3-3*t2+1,h10=t3-2*t2+t,h01=-2*t3+3*t2,h11=t3-t2;
- const value=key=>{const m0=(b[key]-pre[key])/Math.max(.001,b.p-pre.p)*.64;const m1=(post[key]-a[key])/Math.max(.001,post.p-a.p)*.64;
- return h00*a[key]+h10*span*m0+h01*b[key]+h11*span*m1;};
- return {s:value('s'),ox:value('ox'),oy:value('oy'),r:value('r')};}
-function setCamera(c){camera=c;rig.style.transform=`translate3d(${c.ox.toFixed(2)}px,${c.oy.toFixed(2)}px,0) rotate(${c.r.toFixed(3)}deg) scale(${c.s.toFixed(5)})`}
-function project(x,y){const sn=Math.sin(rad(camera.r)),cs=Math.cos(rad(camera.r));return {x:camera.ox+(x*cs-y*sn)*camera.s,y:camera.oy+(x*sn+y*cs)*camera.s}}
-function opacity(el,v){v=clamp(v);el.style.opacity=v.toFixed(3);el.style.visibility=v<.003?'hidden':'visible'}
-function updateCard(id){if(id===cardCurrent)return;cardCurrent=id;cardAnchor=null;if(!id)return;const d=data[id];$('card-kicker').textContent=d.eyebrow;$('card-title').textContent=d.title;$('card-copy').textContent=d.copy;card.classList.toggle('warning',d.warning);
- if(W>=760){card.style.left=clamp(W*.073,68,112)+'px';card.style.top=clamp(H*.30,204,295)+'px';card.style.width=Math.min(400,W*.30)+'px';}else{card.style.left='';card.style.top='';card.style.width='';}
-}
-function drawLine(id){const pos=project(...data[id].pin);if(!cardAnchor){const a=card.getBoundingClientRect(),b=stage.getBoundingClientRect();cardAnchor=W<760?{x:a.left-b.left+a.width*.55,y:a.bottom-b.top}:{x:a.right-b.left,y:a.top-b.top+a.height*.61};}
- const st=cardAnchor,mx=W<760?(st.x+pos.x)*.50:(st.x+pos.x)*.51,my=W<760?st.y+(pos.y-st.y)*.27:Math.min(pos.y,st.y)-26;
- $('connector-path').setAttribute('d',`M${st.x.toFixed(1)},${st.y.toFixed(1)} Q${mx.toFixed(1)},${my.toFixed(1)} ${pos.x.toFixed(1)},${pos.y.toFixed(1)}`);
- $('connector-start').setAttribute('cx',st.x);$('connector-start').setAttribute('cy',st.y);$('connector-end').setAttribute('cx',pos.x);$('connector-end').setAttribute('cy',pos.y);
-}
-function movePapers(p){if(Math.abs(p-paperProg)<.0001)return;paperProg=p;paperNodes.forEach((el,i)=>{
- const lift=seg(p,0,.30),dissolve=seg(p,.28,.51),sign=i%2?1:-1;
- const x=(Math.sin(i*2.4)*14)*lift+(478-origins[i][0])*dissolve*.17;
- const y=-52*lift-34*dissolve;
- el.style.transform=`translate3d(${x.toFixed(2)}px,${y.toFixed(2)}px,0) rotate(${(sign*(4*lift+15*dissolve)).toFixed(2)}deg) scale(${(1-.28*dissolve).toFixed(3)})`;
- el.style.opacity=(p>=.999?0:1-dissolve).toFixed(3);
- });
- leaves.forEach(({el,i,x,y,w,h})=>{
-  const start=.26+(i%7)*.014,flight=seg(p,start,.96),bend=Math.sin(Math.PI*flight);
-  const dx=(478-x-w/2)*flight+Math.sin(2.34*i)*46*bend;
-  const dy=(517-y-h/2)*flight-150*bend;
-  const sc=.79+(i%4)*.10-(.73+(i%4)*.09)*flight;
-  const spin=(i%2?1:-1)*(12+143*flight)+i*9;
-  el.style.transform=`translate3d(${dx.toFixed(2)}px,${dy.toFixed(2)}px,0) rotate(${spin.toFixed(2)}deg) scale(${Math.max(.035,sc).toFixed(3)})`;
-  el.style.opacity=p<start?'0':(clamp(flight*13)*(1-seg(flight,.74,1))).toFixed(3);
- });
- opacity($('intake-glow'),seg(p,.38,.61)*(1-seg(p,.89,1))*.75);
-}
-function render(p){
- let c=cameraAt(p);
- // The world steadily descends behind the text, without yanking the camera away from its focus.
- const drift=sm(p/END), finalCompensate=1-.59*seg(p,6.24,6.72), extraY=(W<760?135:98)*drift*finalCompensate;
- c={...c,ox:c.ox-(W<760?6:12)*drift,oy:c.oy+extraY};
- setCamera(c);
- const focusBeats=beats.map(b=>({id:b.id,a:win(p,b.enter,b.read,b.hold,b.exit)}));
- let strongest={id:0,a:0};for(const b of focusBeats)if(b.a>strongest.a)strongest=b;
- $('lens-shade').style.setProperty('--fx',`${(W<760?52:68)}%`);
- $('lens-shade').style.setProperty('--fy',`${(W<760?65:58)}%`);
- opacity($('lens-shade'),strongest.a*(W<760?.31:.28));
- opacity(hero,1-seg(p,.10,.44));hero.style.transform=`translate3d(0,${(-28*seg(p,.10,.44)).toFixed(2)}px,0)`;
- if(strongest.id){updateCard(strongest.id);opacity(card,strongest.a);opacity(connector,strongest.a);card.setAttribute('aria-hidden',strongest.a>.5?'false':'true');card.style.transform=`translate3d(0,${((1-strongest.a)*24+Math.sin(p*2.1)*3*strongest.a).toFixed(2)}px,0)`;drawLine(strongest.id)}
- else{opacity(card,0);opacity(connector,0);card.setAttribute('aria-hidden','true')}
- const screenFreeze=win(p,.26,.48,1.01,1.18),screenStorage=win(p,2.36,2.58,3.03,3.21);
- opacity(lcds.legacy,1);opacity(lcds.freeze,screenFreeze);opacity(lcds.storage,screenStorage);
- opacity(lcds.black,seg(p,5.23,5.72));opacity(lcds.control,seg(p,5.88,6.22));
- opacity($('lcd-glow'),seg(p,5.90,6.22)*.08);
- movePapers(seg(p,4.37,5.69));
- const capA=win(p,4.44,4.60,4.85,5.04),capB=win(p,5.09,5.25,5.61,5.81);
- const type=capB>capA?'absorb':'lift';if(type!==lastInter){lastInter=type;$('inter-eyebrow').textContent=type==='lift'?'A TRANSFORMAÇÃO COMEÇA':'UMA NOVA ROTINA';$('inter-title').textContent=type==='lift'?'Do papel para o digital.':'Menos improviso. Mais controle.';}
- const cap=Math.max(capA,capB);opacity(intertitle,cap);intertitle.style.transform=`translate3d(-50%,${((1-cap)*21).toFixed(2)}px,0)`;
- const fin=seg(p,6.70,7.09);opacity(finalCopy,fin);finalCopy.setAttribute('aria-hidden',fin>.5?'false':'true');finalCopy.style.transform=`translate3d(0,${((1-fin)*24).toFixed(2)}px,0)`;finalCopy.style.pointerEvents=fin>.6?'auto':'none';
- $('light-orb').style.transform=`translate3d(${(-50+14*drift-strongest.a*8).toFixed(1)}%,${(-50+6*drift).toFixed(1)}%,0) scale(${(1+.09*Math.sin(p*1.9)).toFixed(3)})`;
- $('progress-fill').style.height=(p/END*100).toFixed(3)+'%';
- let n=0;for(let i=sceneMarks.length-1;i>=0;i--){if(p>=sceneMarks[i]){n=i;break}}
- if(n!==currentChapter){currentChapter=n;$('scene-number').textContent=String(n+1).padStart(2,'0');$('access-live').textContent=data[n].name;}
-}
-function requestFrame(){if(!raf)raf=requestAnimationFrame(tick)}
-function tick(now){raf=0;const dt=last?Math.min(.048,(now-last)/1000):.016;last=now;const diff=target-shown;
- if(reduced)shown=target;else{const focus=beats.some(b=>shown>b.read&&shown<b.hold),maxSpeed=(focus?1.45:2.1);const shift=diff*(1-Math.exp(-9.5*dt));shown+=clamp(shift,-maxSpeed*dt,maxSpeed*dt);if(Math.abs(diff)<.0007)shown=target;}
- render(shown);if(Math.abs(target-shown)>.0007)requestFrame();else last=0;
-}
-function syncScroll(){target=clamp(scrollport.scrollTop/Math.max(1,H),0,END);requestFrame()}
-function resize(){const prevH=H;W=stage.clientWidth;H=stage.clientHeight;$('scroll-length').style.height=`${Math.ceil(END+1)*H}px`;rebuildTrack();cardAnchor=null;
- if(prevH&&prevH!==H){scrollport.scrollTop=target*H}target=clamp(scrollport.scrollTop/Math.max(1,H),0,END);render(shown);requestFrame();}
-scrollport.addEventListener('scroll',syncScroll,{passive:true});window.addEventListener('resize',resize,{passive:true});window.addEventListener('orientationchange',()=>setTimeout(resize,160),{passive:true});
-window.__qaRender=p=>{shown=target=clamp(p,0,END);scrollport.scrollTop=shown*H;render(shown)};
-resize();render(0);
-const queryP=new URLSearchParams(location.search).get('p');if(queryP!==null&&Number.isFinite(Number(queryP)))window.__qaRender(Number(queryP));
-})();
-</script>
+<script src="script.js" defer></script>
 </body>
 </html>
